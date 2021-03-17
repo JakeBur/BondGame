@@ -15,11 +15,12 @@ public class EnemyWeaponTrigger : MonoBehaviour
             other.gameObject.GetComponent<StatManager>().TakeDamage(context.statManager.stats[ModiferType.DAMAGE].modifiedValue, ModiferType.MELEE_RESISTANCE);
             other.gameObject.GetComponent<PlayerController>().DeathCheck();
             other.GetComponent<PlayerController>().isHit = true;
-        } else if(other.gameObject.tag == "CaptCreature")
+        } 
+        if(other.gameObject.tag == "CaptCreature")
         {
             other.gameObject.GetComponent<StatManager>().TakeDamageCreature(context.statManager.stats[ModiferType.DAMAGE].modifiedValue, ModiferType.MELEE_RESISTANCE);
             other.GetComponent<CreatureAIContext>().isHit = true;
-            other.GetComponent<EnthusiasmUI>().UpdateEnthusiasm();
+            other.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
         }
     }
 

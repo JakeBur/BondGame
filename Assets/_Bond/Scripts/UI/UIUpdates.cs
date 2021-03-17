@@ -40,6 +40,9 @@ public class UIUpdates : MonoBehaviour
     private StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
     private PlayerController player => PersistentData.Instance.Player.GetComponent<PlayerController>();
 
+    private Color opaque = new Color (255,255,255,1);
+    private Color transparent = new Color (255,255,255,0.5f);
+
 //*****************End of variable declarations**********************//
 
 
@@ -63,16 +66,8 @@ public class UIUpdates : MonoBehaviour
         CheckForTarget();
 
 
-        /*
-        
-        if a cooldown is active
-        {
-            somewhere on cooldown activation, set fillAmount to 0
-            get active cooldowns (max of 4)
-            CooldownUpdate(image) for each active
-        }
-        */
-        CooldownUpdate(); 
+        //In progress, check if any of your curr creatures abilties have active cooldowns
+       // if(player.cooldownSystem.IsOnCooldown(0)) CooldownUpdate(); 
 
         
     }
@@ -87,8 +82,8 @@ public class UIUpdates : MonoBehaviour
             if(player.currCreatureContext.targetEnemy != null)
             {
                 //Debug.Log("opaque");
-                ability1Icon.color = new Color (255,255,255,1); //opaque
-                ability2Icon.color = new Color (255,255,255,1);           
+                ability1Icon.color = opaque;
+                ability2Icon.color = opaque;         
             }
             // else
             // {
@@ -98,8 +93,8 @@ public class UIUpdates : MonoBehaviour
         catch
         {
             //Debug.Log("transparent");
-            ability1Icon.color = new Color (255,255,255,0.5f); //transparent
-            ability2Icon.color = new Color (255,255,255,0.5f); 
+            ability1Icon.color = transparent;
+            ability2Icon.color = transparent;
         }
     }
 
@@ -160,9 +155,35 @@ public class UIUpdates : MonoBehaviour
         //called every tick while cooldown is active
         //get specific creatures cooldown
 
-        //Image.fillAmount += 1.0f / cooldown length * Time.deltaTime;
+        ability1Icon.fillAmount += (1.0f / player.cooldownSystem.GetRemainingDuration(0)) * Time.deltaTime;
+        ability2Icon.fillAmount += (1.0f / player.cooldownSystem.GetRemainingDuration(1)) * Time.deltaTime;
 
+        // ability1Icon.fillAmount += (1.0f / 7f) * Time.deltaTime;
+        // ability2Icon.fillAmount += (1.0f / 7f) * Time.deltaTime;
+        
     }
+
+
+
+
+
+
+    public void UsedAbility(int ability)
+    {
+        if(ability == 1)
+        {
+            ability1Icon.fillAmount = 0;
+            ability1Icon.color = transparent;
+
+        }
+        if(ability == 2)
+        {
+            ability2Icon.fillAmount = 0;
+            ability2Icon.color = transparent;
+
+        }
+    }
+    
 
 
 
