@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a3e66874388534f87554303e5354ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fragariaSunbeamSFX: event:/Sound Effects/SFX/Creature SFX/Fragaria/Fragaria Sunbeam
+  fragariaSporeTossSFX: event:/Sound Effects/SFX/Creature SFX/Fragaria/Fragaria Spore
+    Toss
 --- !u!1 &2759757170665168599
 GameObject:
   m_ObjectHideFlags: 0
@@ -5485,6 +5488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 3865513519326407494}
+  WalkSFX: event:/Sound Effects/SFX/New Walking Grass 3D
 --- !u!114 &3045770925772636374
 MonoBehaviour:
   m_ObjectHideFlags: 0
