@@ -6,7 +6,7 @@ public class EnemyAnimationEvent : MonoBehaviour
 {
     private EnemyAnimator enemyAnimator => transform.parent.GetComponent<EnemyAnimator>();
     public GameObject hitbox;
-    public BoxCollider collider => hitbox.GetComponent<BoxCollider>();
+    public BoxCollider boxCollider => hitbox.GetComponent<BoxCollider>();
 
     public void AttackDone()
     {
@@ -20,11 +20,12 @@ public class EnemyAnimationEvent : MonoBehaviour
 
     public void ColliderOnOff()
     {
-       collider.enabled = !collider.enabled;
+       boxCollider.enabled = !boxCollider.enabled;
     }
 
     public void PlaySlamSFX()
     {
         enemyAnimator.PlaySlamSFX();
     }
+    
 }

@@ -14,11 +14,11 @@ public class CCheckDistanceToTarget : BTChecker
     public override NodeState Evaluate()
     {
         float distance = Vector3.Distance(context.creatureTransform.position, context.targetEnemy.transform.position);
-        Debug.Log("Distance to Target : " + distance);
+       
         if(context.creatureStats.abilities[context.lastTriggeredAbility] is creatureAttackMelee)
         {
             creatureAttackMelee attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
-            Debug.Log("Ability is melee, now checking distance : " + attack.maxDistanceToEnemy);
+            
             if (distance < attack.maxDistanceToEnemy) return NodeState.FAILURE; 
         } else if(context.creatureStats.abilities[context.lastTriggeredAbility] is creatureAttackRanged) 
         {

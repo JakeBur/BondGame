@@ -20,7 +20,7 @@ namespace PlayerState
         
 
 
-        private float fraction = 0;
+        
         private Vector3 startPos;
 
         public SlashBase( PlayerStateMachine _fsm ) : base( _fsm )

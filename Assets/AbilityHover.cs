@@ -18,6 +18,6 @@ public class AbilityHover : MonoBehaviour
 
     public void OnHover()
     {
-        Debug.Log("Hover");
+        //Debug.Log("Hover");
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EActionAttackPlayer : BTLeaf
 {
-    bool waitedAfterAttack = false;
     float delayTimer = 0;
 
     public EActionAttackPlayer(string _name, EnemyAIContext _context ) : base(_name, _context)

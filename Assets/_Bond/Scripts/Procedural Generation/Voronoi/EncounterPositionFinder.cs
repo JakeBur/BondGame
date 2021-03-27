@@ -8,7 +8,6 @@ public class EncounterPositionFinder : MonoBehaviour
 
     public List<List<Vector2>> GetPoints(Vector3 startPos, int mapSize, int increment)
     {
-        Debug.Log("GetPoints Started");
         timerStart = Time.realtimeSinceStartup;
         List<List<Vector2>> listOfLists = new List<List<Vector2>>();
         List<Vector2> viableCombatPoints = new List<Vector2>();
@@ -18,7 +17,7 @@ public class EncounterPositionFinder : MonoBehaviour
         Vector3 position = startPos;
         Collider[] bigHitColliders = new Collider[1];
         Collider[] smallHitColliders = new Collider[1];
-        int layer = 1<<10;
+       // int layer = 1<<10;
         for(float x = startPos.x; x < mapSize; x += increment)
         {
             for(float y = startPos.y; y < mapSize; y += increment)
@@ -41,7 +40,7 @@ public class EncounterPositionFinder : MonoBehaviour
         }
         listOfLists.Add(viableCombatPoints);
         listOfLists.Add(viableObjectPoints);
-        Debug.Log("GetPoints Finished : " + (Time.realtimeSinceStartup - timerStart));
+        //Debug.Log("GetPoints Finished : " + (Time.realtimeSinceStartup - timerStart));
         return listOfLists;
     }
 }

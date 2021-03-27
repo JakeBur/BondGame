@@ -294,7 +294,7 @@ public class VoronoiPCG : MonoBehaviour
 		// }
 
 		progressBar.value = 100;
-		Debug.Log("Finished : " + (Time.realtimeSinceStartup - timerStart));
+		//Debug.Log("Finished : " + (Time.realtimeSinceStartup - timerStart));
 		LoadingUI.SetActive(false);
 		
 		PersistentData.Instance.isGeneratorDone = true;
