@@ -16,6 +16,8 @@ TagManager:
   - Relic
   - UI
   - Interactable
+  - Terrain
+  - LevelGenerator
   layers:
   - Default
   - TransparentFX
