@@ -23,73 +23,87 @@ public class PlayerController : MonoBehaviour
     }
     public Inputs inputs;
 
-
-    public Camera camera;
-    public bool isoMovement = true;
-
-
-    public GameObject fruit;
+    // COMPONENTS
     public PlayerStateMachine fsm => GetComponent<PlayerStateMachine>();
     public PlayerAnimator animator => GetComponent<PlayerAnimator>();
     //public PlayerStats stats => GetComponent<PlayerStats>();
     public StatManager stats => GetComponent<StatManager>();
+    private Rigidbody rb;
+    private CharacterController charController;
+
+    [Header("Relics")]
     public List<RelicStats> Relics = new List<RelicStats>();
 
+    [Header("Dialog Manager")]
+    public bool inCharacterDialog;
+    public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
+    [HideInInspector]
+    public CharacterDialogManager characterDialogManager;
 
-    //*******Dash Variables*******
+    [Header("Pause Menu")]
+    public GameObject pauseMenu;
+    private bool isPaused = false;
+
+    [Header("Items")]
+    public int goldCount = 0;
+    [HideInInspector]
+    public GameObject fruit;
+
+    [Header("Movement")]
+    public bool isoMovement = true;
+    private Vector3 gravity;
+    private float crouchModifier = 1;
+    public float isoSpeedADJ = 0f;
+    public float currSpeed;
+
+    [Header("Dash")]
+    //[HideInInspector]
+    public bool isDashing = false;
+    //[HideInInspector]
+    public Vector3 facingDirection;
+    //[HideInInspector]
+    public Vector3 lastMoveVec;
+    //[HideInInspector]
+    public Vector3 movementVector;
     private float dashStart = 2;
     private int dashCount = 0;
-
-    [HideInInspector]
-    public Vector3 facingDirection;
-    [HideInInspector]
-    public bool isDashing = false;
-    [HideInInspector]
-    public Vector3 lastMoveVec;
-    [HideInInspector]
-    public Vector3 movementVector;
-    //****************************
-
-
-    private Rigidbody rb;
     
-    private CharacterController charController;
-    
-    private Vector3 gravity;
-
-    public int goldCount = 0;
-    private float crouchModifier = 1;
+    [Header("Environment Context")]
     public bool nearInteractable = false;
-    public bool hasSwapped;
-    public bool inCombat;
     
+    [Header("Creature Context")]
+    public bool hasSwapped;
     public Transform backFollowPoint;
-
+    [HideInInspector]
     public GameObject wildCreature = null;
+    [HideInInspector]
     public GameObject currCreature;
+    [HideInInspector]
     public GameObject swapCreature;
+    [HideInInspector]
     public GameObject interactableObject;
+    [HideInInspector]
     public CreatureAIContext currCreatureContext;
     public CooldownSystem cooldownSystem => GetComponent<CooldownSystem>();
 
-    public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
-    public bool inCharacterDialog;
-    public CharacterDialogManager characterDialogManager;
-
-    
-    //******Combat Vars**********//
+    [Header("Combat")]
+    public bool inCombat;
     public bool isAttacking = false;
-    public float currSpeed;
     public bool isHit;
+    public Vector3 attackDestination;
+    public Vector3 attackMoveVec;
 
+    [Header("VFX")]
     public ParticleSystem heavyChargeVfx;
     public ParticleSystem heavyHitVfx;
     public ParticleSystem slashVfx;
-    public Vector3 destination;
-    public Vector3 attackMoveVec;
-    //****************//
-    public float isoSpeedADJ = 0f;
 
+    [Header("FMOD Strings")]
+        [FMODUnity.EventRef]
+        public string menuOpenSFX;
+
+        [FMODUnity.EventRef]
+        public string swapSFX;
 
     [Serializable]
     public struct HitBoxes
@@ -104,18 +118,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public HitBoxes hitBoxes;
-
-    public GameObject pauseMenu;
-
-    [FMODUnity.EventRef]
-    public string menuOpenSFX;
-
-    [FMODUnity.EventRef]
-    public string swapSFX;
-
-    private bool isPaused = false;
-
-
 
     // private void OnEnable()
     // {
@@ -439,7 +441,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(hit.point);
                 //gameObject.transform.LookAt(hit.point);
 
-                destination = hit.point;
+                attackDestination = hit.point;
                 Vector3 direction = hit.point - transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
 
@@ -478,17 +480,22 @@ public class PlayerController : MonoBehaviour
     {
         // var id = currCreatureContext.CD.abilities[0].id;
         // var cooldownDuration = currCreatureContext.CD.abilities[0].cooldownDuration;
-
-        currCreatureContext.isAbilityTriggered = true;
-        currCreatureContext.lastTriggeredAbility = 0;
+        if( currCreature != null )
+        {
+            currCreatureContext.isAbilityTriggered = true;
+            currCreatureContext.lastTriggeredAbility = 0;
+        }
     }  
 
 
     //creature ability 2 (B)
     private void OnAttack3()
     {
-        currCreatureContext.isAbilityTriggered = true;
-        currCreatureContext.lastTriggeredAbility = 1;
+        if( currCreature != null )
+        {
+            currCreatureContext.isAbilityTriggered = true;
+            currCreatureContext.lastTriggeredAbility = 1;
+        }
     }
 
     private void OnPause()
