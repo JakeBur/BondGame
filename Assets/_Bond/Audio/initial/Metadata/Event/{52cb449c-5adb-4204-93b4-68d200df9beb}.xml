@@ -813,6 +813,9 @@
 		</property>
 	</object>
 	<object class="EventMixerGroup" id="{d20700a2-4963-47c5-a948-b6834037da94}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<property name="name">
 			<value>Farm Song</value>
 		</property>
@@ -1068,6 +1071,9 @@
 		</property>
 	</object>
 	<object class="EventMixerGroup" id="{993bf753-80e2-4374-8232-403c41af2fe7}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<property name="name">
 			<value>Overworld Song 1</value>
 		</property>
@@ -1320,6 +1326,9 @@
 		</property>
 	</object>
 	<object class="EventMixerGroup" id="{f6e6b717-00c9-4b42-85b1-522ea5eaa380}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<property name="name">
 			<value>Overworld Song 2</value>
 		</property>
@@ -1606,6 +1615,9 @@
 		</property>
 	</object>
 	<object class="EventMixerGroup" id="{b893927b-d993-4446-b2b6-a884e6708d5e}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<property name="name">
 			<value>Combat Song</value>
 		</property>
@@ -2230,7 +2242,7 @@
 	</object>
 	<object class="NamedMarker" id="{0960c055-9e4c-4e90-b844-fdfd4346b29e}">
 		<property name="position">
-			<value>87.490196078431381</value>
+			<value>81.490196078431381</value>
 		</property>
 		<property name="name">
 			<value>Transition from Farm Music</value>
@@ -2239,7 +2251,7 @@
 			<destination>{bf037449-d7cc-4173-9c62-aacea1e48699}</destination>
 		</relationship>
 		<relationship name="markerTrack">
-			<destination>{5c1ef2bd-5ef6-4601-b110-1fef870dc93b}</destination>
+			<destination>{8041e602-ca22-4c77-9d2a-80064cbe9cc4}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionRegion" id="{f8e1e018-7238-4e16-91dd-876b309ffec1}">
