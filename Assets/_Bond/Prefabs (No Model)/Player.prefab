@@ -10100,35 +10100,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b9c8f02cb2899438bb9c27fb538349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  isoMovement: 1
-  fruit: {fileID: 0}
   Relics: []
-  facingDirection: {x: 0, y: 0, z: 0}
+  inCharacterDialog: 0
+  characterDialogManager: {fileID: 0}
+  pauseMenu: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
+    type: 3}
+  goldCount: 0
+  fruit: {fileID: 0}
+  isoMovement: 1
+  isoSpeedADJ: 1.5
+  currSpeed: 0
   isDashing: 0
+  facingDirection: {x: 0, y: 0, z: 0}
   lastMoveVec: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  goldCount: 0
   nearInteractable: 0
   hasSwapped: 0
-  inCombat: 0
   backFollowPoint: {fileID: 3008331728175113253}
   wildCreature: {fileID: 0}
   currCreature: {fileID: 0}
   swapCreature: {fileID: 0}
   interactableObject: {fileID: 0}
   currCreatureContext: {fileID: 0}
-  inCharacterDialog: 0
-  characterDialogManager: {fileID: 0}
+  inCombat: 0
   isAttacking: 0
-  currSpeed: 0
   isHit: 0
+  attackDestination: {x: 0, y: 0, z: 0}
+  attackMoveVec: {x: 0, y: 0, z: 0}
   heavyChargeVfx: {fileID: 3268859984920099915}
   heavyHitVfx: {fileID: 2879053346376034959}
   slashVfx: {fileID: 766551116}
-  destination: {x: 0, y: 0, z: 0}
-  attackMoveVec: {x: 0, y: 0, z: 0}
-  isoSpeedADJ: 1.5
+  menuOpenSFX: event:/Sound Effects/SFX/UI SFX/Menu Open
+  swapSFX: event:/Sound Effects/SFX/Creature Swap
   hitBoxes:
     slash0: {fileID: 7819646080185911571}
     slash1: {fileID: 3008331728240645142}
@@ -10136,10 +10139,6 @@ MonoBehaviour:
     slash3: {fileID: 3008331728240645142}
     slash4: {fileID: 3008331728240645142}
     heavy: {fileID: 6334410306365020563}
-  pauseMenu: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
-    type: 3}
-  menuOpenSFX: event:/Sound Effects/SFX/UI SFX/Menu Open
-  swapSFX: event:/Sound Effects/SFX/Creature Swap
 --- !u!114 &6669998564430628805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10152,7 +10151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6862d1b8b3bb64dbb38b9404a41743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1275344589917247344}
   Slash0:
     hitBox: {fileID: 0}
   Slash1:
