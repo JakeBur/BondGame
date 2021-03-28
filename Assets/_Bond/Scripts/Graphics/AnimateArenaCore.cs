@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimateArenaCore : MonoBehaviour
 {
-    public AnimationCurve animation;
+    public AnimationCurve shapeCurve;
     public AnimationCurve waveCurve;
     public float animationSpeed;
     public float waveLength;
@@ -24,7 +24,7 @@ public class AnimateArenaCore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, animation.Evaluate(((Time.time * animationSpeed) % 1) ) * 100);
+        GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, shapeCurve.Evaluate(((Time.time * animationSpeed) % 1) ) * 100);
 
         if(trigger)
         {
