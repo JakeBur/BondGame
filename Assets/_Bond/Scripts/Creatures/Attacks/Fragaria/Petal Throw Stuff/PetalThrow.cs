@@ -9,7 +9,6 @@ public class PetalThrow : MonoBehaviour
     private void Awake() 
     {
         context=PersistentData.Instance.Player.GetComponent<PlayerController>().currCreatureContext;
-        Debug.Log(context);
         Destroy(gameObject, 1f);
     }
 
@@ -21,7 +20,7 @@ public class PetalThrow : MonoBehaviour
                 context.enemyList = new List<GameObject>();
                 
             }
-            Debug.Log(context.enemyList);
+          
             context.enemyList.Add(other.transform.gameObject);
         }    
     }

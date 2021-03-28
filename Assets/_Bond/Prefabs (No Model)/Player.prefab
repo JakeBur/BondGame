@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.35, z: 0.67}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -178.213, y: 89.99999, z: 89.99999}
 --- !u!198 &766551116
 ParticleSystem:
@@ -4842,7 +4842,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &2879053346376034959
 ParticleSystem:
@@ -9843,7 +9843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3008331728240645141
 Transform:
   m_ObjectHideFlags: 0
@@ -9853,10 +9853,10 @@ Transform:
   m_GameObject: {fileID: 3008331728240645142}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.06, y: 0.14, z: 1.64}
-  m_LocalScale: {x: 4.13, y: 1, z: 2.851633}
+  m_LocalScale: {x: 3, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3008331728240645146
 MeshFilter:
@@ -9916,8 +9916,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0083923, y: 1, z: 1.0043687}
+  m_Center: {x: 0, y: 0, z: 0.0021843356}
 --- !u!114 &6921095341287388989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9930,6 +9930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
+  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!1 &3008331728745216815
 GameObject:
   m_ObjectHideFlags: 0
@@ -10075,12 +10077,12 @@ Transform:
   - {fileID: 7629208211084902264}
   - {fileID: 3008331729270975653}
   - {fileID: 3008331728175113253}
-  - {fileID: 3008331728240645141}
   - {fileID: 3268859984920099909}
   - {fileID: 2879053346376034957}
-  - {fileID: 226208229969507009}
   - {fileID: 766551117}
   - {fileID: 368059099045210936}
+  - {fileID: 3008331728240645141}
+  - {fileID: 226208229969507009}
   - {fileID: 468185896499910684}
   - {fileID: 7654491621752466112}
   m_Father: {fileID: 0}
@@ -10098,42 +10100,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b9c8f02cb2899438bb9c27fb538349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  isoMovement: 1
-  fruit: {fileID: 0}
   Relics: []
-  facingDirection: {x: 0, y: 0, z: 0}
+  inCharacterDialog: 0
+  characterDialogManager: {fileID: 0}
+  pauseMenu: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
+    type: 3}
+  goldCount: 0
+  fruit: {fileID: 0}
+  isoMovement: 1
+  isoSpeedADJ: 1.5
+  currSpeed: 0
   isDashing: 0
+  facingDirection: {x: 0, y: 0, z: 0}
   lastMoveVec: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  goldCount: 0
   nearInteractable: 0
   hasSwapped: 0
-  inCombat: 0
   backFollowPoint: {fileID: 3008331728175113253}
   wildCreature: {fileID: 0}
   currCreature: {fileID: 0}
   swapCreature: {fileID: 0}
   interactableObject: {fileID: 0}
   currCreatureContext: {fileID: 0}
+  inCombat: 0
   isAttacking: 0
-  currSpeed: 0
   isHit: 0
+  attackDestination: {x: 0, y: 0, z: 0}
+  attackMoveVec: {x: 0, y: 0, z: 0}
   heavyChargeVfx: {fileID: 3268859984920099915}
   heavyHitVfx: {fileID: 2879053346376034959}
   slashVfx: {fileID: 766551116}
-  destination: {x: 0, y: 0, z: 0}
-  attackMoveVec: {x: 0, y: 0, z: 0}
-  isoSpeedADJ: 1.5
+  menuOpenSFX: event:/Sound Effects/SFX/UI SFX/Menu Open
+  swapSFX: event:/Sound Effects/SFX/Creature Swap
   hitBoxes:
-    slash0: {fileID: 3008331728240645142}
+    slash0: {fileID: 7819646080185911571}
     slash1: {fileID: 3008331728240645142}
     slash2: {fileID: 3008331728240645142}
     slash3: {fileID: 3008331728240645142}
-    slash4: {fileID: 0}
+    slash4: {fileID: 3008331728240645142}
     heavy: {fileID: 6334410306365020563}
-  pauseMenu: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
-    type: 3}
 --- !u!114 &6669998564430628805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10146,11 +10151,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6862d1b8b3bb64dbb38b9404a41743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1275344589917247344}
+  Slash0:
+    hitBox: {fileID: 0}
+  Slash1:
+    hitBox: {fileID: 0}
+  Slash2:
+    hitBox: {fileID: 0}
+  Slash3:
+    hitBox: {fileID: 0}
+  Slash4:
+    hitBox: {fileID: 0}
   HeavySlash:
     hitbox: {fileID: 0}
-    startTime: 0
-    endLag: 0
 --- !u!114 &3008331729029387138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10213,6 +10226,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 7109975305556927938}
+  SwordSwingSFX: event:/Sound Effects/SFX/Player SFX/New Sword Swing
+  WalkSFX: event:/Sound Effects/SFX/New Walking Grass 2D
+  RollInitialSFX: event:/Sound Effects/SFX/Roll/Roll Initial Impact
+  RollSecondarySFX: event:/Sound Effects/SFX/Roll/Roll Secondary Impact
 --- !u!114 &2139760117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10361,7 +10378,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &3268859984920099915
 ParticleSystem:
@@ -15155,7 +15172,6 @@ GameObject:
   - component: {fileID: 226208229969507009}
   - component: {fileID: 4672864729631764098}
   - component: {fileID: 6779507019818856298}
-  - component: {fileID: 4688475429494654674}
   m_Layer: 9
   m_Name: heavy hitbox
   m_TagString: Untagged
@@ -15175,7 +15191,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4672864729631764098
 MonoBehaviour:
@@ -15189,6 +15205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
+  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!135 &6779507019818856298
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15202,18 +15220,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4688475429494654674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334410306365020563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6785691582786172203
 GameObject:
   m_ObjectHideFlags: 0
@@ -15244,7 +15250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3884884984860773404
 MonoBehaviour:
@@ -15322,7 +15328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &468185896499910684
 Transform:
   m_ObjectHideFlags: 0
@@ -15332,7 +15338,7 @@ Transform:
   m_GameObject: {fileID: 7819646080185911571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.06, y: 0.14, z: 1.87}
-  m_LocalScale: {x: 1.77, y: 1, z: 2.851633}
+  m_LocalScale: {x: 1.16, y: 1, z: 2.851633}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
   m_RootOrder: 11
@@ -15395,8 +15401,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0238767, y: 1, z: 1.0035576}
+  m_Center: {x: 0, y: 0, z: 0.0017787267}
 --- !u!114 &4423288841236043889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15409,6 +15415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
+  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!1001 &7956414748827326611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15543,15 +15551,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 672e981e14064b944923fd0c3a4080a1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37f9b579551ee274f884876915a875e8, type: 3}
---- !u!1 &7109975305556927938 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 37f9b579551ee274f884876915a875e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 7956414748827326611}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7629208211084902264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37f9b579551ee274f884876915a875e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7956414748827326611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7109975305556927938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 37f9b579551ee274f884876915a875e8,
     type: 3}
   m_PrefabInstance: {fileID: 7956414748827326611}
   m_PrefabAsset: {fileID: 0}

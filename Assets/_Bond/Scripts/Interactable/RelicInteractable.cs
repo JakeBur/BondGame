@@ -28,7 +28,7 @@ public class RelicInteractable : InteractableBase
     public void ApplyModifiers()
     {
         var pc = PersistentData.Instance.Player.GetComponent<PlayerController>();
-        Debug.Log("Applying modifiers");
+       
         pc.stats.AddRelic(relicStats.playerModifiers);
         if(pc.currCreature != null)
         {

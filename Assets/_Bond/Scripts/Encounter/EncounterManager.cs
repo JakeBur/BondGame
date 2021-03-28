@@ -5,19 +5,25 @@ using UnityEngine;
 public class EncounterManager : MonoBehaviour
 {
  
+    [FMODUnity.EventRef]
+    public string arenaSpawnSFX;
     public List<Wave> waves = new List<Wave>();
     public int currEnemyCount = 0;
     public GameObject barrier;
-    
+    public GameObject blobs;
+    public Buff corruptionDebuff;
     private int currWave = 0;
 
     private void OnTriggerEnter(Collider other) 
     {
         if(other.transform.tag == "Player")
         {
+            FMODUnity.RuntimeManager.PlayOneShot(arenaSpawnSFX, transform.position);
+            blobs.SetActive(true);
             barrier.SetActive(true);
             SpawnEncounter();
             GetComponent<Collider>().enabled = false;
+            
             PersistentData.Instance.Player.GetComponent<PlayerController>().InCombat(true);
             PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusic();
         }
@@ -94,8 +100,11 @@ public class EncounterManager : MonoBehaviour
     private void ClearEncounter()
     {
         barrier.SetActive(false);
+        blobs.SetActive(false);
         PersistentData.Instance.Player.GetComponent<PlayerController>().InCombat(false);
-        PersistentData.Instance.AudioController.GetComponent<AudioController>().EndCombatMusic();
+        PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
+        //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicFanfare();
+        PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
     }
 }
 

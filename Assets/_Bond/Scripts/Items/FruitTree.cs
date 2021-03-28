@@ -6,9 +6,9 @@ using UnityEngine;
 public class FruitTree : MonoBehaviour
 {
     [SerializeField]
-    private Fruit newFruit;
+    public Fruit newFruit;
     [SerializeField]
-    private GameObject fruitSpawnLocation;
+    public GameObject fruitSpawnLocation;
 
     public void dropFruit()
     {

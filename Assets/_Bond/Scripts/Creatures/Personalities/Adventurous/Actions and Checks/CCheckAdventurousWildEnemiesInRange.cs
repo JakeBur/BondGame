@@ -17,7 +17,6 @@ public class CCheckAdventurousWildEnemiesInRange : BTChecker
         Collider[] hitColliders = Physics.OverlapSphere(context.creatureTransform.position, context.enemyDetectRange * .75f, layermask);
         foreach (var hitCollider in hitColliders)
         { 
-            Debug.Log("FOUND ENEMY");
             context.targetEnemy = hitCollider.gameObject;
             return NodeState.SUCCESS;
         }

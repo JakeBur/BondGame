@@ -16,6 +16,8 @@ TagManager:
   - Relic
   - UI
   - Interactable
+  - Terrain
+  - LevelGenerator
   layers:
   - Default
   - TransparentFX
@@ -30,7 +32,7 @@ TagManager:
   - Ground
   - MonsterSkin
   - MonsterGlobe
-  - 
+  - Dialogue
   - 
   - 
   - 
