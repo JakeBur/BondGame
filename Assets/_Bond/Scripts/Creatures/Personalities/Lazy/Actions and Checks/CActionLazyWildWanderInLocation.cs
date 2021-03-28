@@ -38,7 +38,7 @@ public class CActionLazyWanderInLocation : BTLeaf
                 context.wanderDestination = hit.position;
             }
         }
-        Debug.Log(Vector3.Distance(context.wanderDestination, context.creatureTransform.position));
+        
     }
 
     protected override void OnExit()

@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class CActionHeartyWildApproachDroppedFood : BTLeaf
 {
     private NavMeshAgent agent;
-    private float moveSpeed = 5f;
+    //private float moveSpeed = 5f;
     private float angularSpeed = 720f; //deg/s
     private float acceleration = 100f; //max accel units/sec^2
 
@@ -38,7 +38,7 @@ public class CActionHeartyWildApproachDroppedFood : BTLeaf
 
     public override NodeState Evaluate()
     {
-        Debug.Log("Approaching dropped food");
+       
         agent.destination = context.foundFood.transform.position;
         if(Vector3.Distance(context.foundFood.transform.position, context.creatureTransform.position) < 3) 
         {

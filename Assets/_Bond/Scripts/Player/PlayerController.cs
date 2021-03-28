@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     public PlayerAnimator animator => GetComponent<PlayerAnimator>();
     //public PlayerStats stats => GetComponent<PlayerStats>();
     public StatManager stats => GetComponent<StatManager>();
-    private Rigidbody rb;
     private CharacterController charController;
 
     [Header("Relics")]
@@ -139,7 +138,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
         dashStart = Time.time;
         animator.ResetAllAttackAnims();
@@ -180,9 +178,6 @@ public class PlayerController : MonoBehaviour
         charController.Move(movementVector);
         charController.Move(gravity * Time.deltaTime);
         animator.Move(movementVector);
-
-
-        
     }
 
     public void doRotation(float rotationModifier)
@@ -208,28 +203,26 @@ public class PlayerController : MonoBehaviour
     //********* INPUT FUNCTIONS **********
     private void OnMovement(InputValue value)
     {
-        //Debug.Log(value.Get<Vector2>());
         inputs.rawDirection = value.Get<Vector2>();
         inputs.rawDirection.Normalize();
         inputs.rawDirection.y *= isoSpeedADJ;
 
         inputs.moveDirection = new Vector3(inputs.rawDirection.x, 0, inputs.rawDirection.y);
 
-
         if(isoMovement)
         {
             inputs.moveDirection = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * inputs.moveDirection;
         }
 
-        if(inputs.moveDirection != Vector3.zero) facingDirection = inputs.moveDirection;
-        //Debug.Log(facingDirection);
-        
+        if(inputs.moveDirection != Vector3.zero)
+        {
+            facingDirection = inputs.moveDirection;
+        }
     }
 
     
     private void OnMousePos(InputValue value)
     {
-        //Debug.Log(value.Get<Vector2>());
         inputs.usingMouse = true;
         inputs.mousePos = value.Get<Vector2>();
     }
@@ -254,10 +247,10 @@ public class PlayerController : MonoBehaviour
 
             foreach(KeyValuePair<GameObject, InteractableBase> interactable in interactableObjects)
             {
-                float tempDist = Vector3.Distance(interactable.Key.transform.position, gameObject.transform.position);
-                if(tempDist < closestDist)
+                float distanceToObject = Vector3.Distance(interactable.Key.transform.position, gameObject.transform.position);
+                if(distanceToObject < closestDist)
                 {
-                    closestDist = tempDist;
+                    closestDist = distanceToObject;
                     tempBase = interactable.Value;
                     tempObj = interactable.Key;
                 }
@@ -281,9 +274,6 @@ public class PlayerController : MonoBehaviour
         //portal or something
         //lore items (walk up to thing and it gives you info etc)
         //fruit?
-
-
-                
     }
 
 
@@ -437,11 +427,12 @@ public class PlayerController : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
-                Debug.Log("RAYCAST : " + hit.transform.gameObject);
-                Debug.Log(hit.point);
+                // Debug.Log("RAYCAST : " + hit.transform.gameObject);
+                // Debug.Log(hit.point);
                 //gameObject.transform.LookAt(hit.point);
 
                 attackDestination = hit.point;
+
                 Vector3 direction = hit.point - transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
 
@@ -454,12 +445,7 @@ public class PlayerController : MonoBehaviour
 
                 transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
                 
-                //Quaternion lookRotation = Quaternion.LookRotation(direction);
-                //transform.forward = new Vector3(lookRotation.x, 0, lookRotation.z);
-                
             } 
-            //var dir = inputs.mousePos - new Vector2(gameObject.transform.position.x, gameObject.transform.position.z);
-            //stinky
         }
     }
 

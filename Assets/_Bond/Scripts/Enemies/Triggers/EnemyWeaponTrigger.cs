@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyWeaponTrigger : MonoBehaviour
 {
     [SerializeField]
-    private EnemyAIContext context;
+    public EnemyAIContext context;
 
     //public BoxCollider hitbox => gameObject.GetComponent<BoxCollider>();
 

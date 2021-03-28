@@ -41,6 +41,12 @@ PluginImporter:
     second:
       enabled: 1
       settings:
+        STV_MODEL: STANDARD_13
+  - first:
+      Android: Android
+    second:
+      enabled: 0
+      settings:
         CPU: AnyCPU
   - first:
       : OSXIntel64

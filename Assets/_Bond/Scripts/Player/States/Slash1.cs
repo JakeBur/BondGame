@@ -15,7 +15,13 @@ namespace PlayerState
         {
             name = "Slash1";
             index = 1;
-            hitBox = player.hitBoxes.slash0;
+            hitBox = player.hitBoxes.slash1;
+
+        }
+
+        public override void OnStateEnter()
+        {
+            base.OnStateEnter();
         }
     }
 }

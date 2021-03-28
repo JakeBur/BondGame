@@ -12,7 +12,7 @@ namespace PlayerState
     {
         protected int index;
         protected State nextState;
-        protected GameObject hitBox;
+        public GameObject hitBox;
         protected float speedMod = 1f;
 
         private Vector3 startRotation;
@@ -20,7 +20,7 @@ namespace PlayerState
         
 
 
-        private float fraction = 0;
+        
         private Vector3 startPos;
 
         public SlashBase( PlayerStateMachine _fsm ) : base( _fsm )
@@ -58,11 +58,10 @@ namespace PlayerState
             
             animator.Attack( index );
 
-            hitBox.SetActive(false);
-            hitBox.SetActive(true);
+            // hitBox.SetActive(false);
+            // hitBox.SetActive(true); //Disable these once hitbox anim events work
 
             speedMod = 1f;
-
         }
 
 
@@ -96,6 +95,7 @@ namespace PlayerState
         public override void OnStateExit()
         {
             player.inputs.basicAttack = false;
+            hitBox.SetActive(false);
         }
     }
 }
