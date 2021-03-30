@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,73 +24,88 @@ public class PlayerController : MonoBehaviour
     }
     public Inputs inputs;
 
-
-    public Camera camera;
-    public bool isoMovement = true;
-
-
-    public GameObject fruit;
+    // COMPONENTS
     public PlayerStateMachine fsm => GetComponent<PlayerStateMachine>();
     public PlayerAnimator animator => GetComponent<PlayerAnimator>();
     //public PlayerStats stats => GetComponent<PlayerStats>();
     public StatManager stats => GetComponent<StatManager>();
+    private CharacterController charController;
+    private NavMeshAgent agent => GetComponent<NavMeshAgent>();
+    private Rigidbody rb => GetComponent<Rigidbody>();
+
+    [Header("Relics")]
     public List<RelicStats> Relics = new List<RelicStats>();
 
+    [Header("Dialog Manager")]
+    public bool inCharacterDialog;
+    public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
+    [HideInInspector]
+    public CharacterDialogManager characterDialogManager;
 
-    //*******Dash Variables*******
+    [Header("Pause Menu")]
+    public GameObject pauseMenu;
+    private bool isPaused = false;
+
+    [Header("Items")]
+    public int goldCount = 0;
+    [HideInInspector]
+    public GameObject fruit;
+
+    [Header("Movement")]
+    public bool isoMovement = true;
+    private Vector3 gravity;
+    private float crouchModifier = 1;
+    public float isoSpeedADJ = 0f;
+    public float currSpeed;
+
+    [Header("Dash")]
+    //[HideInInspector]
+    public bool isDashing = false;
+    //[HideInInspector]
+    public Vector3 facingDirection;
+    //[HideInInspector]
+    public Vector3 lastMoveVec;
+    //[HideInInspector]
+    public Vector3 movementVector;
     private float dashStart = 2;
     private int dashCount = 0;
-
-    [HideInInspector]
-    public Vector3 facingDirection;
-    [HideInInspector]
-    public bool isDashing = false;
-    [HideInInspector]
-    public Vector3 lastMoveVec;
-    [HideInInspector]
-    public Vector3 movementVector;
-    //****************************
-
-
-    private Rigidbody rb;
     
-    private CharacterController charController;
-    
-    private Vector3 gravity;
-
-    public int goldCount = 0;
-    private float crouchModifier = 1;
+    [Header("Environment Context")]
     public bool nearInteractable = false;
-    public bool hasSwapped;
-    public bool inCombat;
     
+    [Header("Creature Context")]
+    public bool hasSwapped;
     public Transform backFollowPoint;
-
+    [HideInInspector]
     public GameObject wildCreature = null;
+    [HideInInspector]
     public GameObject currCreature;
+    [HideInInspector]
     public GameObject swapCreature;
+    [HideInInspector]
     public GameObject interactableObject;
+    [HideInInspector]
     public CreatureAIContext currCreatureContext;
     public CooldownSystem cooldownSystem => GetComponent<CooldownSystem>();
 
-    public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
-    public bool inCharacterDialog;
-    public CharacterDialogManager characterDialogManager;
-
-    
-    //******Combat Vars**********//
+    [Header("Combat")]
+    public bool inCombat;
     public bool isAttacking = false;
-    public float currSpeed;
     public bool isHit;
+    public Vector3 attackDestination;
+    public Vector3 attackMoveVec;
 
+    [Header("VFX")]
     public ParticleSystem heavyChargeVfx;
     public ParticleSystem heavyHitVfx;
     public ParticleSystem slashVfx;
-    public Vector3 destination;
-    public Vector3 attackMoveVec;
-    //****************//
-    public float isoSpeedADJ = 0f;
 
+    [Header("FMOD Strings")]
+        [FMODUnity.EventRef]
+        public string menuOpenSFX;
+
+        [FMODUnity.EventRef]
+        public string swapSFX;
 
     [Serializable]
     public struct HitBoxes
@@ -104,11 +120,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public HitBoxes hitBoxes;
-
-    public GameObject pauseMenu;
-    private bool isPaused = false;
-
-
 
     // private void OnEnable()
     // {
@@ -130,7 +141,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
         dashStart = Time.time;
         animator.ResetAllAttackAnims();
@@ -140,6 +150,7 @@ public class PlayerController : MonoBehaviour
 
     public void doMovement(float movementModifier)
     {
+
         if(!charController.isGrounded)
         {
             gravity += Physics.gravity * Time.deltaTime;
@@ -168,12 +179,9 @@ public class PlayerController : MonoBehaviour
             lastMoveVec = inputs.moveDirection;
         }
         
-        charController.Move(movementVector);
-        charController.Move(gravity * Time.deltaTime);
+        rb.velocity = Vector3.zero;
+        agent.Move(movementVector);
         animator.Move(movementVector);
-
-
-        
     }
 
     public void doRotation(float rotationModifier)
@@ -199,28 +207,26 @@ public class PlayerController : MonoBehaviour
     //********* INPUT FUNCTIONS **********
     private void OnMovement(InputValue value)
     {
-        //Debug.Log(value.Get<Vector2>());
         inputs.rawDirection = value.Get<Vector2>();
         inputs.rawDirection.Normalize();
         inputs.rawDirection.y *= isoSpeedADJ;
 
         inputs.moveDirection = new Vector3(inputs.rawDirection.x, 0, inputs.rawDirection.y);
 
-
         if(isoMovement)
         {
             inputs.moveDirection = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * inputs.moveDirection;
         }
 
-        if(inputs.moveDirection != Vector3.zero) facingDirection = inputs.moveDirection;
-        //Debug.Log(facingDirection);
-        
+        if(inputs.moveDirection != Vector3.zero)
+        {
+            facingDirection = inputs.moveDirection;
+        }
     }
 
     
     private void OnMousePos(InputValue value)
     {
-        //Debug.Log(value.Get<Vector2>());
         inputs.usingMouse = true;
         inputs.mousePos = value.Get<Vector2>();
     }
@@ -245,10 +251,10 @@ public class PlayerController : MonoBehaviour
 
             foreach(KeyValuePair<GameObject, InteractableBase> interactable in interactableObjects)
             {
-                float tempDist = Vector3.Distance(interactable.Key.transform.position, gameObject.transform.position);
-                if(tempDist < closestDist)
+                float distanceToObject = Vector3.Distance(interactable.Key.transform.position, gameObject.transform.position);
+                if(distanceToObject < closestDist)
                 {
-                    closestDist = tempDist;
+                    closestDist = distanceToObject;
                     tempBase = interactable.Value;
                     tempObj = interactable.Key;
                 }
@@ -272,9 +278,6 @@ public class PlayerController : MonoBehaviour
         //portal or something
         //lore items (walk up to thing and it gives you info etc)
         //fruit?
-
-
-                
     }
 
 
@@ -374,6 +377,7 @@ public class PlayerController : MonoBehaviour
             }
             
             PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();
+            FMODUnity.RuntimeManager.PlayOneShot(swapSFX, transform.position);
         }
         
 
@@ -431,9 +435,8 @@ public class PlayerController : MonoBehaviour
                 // Debug.Log(hit.point);
                 //gameObject.transform.LookAt(hit.point);
 
+                attackDestination = hit.point;
 
-                
-                destination = hit.point;
                 Vector3 direction = hit.point - transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
 
@@ -467,17 +470,22 @@ public class PlayerController : MonoBehaviour
     {
         // var id = currCreatureContext.CD.abilities[0].id;
         // var cooldownDuration = currCreatureContext.CD.abilities[0].cooldownDuration;
-
-        currCreatureContext.isAbilityTriggered = true;
-        currCreatureContext.lastTriggeredAbility = 0;
+        if( currCreature != null )
+        {
+            currCreatureContext.isAbilityTriggered = true;
+            currCreatureContext.lastTriggeredAbility = 0;
+        }
     }  
 
 
     //creature ability 2 (B)
     private void OnAttack3()
     {
-        currCreatureContext.isAbilityTriggered = true;
-        currCreatureContext.lastTriggeredAbility = 1;
+        if( currCreature != null )
+        {
+            currCreatureContext.isAbilityTriggered = true;
+            currCreatureContext.lastTriggeredAbility = 1;
+        }
     }
 
     private void OnPause()
@@ -493,7 +501,7 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0f;
         }
 
-        
+        FMODUnity.RuntimeManager.PlayOneShot(menuOpenSFX, transform.position);
     }
     
     //*********** END INPUT FXNS **************************
@@ -543,4 +551,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+
+    public void warpPlayer(Vector3 position)
+    {
+        agent.Warp(position);
+    }
 }

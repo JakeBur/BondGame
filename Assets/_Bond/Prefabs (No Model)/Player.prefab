@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.35, z: 0.67}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -178.213, y: 89.99999, z: 89.99999}
 --- !u!198 &766551116
 ParticleSystem:
@@ -9856,7 +9856,7 @@ Transform:
   m_LocalScale: {x: 3, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3008331728240645146
 MeshFilter:
@@ -9930,6 +9930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
+  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!1 &3008331728745216815
 GameObject:
   m_ObjectHideFlags: 0
@@ -10048,10 +10050,13 @@ GameObject:
   - component: {fileID: 1275344589917247344}
   - component: {fileID: 6669998564430628805}
   - component: {fileID: 3008331729029387138}
+  - component: {fileID: 3874720337611108228}
   - component: {fileID: 3008331729029387139}
   - component: {fileID: 1313330683953569825}
   - component: {fileID: 2139760117}
   - component: {fileID: 6667307533402155786}
+  - component: {fileID: 857327365570687137}
+  - component: {fileID: 7992156398812263664}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -10077,10 +10082,10 @@ Transform:
   - {fileID: 3008331728175113253}
   - {fileID: 3268859984920099909}
   - {fileID: 2879053346376034957}
-  - {fileID: 226208229969507009}
   - {fileID: 766551117}
   - {fileID: 368059099045210936}
   - {fileID: 3008331728240645141}
+  - {fileID: 226208229969507009}
   - {fileID: 468185896499910684}
   - {fileID: 7654491621752466112}
   m_Father: {fileID: 0}
@@ -10098,18 +10103,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b9c8f02cb2899438bb9c27fb538349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  isoMovement: 1
-  fruit: {fileID: 0}
   Relics: []
-  facingDirection: {x: 0, y: 0, z: 0}
+  inCharacterDialog: 0
+  characterDialogManager: {fileID: 0}
+  pauseMenu: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
+    type: 3}
+  goldCount: 0
+  fruit: {fileID: 0}
+  isoMovement: 1
+  isoSpeedADJ: 1.5
+  currSpeed: 0
   isDashing: 0
+  facingDirection: {x: 0, y: 0, z: 0}
   lastMoveVec: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  goldCount: 0
   nearInteractable: 0
   hasSwapped: 0
-  inCombat: 0
   backFollowPoint: {fileID: 3008331728175113253}
   wildCreature: {fileID: 0}
   currCreature: {fileID: 0}
@@ -10118,15 +10127,16 @@ MonoBehaviour:
   currCreatureContext: {fileID: 0}
   inCharacterDialog: 0
   characterDialogManager: {fileID: 0}
+  inCombat: 0
   isAttacking: 0
-  currSpeed: 0
   isHit: 0
+  attackDestination: {x: 0, y: 0, z: 0}
+  attackMoveVec: {x: 0, y: 0, z: 0}
   heavyChargeVfx: {fileID: 3268859984920099915}
   heavyHitVfx: {fileID: 2879053346376034959}
   slashVfx: {fileID: 766551116}
-  destination: {x: 0, y: 0, z: 0}
-  attackMoveVec: {x: 0, y: 0, z: 0}
-  isoSpeedADJ: 1.5
+  menuOpenSFX: event:/Sound Effects/SFX/UI SFX/Menu Open
+  swapSFX: event:/Sound Effects/SFX/Creature Swap
   hitBoxes:
     slash0: {fileID: 7819646080185911571}
     slash1: {fileID: 3008331728240645142}
@@ -10134,8 +10144,6 @@ MonoBehaviour:
     slash3: {fileID: 3008331728240645142}
     slash4: {fileID: 3008331728240645142}
     heavy: {fileID: 6334410306365020563}
-  pauseMenu: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
-    type: 3}
 --- !u!114 &6669998564430628805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10148,7 +10156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6862d1b8b3bb64dbb38b9404a41743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1275344589917247344}
   Slash0:
     hitBox: {fileID: 0}
   Slash1:
@@ -10192,6 +10200,28 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!195 &3874720337611108228
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008331729029387198}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.71
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!143 &3008331729029387139
 CharacterController:
   m_ObjectHideFlags: 0
@@ -10201,7 +10231,7 @@ CharacterController:
   m_GameObject: {fileID: 3008331729029387198}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1.78
   m_Radius: 0.55
@@ -10223,6 +10253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 7109975305556927938}
+  SwordSwingSFX: event:/Sound Effects/SFX/Player SFX/New Sword Swing
+  WalkSFX: event:/Sound Effects/SFX/New Walking Grass 2D
+  RollInitialSFX: event:/Sound Effects/SFX/Roll/Roll Initial Impact
+  RollSecondarySFX: event:/Sound Effects/SFX/Roll/Roll Secondary Impact
 --- !u!114 &2139760117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10248,6 +10282,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dcb6f939f67aba42800bd4fb14b180a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &857327365570687137
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008331729029387198}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!136 &7992156398812263664
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008331729029387198}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3008331729270975654
 GameObject:
   m_ObjectHideFlags: 0
@@ -15165,7 +15229,6 @@ GameObject:
   - component: {fileID: 226208229969507009}
   - component: {fileID: 4672864729631764098}
   - component: {fileID: 6779507019818856298}
-  - component: {fileID: 4688475429494654674}
   m_Layer: 9
   m_Name: heavy hitbox
   m_TagString: Untagged
@@ -15185,7 +15248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4672864729631764098
 MonoBehaviour:
@@ -15199,6 +15262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
+  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!135 &6779507019818856298
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15212,18 +15277,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4688475429494654674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334410306365020563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6785691582786172203
 GameObject:
   m_ObjectHideFlags: 0
@@ -15254,7 +15307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3008331729029387142}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3884884984860773404
 MonoBehaviour:
@@ -15419,6 +15472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
+  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!1001 &7956414748827326611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15553,15 +15608,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 672e981e14064b944923fd0c3a4080a1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37f9b579551ee274f884876915a875e8, type: 3}
---- !u!4 &7629208211084902264 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37f9b579551ee274f884876915a875e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 7956414748827326611}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7109975305556927938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 37f9b579551ee274f884876915a875e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7956414748827326611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7629208211084902264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37f9b579551ee274f884876915a875e8,
     type: 3}
   m_PrefabInstance: {fileID: 7956414748827326611}
   m_PrefabAsset: {fileID: 0}

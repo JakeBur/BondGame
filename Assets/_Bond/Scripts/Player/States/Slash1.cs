@@ -22,7 +22,6 @@ namespace PlayerState
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            Debug.Log("slash1 enter");
         }
     }
 }

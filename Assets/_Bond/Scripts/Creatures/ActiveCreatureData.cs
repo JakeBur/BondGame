@@ -11,6 +11,7 @@ public class ActiveCreatureData : MonoBehaviour
     public int Id;
 
 
+
     public List<Personality> personalities = new List<Personality>();
     
     public List<creatureAttackBase> abilities = new List<creatureAttackBase>();

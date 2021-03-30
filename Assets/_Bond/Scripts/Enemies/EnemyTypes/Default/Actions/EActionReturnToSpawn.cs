@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EActionReturnToSpawn : BTLeaf
 {
     private NavMeshAgent agent;
-    private float moveSpeed = 5f;
+    //private float moveSpeed = 5f;
     private float angularSpeed = 720f; //deg/s
     private float acceleration = 100f; //max accel units/sec^2
 
