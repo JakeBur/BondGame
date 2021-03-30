@@ -1,3 +1,6 @@
+// Eugene
+// Herman
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +11,22 @@ public class CooldownSystem : MonoBehaviour
 
     private void Update() => ProcessCooldowns();
 
+    public CooldownData GetCooldownByID( int id )
+    {
+        foreach(CooldownData cooldown in cooldowns)
+        {
+            if(cooldown.Id == id)
+            {
+                return cooldown;
+            }
+        }
+        return null;
+    }
+
     public void PutOnCooldown(HasCooldown cooldown)
     {
         cooldowns.Add(new CooldownData(cooldown));
     }
-
-
 
     private void ProcessCooldowns()
     {
@@ -51,6 +64,18 @@ public class CooldownSystem : MonoBehaviour
         }
         return 0;
     }
+
+    public float GetTotalDuration(int id)
+    {
+        CooldownData cooldown = GetCooldownByID( id );
+
+        if( cooldown != null)
+        {
+            return cooldown.TotalDuration;
+        }
+        
+        return 0;
+    }
 }
 public class CooldownData
 {
@@ -58,10 +83,12 @@ public class CooldownData
     {
         Id = cooldown.Id;
         RemainingTime = cooldown.CooldownDuration;
+        TotalDuration = cooldown.CooldownDuration;
     }
     public int Id { get; }
 
     public float RemainingTime { get; private set; }
+    public float TotalDuration { get; private set; }
 
     public bool DecrementCooldown(float deltaTime)
     {
