@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 766551117}
   - component: {fileID: 766551116}
   - component: {fileID: 766551115}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: slashParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 2879053346376034957}
   - component: {fileID: 2879053346376034959}
   - component: {fileID: 2879053346376034958}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: heavyVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10125,6 +10125,8 @@ MonoBehaviour:
   swapCreature: {fileID: 0}
   interactableObject: {fileID: 0}
   currCreatureContext: {fileID: 0}
+  inCharacterDialog: 0
+  characterDialogManager: {fileID: 0}
   inCombat: 0
   isAttacking: 0
   isHit: 0
