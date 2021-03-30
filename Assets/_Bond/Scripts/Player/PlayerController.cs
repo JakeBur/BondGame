@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     //public PlayerStats stats => GetComponent<PlayerStats>();
     public StatManager stats => GetComponent<StatManager>();
     private CharacterController charController;
+    private NavMeshAgent agent => GetComponent<NavMeshAgent>();
+    private Rigidbody rb => GetComponent<Rigidbody>();
 
     [Header("Relics")]
     public List<RelicStats> Relics = new List<RelicStats>();
@@ -147,6 +150,7 @@ public class PlayerController : MonoBehaviour
 
     public void doMovement(float movementModifier)
     {
+
         if(!charController.isGrounded)
         {
             gravity += Physics.gravity * Time.deltaTime;
@@ -175,8 +179,8 @@ public class PlayerController : MonoBehaviour
             lastMoveVec = inputs.moveDirection;
         }
         
-        charController.Move(movementVector);
-        charController.Move(gravity * Time.deltaTime);
+        rb.velocity = Vector3.zero;
+        agent.Move(movementVector);
         animator.Move(movementVector);
     }
 
@@ -547,4 +551,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+
+    public void warpPlayer(Vector3 position)
+    {
+        agent.Warp(position);
+    }
 }
