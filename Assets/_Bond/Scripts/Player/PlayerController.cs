@@ -475,6 +475,8 @@ public class PlayerController : MonoBehaviour
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 0;
         }
+
+        PersistentData.Instance.UI.GetComponent<UIUpdates>().UsedAbility(1);
     }  
 
 
@@ -486,6 +488,8 @@ public class PlayerController : MonoBehaviour
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 1;
         }
+
+        PersistentData.Instance.UI.GetComponent<UIUpdates>().UsedAbility(2);
     }
 
     private void OnPause()
