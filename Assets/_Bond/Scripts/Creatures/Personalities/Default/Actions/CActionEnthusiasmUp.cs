@@ -28,7 +28,10 @@ public class CActionEnthusiasmUp : BTLeaf
         if(true) 
         { //if animation done, have to add that 
             context.enthusiasmInteracted = false;
-            context.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, context.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM) * 0.1f);
+            context.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, context.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM) * 0.25f);
+            //Update the creature's Enthusiasm Bar
+            context.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+
             OnParentExit();
             return NodeState.SUCCESS;
         }

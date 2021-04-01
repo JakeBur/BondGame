@@ -367,6 +367,11 @@ public class PlayerController : MonoBehaviour
             currCreatureContext.isActive = true;
             swapCreature = temp;
             swapCreature.GetComponent<CreatureAIContext>().isActive = false;
+            
+            //Update the creature's enthusiasm bars
+            swapCreature.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+            currCreature.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+
             if (hasSwapped == false)
             {
                 hasSwapped = true;
@@ -533,6 +538,12 @@ public class PlayerController : MonoBehaviour
        {
            PersistentData.Instance.LoadScene(1);
            stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
+
+            //Reset creature if knocked out
+            currCreatureContext.enthusiasmInteracted = false;
+            currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
+            //Update the creature's Enthusiasm Bar
+            currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
        }
        
     }

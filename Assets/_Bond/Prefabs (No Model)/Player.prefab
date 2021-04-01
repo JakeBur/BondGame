@@ -9819,7 +9819,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3008331728175113254}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -10125,8 +10125,6 @@ MonoBehaviour:
   swapCreature: {fileID: 0}
   interactableObject: {fileID: 0}
   currCreatureContext: {fileID: 0}
-  inCharacterDialog: 0
-  characterDialogManager: {fileID: 0}
   inCombat: 0
   isAttacking: 0
   isHit: 0
@@ -10296,7 +10294,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &7992156398812263664
 CapsuleCollider:
@@ -10400,7 +10398,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3008331729270975654}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
