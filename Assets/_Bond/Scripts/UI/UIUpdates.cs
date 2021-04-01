@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿//Jameson Danning
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class UIUpdates : MonoBehaviour
 {
+    [Header("Health")]
     public Slider slider;
     public TextMeshProUGUI maxHealthUI;
     public TextMeshProUGUI currHealthUI;
@@ -13,35 +16,38 @@ public class UIUpdates : MonoBehaviour
 
     public TextMeshProUGUI gold;
 
+
+    [Header("Creature Icons")]
     public Image currCreatureIcon;
     public Image swapCreatureIcon;   
     public Sprite noCreatureIcon;
     public TextMeshProUGUI currCreatureName;
     public TextMeshProUGUI swapCreatureName;
 
+    [Header("Ability Icons")]
     public CanvasGroup abilityGroup;
     public Image ability1Icon;
     public Image ability2Icon;
     public TextMeshProUGUI ability1Description;
     public TextMeshProUGUI ability2Description;
 
+    [Header("Dialogue")]
     public GameObject CharacterDialogCanvas;
     public TextMeshProUGUI CharacterDialogText;
-    public CooldownSystem cd;
-
-    
-    
-
     public GameObject EnviornmentDialogCanvas;
     public TextMeshProUGUI EnviornmentDialogText;
 
     public Slider enthusiasmSlider;
+
+    public CooldownSystem cd;
 
     private StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
     private PlayerController player => PersistentData.Instance.Player.GetComponent<PlayerController>();
 
     private Color opaque = new Color (255,255,255,1);
     private Color transparent = new Color (255,255,255,0.5f);
+
+    private bool hasCD = false;
 
 //*****************End of variable declarations**********************//
 
@@ -67,7 +73,7 @@ public class UIUpdates : MonoBehaviour
 
 
         //In progress, check if any of your curr creatures abilties have active cooldowns
-       // if(player.cooldownSystem.IsOnCooldown(0)) CooldownUpdate(); 
+        if(hasCD) CooldownUpdate(); 
 
         
     }
@@ -151,13 +157,23 @@ public class UIUpdates : MonoBehaviour
     
     public void CooldownUpdate()
     {
+        Debug.Log("cd update");
        
         //called every tick while cooldown is active
         //get specific creatures cooldown
-
-        ability1Icon.fillAmount += (1.0f / player.cooldownSystem.GetRemainingDuration(0)) * Time.deltaTime;
-        ability2Icon.fillAmount += (1.0f / player.cooldownSystem.GetRemainingDuration(1)) * Time.deltaTime;
-
+        if(player.cooldownSystem.GetRemainingDuration(0) != 0)
+        {
+            ability1Icon.fillAmount += (1.0f / player.cooldownSystem.GetTotalDuration(0)) * Time.deltaTime;
+        }
+        if(player.cooldownSystem.GetRemainingDuration(1) != 0)
+        {
+            ability2Icon.fillAmount += (1.0f / player.cooldownSystem.GetTotalDuration(1)) * Time.deltaTime;
+        }
+        // else
+        // {
+        //     hasCD = false;
+        // }
+        
         // ability1Icon.fillAmount += (1.0f / 7f) * Time.deltaTime;
         // ability2Icon.fillAmount += (1.0f / 7f) * Time.deltaTime;
         
@@ -170,6 +186,8 @@ public class UIUpdates : MonoBehaviour
 
     public void UsedAbility(int ability)
     {
+        hasCD = true;
+
         if(ability == 1)
         {
             ability1Icon.fillAmount = 0;
@@ -184,6 +202,21 @@ public class UIUpdates : MonoBehaviour
         }
     }
     
+    // private void OnAttack2()
+    // {
+    //     Debug.Log("used 1");
+    //     UsedAbility(1);
+    //     hasCD = true;
+       
+    // }
+
+    // private void OnAttack3()
+    // {
+    //     Debug.Log("used 2");
+    //     UsedAbility(2);
+    //     hasCD = true;
+       
+    // }
 
 
 
