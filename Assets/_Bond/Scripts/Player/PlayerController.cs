@@ -147,10 +147,12 @@ public class PlayerController : MonoBehaviour
         inputs.usingMouse = false;
     }
 
+    // MOVEMENT FUNCTIONS ///////////////////////////////////////////////////////////////////////////////////////////////
 
     public void doMovement(float movementModifier)
     {
 
+        // Detects if player is in the air
         if(!charController.isGrounded)
         {
             gravity += Physics.gravity * Time.deltaTime;
@@ -160,6 +162,7 @@ public class PlayerController : MonoBehaviour
             gravity = Vector3.zero;
         }
 
+        // Set movement and lastMove vectors to direction player is facing
         if(isDashing) 
         {   
             if(lastMoveVec == Vector3.zero) 
@@ -175,21 +178,25 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
+            // Normal movement
             movementVector = inputs.moveDirection * stats.getStat(ModiferType.MOVESPEED) * Time.deltaTime * movementModifier * crouchModifier;
             lastMoveVec = inputs.moveDirection;
         }
         
         rb.velocity = Vector3.zero;
         agent.Move(movementVector);
+
         animator.Move(movementVector);
     }
 
+
+    // Rotates the player
     public void doRotation(float rotationModifier)
     {
         if(inputs.rawDirection != Vector2.zero)
         {
             if(isAttacking)
-            {//CHANGE LATER, DONT HARDCODE TURN SPEED AS 14
+            {//TODO: CHANGE LATER, DONT HARDCODE TURN SPEED AS 14
                  transform.forward = Vector3.Slerp(transform.forward, lastMoveVec, Time.deltaTime * 14f * rotationModifier);
             }
             else
@@ -199,32 +206,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Sets the player's rotation to specified vec
     public void setRotation(Vector3 vec)
     {
         transform.forward = vec;
     }
 
-    //********* INPUT FUNCTIONS **********
+    
+    // Input Functions ///////////////////////////////////////////////////////////////////////////////////////
+
+    // WASD and Joystick
     private void OnMovement(InputValue value)
     {
+        // Takes 2D movement vector and converts to 3D
         inputs.rawDirection = value.Get<Vector2>();
         inputs.rawDirection.Normalize();
         inputs.rawDirection.y *= isoSpeedADJ;
 
         inputs.moveDirection = new Vector3(inputs.rawDirection.x, 0, inputs.rawDirection.y);
 
+        // Rotates inputs to convert from world space to screen space
         if(isoMovement)
         {
             inputs.moveDirection = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * inputs.moveDirection;
         }
 
+        // Sets facingDirection to movement direction
         if(inputs.moveDirection != Vector3.zero)
         {
             facingDirection = inputs.moveDirection;
         }
     }
 
-    
+    // Mouse position
     private void OnMousePos(InputValue value)
     {
         inputs.usingMouse = true;
@@ -232,23 +246,22 @@ public class PlayerController : MonoBehaviour
     }
     
     
-    //by Jamo
+    // F and North face button
     private void OnInteract()
-    {     
+    {
+        // For dialog scenes
         if(inCharacterDialog)
         {
-            if(characterDialogManager != null)
-            {
-                characterDialogManager.ContinueConvo();
-            }
-            
+            characterDialogManager?.ContinueConvo();
         }
+        // If interactable is close by
         else if(interactableObjects.Count > 0)
         {
             InteractableBase tempBase = null;
             GameObject tempObj = null;
             float closestDist = 20;
 
+            // Find object that is the closest
             foreach(KeyValuePair<GameObject, InteractableBase> interactable in interactableObjects)
             {
                 float distanceToObject = Vector3.Distance(interactable.Key.transform.position, gameObject.transform.position);
@@ -260,27 +273,23 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            // Do the action
             tempBase.DoInteract();
+            // If object is removed after interact
             if(tempBase.removeOnInteract)
             {
                 interactableObjects.Remove(tempObj);
             }
+            // Hide the prompt if no interactables are near
             if(interactableObjects.Count == 0)
             {
                 PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
             }
         }
-
-        //shop keeper (or any npc for dialog)
-        //relics
-        //creatures
-        //chests
-        //portal or something
-        //lore items (walk up to thing and it gives you info etc)
-        //fruit?
     }
 
-
+    // Shift and 
+    // Sets the autoAttack field of currCreature appropriately
     private void OnCreatureAutoAttack()
     {
         if(currCreatureContext != null)
@@ -293,20 +302,22 @@ public class PlayerController : MonoBehaviour
             {
                 currCreatureContext.autoAttack = true;
             }
-            
         }
     }
 
+    // Space and South button
     private void OnDash()
     {
-        if(Time.time > dashStart + stats.getStat(ModiferType.DASH_COOLDOWN))//cant dash until more time than dash delay has elapsed,
+        // cant dash until more time than dash delay has elapsed,
+        if(Time.time > dashStart + stats.getStat(ModiferType.DASH_COOLDOWN))
         {
             //takes dash start time
             dashStart = Time.time;
             dashCount++;
             inputs.dash = true;
         }
-        else if(dashCount >= 1 )//if you have dashed once and are not past delay, you can dash a second time
+        //if you have dashed once and are not past delay, you can dash a second time
+        else if(dashCount >= 1 )
         {
             dashCount = 0;
             inputs.dash = true;          
@@ -314,126 +325,53 @@ public class PlayerController : MonoBehaviour
         }   
     }
 
-    public void befriendCreature()
-    {
-        bool requirementMet = true;
-        if(requirementMet)
-        {
-            if(currCreature != null)
-            {
-                wildCreature.GetComponent<CreatureAIContext>().isWild = false;
-                swapCreature = wildCreature;
-                swapCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);
-                swapCreature.GetComponent<CreatureAIContext>().isActive = false;
-                ApplyCreatureRelics(swapCreature.GetComponent<CreatureAIContext>().creatureStats.statManager);
-            }
-            else 
-            { // first creature;
-                wildCreature.GetComponent<CreatureAIContext>().isWild = false;
-                currCreature = wildCreature;
-                currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
-                currCreatureContext.isActive = true;
-                ApplyCreatureRelics(currCreatureContext.creatureStats.statManager);
-            }
-
-            // Debug.Log("BEFRIENDED");
-            wildCreature.GetComponentInChildren<ParticleSystem>().Play();//PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
-            PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();
-            InCombat(inCombat);
-
-        }
-
-    }
-
-    public void ApplyCreatureRelics(StatManager _statManager)
-    {
-        foreach(RelicStats relic in Relics)
-        {
-            _statManager.AddRelic(relic.creatureModifiers);
-        }
-    }
-
+    // X
     private void OnSwap()
     {
         if(swapCreature != null)
         {
             var temp = currCreature;
-            currCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);
-            swapCreature.GetComponent<CreatureAIContext>().agent.Warp(backFollowPoint.position);
+
+            currCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                // Warp to off map
+            swapCreature.GetComponent<CreatureAIContext>().agent.Warp(backFollowPoint.position);    // Move new creature into position
             swapCreature.transform.position = backFollowPoint.position;
-            currCreature = swapCreature;
+
+            currCreature = swapCreature;                                                            // Actual Swap
             currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
             currCreatureContext.isInPlayerRadius = false;
             currCreatureContext.isActive = true;
+
             swapCreature = temp;
+
             swapCreature.GetComponent<CreatureAIContext>().isActive = false;
             
             //Update the creature's enthusiasm bars
             swapCreature.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
             currCreature.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
 
-            if (hasSwapped == false)
-            {
-                hasSwapped = true;
-            }
-            else
-            {
-                hasSwapped = false;
-            }
+            hasSwapped = !hasSwapped;
             
-            PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();
-            FMODUnity.RuntimeManager.PlayOneShot(swapSFX, transform.position);
+            PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();                // UI Update
+
+            FMODUnity.RuntimeManager.PlayOneShot(swapSFX, transform.position);                      // Sound
         }
         
 
-    }
-
-    public void PutOnCD()
-    {
-        // Debug.Log(hasSwapped);
-        if (hasSwapped)
-        {
-            currCreatureContext.creatureStats.abilities[currCreatureContext.lastTriggeredAbility].id = currCreatureContext.lastTriggeredAbility + 100;
-            cooldownSystem.PutOnCooldown(currCreatureContext.creatureStats.abilities[currCreatureContext.lastTriggeredAbility]);
-            return;
-        }
-        else
-        {
-            // Debug.Log("New ID: " + currCreatureContext.lastTriggeredAbility);
-            currCreatureContext.creatureStats.abilities[currCreatureContext.lastTriggeredAbility].id = currCreatureContext.lastTriggeredAbility;
-            cooldownSystem.PutOnCooldown(currCreatureContext.creatureStats.abilities[currCreatureContext.lastTriggeredAbility]);
-
-        }
-    }
-
-    public void PutBasicOnCD()
-    {
-        if (hasSwapped)
-        {
-            currCreatureContext.basicCreatureAttack.id = 10 + 100;
-            cooldownSystem.PutOnCooldown(currCreatureContext.basicCreatureAttack);
-            return;
-        }
-        else
-        {
-            currCreatureContext.basicCreatureAttack.id = 10;
-            cooldownSystem.PutOnCooldown(currCreatureContext.basicCreatureAttack);
-
-        }
     }
 
 
     //Slash (X)
     private void OnAttack1()
     {
-        // Debug.Log("attack");
         inputs.basicAttack = true;
+
         if(inputs.usingMouse)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(inputs.mousePos);
             int layerMask = 1 << 10;
 
+            // If the raycast hits the ground
             if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
                 // Debug.Log("RAYCAST : " + hit.transform.gameObject);
@@ -445,13 +383,12 @@ public class PlayerController : MonoBehaviour
                 Vector3 direction = hit.point - transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
 
-
                 //Creates a movement vector for DoMovement to use on attacks. Moves player in direction of click
                 Vector2 tempVec = new Vector2(newDirection.x,newDirection.z);
                 tempVec.Normalize();
                 attackMoveVec = new Vector3(tempVec.x, 0, tempVec.y);
                 
-
+                // Rotates player in direction of attack
                 transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
                 
             } 
@@ -464,8 +401,14 @@ public class PlayerController : MonoBehaviour
     {
         float val = value.Get<float>();
 
-        if(val == 1) inputs.heavyAttack = true;
-        else inputs.heavyAttack = false;
+        if(val == 1)
+        {
+            inputs.heavyAttack = true;
+        }
+        else
+        {
+            inputs.heavyAttack = false;
+        }
         
     }
 
@@ -480,6 +423,8 @@ public class PlayerController : MonoBehaviour
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 0;
         }
+
+        PersistentData.Instance.UI.GetComponent<UIUpdates>().UsedAbility(1);
     }  
 
 
@@ -491,25 +436,28 @@ public class PlayerController : MonoBehaviour
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 1;
         }
+
+        PersistentData.Instance.UI.GetComponent<UIUpdates>().UsedAbility(2);
     }
 
     private void OnPause()
     {
-        if(PersistentData.Instance.PauseMenu.GetComponent<Canvas>().enabled)
+        var canvas = PersistentData.Instance.PauseMenu.GetComponent<Canvas>();
+        // Unpause
+        if( canvas.enabled )
         {
-            PersistentData.Instance.PauseMenu.GetComponent<Canvas>().enabled = false;
+            canvas.enabled = false;
             Time.timeScale = 1;
         }
+        // Pause
         else 
         {   
-            PersistentData.Instance.PauseMenu.GetComponent<Canvas>().enabled = true;
+            canvas.enabled = true;
             Time.timeScale = 0f;
         }
 
         FMODUnity.RuntimeManager.PlayOneShot(menuOpenSFX, transform.position);
     }
-    
-    //*********** END INPUT FXNS **************************
 
     private void OnCrouch()
     {
@@ -533,10 +481,95 @@ public class PlayerController : MonoBehaviour
         temp.GetComponent<Fruit>().droppedByPlayer = true;
     }
 
-    public void DeathCheck(){
+    // Action Functions /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void befriendCreature()
+    {
+        // Temp fix when we can toggle this bool dynamically
+        bool requirementMet = true;
+
+        if(requirementMet)
+        {
+            // Already have 1 creature
+            if(currCreature != null)
+            {
+                wildCreature.GetComponent<CreatureAIContext>().isWild = false;                                  // Marks wild creature as not wild
+                swapCreature = wildCreature;                                                                    // Stores wild creature as swap creature
+                swapCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                        // Warps off map
+                swapCreature.GetComponent<CreatureAIContext>().isActive = false;
+
+                ApplyCreatureRelics(swapCreature.GetComponent<CreatureAIContext>().creatureStats.statManager);  // Apply relics to the creature
+            }
+            else 
+            { // first creature;
+                wildCreature.GetComponent<CreatureAIContext>().isWild = false;
+                currCreature = wildCreature;
+                currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
+                currCreatureContext.isActive = true;
+                ApplyCreatureRelics(currCreatureContext.creatureStats.statManager);
+            }
+
+            // HERMAN TODO: Place this in playerAnimator
+            wildCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
+            PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();
+
+            SetCombatState(inCombat);                                                   // Tells creature if it's in combat
+        }
+
+    }
+
+    public void ApplyCreatureRelics(StatManager _statManager)
+    {
+        // Sorts through relics list and applies it to the creature
+        foreach(RelicStats relic in Relics)
+        {
+            _statManager.AddRelic(relic.creatureModifiers);
+        }
+    }
+
+    public void PutOnCD()
+    {
+        // hasSwapped changes state based on what creature is out
+        // Second creature
+        if (hasSwapped)
+        {
+            // 100 is an arbitrary number to differentiate creatures
+            currCreatureContext.creatureStats.abilities[currCreatureContext.lastTriggeredAbility].id = currCreatureContext.lastTriggeredAbility + 100; // ID lastTriggered ability
+            cooldownSystem.PutOnCooldown(currCreatureContext.creatureStats.abilities[currCreatureContext.lastTriggeredAbility]); // Put last triggered ability on cooldown
+        }
+        // First creature
+        else
+        {
+            // Debug.Log("New ID: " + currCreatureContext.lastTriggeredAbility);
+            currCreatureContext.creatureStats.abilities[currCreatureContext.lastTriggeredAbility].id = currCreatureContext.lastTriggeredAbility;
+            cooldownSystem.PutOnCooldown(currCreatureContext.creatureStats.abilities[currCreatureContext.lastTriggeredAbility]);
+
+        }
+    }
+
+    public void PutBasicOnCD()
+    {
+        if (hasSwapped)
+        {
+            currCreatureContext.basicCreatureAttack.id = 10 + 100;
+            cooldownSystem.PutOnCooldown(currCreatureContext.basicCreatureAttack);
+        }
+        else
+        {
+            currCreatureContext.basicCreatureAttack.id = 10;
+            cooldownSystem.PutOnCooldown(currCreatureContext.basicCreatureAttack);
+
+        }
+    }
+
+    // Checks if health reaches 0
+    public void DeathCheck()
+    {
        if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
        {
+           // Hardcoded value: Teleports to Farm
            PersistentData.Instance.LoadScene(1);
+           // Resets health to max
            stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
 
             //Reset creature if knocked out
@@ -548,13 +581,15 @@ public class PlayerController : MonoBehaviour
        
     }
 
-    public void InCombat(bool _inCombat)
+    public void SetCombatState(bool _inCombat)
     {
         inCombat = _inCombat;
 
+        // Assigns it to the currCreature
         if(currCreature != null)
         {
             currCreatureContext.inCombat = inCombat;
+            // Assigns it to the swapCreature
             if(swapCreature != null)
             {
                 swapCreature.GetComponent<CreatureAIContext>().inCombat = inCombat;
@@ -562,7 +597,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-
+    // Hard set player location
     public void warpPlayer(Vector3 position)
     {
         agent.Warp(position);

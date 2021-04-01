@@ -3174,6 +3174,7 @@ GameObject:
   - component: {fileID: 8580111774580001919}
   - component: {fileID: 8580111774580001918}
   - component: {fileID: 227419809014686142}
+  - component: {fileID: -5131763764292963597}
   m_Layer: 5
   m_Name: UI
   m_TagString: UI
@@ -3309,10 +3310,41 @@ MonoBehaviour:
   ability2Description: {fileID: 1826030158597172424}
   CharacterDialogCanvas: {fileID: 8036516919459323217}
   CharacterDialogText: {fileID: 7836841669845932525}
-  cd: {fileID: 0}
   EnviornmentDialogCanvas: {fileID: 41280614945221094}
   EnviornmentDialogText: {fileID: 8652758074574968059}
   enthusiasmSlider: {fileID: 4484135056100657233}
+  cd: {fileID: 0}
+--- !u!114 &-5131763764292963597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8580111774580001889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4f481f4d5c1fa064683bc179d470de21,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &8580111775669652554
 GameObject:
   m_ObjectHideFlags: 0
