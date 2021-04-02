@@ -38,6 +38,8 @@ public class EnemyAIContext : MonoBehaviour
     private float lastCheckedHealth;
     public float lastDamageTaken;
     public GameObject goldPrefab;
+    public float attackCD;
+    public float retreatDist;
     #endregion
 
     private void Awake()
@@ -70,23 +72,28 @@ public class EnemyAIContext : MonoBehaviour
 
         enemyUI.transform.rotation = Camera.main.transform.rotation; //makes ui always face camera
 
+        if(attackCD > 0)
+        {
+            attackCD -= Time.deltaTime;
+        }
+
     }
 
-    public void doMovement(float moveSpeed)
-    {
-        rb.velocity = (enemyTransform.transform.rotation * Vector3.forward * moveSpeed);
-    }
+    // public void doMovement(float moveSpeed)
+    // {
+    //     rb.velocity = (enemyTransform.transform.rotation * Vector3.forward * moveSpeed);
+    // }
 
-    public void doRotation(float rotationSpeed, Quaternion desiredLook) 
-    {
-        enemyTransform.rotation = Quaternion.Slerp(enemyTransform.rotation, desiredLook, Time.deltaTime * rotationSpeed); //10 is rotation speed - might want to change later
-    }
+    // public void doRotation(float rotationSpeed, Quaternion desiredLook) 
+    // {
+    //     enemyTransform.rotation = Quaternion.Slerp(enemyTransform.rotation, desiredLook, Time.deltaTime * rotationSpeed); //10 is rotation speed - might want to change later
+    // }
 
-    public void doLookAt(Vector3 position)
-    {
-        enemyTransform.transform.LookAt(position, Vector3.up);
-        rb.velocity = (enemyTransform.transform.rotation * Vector3.forward * statManager.stats[ModiferType.MOVESPEED].modifiedValue);
-    }
+    // public void doLookAt(Vector3 position)
+    // {
+    //     enemyTransform.transform.LookAt(position, Vector3.up);
+    //     rb.velocity = (enemyTransform.transform.rotation * Vector3.forward * statManager.stats[ModiferType.MOVESPEED].modifiedValue);
+    // }
 
     public void DestroyEnemy()
     {
