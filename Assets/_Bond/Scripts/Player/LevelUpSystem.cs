@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class LevelUpSystem : MonoBehaviour
 {
-    private int level;
+    private int _level;
+    public int level
+    {
+        get { return _level; }
+    }
 
     private int maxXPTotal;
     private int currentXPTotal;
@@ -25,7 +29,7 @@ public class LevelUpSystem : MonoBehaviour
 
     private void Start() 
     {
-        level = 1;// will be adjusted for save data later on
+        _level = 1;// will be adjusted for save data later on
         xpNeededForNext = GetNextXpForLevel();
         xpGainedThisLevel = 0;
         upgradePoints = 0;
@@ -36,7 +40,7 @@ public class LevelUpSystem : MonoBehaviour
 
     public int GetNextXpForLevel()//takes current level, runs through equation to get xp needed for the next level
     {
-        int xp = Mathf.FloorToInt( A + (B * (float)level) + (C * (float)level * (float)level) ); // A + Bx + Cx^2
+        int xp = Mathf.FloorToInt( A + (B * (float)_level) + (C * (float)_level * (float)_level) ); // A + Bx + Cx^2
         return xp;
     }
 
@@ -58,7 +62,7 @@ public class LevelUpSystem : MonoBehaviour
 
     public void LevelUp()
     {
-        level++;
+        _level++;
         upgradePoints++;
 
         xpGainedThisLevel = xpGainedThisLevel - xpNeededForNext; //carries over surplus
@@ -74,6 +78,11 @@ public class LevelUpSystem : MonoBehaviour
     public void UseUpgradePoint()
     {
         upgradePoints--;
+    }
+
+    public float PercentToNextLevel()
+    {
+        return (float)xpGainedThisLevel/xpNeededForNext;
     }
 
 
