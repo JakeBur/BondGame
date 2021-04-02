@@ -28,6 +28,10 @@ public class EActionPlayDeathAnim : BTLeaf
 
         //tell encounter that i died
         enemyContext.EncounterManager.enemyKilled();
+        if(enemyContext.attacking)
+        {
+            enemyContext.EncounterManager.numberOfCurrMeleeAttackers--;
+        }
 
         //Destroy enemy
         enemyContext.DestroyEnemy();

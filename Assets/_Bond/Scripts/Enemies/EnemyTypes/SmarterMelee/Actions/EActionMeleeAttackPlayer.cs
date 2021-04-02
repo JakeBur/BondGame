@@ -20,6 +20,8 @@ public class EActionMeleeAttackPlayer : BTLeaf
     protected override void OnExit()
     {
         enemyContext.attackCD = enemyContext.EncounterManager.currEnemyCount;
+        enemyContext.EncounterManager.numberOfCurrMeleeAttackers--;
+        enemyContext.attacking = false;
     }
 
     public override NodeState Evaluate() 

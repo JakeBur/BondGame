@@ -31,6 +31,7 @@ public class EnemyAIContext : MonoBehaviour
     public bool playerNoticed;
     public bool isIdling = false;
     public bool tookDamage = false;
+    public bool attacking = false;
 
     [Header("Misc.Numbers")]
     public float delayBetweenAttacks;
@@ -40,6 +41,8 @@ public class EnemyAIContext : MonoBehaviour
     public GameObject goldPrefab;
     public float attackCD;
     public float retreatDist;
+
+    public float movementSpeed;
     #endregion
 
     private void Awake()

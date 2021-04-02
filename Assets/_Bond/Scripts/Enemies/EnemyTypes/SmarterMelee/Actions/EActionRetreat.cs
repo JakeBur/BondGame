@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EActionRetreat : BTLeaf
 {
+    Vector3 retreatPoint;
+    bool goToFarthestPoint;
     public EActionRetreat(string _name, EnemyAIContext _context ) : base(_name, _context)
     {
         enemyContext = _context;
@@ -12,7 +14,7 @@ public class EActionRetreat : BTLeaf
 
     protected override void OnEnter()
     {
-     
+        goToFarthestPoint = false;
 
     }
 
@@ -24,9 +26,23 @@ public class EActionRetreat : BTLeaf
     public override NodeState Evaluate() 
     {
         Debug.Log("RETREATING");
-        if(Vector3.Distance(enemyContext.enemyTransform.position, enemyContext.player.transform.position) < enemyContext.retreatDist)
+        float distToPlayer = Vector3.Distance(enemyContext.enemyTransform.position, enemyContext.player.transform.position);
+        if(distToPlayer < enemyContext.retreatDist)
         {
-            enemyContext.agent.SetDestination(enemyContext.EncounterManager.farthestPointFromPlayer);
+            retreatPoint = (enemyContext.enemyTransform.position - enemyContext.player.transform.position).normalized * 5;
+            retreatPoint += enemyContext.enemyTransform.position;
+
+            if(Vector3.Distance(retreatPoint, enemyContext.EncounterManager.transform.position) < enemyContext.EncounterManager.farthestDistRadius && goToFarthestPoint == false)
+            {
+
+                enemyContext.agent.SetDestination(retreatPoint);
+            }
+            else 
+            {
+                goToFarthestPoint = true;
+                enemyContext.agent.SetDestination(enemyContext.EncounterManager.farthestPointFromPlayer);
+            }
+
             return NodeState.RUNNING;
         }
         

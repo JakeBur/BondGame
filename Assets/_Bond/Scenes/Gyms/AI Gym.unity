@@ -66908,6 +66908,16 @@ PrefabInstance:
       propertyPath: waves.Array.data[1].spawners.Array.data[3]
       value: 
       objectReference: {fileID: 1885832478}
+    - target: {fileID: 1823558736048597770, guid: cd3b94409c7650f4fba8444cb837413b,
+        type: 3}
+      propertyPath: numberOfCurrMeleeAttackers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823558736048597770, guid: cd3b94409c7650f4fba8444cb837413b,
+        type: 3}
+      propertyPath: maxCurrMeleeAttackers
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1823558736329723831, guid: cd3b94409c7650f4fba8444cb837413b,
         type: 3}
       propertyPath: Enemies.Array.data[0]

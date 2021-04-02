@@ -12,10 +12,17 @@ public class ECheckIfMeleeOnCD : BTChecker
 
     public override NodeState Evaluate()
     {
-        if (enemyContext.attackCD > 0)
+        if(enemyContext.attacking)
+        {
+            return NodeState.FAILURE;
+        }
+        if (enemyContext.attackCD > 0 || 
+            enemyContext.EncounterManager.numberOfCurrMeleeAttackers >=  enemyContext.EncounterManager.maxCurrMeleeAttackers)
         {
             return NodeState.SUCCESS;
         }
+        enemyContext.attacking = true;
+        enemyContext.EncounterManager.numberOfCurrMeleeAttackers++;
         return NodeState.FAILURE;
     }
 }

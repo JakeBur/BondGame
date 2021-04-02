@@ -17,7 +17,7 @@ public class EActionPlayAwakeAnim : BTLeaf
 
         
         //enemyContext.animator.Spawn(); //uncomment once finished
-        enemyContext.attackCD = Random.Range(1, enemyContext.EncounterManager.currEnemyCount + 4);
+        enemyContext.attackCD = Random.Range(1, enemyContext.EncounterManager.currEnemyCount);
     }
 
     protected override void OnExit()

@@ -18,6 +18,9 @@ public class EncounterManager : MonoBehaviour
     public float farthestDistRadius;
     public Vector3 farthestPointFromPlayer;
 
+    public int maxCurrMeleeAttackers;
+    public int numberOfCurrMeleeAttackers;
+
     public Transform playerTransform;
 
     private void OnTriggerEnter(Collider other) 
