@@ -65,7 +65,7 @@ public class StatUIFunctions : MonoBehaviour
         playerTextLists[4].SetText(stats.getStat(ModiferType.MOVESPEED).ToString());
 
         playerTextLists[5].SetText(levelSys.level.ToString());//Get Level
-        playerTextLists[6].SetText(levelSys.xpNeededForNext.ToString());//Get remaining xp
+        playerTextLists[6].SetText(levelSys.GetNextXpForLevel().ToString() + " left");//Get remaining xp
 
         xpBar.fillAmount = levelSys.PercentToNextLevel();
 

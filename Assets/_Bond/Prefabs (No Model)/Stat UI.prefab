@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 1445334666385208716}
   m_Layer: 5
   m_Name: Creature Title 2
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,7 +664,7 @@ RectTransform:
   m_Children:
   - {fileID: 6523800303424154013}
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 1144336130261504267}
   m_Layer: 5
   m_Name: Relics
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -911,7 +911,7 @@ RectTransform:
   - {fileID: 2428451912212661053}
   - {fileID: 6297483902293303026}
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 2
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 1888988688359767709}
   m_Layer: 5
   m_Name: Player
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1508,7 +1508,7 @@ GameObject:
   - component: {fileID: 61237986994888924}
   m_Layer: 5
   m_Name: Creature Button 2
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1526,7 +1526,7 @@ RectTransform:
   m_Children:
   - {fileID: 5800424180960359452}
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2362,7 +2362,7 @@ GameObject:
   - component: {fileID: 5433947160728517822}
   m_Layer: 5
   m_Name: Relic Header
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2379,7 +2379,7 @@ RectTransform:
   m_LocalScale: {x: 1.0344828, y: 1.0344828, z: 1.0344828}
   m_Children: []
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2932,7 +2932,7 @@ GameObject:
   - component: {fileID: 3722774553555259265}
   m_Layer: 5
   m_Name: Level Number
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2949,7 +2949,7 @@ RectTransform:
   m_LocalScale: {x: 1.0672596, y: 1.0672596, z: 1.0672596}
   m_Children: []
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2983,7 +2983,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: ~
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3273,7 +3273,7 @@ GameObject:
   - component: {fileID: 509300851765767745}
   m_Layer: 5
   m_Name: Compendium
-  m_TagString: Untagged
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5265,7 +5265,7 @@ GameObject:
   - component: {fileID: 4623847060658370877}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5972,7 +5972,7 @@ GameObject:
   - component: {fileID: 8679633933744906356}
   m_Layer: 5
   m_Name: XP remaining
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5989,7 +5989,7 @@ RectTransform:
   m_LocalScale: {x: 1.0672596, y: 1.0672596, z: 1.0672596}
   m_Children: []
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6023,7 +6023,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 420 left
+  m_text: ~
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6274,7 +6274,7 @@ GameObject:
   - component: {fileID: 2416747458985646083}
   m_Layer: 5
   m_Name: Player Title
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6409,7 +6409,7 @@ GameObject:
   - component: {fileID: 7931083153974440990}
   m_Layer: 5
   m_Name: XP
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6427,7 +6427,7 @@ RectTransform:
   m_Children:
   - {fileID: 1045526830036814919}
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7190,7 +7190,7 @@ GameObject:
   - component: {fileID: 7110722426675405964}
   m_Layer: 5
   m_Name: Stat UI
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7222,7 +7222,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7511566296718916632}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -7297,6 +7297,7 @@ MonoBehaviour:
   - {fileID: 8679633933744906356}
   creature1TextLists: []
   creature2TextLists: []
+  xpBar: {fileID: 3382520845036691300}
 --- !u!1 &7571319295592145189
 GameObject:
   m_ObjectHideFlags: 0
@@ -7443,7 +7444,7 @@ GameObject:
   - component: {fileID: 995003336912412666}
   m_Layer: 5
   m_Name: Background Image
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7461,15 +7462,15 @@ RectTransform:
   m_Children:
   - {fileID: 632876788958999058}
   - {fileID: 254544989289902992}
-  - {fileID: 8026506667754138572}
-  - {fileID: 7406639735713017198}
-  - {fileID: 1383213872080703501}
-  - {fileID: 2025384415502248276}
-  - {fileID: 4290549472289276522}
+  - {fileID: 7789744480071319848}
   - {fileID: 3429996401997539049}
   - {fileID: 7890020300770463122}
-  - {fileID: 7789744480071319848}
+  - {fileID: 7406639735713017198}
+  - {fileID: 2025384415502248276}
+  - {fileID: 1383213872080703501}
+  - {fileID: 4290549472289276522}
   - {fileID: 735870998265239877}
+  - {fileID: 8026506667754138572}
   - {fileID: 7451280416575342237}
   m_Father: {fileID: 1139116170729101869}
   m_RootOrder: 0
@@ -8887,7 +8888,7 @@ GameObject:
   - component: {fileID: 7647029247248459877}
   m_Layer: 5
   m_Name: Creature Title 1
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8905,7 +8906,7 @@ RectTransform:
   m_Children:
   - {fileID: 3271361753285286377}
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -9022,7 +9023,7 @@ GameObject:
   - component: {fileID: 4595026001760658371}
   m_Layer: 5
   m_Name: Creature Button 1
-  m_TagString: UI
+  m_TagString: StatUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9040,7 +9041,7 @@ RectTransform:
   m_Children:
   - {fileID: 8748153666231641404}
   m_Father: {fileID: 8874644581262279451}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

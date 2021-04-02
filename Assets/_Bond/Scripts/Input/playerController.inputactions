@@ -108,6 +108,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "tab",
+                    "type": "Button",
+                    "id": "5ae8ab5c-242b-49dd-877c-ce4e357dcca3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -405,6 +413,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "creatureAutoAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9cc6b91-898f-4f62-a466-64e7fa6fb403",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "tab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
