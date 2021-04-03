@@ -464,6 +464,10 @@ public class PlayerController : MonoBehaviour
     {
         var canvas = PersistentData.Instance.StatUI.GetComponent<Canvas>();
         canvas.enabled = !canvas.enabled;
+        PersistentData.Instance.StatUI.GetComponent<StatUIFunctions>().UpdateCreatureStats(1);
+       
+
+
         
         FMODUnity.RuntimeManager.PlayOneShot(menuOpenSFX, transform.position);
 

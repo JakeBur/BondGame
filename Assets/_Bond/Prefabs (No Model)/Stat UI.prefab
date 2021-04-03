@@ -1612,7 +1612,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2589006694971437146}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7110722426675405964}
+        m_MethodName: UpdateCreatureStats
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2319867375118671432
 GameObject:
   m_ObjectHideFlags: 0
@@ -7222,7 +7233,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7511566296718916632}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -7295,8 +7306,20 @@ MonoBehaviour:
   - {fileID: 349508658192880022}
   - {fileID: 3722774553555259265}
   - {fileID: 8679633933744906356}
-  creature1TextLists: []
-  creature2TextLists: []
+  creature1TextLists:
+  - {fileID: 741319115096602979}
+  - {fileID: 1682539697884931046}
+  - {fileID: 5634012439927368829}
+  - {fileID: 8751553813124392271}
+  - {fileID: 1501264366834262107}
+  - {fileID: 7647029247248459877}
+  creature2TextLists:
+  - {fileID: 7179620884259908286}
+  - {fileID: 9077398401247009522}
+  - {fileID: 4238418003928937259}
+  - {fileID: 112756663914277491}
+  - {fileID: 8053491169969441909}
+  - {fileID: 1445334666385208716}
   xpBar: {fileID: 3382520845036691300}
 --- !u!1 &7571319295592145189
 GameObject:
@@ -9127,7 +9150,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5601639832293920853}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7110722426675405964}
+        m_MethodName: UpdateCreatureStats
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9053062840879275615
 GameObject:
   m_ObjectHideFlags: 0
