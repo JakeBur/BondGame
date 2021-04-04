@@ -66,11 +66,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Angle: -1.45
-    - Brightness: 1
-    - DisplacementStrength: 1.26
-    - Gradient_Offset: -0.13
-    - Opacity: 1
+    - Angle: -1.55
+    - Brightness: 0
+    - DisplacementStrength: 7.17
+    - Gradient_Offset: -0.07
+    - Opacity: 0.56
     - Vector1_2B06C876: 1.22
     - Vector1_4675C8AB: 0
     - Vector1_62111FE3: 24.5
