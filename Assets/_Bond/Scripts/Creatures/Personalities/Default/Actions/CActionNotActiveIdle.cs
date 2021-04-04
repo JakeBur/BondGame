@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CActionNotActiveIdle : BTLeaf
 {
-    float enthusiasmGainMultiplier = 1;
+    float enthusiasmGainMultiplier = 10;
 
     public CActionNotActiveIdle(string _name, CreatureAIContext _context) : base(_name, _context) 
     {

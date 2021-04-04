@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿//Jameson Danning
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class UIUpdates : MonoBehaviour
 {
+    [Header("Health")]
     public Slider slider;
     public TextMeshProUGUI maxHealthUI;
     public TextMeshProUGUI currHealthUI;
@@ -13,32 +16,41 @@ public class UIUpdates : MonoBehaviour
 
     public TextMeshProUGUI gold;
 
+
+    [Header("Creature Icons")]
     public Image currCreatureIcon;
     public Image swapCreatureIcon;   
     public Sprite noCreatureIcon;
     public TextMeshProUGUI currCreatureName;
     public TextMeshProUGUI swapCreatureName;
 
+    [Header("Ability Icons")]
     public CanvasGroup abilityGroup;
     public Image ability1Icon;
     public Image ability2Icon;
     public TextMeshProUGUI ability1Description;
     public TextMeshProUGUI ability2Description;
 
+    [Header("Dialogue")]
     public GameObject CharacterDialogCanvas;
     public TextMeshProUGUI CharacterDialogText;
-    public CooldownSystem cd;
-
-    
-    
-
     public GameObject EnviornmentDialogCanvas;
     public TextMeshProUGUI EnviornmentDialogText;
 
     public Slider enthusiasmSlider;
 
+    public CooldownSystem cd;
+
     private StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
     private PlayerController player => PersistentData.Instance.Player.GetComponent<PlayerController>();
+
+    private Color opaque = new Color (255,255,255,1);
+    private Color transparent = new Color (255,255,255,0.5f);
+
+    private bool hasCD = false;
+
+//*****************End of variable declarations**********************//
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,35 +69,44 @@ public class UIUpdates : MonoBehaviour
         maxHealthUI.SetText("/ " + stats.getStat(ModiferType.MAX_HEALTH).ToString());
         gold.SetText(player.goldCount.ToString());
 
+        CheckForTarget();
 
-        /*
-        
-        if a cooldown is active
-        {
-            somewhere on cooldown activation, set fillAmount to 0
-            get active cooldowns (max of 4)
-            CooldownUpdate(image) for each active
-        }
-        */
-        CooldownUpdate(); 
+
+        //In progress, check if any of your curr creatures abilties have active cooldowns
+        if(hasCD) CooldownUpdate(); 
 
         
     }
 
-   
+	
 
-    public void CooldownUpdate()
+	
+    private void CheckForTarget()
     {
-       
-        //called every tick while cooldown is active
-        //get specific creatures cooldown
-
-        //Image.fillAmount += 1.0f / cooldown length * Time.deltaTime;
-
+        try
+        {
+            if(player.currCreatureContext.targetEnemy != null)
+            {
+                //Debug.Log("opaque");
+                ability1Icon.color = opaque;
+                ability2Icon.color = opaque;         
+            }
+            // else
+            // {
+                
+            // }
+        }
+        catch
+        {
+            //Debug.Log("transparent");
+            ability1Icon.color = transparent;
+            ability2Icon.color = transparent;
+        }
     }
-	
 
-	
+
+
+
 
     //updates both creature icon and the respective ability icons
     public void UpdateCreatureUI()
@@ -93,7 +114,7 @@ public class UIUpdates : MonoBehaviour
          if(player.currCreatureContext != null)
         {
             enthusiasmSlider.enabled = true;
-            updateEnthusiasm();
+            //updateEnthusiasm();
             currCreatureIcon.sprite = player.currCreatureContext.icon;
             //abilityGroup.alpha = 1;
             ability1Icon.sprite = player.currCreatureContext.creatureStats.abilities[0].abilityIcon;
@@ -106,14 +127,14 @@ public class UIUpdates : MonoBehaviour
 
             cd = player.currCreatureContext.cooldownSystem;//assign cooldown system
 
-            if(player.swapCreature != null)
+            if(player.swapCreature != null) // player has the swap creature
             {
                 swapCreatureIcon.sprite = player.swapCreature.GetComponent<CreatureAIContext>().icon;
                 swapCreatureName.SetText(player.currCreatureContext.creatureStats.name);
             }
 
         }
-        else
+        else //Player has no creatures equipped
         {
             enthusiasmSlider.enabled = false;
             currCreatureIcon.sprite = noCreatureIcon;
@@ -129,11 +150,90 @@ public class UIUpdates : MonoBehaviour
         }
     }
 
-    public void updateEnthusiasm()
+
+
+
+
+    
+    public void CooldownUpdate()
     {
-        var creatureStats = player.currCreatureContext.creatureStats.statManager;
-        enthusiasmSlider.value = ((creatureStats.getStat(ModiferType.CURR_ENTHUSIASM) / creatureStats.getStat(ModiferType.MAX_ENTHUSIASM)) * 100);
+        Debug.Log("cd update");
+       
+        //called every tick while cooldown is active
+        //get specific creatures cooldown
+        if(player.cooldownSystem.GetRemainingDuration(0) != 0)
+        {
+            ability1Icon.fillAmount += (1.0f / player.cooldownSystem.GetTotalDuration(0)) * Time.deltaTime;
+        }
+        if(player.cooldownSystem.GetRemainingDuration(1) != 0)
+        {
+            ability2Icon.fillAmount += (1.0f / player.cooldownSystem.GetTotalDuration(1)) * Time.deltaTime;
+        }
+        // else
+        // {
+        //     hasCD = false;
+        // }
+        
+        // ability1Icon.fillAmount += (1.0f / 7f) * Time.deltaTime;
+        // ability2Icon.fillAmount += (1.0f / 7f) * Time.deltaTime;
+        
     }
+
+
+
+
+
+
+    public void UsedAbility(int ability)
+    {
+        hasCD = true;
+
+        if(ability == 1)
+        {
+            ability1Icon.fillAmount = 0;
+            ability1Icon.color = transparent;
+
+        }
+        if(ability == 2)
+        {
+            ability2Icon.fillAmount = 0;
+            ability2Icon.color = transparent;
+
+        }
+    }
+    
+    // private void OnAttack2()
+    // {
+    //     Debug.Log("used 1");
+    //     UsedAbility(1);
+    //     hasCD = true;
+       
+    // }
+
+    // private void OnAttack3()
+    // {
+    //     Debug.Log("used 2");
+    //     UsedAbility(2);
+    //     hasCD = true;
+       
+    // }
+
+
+
+
+
+
+
+    // public void updateEnthusiasm()
+    // {
+    //     var creatureStats = player.currCreatureContext.creatureStats.statManager;
+    //     enthusiasmSlider.value = ((creatureStats.getStat(ModiferType.CURR_ENTHUSIASM) / creatureStats.getStat(ModiferType.MAX_ENTHUSIASM)) * 100);
+    // }
+
+
+
+
+
 
     public void showInteractPrompt()
     {
@@ -144,6 +244,10 @@ public class UIUpdates : MonoBehaviour
     {
         interactPrompt.enabled = false;
     }
+
+
+
+
 
 
     public void ShowCharacterDialogue()

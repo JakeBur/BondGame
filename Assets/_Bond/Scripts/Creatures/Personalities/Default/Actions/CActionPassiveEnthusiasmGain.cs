@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CActionPassiveEnthusiasmGain : BTLeaf
 {
-    float enthusiasmGainMultiplier = 2f;
+    float enthusiasmGainMultiplier = 10f;
     public CActionPassiveEnthusiasmGain(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -32,6 +32,8 @@ public class CActionPassiveEnthusiasmGain : BTLeaf
             if(context.creatureStats.statManager.getStat(ModiferType.CURR_ENTHUSIASM) < context.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM))
             {
                 context.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, context.creatureStats.statManager.getStat(ModiferType.CURR_ENTHUSIASM) + Time.deltaTime * enthusiasmGainMultiplier);
+                //Update creature's Enthusiasm Bar
+                context.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
             }
             OnParentExit();
             return NodeState.SUCCESS;

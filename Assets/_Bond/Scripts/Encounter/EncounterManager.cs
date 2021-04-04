@@ -13,6 +13,15 @@ public class EncounterManager : MonoBehaviour
     public GameObject blobs;
     public Buff corruptionDebuff;
     private int currWave = 0;
+    public bool encounterTriggered;
+
+    public float farthestDistRadius;
+    public Vector3 farthestPointFromPlayer;
+
+    public int maxCurrMeleeAttackers;
+    public int numberOfCurrMeleeAttackers;
+
+    public Transform playerTransform;
 
     private void OnTriggerEnter(Collider other) 
     {
@@ -24,11 +33,27 @@ public class EncounterManager : MonoBehaviour
             SpawnEncounter();
             GetComponent<Collider>().enabled = false;
             
-            PersistentData.Instance.Player.GetComponent<PlayerController>().InCombat(true);
+            playerTransform = PersistentData.Instance.Player.transform;
+            
+            PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(true);
             PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusic();
+            encounterTriggered = true;
         }
     }
-    
+
+    private void Update() {
+        if(encounterTriggered)
+        {
+            farthestPointFromPlayer = (transform.position - playerTransform.position).normalized * farthestDistRadius;
+            farthestPointFromPlayer += transform.position;
+            farthestPointFromPlayer.y = 0;
+
+        }
+       
+    }
+
+
+
     public void SpawnEncounter()
     {
         if(waves[currWave].spawnWholeWave)
@@ -42,8 +67,6 @@ public class EncounterManager : MonoBehaviour
         {
             SpawnNextEnemy();
         }
-
-
     }
 
     public void enemyKilled()
@@ -81,12 +104,6 @@ public class EncounterManager : MonoBehaviour
                 ClearEncounter();
             }
         }
-
-
-
-
-
-       
     }
 
     public void SpawnNextEnemy()
@@ -101,7 +118,7 @@ public class EncounterManager : MonoBehaviour
     {
         barrier.SetActive(false);
         blobs.SetActive(false);
-        PersistentData.Instance.Player.GetComponent<PlayerController>().InCombat(false);
+        PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(false);
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
         //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicFanfare();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);

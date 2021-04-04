@@ -11,6 +11,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public bool inAttack;
     public bool inHitstun;
+    public bool inSpawn;
 
     [FMODUnity.EventRef]
     public string SlashSFX;
@@ -70,4 +71,16 @@ public class EnemyAnimator : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot(SlashSFX, transform.position);
     }
+
+    public void Spawn()
+    {
+        //animator.SetTrigger("spawn");
+        inSpawn = true;
+    }
+    
+    public void SpawnDone()
+    {
+        inSpawn = false;
+    }
+
 }
