@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Bond/3D Assets/Characters/Monsters/Donut.meta
 guid: cae54c34062ce3941b4be56cf9aca42b
 folderAsset: yes
 DefaultImporter:
+=======
+guid: 4000d7a55c33f3b40a490df3ef6f0f3c
+PrefabImporter:
+>>>>>>> main:Assets/_Bond/Prefabs (No Model)/Stat UI.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

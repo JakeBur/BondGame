@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae5fe3e023031c42b07c6f4fd7977ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arenaSpawnSFX: event:/Sound Effects/SFX/Enemy SFX/Arena Spawn
   waves:
   - spawnWholeWave: 0
     waitUntilEnemiesLeft: 0
@@ -313,6 +314,14 @@ MonoBehaviour:
     - {fileID: 1983856210398962884}
   currEnemyCount: 0
   barrier: {fileID: 6568007271059574188}
+  blobs: {fileID: 0}
+  corruptionDebuff: {fileID: 0}
+  encounterTriggered: 0
+  farthestDistRadius: 0
+  farthestPointFromPlayer: {x: 0, y: 0, z: 0}
+  maxCurrMeleeAttackers: 0
+  numberOfCurrMeleeAttackers: 0
+  playerTransform: {fileID: 0}
 --- !u!136 &1983856210335086525
 CapsuleCollider:
   m_ObjectHideFlags: 0

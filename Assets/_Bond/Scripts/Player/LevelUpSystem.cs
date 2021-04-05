@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class LevelUpSystem : MonoBehaviour
 {
-    private int level;
+    [SerializeField]
+    public int level = 1;
+   
 
     private int maxXPTotal;
-    private int currentXPTotal;
+    private int currentXPTotal = 0;
 
-    public int xpNeededForNext;
-    public int xpGainedThisLevel;
+    public int xpNeededForNext = 0;
+    public int xpGainedThisLevel = 0;
 
-    public int upgradePoints;
+    public int upgradePoints = 0;
 
     [Header("Equation Variables")]
     public float A = 16;
@@ -74,6 +76,13 @@ public class LevelUpSystem : MonoBehaviour
     public void UseUpgradePoint()
     {
         upgradePoints--;
+    }
+
+
+
+    public float PercentToNextLevel()
+    {
+        return (float)xpGainedThisLevel/xpNeededForNext;
     }
 
 

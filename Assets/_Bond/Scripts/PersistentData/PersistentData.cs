@@ -20,10 +20,17 @@ public class PersistentData : MonoBehaviour
     public GameObject UI { get; private set; }
     private GameObject ui;
 
+    [Header("PauseReference")]
     public GameObject PauseMenuPrefab;
     public GameObject PauseMenu { get; private set; }
     private GameObject pauseMenu;
 
+    [Header("StatUIReference")]
+    public GameObject StatUIPrefab;
+    public GameObject StatUI { get; private set;}
+    private GameObject statUI;
+
+    [Header("AudioReference")]
     public GameObject AudioControllerPrefab;
     public GameObject AudioController {get; private set;}
     private GameObject audioController;
@@ -107,6 +114,25 @@ public class PersistentData : MonoBehaviour
 
 
 
+        if(statUI == null)
+        {
+            try
+            {
+                StatUI = GameObject.FindGameObjectWithTag("StatUI");
+                if(StatUI == null)
+                {
+                    StatUI = Instantiate(StatUIPrefab, Vector3.zero, Quaternion.identity);
+                }
+            }
+            catch
+            {
+                StatUI = Instantiate(StatUIPrefab, Vector3.zero, Quaternion.identity);
+            }
+            
+        }
+
+
+
         if (AudioController == null)
         {
             try
@@ -156,6 +182,7 @@ public class PersistentData : MonoBehaviour
         MakeChild(playerController.swapCreature);
         MakeChild(UI);
         MakeChild(PauseMenu);
+        MakeChild(StatUI);
         //Loading Scene, can make transition stuff here
          //for example, some screen fading stuff : 
             //transition OUT
@@ -175,7 +202,8 @@ public class PersistentData : MonoBehaviour
         UnmakeChild(playerController.currCreature);
         UnmakeChild(playerController.swapCreature);
         UnmakeChild(UI);
-        MakeChild(PauseMenu);
+        UnmakeChild(PauseMenu);
+        UnmakeChild(StatUI);
 
         //set players position in new scene
         //CALL BUILD LEVEL, WHICH SHOULD GENERATE EVERYTHING, INCLUDING A SPAWNPOINT;

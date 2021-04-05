@@ -223,7 +223,8 @@ public class UIUpdates : MonoBehaviour
 
 
 
-
+    //OLD
+    
     // public void updateEnthusiasm()
     // {
     //     var creatureStats = player.currCreatureContext.creatureStats.statManager;
