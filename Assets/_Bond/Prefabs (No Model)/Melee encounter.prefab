@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 9d324e345da233949b4f8cc87f42c0e0, type: 3}
+  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
 --- !u!1 &1823558736048597768
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,8 +261,8 @@ MonoBehaviour:
     - {fileID: 1823558736329723829}
     - {fileID: 2689973366931324267}
     - {fileID: 2689973366936057927}
-  - spawnWholeWave: 0
-    waitUntilEnemiesLeft: 2
+  - spawnWholeWave: 1
+    waitUntilEnemiesLeft: 0
     index: 0
     spawners:
     - {fileID: 6363204736057319057}
@@ -273,6 +273,12 @@ MonoBehaviour:
   barrier: {fileID: 899636670174136131}
   blobs: {fileID: 7455600316609384494}
   corruptionDebuff: {fileID: 11400000, guid: 74f965dcc629edf49b47ee00d4b3d40d, type: 2}
+  encounterTriggered: 0
+  farthestDistRadius: 23
+  farthestPointFromPlayer: {x: 0, y: 0, z: 0}
+  maxCurrMeleeAttackers: 3
+  numberOfCurrMeleeAttackers: 0
+  playerTransform: {fileID: 0}
 --- !u!136 &1823558736048597771
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -394,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 9d324e345da233949b4f8cc87f42c0e0, type: 3}
+  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
 --- !u!1 &1823558736675524420
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 9d324e345da233949b4f8cc87f42c0e0, type: 3}
+  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
 --- !u!1 &1823558736714116909
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 9d324e345da233949b4f8cc87f42c0e0, type: 3}
+  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
 --- !u!1 &2689973366936057927
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 9d324e345da233949b4f8cc87f42c0e0, type: 3}
+  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
 --- !u!1 &3201304443971535752
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 9d324e345da233949b4f8cc87f42c0e0, type: 3}
+  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
 --- !u!1 &4329136911897211221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 9d324e345da233949b4f8cc87f42c0e0, type: 3}
+  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
 --- !u!1 &6511716326348270092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,7 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 9d324e345da233949b4f8cc87f42c0e0, type: 3}
+  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
 --- !u!1 &7455600316609384494
 GameObject:
   m_ObjectHideFlags: 0

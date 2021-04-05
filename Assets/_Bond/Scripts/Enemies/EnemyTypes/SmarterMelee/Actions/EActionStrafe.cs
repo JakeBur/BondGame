@@ -30,7 +30,7 @@ public class EActionStrafe : BTLeaf
 
     public override NodeState Evaluate() 
     {
-        Debug.Log("STRAFING");
+        // Debug.Log("STRAFING");
         enemyContext.agent.speed = enemyContext.statManager.stats[ModiferType.MOVESPEED].modifiedValue / 2;
         if(Vector3.Distance(enemyContext.transform.position, enemyContext.player.transform.position) > enemyContext.retreatDist)
         {

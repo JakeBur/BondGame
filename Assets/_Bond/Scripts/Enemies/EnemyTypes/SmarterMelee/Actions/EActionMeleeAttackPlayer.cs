@@ -26,7 +26,7 @@ public class EActionMeleeAttackPlayer : BTLeaf
 
     public override NodeState Evaluate() 
     {
-        Debug.Log("ATTACKING");
+        // Debug.Log("ATTACKING");
         if(enemyContext.animator.inAttack)
         {
             return NodeState.RUNNING;

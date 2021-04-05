@@ -25,7 +25,7 @@ public class EActionRetreat : BTLeaf
 
     public override NodeState Evaluate() 
     {
-        Debug.Log("RETREATING");
+        // Debug.Log("RETREATING");
         float distToPlayer = Vector3.Distance(enemyContext.enemyTransform.position, enemyContext.player.transform.position);
         if(distToPlayer < enemyContext.retreatDist)
         {
