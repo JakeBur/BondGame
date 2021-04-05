@@ -8,6 +8,7 @@ public class EnthusiasmUI : MonoBehaviour
     private PlayerController player => PersistentData.Instance.Player.GetComponent<PlayerController>();
     public Image enthusiasm;
 
+    
     private void FixedUpdate() 
     {
         enthusiasm.transform.rotation = Camera.main.transform.rotation;

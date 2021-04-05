@@ -18,6 +18,7 @@ TagManager:
   - Interactable
   - Terrain
   - LevelGenerator
+  - StatUI
   layers:
   - Default
   - TransparentFX
