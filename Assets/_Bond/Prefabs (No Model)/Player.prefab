@@ -10252,8 +10252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 7109975305556927938}
-  SwordSwingSFX: event:/Sound Effects/SFX/Player SFX/New Sword Swing
-  WalkSFX: event:/Sound Effects/SFX/New Walking Grass 2D
+  SwordSwingSFX: event:/Sound Effects/SFX/Sword Swing
+  WalkSFX: event:/Sound Effects/SFX/Walking Grass 2D
   RollInitialSFX: event:/Sound Effects/SFX/Roll/Roll Initial Impact
   RollSecondarySFX: event:/Sound Effects/SFX/Roll/Roll Secondary Impact
 --- !u!114 &2139760117
