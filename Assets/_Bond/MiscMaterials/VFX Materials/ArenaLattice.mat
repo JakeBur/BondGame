@@ -27,14 +27,14 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2999
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_8C6FF9B:
-        m_Texture: {fileID: 2800000, guid: 9b1215cfa665c934aac3f851878fe334, type: 3}
+        m_Texture: {fileID: 2800000, guid: d5dc719dea691ba4ba7b006829ee62dd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -75,7 +75,7 @@ Material:
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FadeinBreakpoint: 0.9975725
+    - _FadeinBreakpoint: 3
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -91,7 +91,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_124E0B22: {r: 0.7924528, g: 0.0037379938, b: 0.018291116, a: 0}
+    - Color_124E0B22: {r: 0.6509434, g: 0, b: 0.35717627, a: 0}
     - Color_2EBDD8BB: {r: 0.13725491, g: 0.13725491, b: 0.23529412, a: 0}
     - Color_86D1F53B: {r: 0.46666667, g: 0.17254902, b: 0.39607844, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

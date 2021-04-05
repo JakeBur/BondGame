@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Bond/Audio/initial/Metadata/DAWAsset.meta
+guid: 813b57ab6033df2409c9921ecf44c73c
+folderAsset: yes
+DefaultImporter:
+=======
 guid: a45c3d32bcf630d4289f006c4e59cbc8
 NativeFormatImporter:
+>>>>>>> main:Assets/_Bond/Scenes/Farm/NavMesh-NavMesh Surface.asset.meta
   externalObjects: {}
   mainObjectFileID: 0
   userData: 

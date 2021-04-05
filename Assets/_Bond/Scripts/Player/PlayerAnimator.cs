@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 
@@ -10,11 +11,22 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    [Serializable]
+    struct VFXData
+    {
+        public List<GameObject> slashes;
+    }
+
     public GameObject model;
     private Animator animator => model.GetComponent<Animator>();
     private PlayerController playerController => GetComponent<PlayerController>();
 
-    
+    [Header("VFX")]
+    public ParticleSystem heavyChargeVfx;
+    public ParticleSystem heavyHitVfx;
+    public ParticleSystem slashVfx;
+    [SerializeField]
+    private VFXData vfxData;
 
     /*
     *   Constants
@@ -148,11 +160,11 @@ public class PlayerAnimator : MonoBehaviour
         {
             animator.SetTrigger("HeavyCharge");
 
-            playerController.heavyChargeVfx.Play();
+            heavyChargeVfx.Play();
         }
         else
         {
-            playerController.heavyChargeVfx.Stop();
+            heavyChargeVfx.Stop();
         }
     }
 
@@ -163,7 +175,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetTrigger("HeavyAttack");
         animator.ResetTrigger("HeavyCharge");
 
-        playerController.heavyHitVfx.Play();
+        heavyHitVfx.Play();
     }
 
     public void Crouch(bool state)
@@ -222,10 +234,21 @@ public class PlayerAnimator : MonoBehaviour
 
     // VISUAL FX
 
-    public void PlaySlashVFX()
+    public void PlaySlashVFX(int animationIndex)
     {
-        playerController.slashVfx.Play();
+        //slashVfx.Play();
+        if(vfxData.slashes.Count <= animationIndex)
+        {
+            Debug.LogError($"Slash VFX prefab #{animationIndex} does not exist");
+            return;
+        }
+        GameObject slash = Instantiate(vfxData.slashes[animationIndex], transform.position, Quaternion.identity);
+        //slash.transform.LookAt(transform.forward);
+        slash.transform.LookAt(transform.position + transform.forward);
+    }
 
+    public void PlaySlashSFX()
+    {
         FMODUnity.RuntimeManager.PlayOneShot(SwordSwingSFX, transform.position);
     }
 

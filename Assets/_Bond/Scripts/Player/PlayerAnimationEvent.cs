@@ -26,9 +26,9 @@ public class PlayerAnimationEvent : MonoBehaviour
 
     // VISUAL FX
 
-    public void PlaySlashVFX()
+    public void PlaySlashVFX(int attackIndex)
     {
-        playerAnimator.PlaySlashVFX();
+        playerAnimator.PlaySlashVFX(attackIndex);
     }
 
     // SOUND FX

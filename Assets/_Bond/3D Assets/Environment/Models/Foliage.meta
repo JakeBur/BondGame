@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Bond/Scripts/Graphics/Shader Property Animators.meta
+guid: 0cf79a10016d8d44ea8d35c6e77eccfa
+=======
 guid: 9b50b8132b4b01a4988edfb8dacf74c9
+>>>>>>> main:Assets/_Bond/3D Assets/Environment/Models/Foliage.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

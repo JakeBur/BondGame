@@ -10131,9 +10131,6 @@ MonoBehaviour:
   isHit: 0
   attackDestination: {x: 0, y: 0, z: 0}
   attackMoveVec: {x: 0, y: 0, z: 0}
-  heavyChargeVfx: {fileID: 3268859984920099915}
-  heavyHitVfx: {fileID: 2879053346376034959}
-  slashVfx: {fileID: 766551116}
   menuOpenSFX: event:/Sound Effects/SFX/UI SFX/Menu Open
   swapSFX: event:/Sound Effects/SFX/Creature Swap
   hitBoxes:
@@ -10252,8 +10249,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 7109975305556927938}
-  SwordSwingSFX: event:/Sound Effects/SFX/Sword Swing
-  WalkSFX: event:/Sound Effects/SFX/Walking Grass 2D
+  heavyChargeVfx: {fileID: 0}
+  heavyHitVfx: {fileID: 0}
+  slashVfx: {fileID: 0}
+  vfxData:
+    slashes:
+    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
+    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
+    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
+    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
+    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
+    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
+  SwordSwingSFX: event:/Sound Effects/SFX/Player SFX/New Sword Swing
+  WalkSFX: event:/Sound Effects/SFX/New Walking Grass 2D
   RollInitialSFX: event:/Sound Effects/SFX/Roll/Roll Initial Impact
   RollSecondarySFX: event:/Sound Effects/SFX/Roll/Roll Secondary Impact
 --- !u!114 &2139760117

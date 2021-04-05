@@ -164,7 +164,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.004434597
+      - time: 0.0055147065
+        functionName: PlaySlashSFX
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.007352942
         functionName: PlaySlashVFX
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -187,6 +194,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.664042
         functionName: AttackDone
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.94859314
+        functionName: PlaySlashSFX
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

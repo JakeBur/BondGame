@@ -95,10 +95,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 attackDestination;
     public Vector3 attackMoveVec;
 
-    [Header("VFX")]
-    public ParticleSystem heavyChargeVfx;
-    public ParticleSystem heavyHitVfx;
-    public ParticleSystem slashVfx;
+    
 
     [Header("FMOD Strings")]
         [FMODUnity.EventRef]
