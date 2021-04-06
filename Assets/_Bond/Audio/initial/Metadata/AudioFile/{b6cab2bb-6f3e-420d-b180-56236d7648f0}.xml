@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{b6cab2bb-6f3e-420d-b180-56236d7648f0}">
 		<property name="assetPath">
-			<value>SFX/New Swap/swap.wav</value>
+			<value>UI SFX/Creature Swap.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

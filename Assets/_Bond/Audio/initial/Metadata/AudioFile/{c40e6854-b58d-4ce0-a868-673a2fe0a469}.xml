@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{c40e6854-b58d-4ce0-a868-673a2fe0a469}">
 		<property name="assetPath">
-			<value>SFX/UI SFX/Button/menu_button_1.wav</value>
+			<value>UI SFX/Button/Button Click 1.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

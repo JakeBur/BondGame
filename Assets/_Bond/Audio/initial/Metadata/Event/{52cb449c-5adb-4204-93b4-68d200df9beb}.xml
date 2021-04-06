@@ -584,10 +584,10 @@
 	</object>
 	<object class="TransitionDestinationSound" id="{aa076ce9-0f9c-433a-98ad-6d9bae5a964b}">
 		<property name="start">
-			<value>2.8235294117647074</value>
+			<value>2.8235294117647061</value>
 		</property>
 		<property name="length">
-			<value>2.745098039215685</value>
+			<value>2.7450980392156872</value>
 		</property>
 	</object>
 	<object class="TransitionSourceSound" id="{37fcd672-63a0-414b-8f9b-138b9ce17887}">

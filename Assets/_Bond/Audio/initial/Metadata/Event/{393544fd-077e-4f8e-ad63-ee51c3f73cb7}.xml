@@ -101,10 +101,6 @@
 		<relationship name="modulators">
 			<destination>{e627013d-11c1-4991-87f5-015cac383efd}</destination>
 		</relationship>
-		<relationship name="sounds">
-			<destination>{ff4cba9f-42b7-4c02-9e96-ad5d3b6a8087}</destination>
-			<destination>{779e23d6-3582-444d-a9d8-12050d952538}</destination>
-		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{257f26e0-b35f-4877-afa1-761b6a16915d}">
 		<property name="name">
@@ -135,16 +131,6 @@
 		<property name="amount">
 			<value>17</value>
 		</property>
-	</object>
-	<object class="SingleSound" id="{ff4cba9f-42b7-4c02-9e96-ad5d3b6a8087}">
-		<relationship name="audioFile">
-			<destination>{ddd9dde9-0a99-41be-9246-14fb10012016}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{779e23d6-3582-444d-a9d8-12050d952538}">
-		<relationship name="audioFile">
-			<destination>{c17efcba-872a-4f88-a62f-775d45e2fea5}</destination>
-		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{04d196c5-ec18-43f6-bf53-7377dc78442a}">
 		<relationship name="effects">

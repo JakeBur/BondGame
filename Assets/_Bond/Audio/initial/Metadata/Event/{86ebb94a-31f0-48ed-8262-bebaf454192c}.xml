@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{86ebb94a-31f0-48ed-8262-bebaf454192c}">
 		<property name="name">
-			<value>New Ambient Noise</value>
+			<value>Ambient Noise</value>
 		</property>
 		<property name="outputFormat">
 			<value>6</value>

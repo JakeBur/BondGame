@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{959c6396-e446-4eb4-a989-2439e974e5bf}">
 		<property name="assetPath">
-			<value>SFX/Roll/secondary_impact.wav</value>
+			<value>Movement SFX/Roll Grass/Roll Grass Secondary.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

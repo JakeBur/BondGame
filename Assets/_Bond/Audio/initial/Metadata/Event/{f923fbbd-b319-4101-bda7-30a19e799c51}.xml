@@ -5,7 +5,7 @@
 			<value>Sword Swing</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d4c40a69-0ffa-4d74-acd6-aa294d8d02e9}</destination>
@@ -99,11 +99,6 @@
 			<destination>{39ca9708-1dfc-41d3-a39e-c15e3eb99148}</destination>
 			<destination>{afde6789-d166-4693-8a83-2a5b7406e6fa}</destination>
 		</relationship>
-		<relationship name="sounds">
-			<destination>{c4ddd00a-d211-4c6d-9fba-11b5207f5e37}</destination>
-			<destination>{060ba547-a8ed-4530-bcc8-dd31eaa34444}</destination>
-			<destination>{90b5032e-10ec-4bd4-8e7e-b8eb8c587030}</destination>
-		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{fff3252b-2a20-44e0-b403-c221850c1e8e}">
 		<property name="volume">
@@ -144,21 +139,6 @@
 		<property name="amount">
 			<value>6</value>
 		</property>
-	</object>
-	<object class="SingleSound" id="{c4ddd00a-d211-4c6d-9fba-11b5207f5e37}">
-		<relationship name="audioFile">
-			<destination>{5b749f7a-ef33-4b43-8d1c-8687f58414be}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{060ba547-a8ed-4530-bcc8-dd31eaa34444}">
-		<relationship name="audioFile">
-			<destination>{231ed558-1f79-4522-8501-03dc9eb7b813}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{90b5032e-10ec-4bd4-8e7e-b8eb8c587030}">
-		<relationship name="audioFile">
-			<destination>{38d69e5b-434d-42a4-a8f5-2ba650e129d7}</destination>
-		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{c7e2c33a-1f5d-4c36-8b0f-7372d347b7db}">
 		<relationship name="effects">
