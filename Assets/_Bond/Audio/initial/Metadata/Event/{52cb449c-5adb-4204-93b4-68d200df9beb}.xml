@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{52cb449c-5adb-4204-93b4-68d200df9beb}">
 		<property name="name">
-			<value>Master Music Event</value>
+			<value>Master Music Event FOR OLD COMBAT SONG</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{5c707eca-257a-4614-8d19-d0a1709d4f9d}</destination>
+			<destination>{d4c40a69-0ffa-4d74-acd6-aa294d8d02e9}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{fbd3dd95-16b6-43f2-8df4-59102845c323}</destination>
