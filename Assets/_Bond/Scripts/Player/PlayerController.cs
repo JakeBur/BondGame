@@ -7,6 +7,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class PlayerController : MonoBehaviour
 {
     public struct Inputs
@@ -95,14 +100,13 @@ public class PlayerController : MonoBehaviour
     public Vector3 attackDestination;
     public Vector3 attackMoveVec;
 
-    
-
-    [Header("FMOD Strings")]
-        [FMODUnity.EventRef]
-        public string menuOpenSFX;
-
-        [FMODUnity.EventRef]
-        public string swapSFX;
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     [Serializable]
     public struct HitBoxes
@@ -350,7 +354,7 @@ public class PlayerController : MonoBehaviour
             
             PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();                // UI Update
 
-            FMODUnity.RuntimeManager.PlayOneShot(swapSFX, transform.position);                      // Sound
+            SFXPlayer.PlayOneShot(SFX.CreatureSwapSFX, transform.position);                      // Sound
         }
         
 
@@ -453,7 +457,7 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0f;
         }
 
-        FMODUnity.RuntimeManager.PlayOneShot(menuOpenSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.MenuOpenSFX, transform.position);
         
     }
 
@@ -466,7 +470,7 @@ public class PlayerController : MonoBehaviour
 
 
         
-        FMODUnity.RuntimeManager.PlayOneShot(menuOpenSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.MenuOpenSFX, transform.position);
 
     }
 

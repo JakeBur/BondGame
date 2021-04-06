@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
 
 /*
 *   Written by Herman
@@ -43,17 +46,16 @@ public class PlayerAnimator : MonoBehaviour
     public bool isHurt { get; private set; }
     public bool isRun { get; private set; }
 
-    [FMODUnity.EventRef]
-    public string SwordSwingSFX;
-    [FMODUnity.EventRef]
-    public string WalkSFX;
-    [FMODUnity.EventRef]
-    public string RollInitialSFX;
-    [FMODUnity.EventRef]
-    public string RollSecondarySFX;
-
     private int attackStatesActive = 0;
     private float moveMagnitude = 0f;
+
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     void Update()
     {
@@ -251,22 +253,22 @@ public class PlayerAnimator : MonoBehaviour
 
     public void PlaySlashSFX()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(SwordSwingSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.PlayerSwordSwingSFX, transform.position);
     }
 
     public void PlayWalkSFX()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(WalkSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.PlayerWalkGrassSFX, transform.position);
     }
 
     public void PlayRollInitialSFX()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(RollInitialSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.PlayerRollGrassInitialSFX, transform.position);
     }
 
     public void PlayRollSecondarySFX()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(RollSecondarySFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.PlayerRollGrassSecondarySFX, transform.position);
     }
 
 

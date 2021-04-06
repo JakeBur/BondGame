@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class EncounterManager : MonoBehaviour
 {
- 
-    [FMODUnity.EventRef]
-    public string arenaSpawnSFX;
     public List<Wave> waves = new List<Wave>();
     public int currEnemyCount = 0;
     public GameObject barrier;
@@ -23,11 +25,20 @@ public class EncounterManager : MonoBehaviour
 
     public Transform playerTransform;
 
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
+
+
     private void OnTriggerEnter(Collider other) 
     {
         if(other.transform.tag == "Player")
         {
-            FMODUnity.RuntimeManager.PlayOneShot(arenaSpawnSFX, transform.position);
+            SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
             blobs.SetActive(true);
             barrier.SetActive(true);
             SpawnEncounter();

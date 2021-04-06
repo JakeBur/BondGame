@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5507915083244159709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5827726225374860515}
+  - component: {fileID: 6580534454367760037}
+  m_Layer: 0
+  m_Name: SFX Manager
+  m_TagString: SFXManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5827726225374860515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5507915083244159709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6580534454367760037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5507915083244159709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae053b70057dffe40a1f373e9787f602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerWalkGrassSFX: event:/Sound Effects/SFX/Walking Grass 2D
+  PlayerRollGrassInitialSFX: event:/Sound Effects/SFX/Roll/Roll Initial Impact
+  PlayerRollGrassSecondarySFX: event:/Sound Effects/SFX/Roll/Roll Secondary Impact
+  PlayerSwordSwingSFX: event:/Sound Effects/SFX/Player SFX/New Sword Swing
+  PlayerSwordImpactSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
+  PlayerSwordCritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
+  PlayerDamagedDonutSFX: event:/Sound Effects/SFX/Player SFX/Player Damaged Slash
+  Misc3DWalkGrassSFX: event:/Sound Effects/SFX/Walking Grass 3D
+  FragariaSunbeamSFX: event:/Sound Effects/SFX/Creature SFX/Fragaria/Fragaria Sunbeam
+  FragariaSporeTossSFX: event:/Sound Effects/SFX/Creature SFX/Fragaria/Fragaria Spore
+    Toss
+  ArenaSpawnSFX: event:/Sound Effects/SFX/Enemy SFX/Arena Spawn
+  EnemyDeathSFX: event:/Sound Effects/SFX/Enemy SFX/Enemy Death
+  DonutSpawnSFX: event:/Sound Effects/SFX/Enemy SFX/Enemy Death
+  DonutSwipeSFX: event:/Sound Effects/SFX/Enemy SFX/Donut Slash
+  MenuOpenSFX: event:/Sound Effects/SFX/UI SFX/Menu Open
+  ButtonClickSFX: event:/Sound Effects/SFX/UI SFX/Buttons
+  CreatureSwapSFX: event:/Sound Effects/SFX/Creature Swap
