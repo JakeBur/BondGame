@@ -38,6 +38,11 @@ public class PlayerAnimationEvent : MonoBehaviour
         playerAnimator.PlayWalkSFX();
     }
 
+    public void PlaySlashSFX()
+    {
+        playerAnimator.PlaySlashSFX();
+    }
+
     public void PlayRollInitialSFX()
     {
         playerAnimator.PlayRollInitialSFX();

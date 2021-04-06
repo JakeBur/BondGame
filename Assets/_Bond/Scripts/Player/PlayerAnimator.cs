@@ -247,12 +247,12 @@ public class PlayerAnimator : MonoBehaviour
         slash.transform.LookAt(transform.position + transform.forward);
     }
 
+    // SOUND FX
+
     public void PlaySlashSFX()
     {
         FMODUnity.RuntimeManager.PlayOneShot(SwordSwingSFX, transform.position);
     }
-
-    // SOUND FX
 
     public void PlayWalkSFX()
     {
