@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{4264d61c-5995-41bc-b21b-8f2f9170ad7c}">
 		<property name="name">
-			<value>New Sword Crit</value>
+			<value>Player Sword Crit</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3276842a-79d1-461f-abe1-9f38aaa7c104}</destination>
+			<destination>{66211363-36ca-4185-9291-683a5a434697}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{d32c6e1a-fd8a-4213-bb1f-7c4959abb7bf}</destination>

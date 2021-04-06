@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{54923145-4fd7-4cea-9319-b24499c72501}">
 		<property name="name">
-			<value>New Walking Grass 3D</value>
+			<value>Misc 3D Walk Grass</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{d4c40a69-0ffa-4d74-acd6-aa294d8d02e9}</destination>
+			<destination>{ee33cd56-1089-4be6-aa5b-41779514917c}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{532bbf94-cbb6-4875-a821-0d84863365e4}</destination>

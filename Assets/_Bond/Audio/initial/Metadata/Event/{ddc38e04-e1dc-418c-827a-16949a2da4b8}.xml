@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{ddc38e04-e1dc-418c-827a-16949a2da4b8}">
 		<property name="name">
-			<value>New Sword Swing</value>
+			<value>Player Sword Swing</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3276842a-79d1-461f-abe1-9f38aaa7c104}</destination>
+			<destination>{66211363-36ca-4185-9291-683a5a434697}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{41545d99-cce9-495e-8928-a65e66e5928e}</destination>

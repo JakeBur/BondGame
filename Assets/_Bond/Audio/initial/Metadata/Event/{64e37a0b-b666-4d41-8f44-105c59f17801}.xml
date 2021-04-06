@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{64e37a0b-b666-4d41-8f44-105c59f17801}">
 		<property name="name">
-			<value>Player Damaged Slash</value>
+			<value>Player Damaged Donut</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3276842a-79d1-461f-abe1-9f38aaa7c104}</destination>
+			<destination>{238f3532-4e2f-4274-bc4e-3a9fdb2445f7}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{5995f583-a854-4bac-9f38-27500634836c}</destination>

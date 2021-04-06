@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{7041d1f1-5b05-4b91-a606-4eb025741b90}">
 		<property name="name">
-			<value>Roll Initial Impact</value>
+			<value>Player Roll Grass Initial</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{83b62285-cb84-4851-81cb-b46cc00f1da1}</destination>
+			<destination>{a4bb9e4f-371a-4210-b62e-7aa52e338edb}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{9e35496b-f08a-4121-abdd-df7e8e09b084}</destination>

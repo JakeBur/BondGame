@@ -43,21 +43,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae053b70057dffe40a1f373e9787f602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerWalkGrassSFX: event:/Sound Effects/SFX/Walking Grass 2D
-  PlayerRollGrassInitialSFX: event:/Sound Effects/SFX/Roll/Roll Initial Impact
-  PlayerRollGrassSecondarySFX: event:/Sound Effects/SFX/Roll/Roll Secondary Impact
-  PlayerSwordSwingSFX: event:/Sound Effects/SFX/Player SFX/New Sword Swing
-  PlayerSwordImpactSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
-  PlayerSwordCritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
-  PlayerDamagedDonutSFX: event:/Sound Effects/SFX/Player SFX/Player Damaged Slash
-  Misc3DWalkGrassSFX: event:/Sound Effects/SFX/Walking Grass 3D
-  FragariaSunbeamSFX: event:/Sound Effects/SFX/Creature SFX/Fragaria/Fragaria Sunbeam
-  FragariaSporeTossSFX: event:/Sound Effects/SFX/Creature SFX/Fragaria/Fragaria Spore
+  PlayerWalkGrassSFX: event:/Sound Effects/Player SFX/Player Movement SFX/Player
+    Walk Grass
+  PlayerRollGrassInitialSFX: event:/Sound Effects/Player SFX/Player Movement SFX/Player
+    Roll Grass Initial
+  PlayerRollGrassSecondarySFX: event:/Sound Effects/Player SFX/Player Movement SFX/Player
+    Roll Grass Secondary
+  PlayerSwordSwingSFX: event:/Sound Effects/Player SFX/Player Attacks Sword/Player
+    Sword Swing
+  PlayerSwordImpactSFX: event:/Sound Effects/Player SFX/Player Attacks Sword/Player
+    Sword Impact
+  PlayerSwordCritSFX: event:/Sound Effects/Player SFX/Player Attacks Sword/Player
+    Sword Crit
+  PlayerDamagedDonutSFX: event:/Sound Effects/Player SFX/Player Damaged/Player Damaged
+    Donut
+  Misc3DWalkGrassSFX: event:/Sound Effects/Creature + Enemy Movement/Misc 3D Walk
+    Grass
+  FragariaSunbeamSFX: event:/Sound Effects/Creature SFX/Fragaria/Fragaria Spore Toss
+  FragariaSporeTossSFX: event:/Sound Effects/Creature SFX/Fragaria/Fragaria Spore
     Toss
-  ArenaSpawnSFX: event:/Sound Effects/SFX/Enemy SFX/Arena Spawn
-  EnemyDeathSFX: event:/Sound Effects/SFX/Enemy SFX/Enemy Death
-  DonutSpawnSFX: event:/Sound Effects/SFX/Enemy SFX/Enemy Death
-  DonutSwipeSFX: event:/Sound Effects/SFX/Enemy SFX/Donut Slash
-  MenuOpenSFX: event:/Sound Effects/SFX/UI SFX/Menu Open
-  ButtonClickSFX: event:/Sound Effects/SFX/UI SFX/Buttons
-  CreatureSwapSFX: event:/Sound Effects/SFX/Creature Swap
+  ArenaSpawnSFX: event:/Sound Effects/Enemy SFX/General Enemy/Arena Spawn
+  EnemyDeathSFX: event:/Sound Effects/Enemy SFX/General Enemy/Enemy Death
+  DonutSpawnSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Spawn
+  DonutSwipeSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Swipe
+  MenuOpenSFX: event:/Sound Effects/UI SFX/Menu Open
+  ButtonClickSFX: event:/Sound Effects/UI SFX/Button Click
+  CreatureSwapSFX: event:/Sound Effects/UI SFX/Creature Swap

@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{837626b3-f545-4254-8ead-ee9a6d9a9670}">
 		<property name="name">
-			<value>New Sword Impact Enemy</value>
+			<value>Player Sword Impact</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3276842a-79d1-461f-abe1-9f38aaa7c104}</destination>
+			<destination>{66211363-36ca-4185-9291-683a5a434697}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{5d3f591b-6451-4909-ad11-6f82906dd913}</destination>
