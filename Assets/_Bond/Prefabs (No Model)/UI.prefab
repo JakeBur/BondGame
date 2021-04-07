@@ -2006,7 +2006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 0
   m_OnCullStateChanged:
@@ -2613,7 +2613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8341631276022480725
 Transform:
   m_ObjectHideFlags: 0
@@ -3471,6 +3471,7 @@ MonoBehaviour:
   EnviornmentDialogText: {fileID: 8652758074574968059}
   enthusiasmSlider: {fileID: 4484135056100657233}
   cd: {fileID: 0}
+  hurtFeedback: {fileID: 944460853128496996}
 --- !u!114 &-5131763764292963597
 MonoBehaviour:
   m_ObjectHideFlags: 0

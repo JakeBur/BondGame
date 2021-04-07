@@ -7,6 +7,7 @@ public class EnthusiasmUI : MonoBehaviour
 {
     private PlayerController player => PersistentData.Instance.Player.GetComponent<PlayerController>();
     public Image enthusiasm;
+    public Image enthusiasmBar;
 
     
     private void FixedUpdate() 
@@ -17,6 +18,6 @@ public class EnthusiasmUI : MonoBehaviour
     public void UpdateEnthusiasm()
     {
         var creatureStats = player.currCreatureContext.creatureStats.statManager;
-        enthusiasm.fillAmount = ((creatureStats.getStat(ModiferType.CURR_ENTHUSIASM) / creatureStats.getStat(ModiferType.MAX_ENTHUSIASM)));
+        enthusiasmBar.fillAmount = ((creatureStats.getStat(ModiferType.CURR_ENTHUSIASM) / creatureStats.getStat(ModiferType.MAX_ENTHUSIASM)));
     }
 }

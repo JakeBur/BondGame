@@ -15,6 +15,7 @@ public class UIUpdates : MonoBehaviour
     public TextMeshProUGUI interactPrompt;
 
     public TextMeshProUGUI gold;
+    public Image goldIcon;
 
 
     [Header("Creature Icons")]
@@ -49,6 +50,8 @@ public class UIUpdates : MonoBehaviour
 
     private bool hasCD = false;
 
+    public Image hurtFeedback;
+
 //*****************End of variable declarations**********************//
 
 
@@ -56,6 +59,8 @@ public class UIUpdates : MonoBehaviour
     void Start()
     {
         UpdateCreatureUI();
+        //HurtFeedback(1.0f);
+        HurtFeedback(0f, 0.0f);
     }
 
 
@@ -259,6 +264,18 @@ public class UIUpdates : MonoBehaviour
     public void HideCharacterDialogue()
     {
         CharacterDialogCanvas.SetActive(false);
+    }
+
+
+
+
+
+
+    public void HurtFeedback(float amount, float time)
+    {
+        //Debug.Log("hurt");
+        //hurtFeedback.color = opaque;
+        hurtFeedback.CrossFadeAlpha(amount, time, false);       
     }
 
 
