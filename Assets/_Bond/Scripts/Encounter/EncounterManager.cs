@@ -130,8 +130,8 @@ public class EncounterManager : MonoBehaviour
         barrier.SetActive(false);
         blobs.SetActive(false);
         PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(false);
-        PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
-        //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicFanfare();
+        //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
+        PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
     }
 }
