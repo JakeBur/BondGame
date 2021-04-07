@@ -71,10 +71,9 @@ public class EnemyAnimator : MonoBehaviour
         inHitstun = false;
     }
 
-    public void PlaySlamSFX()
+    public void PlaySwipeSFX()
     {
-        //unused for the moment, unless we add an enemy with a slamming attack
-        //FMODUnity.RuntimeManager.PlayOneShot(SlashSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.DonutSwipeSFX, transform.position);
     }
 
     public void Spawn()

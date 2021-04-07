@@ -5,7 +5,7 @@
 			<value>Misc 3D Walk Grass</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ee33cd56-1089-4be6-aa5b-41779514917c}</destination>
@@ -93,7 +93,7 @@
 			<value>0.32500000000000001</value>
 		</property>
 		<property name="volume">
-			<value>-18</value>
+			<value>-10</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{1e5ce89e-d3c9-43ca-bd3f-ef89cd62c199}</destination>
@@ -109,6 +109,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{bd5f3778-fc61-42f9-b36e-39c6963552b1}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -128,7 +131,11 @@
 			<destination>{2cf995dc-4072-47a6-a3d3-325c37c970b2}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{1fa57c59-982d-40dd-bdbd-04da876a87e1}" />
+	<object class="MixerBusPanner" id="{1fa57c59-982d-40dd-bdbd-04da876a87e1}">
+		<property name="overridingOutputFormat">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{6456fe21-7a63-49d4-9a90-2ec0c6dc8262}" />
 	<object class="RandomizerModulator" id="{1e5ce89e-d3c9-43ca-bd3f-ef89cd62c199}">
 		<property name="nameOfPropertyBeingModulated">

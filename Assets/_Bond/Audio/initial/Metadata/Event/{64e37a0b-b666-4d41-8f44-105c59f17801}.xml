@@ -93,7 +93,7 @@
 			<value>0.84999999999999998</value>
 		</property>
 		<property name="volume">
-			<value>6</value>
+			<value>3</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{c0d870db-6a10-4d89-9a74-24a22b2c066d}</destination>
@@ -106,6 +106,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{370837ca-4fcf-45fb-8ac5-9e5b92b87926}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -131,7 +134,7 @@
 			<value>volume</value>
 		</property>
 		<property name="amount">
-			<value>8</value>
+			<value>3</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{ed125b44-b627-414c-bd55-1b26bbc1d743}">

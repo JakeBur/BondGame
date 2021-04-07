@@ -93,7 +93,7 @@
 			<value>0.32500000000000001</value>
 		</property>
 		<property name="volume">
-			<value>-18</value>
+			<value>-10</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{56e8538b-73fb-4a0f-828d-291a83966606}</destination>
@@ -109,6 +109,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{002abb5a-fead-4d36-926b-1d3dca371e42}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -127,7 +130,11 @@
 			<destination>{a09aaaf1-6896-4a87-a684-89a1e5beaf42}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{3000ecaa-7886-42b4-82ea-75f506a20346}" />
+	<object class="MixerBusPanner" id="{3000ecaa-7886-42b4-82ea-75f506a20346}">
+		<property name="overridingOutputFormat">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{7940a711-a7c4-428a-8060-06a8c05d0d35}" />
 	<object class="RandomizerModulator" id="{56e8538b-73fb-4a0f-828d-291a83966606}">
 		<property name="nameOfPropertyBeingModulated">

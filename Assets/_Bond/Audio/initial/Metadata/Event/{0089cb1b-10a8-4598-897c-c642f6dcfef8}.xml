@@ -96,16 +96,22 @@
 			<value>4.6107709750566892</value>
 		</property>
 		<property name="volume">
-			<value>-16.5</value>
+			<value>-12.5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{f0cd6694-abde-4c90-ace8-b7ad926bf4a5}</destination>
+		</relationship>
+		<relationship name="fadeInCurve">
+			<destination>{072f70c3-0017-4055-ad36-fe6f75860e2a}</destination>
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{c9da44db-2fd6-478a-b9e1-a49684a5d5cb}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{48ec6343-014b-4bdb-a4ef-432c5c46a0e3}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -131,8 +137,16 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>5</value>
+			<value>7</value>
 		</property>
+	</object>
+	<object class="FadeCurve" id="{072f70c3-0017-4055-ad36-fe6f75860e2a}">
+		<relationship name="startPoint">
+			<destination>{e05f3914-dedb-4817-ad09-a4266870e0d8}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{11887f18-aa0e-4976-9ed6-467e8f24f608}</destination>
+		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{8ca771ba-9e35-48a0-a8e4-34815e5f4edb}">
 		<relationship name="effects">
@@ -145,5 +159,24 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{33a38a9b-53aa-48ed-8cde-29529a0c20df}" />
+	<object class="AutomationPoint" id="{e05f3914-dedb-4817-ad09-a4266870e0d8}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{11887f18-aa0e-4976-9ed6-467e8f24f608}">
+		<property name="position">
+			<value>2.5625</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{b01c9c15-0518-43ce-97e2-554ca91983f2}" />
 </objects>

@@ -149,7 +149,7 @@
 			<value>25.732154195011336</value>
 		</property>
 		<property name="volume">
-			<value>-26</value>
+			<value>-18.5</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{bc4238a2-aa58-4b5b-b1db-06bb0cc7933b}</destination>
@@ -209,7 +209,7 @@
 			<value>22.255534454183532</value>
 		</property>
 		<property name="volume">
-			<value>4.5</value>
+			<value>10</value>
 		</property>
 		<property name="polyphony">
 			<value>4</value>
@@ -234,6 +234,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{903aa30d-80ac-43d1-bb46-d29f04393057}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
@@ -270,11 +273,14 @@
 		<property name="length">
 			<value>22.255534454183532</value>
 		</property>
+		<property name="volume">
+			<value>8.5</value>
+		</property>
 		<property name="polyphony">
 			<value>6</value>
 		</property>
 		<property name="spawnRate">
-			<value>30</value>
+			<value>18</value>
 		</property>
 		<property name="minimumScatterDistance">
 			<value>5.4000001</value>
@@ -293,6 +299,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{ac372a7c-ccda-4182-abea-30bcad1a62f5}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -644,7 +653,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>-40</value>
 		</property>
 		<property name="curveShape">
 			<value>-1</value>
@@ -655,7 +664,7 @@
 			<value>1.2992212043769789</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>10</value>
 		</property>
 	</object>
 </objects>

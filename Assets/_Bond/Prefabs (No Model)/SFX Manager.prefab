@@ -59,7 +59,7 @@ MonoBehaviour:
     Donut
   Misc3DWalkGrassSFX: event:/Sound Effects/Creature + Enemy Movement/Misc 3D Walk
     Grass
-  FragariaSunbeamSFX: event:/Sound Effects/Creature SFX/Fragaria/Fragaria Spore Toss
+  FragariaSunbeamSFX: event:/Sound Effects/Creature SFX/Fragaria/Fragaria Sunbeam
   FragariaSporeTossSFX: event:/Sound Effects/Creature SFX/Fragaria/Fragaria Spore
     Toss
   ArenaSpawnSFX: event:/Sound Effects/Enemy SFX/General Enemy/Arena Spawn
