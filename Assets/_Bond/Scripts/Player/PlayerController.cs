@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
             {
                 lastMoveVec = facingDirection;
             }
-            movementVector = lastMoveVec * stats.getStat(ModiferType.MOVESPEED) * Time.deltaTime * movementModifier * crouchModifier;
+            movementVector = lastMoveVec * Time.deltaTime * movementModifier * crouchModifier;
         }
         else if(isAttacking) 
         {   
