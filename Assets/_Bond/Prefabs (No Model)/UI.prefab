@@ -3397,7 +3397,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &8580111774580001919
 MonoBehaviour:
@@ -3455,6 +3455,7 @@ MonoBehaviour:
   currHealthUI: {fileID: 8478677401146227904}
   interactPrompt: {fileID: 2643196110682782409}
   gold: {fileID: 4168984522504245629}
+  goldIcon: {fileID: 0}
   currCreatureIcon: {fileID: 1942408360618267870}
   swapCreatureIcon: {fileID: 1575872479679515591}
   noCreatureIcon: {fileID: 21300000, guid: 64323f21a402b9148bfa70ec27901111, type: 3}
