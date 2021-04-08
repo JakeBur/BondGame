@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{3975b313-4e8d-44c0-b4b5-1958ccb02d63}">
 		<property name="assetPath">
-			<value>Enemy Hit 3.wav</value>
+			<value>Player SFX/Player Attacks Sword/Player Sword Impact/Sword Impact 3.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

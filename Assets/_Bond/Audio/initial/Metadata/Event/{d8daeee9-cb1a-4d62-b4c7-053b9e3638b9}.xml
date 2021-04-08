@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{d8daeee9-cb1a-4d62-b4c7-053b9e3638b9}">
 		<property name="name">
-			<value>Roll Secondary Impact</value>
+			<value>Player Roll Grass Secondary</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{83b62285-cb84-4851-81cb-b46cc00f1da1}</destination>
+			<destination>{a4bb9e4f-371a-4210-b62e-7aa52e338edb}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{665c8d4d-ec37-412d-8c9b-eb28a66d840d}</destination>
@@ -93,7 +93,7 @@
 			<value>1.1175283446712019</value>
 		</property>
 		<property name="volume">
-			<value>-6.5</value>
+			<value>-1</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{0afdae73-fb9d-459d-b89e-beb7433f4322}</destination>
@@ -103,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{319dece2-3da3-4b17-a509-bc4a80c51a16}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -136,7 +139,11 @@
 			<destination>{1655182d-c64a-4c00-932c-7cda31d19a92}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{85be2465-fcdf-48cf-853e-760e12e0133b}" />
+	<object class="MixerBusPanner" id="{85be2465-fcdf-48cf-853e-760e12e0133b}">
+		<property name="overridingOutputFormat">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{b15feaa2-71dc-4bfa-81bf-dd6aa04d121b}" />
 	<object class="MixerBusFader" id="{1655182d-c64a-4c00-932c-7cda31d19a92}" />
 </objects>

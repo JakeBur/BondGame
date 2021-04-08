@@ -5,7 +5,7 @@
 			<value>Sword Impact Enemy</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d4c40a69-0ffa-4d74-acd6-aa294d8d02e9}</destination>
@@ -99,12 +99,6 @@
 			<destination>{5a6e5902-c434-4d71-aeff-d0c2b8c97ab4}</destination>
 			<destination>{26ea45fd-7e5e-4eb6-b0e6-b0e18b11ce39}</destination>
 		</relationship>
-		<relationship name="sounds">
-			<destination>{943658d6-2db2-42e1-84ae-336b739212ec}</destination>
-			<destination>{bd17e752-c468-4fc2-9d1e-818fcbbde42d}</destination>
-			<destination>{032b3919-62ac-4412-9147-e2f60ddf13e9}</destination>
-			<destination>{e330e2bd-7bfb-412b-b66e-e12974325248}</destination>
-		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{cf806112-300c-4875-9768-6a13b56f9ef8}">
 		<property name="name">
@@ -142,26 +136,6 @@
 		<property name="amount">
 			<value>3</value>
 		</property>
-	</object>
-	<object class="SingleSound" id="{943658d6-2db2-42e1-84ae-336b739212ec}">
-		<relationship name="audioFile">
-			<destination>{5a7b921e-83d5-4f91-8083-b8634c395cbf}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{bd17e752-c468-4fc2-9d1e-818fcbbde42d}">
-		<relationship name="audioFile">
-			<destination>{052fb522-b49f-4af3-ad6e-635253b71970}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{032b3919-62ac-4412-9147-e2f60ddf13e9}">
-		<relationship name="audioFile">
-			<destination>{65a0d43d-b609-461f-a8b5-29e45a239d23}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{e330e2bd-7bfb-412b-b66e-e12974325248}">
-		<relationship name="audioFile">
-			<destination>{d7bf52ed-111f-4635-8777-ce4131a49183}</destination>
-		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{197ed37b-c0f6-41d3-94d9-dfe35ab8e2a8}">
 		<relationship name="effects">

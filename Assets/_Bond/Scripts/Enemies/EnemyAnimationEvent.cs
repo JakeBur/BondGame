@@ -23,9 +23,9 @@ public class EnemyAnimationEvent : MonoBehaviour
        boxCollider.enabled = !boxCollider.enabled;
     }
 
-    public void PlaySlamSFX()
+    public void PlaySwipeSFX()
     {
-        enemyAnimator.PlaySlamSFX();
+        enemyAnimator.PlaySwipeSFX();
     }
     
 }

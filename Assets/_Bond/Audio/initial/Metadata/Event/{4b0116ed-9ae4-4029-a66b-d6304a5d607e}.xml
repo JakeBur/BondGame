@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{4b0116ed-9ae4-4029-a66b-d6304a5d607e}">
 		<property name="name">
-			<value>Donut Slash</value>
+			<value>Donut Swipe</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{daa92988-55ec-4dda-8f0a-1236ce42f3fa}</destination>
+			<destination>{2aa85c71-ca44-4f40-b922-8754f99680fb}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{ead91666-db62-4272-915a-682f8e79bef3}</destination>
@@ -92,6 +92,9 @@
 		<property name="length">
 			<value>2</value>
 		</property>
+		<property name="volume">
+			<value>3.5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{aeceeee8-1e60-4205-9904-53f19b80ddb2}</destination>
 			<destination>{e1eb3d2c-b7b6-4bb6-8fdb-3c3c420a3fad}</destination>
@@ -107,6 +110,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{c1862871-22d2-4351-a55a-7fc9c7208697}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -133,7 +139,7 @@
 			<value>volume</value>
 		</property>
 		<property name="amount">
-			<value>7</value>
+			<value>2</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{e1eb3d2c-b7b6-4bb6-8fdb-3c3c420a3fad}">

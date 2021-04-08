@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class AbilitySpawner : MonoBehaviour
 {
-    [FMODUnity.EventRef]
-    public string fragariaSunbeamSFX;
-    [FMODUnity.EventRef]
-    public string fragariaSporeTossSFX;
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     public void SpawnProjectile(GameObject projectile, GameObject target, float speed, float damage, bool isHoming) 
     {
@@ -27,7 +35,7 @@ public class AbilitySpawner : MonoBehaviour
 
     public void SpawnSunBeam(GameObject projectile, GameObject target, float damage, Buff debuff)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(fragariaSunbeamSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.FragariaSunbeamSFX, transform.position);
 
         var proj = Instantiate(projectile, target.transform.position, Quaternion.identity);
         proj.GetComponent<SunBeam>().setDamage(damage, debuff);
@@ -35,7 +43,7 @@ public class AbilitySpawner : MonoBehaviour
 
     public void SpawnSporeToss(GameObject projectile, float damage, Buff debuff)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(fragariaSporeTossSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.FragariaSporeTossSFX, transform.position);
 
         var proj = Instantiate(projectile, gameObject.transform.position, Quaternion.identity);
         proj.GetComponent<SporeToss>().setDamage(damage, debuff);

@@ -40,6 +40,11 @@ public class PersistentData : MonoBehaviour
     public GameObject AudioController {get; private set;}
     private GameObject audioController;
 
+    public GameObject SFXManagerPrefab;
+    public GameObject SFXManager {get; private set;}
+    private GameObject sfxManager;
+
+    [Header("LoadScreen")]
     public CanvasGroup loadScreen;
 
     public bool isGeneratorDone;
@@ -178,6 +183,23 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(AudioController);
+
+        if (SFXManager == null)
+        {
+            try
+            {
+                SFXManager = GameObject.FindGameObjectWithTag("SFXManager");
+                if (SFXManager == null)
+                {
+                    SFXManager = Instantiate(SFXManagerPrefab, Vector3.zero, Quaternion.identity);
+                }
+            }
+            catch
+            {
+                SFXManager = Instantiate(SFXManagerPrefab, Vector3.zero, Quaternion.identity);
+            }
+        }
+        MakeChild(SFXManager);
     }
 
 

@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class EnemyAnimator : MonoBehaviour
 {
     public GameObject model;
@@ -13,23 +18,22 @@ public class EnemyAnimator : MonoBehaviour
     public bool inHitstun;
     public bool inSpawn;
 
-    [FMODUnity.EventRef]
-    public string SlashSFX;
-
-    [FMODUnity.EventRef]
-    public string SpawnSFX;
-
-    [FMODUnity.EventRef]
-    public string DeathSFX;
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     private void Awake()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(SpawnSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
     }
 
     public void Death()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(DeathSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.EnemyDeathSFX, transform.position);
     }
 
     public void Move(Vector3 moveSpeed) 
@@ -67,9 +71,9 @@ public class EnemyAnimator : MonoBehaviour
         inHitstun = false;
     }
 
-    public void PlaySlamSFX()
+    public void PlaySwipeSFX()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(SlashSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.DonutSwipeSFX, transform.position);
     }
 
     public void Spawn()
