@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99478675cfc3e5742b8bea0a5e81dc98, type: 3}
   m_Name: HPTemp
   m_EditorClassIdentifier: 
-  relicName: Temp HP Buff
-  relicInfo: 
+  relicName: Zen Soul
+  relicInfo: Somehow, refreshing to the eyes.
+  relicSprite: {fileID: 21300000, guid: f126407de97be044da2bb323097a7edd, type: 3}
   playerModifiers:
-  - modifierIdentifier: max_hp
+  - modifierIdentifier: Increases Player's max HP
     modiferType: 0
     Additive: 50
     Multiplicitive: 1
-  - modifierIdentifier: curr_hp
+  - modifierIdentifier: 
     modiferType: 1
     Additive: 50
     Multiplicitive: 1

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99478675cfc3e5742b8bea0a5e81dc98, type: 3}
   m_Name: CritChance
   m_EditorClassIdentifier: 
-  relicName: crit chance
-  relicInfo: 
+  relicName: Wishful Charm
+  relicInfo: Luck of the draw
+  relicSprite: {fileID: 21300000, guid: f126407de97be044da2bb323097a7edd, type: 3}
   playerModifiers:
-  - modifierIdentifier: crit chance
+  - modifierIdentifier: Increases Player Crit Chance
     modiferType: 12
     Additive: 0
     Multiplicitive: 1.5
