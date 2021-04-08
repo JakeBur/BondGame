@@ -36,12 +36,21 @@ public class PlayerAnimator : MonoBehaviour
     *   But can only be set in here
     *   
     */
+
     public bool isAttack { get; private set; }
     public bool isAttackFollowThrough { get; private set; }
     public bool isDash { get; private set; }
     public bool isHeavyAttack { get; private set; }
     public bool isHurt { get; private set; }
     public bool isRun { get; private set; }
+
+    private int attackStatesActive = 0;
+    private float moveMagnitude = 0f;
+
+    /*
+    *   FMOD Refs
+    *
+    */
 
     [FMODUnity.EventRef]
     public string SwordSwingSFX;
@@ -51,9 +60,6 @@ public class PlayerAnimator : MonoBehaviour
     public string RollInitialSFX;
     [FMODUnity.EventRef]
     public string RollSecondarySFX;
-
-    private int attackStatesActive = 0;
-    private float moveMagnitude = 0f;
 
     void Update()
     {
@@ -70,6 +76,8 @@ public class PlayerAnimator : MonoBehaviour
     /*
     *   Animation Events
     *   Triggered in PlayerAnimationEvent.CS
+    *
+    *   Functions should be prepended by Event
     */
 
     public void EventAttackDone()
@@ -85,6 +93,8 @@ public class PlayerAnimator : MonoBehaviour
     /*
     *   State Machine Behavior Triggers
     *   Triggered by State Machine Behaviors
+    *   
+    *   Functions should be prepended by SMB
     */
 
     public void SMBAttackEnter()
