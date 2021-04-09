@@ -21,6 +21,7 @@ public class wildNoticeTrigger : MonoBehaviour
         {
             if(creature.GetComponent<CreatureAIContext>().isNoticed)
             creature.GetComponent<CreatureAIContext>().isNoticed = false;
+            creature.GetComponent<CreatureAIContext>().hasReacted = false;
         }
     }
 }

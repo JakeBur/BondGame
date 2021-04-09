@@ -47,7 +47,7 @@ public class CreatureAI : MonoBehaviour
         #endregion
 
         #region In Combat
-            BTSequence InCombat = null;
+    BTSequence InCombat = null;
 
             foreach( Personality p in personalities){
                 if(p.InCombatTree != null){
@@ -60,6 +60,7 @@ public class CreatureAI : MonoBehaviour
 
         #endregion
 
+            
         #region CREATURE ABILITIES
             BTSequence Ability = null;
             foreach( Personality p in personalities){

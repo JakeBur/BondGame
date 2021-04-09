@@ -364,7 +364,7 @@ public class VoronoiPCG : MonoBehaviour
 		possibleEnviornmentalObjectLocations.RemoveAt(0);
 		var exit = Instantiate(levelExit, new Vector3(possibleEncounterPositions[possibleEncounterPositions.Count-1].x, 0, possibleEncounterPositions[possibleEncounterPositions.Count-1].y), Quaternion.identity, Parent.transform);
 		possibleEncounterPositions.RemoveAt(possibleEncounterPositions.Count-1);
-		int tempPos = Random.Range(0,possibleEnviornmentalObjectLocations.Count);
+		int tempPos = Random.Range(0,possibleEnviornmentalObjectLocations.Count-1);
 		var shop = Instantiate(Shopkeeper, new Vector3(possibleEnviornmentalObjectLocations[tempPos].x, 0, possibleEnviornmentalObjectLocations[tempPos].y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
 		possibleEncounterPositions.RemoveAt(tempPos);
 

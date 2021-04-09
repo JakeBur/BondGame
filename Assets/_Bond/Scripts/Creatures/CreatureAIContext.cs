@@ -44,6 +44,7 @@ public class CreatureAIContext : MonoBehaviour
     public bool inCombat;
     public bool autoAttack;
     public bool enthusiasmInteracted;
+    public bool hasReacted;
 
     [Header("Misc.Numbers")]
     public float playerSpeedToScare;
@@ -57,6 +58,12 @@ public class CreatureAIContext : MonoBehaviour
     public Vector3 wildStartingLocation;
     public float stealDuration;
     public float stealTimer;
+
+    public float attention;
+    public float boredom;
+    public float tiredness;
+
+    public float meterRate;
 
 
     private int debugNumber;
@@ -103,22 +110,35 @@ public class CreatureAIContext : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if(attention > 0)
+        {
+            attention -= Time.deltaTime * meterRate;
+        }
 
+        if(boredom < 100)
+        {
+            boredom += Time.deltaTime * meterRate;
+        }
+
+        if(tiredness < 100)
+        {
+            tiredness += Time.deltaTime * meterRate;
+        }
     }
 
 
     public void doMovement(float moveSpeed){
-        rb.velocity = (creatureTransform.transform.rotation * Vector3.forward * moveSpeed);
+       //rb.velocity = (creatureTransform.transform.rotation * Vector3.forward * moveSpeed);
     }
 
-    public void doRotation(float rotationSpeed, Quaternion desiredLook) {
-        creatureTransform.rotation = Quaternion.Slerp(creatureTransform.rotation, desiredLook, Time.deltaTime * rotationSpeed); //10 is rotation speed - might want to change later
-    }
+    // public void doRotation(float rotationSpeed, Quaternion desiredLook) {
+    //     creatureTransform.rotation = Quaternion.Slerp(creatureTransform.rotation, desiredLook, Time.deltaTime * rotationSpeed); //10 is rotation speed - might want to change later
+    // }
 
-    public void doLookAt(Vector3 position){
-        creatureTransform.transform.LookAt(position, Vector3.up);
-        rb.velocity = (creatureTransform.transform.rotation * Vector3.forward * creatureStats.statManager.stats[ModiferType.MOVESPEED].modifiedValue);
-    }
+    // public void doLookAt(Vector3 position){
+    //     creatureTransform.transform.LookAt(position, Vector3.up);
+    //     rb.velocity = (creatureTransform.transform.rotation * Vector3.forward * creatureStats.statManager.stats[ModiferType.MOVESPEED].modifiedValue);
+    // }
 
 
     public void resetStealTimer() {
@@ -135,5 +155,18 @@ public class CreatureAIContext : MonoBehaviour
 
     }
 
+    public void react(Reaction _reaction)
+    {
 
+    }
+
+
+}
+
+public enum Reaction
+{
+    HAPPY,
+    SAD,
+    EXCITED,
+    SCARED
 }
