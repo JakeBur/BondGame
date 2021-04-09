@@ -14,6 +14,7 @@ public class EActionPlayDeathAnim : BTLeaf
     protected override void OnEnter()
     {
         //Play death anim
+        enemyContext.animator.Death();
     }
 
     protected override void OnExit()
@@ -23,6 +24,10 @@ public class EActionPlayDeathAnim : BTLeaf
 
     public override NodeState Evaluate() 
     {
+        if( enemyContext.animator.inDeath )
+        {
+            return NodeState.RUNNING;
+        }
         //Spawn gold
         enemyContext.dropGold();
 
