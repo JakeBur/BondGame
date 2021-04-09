@@ -29,7 +29,8 @@ public class EActionSwarmAttackPlayer : BTLeaf
         if(enemyContext.animator.inAttack)
         {
             return NodeState.RUNNING;
-        } else 
+        }
+        else 
         {
             delayTimer += Time.deltaTime;
             //Delay after attack

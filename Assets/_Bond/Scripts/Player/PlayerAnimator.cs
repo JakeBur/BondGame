@@ -39,6 +39,7 @@ public class PlayerAnimator : MonoBehaviour
     *   But can only be set in here
     *   
     */
+
     public bool isAttack { get; private set; }
     public bool isAttackFollowThrough { get; private set; }
     public bool isDash { get; private set; }
@@ -72,6 +73,8 @@ public class PlayerAnimator : MonoBehaviour
     /*
     *   Animation Events
     *   Triggered in PlayerAnimationEvent.CS
+    *
+    *   Functions should be prepended by Event
     */
 
     public void EventAttackDone()
@@ -87,6 +90,8 @@ public class PlayerAnimator : MonoBehaviour
     /*
     *   State Machine Behavior Triggers
     *   Triggered by State Machine Behaviors
+    *   
+    *   Functions should be prepended by SMB
     */
 
     public void SMBAttackEnter()
