@@ -45,6 +45,8 @@ public class PersistentData : MonoBehaviour
     public GameObject SFXManager {get; private set;}
     private GameObject sfxManager;
 
+    private AudioSettings audioSettings;
+
     [Header("LoadScreen")]
     public CanvasGroup loadScreen;
 
@@ -53,7 +55,7 @@ public class PersistentData : MonoBehaviour
     public List<RelicStats> availableRelics;
 
     [Header("InputActionAsset")]
-    public InputActionAsset playerInputs;
+    public PlayerInput playerInputs;
 
 
     private void OnApplicationQuit()
@@ -61,6 +63,8 @@ public class PersistentData : MonoBehaviour
         //------------------------------------------------
         // saves PlayerPrefs for next application launch
         //------------------------------------------------
+        audioSettings.SaveVolumesOnQuit();
+        SaveControls();
         PlayerPrefs.Save();
     }
 
@@ -98,7 +102,9 @@ public class PersistentData : MonoBehaviour
             
         }
         Camera.main.GetComponent<CamFollow>().toFollow = Player.transform;
-        LoadControls();
+
+        playerInputs = Player.GetComponent<PlayerInput>();
+        //LoadControls();
 
 
         if(ShopRelicUI == null)
@@ -212,6 +218,11 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(SFXManager);
+
+        var settings = PauseMenu.transform.Find("Settings");
+        var backdrop = settings.Find("backdrop");
+        audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
+        audioSettings.LoadVolumesOnStart();
     }
 
 
@@ -385,7 +396,7 @@ public class PersistentData : MonoBehaviour
 
     public void SaveControls()
     {
-        string bindings = playerInputs.ToJson();
+        string bindings = playerInputs.actions.ToJson();
         PlayerPrefs.SetString("Bindings", bindings);
     }
 
@@ -395,10 +406,9 @@ public class PersistentData : MonoBehaviour
 
         if (string.IsNullOrEmpty(bindings))
         {
-            Debug.Log("a");
             return;
         }
-
-        playerInputs.LoadFromJson(bindings);
+    
+        playerInputs.actions.LoadFromJson(bindings);
     }
 }

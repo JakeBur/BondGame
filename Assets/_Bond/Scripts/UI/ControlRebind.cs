@@ -7,7 +7,7 @@ using TMPro;
 
 public class ControlRebind : MonoBehaviour
 {
-    private InputActionAsset Actions
+    private PlayerInput playerInput
     {
         get => PersistentData.Instance.playerInputs;
     }
@@ -24,18 +24,18 @@ public class ControlRebind : MonoBehaviour
         //-----------------------------------------
         for (int i = 0; i < 10; ++i)
         {
-            PersistentData.Instance.LoadControls();
             if (i < 4)
             {
-                InputAction actionBind = Actions.FindAction("movement");
+                InputAction actionBind = playerInput.actions.FindAction("movement");
 
                 string direction = ActionsList[i];
-                var bindingIndex = actionBind.bindings.IndexOf(x => x.isPartOfComposite && x.name == direction);
-                Debug.Log(bindingIndex);
+                var binding = actionBind.bindings[i + 1];
+                string displayString = binding.ToDisplayString();
+                KeyText[i].text = displayString.Substring(1, displayString.Length - 2);
             }
             else
             {
-                InputAction actionBind = Actions.FindAction(ActionsList[i]);
+                InputAction actionBind = playerInput.actions.FindAction(ActionsList[i]);
                 KeyText[i].text = actionBind.GetBindingDisplayString();
             }
         }
@@ -53,24 +53,6 @@ public class ControlRebind : MonoBehaviour
                 RebindOperation.Dispose();
             }
         }
-
-        PersistentData.Instance.SaveControls();
-    }
-
-    private void OnApplicationQuit()
-    {
-        //-------------------------------------------------------------
-        // check if a rebind operation is still active and dispose it
-        //-------------------------------------------------------------
-        if(RebindOperation != null)
-        {
-            if(RebindOperation.started)
-            {
-                RebindOperation.Dispose();
-            }
-        }
-
-        PersistentData.Instance.SaveControls();
     }
 
     public void RemapControl(int index)
@@ -78,7 +60,7 @@ public class ControlRebind : MonoBehaviour
         //----------------------------------------------
         // find the operation to rebind and disable it
         //----------------------------------------------
-        InputAction actionToRebind = Actions.FindAction(ActionsList[index]);
+        InputAction actionToRebind = playerInput.actions.FindAction(ActionsList[index]);
         actionToRebind.Disable();
         KeyButton[index].interactable = false;
 
@@ -130,7 +112,7 @@ public class ControlRebind : MonoBehaviour
 
     private void UpdateButton(int index, string currButton, string currButtonDisplay)
     {
-        InputAction keyToUpdate = Actions.FindAction(ActionsList[index]);
+        InputAction keyToUpdate = playerInput.actions.FindAction(ActionsList[index]);
 
         //-------------------------------------------------
         // prevent a key from binding to multiple actions

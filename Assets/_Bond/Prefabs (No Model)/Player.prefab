@@ -9930,8 +9930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
-  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!1 &3008331728745216815
 GameObject:
   m_ObjectHideFlags: 0
@@ -10131,8 +10129,6 @@ MonoBehaviour:
   isHit: 0
   attackDestination: {x: 0, y: 0, z: 0}
   attackMoveVec: {x: 0, y: 0, z: 0}
-  menuOpenSFX: event:/Sound Effects/SFX/UI SFX/Menu Open
-  swapSFX: event:/Sound Effects/SFX/Creature Swap
   hitBoxes:
     slash0: {fileID: 7819646080185911571}
     slash1: {fileID: 3008331728240645142}
@@ -10260,10 +10256,6 @@ MonoBehaviour:
     - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
     - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
     - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
-  SwordSwingSFX: event:/Sound Effects/SFX/Player SFX/New Sword Swing
-  WalkSFX: event:/Sound Effects/SFX/New Walking Grass 2D
-  RollInitialSFX: event:/Sound Effects/SFX/Roll/Roll Initial Impact
-  RollSecondarySFX: event:/Sound Effects/SFX/Roll/Roll Secondary Impact
 --- !u!114 &2139760117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15288,8 +15280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
-  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!135 &6779507019818856298
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15498,8 +15488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f0ec0a85a858419275ce081266d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlashHitSFX: event:/Sound Effects/SFX/Player SFX/New Sword Impact Enemy
-  CritSFX: event:/Sound Effects/SFX/Player SFX/New Sword Crit
 --- !u!1001 &7956414748827326611
 PrefabInstance:
   m_ObjectHideFlags: 0

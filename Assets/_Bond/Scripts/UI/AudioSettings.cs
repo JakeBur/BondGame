@@ -24,30 +24,9 @@ public class AudioSettings : MonoBehaviour
     private float musicVolume = 1f;
     private float sfxVolume = 1f;
 
-    private void Awake()
+    private void Start()
     {
-        Master = Audio.GetBus("bus:/Master");
-        Music = Audio.GetBus("bus:/Master/Music");
-        SFX = Audio.GetBus("bus:/Master/SFX");
-
-        if (_masterSlider == null)
-        {
-            _masterSlider = masterSlider.GetComponent<Slider>();
-        }
-
-        if (_musicSlider == null)
-        {
-            _musicSlider = musicSlider.GetComponent<Slider>();
-        }
-
-        if (_sfxSlider == null)
-        {
-            _sfxSlider = sfxSlider.GetComponent<Slider>();
-        }
-
-        _masterSlider.value = masterVolume;
-        _musicSlider.value = musicVolume;
-        _sfxSlider.value = sfxVolume;
+        LoadVolumes();
     }
 
     private void OnEnable()
@@ -91,6 +70,31 @@ public class AudioSettings : MonoBehaviour
 
     private void LoadVolumes()
     {
+        //--------------------------------
+        // set buses and sliders if null
+        //--------------------------------
+        Master = Audio.GetBus("bus:/Master");
+        Music = Audio.GetBus("bus:/Master/Music");
+        SFX = Audio.GetBus("bus:/Master/SFX");
+        
+        if (_masterSlider == null)
+        {
+            _masterSlider = masterSlider.GetComponent<Slider>();
+        }
+
+        if (_musicSlider == null)
+        {
+            _musicSlider = musicSlider.GetComponent<Slider>();
+        }
+
+        if (_sfxSlider == null)
+        {
+            _sfxSlider = sfxSlider.GetComponent<Slider>();
+        }
+
+        //--------------------------------------
+        // load audio volumes from PlayerPrefs
+        //--------------------------------------
         masterVolume = PlayerPrefs.GetFloat("Master Volume", 1f);
         musicVolume = PlayerPrefs.GetFloat("Music Volume", 1f);
         sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 1f);
@@ -98,5 +102,19 @@ public class AudioSettings : MonoBehaviour
         _masterSlider.value = masterVolume;
         _musicSlider.value = musicVolume;
         _sfxSlider.value = sfxVolume;
+
+        Master.setVolume(masterVolume);
+        Music.setVolume(musicVolume);
+        SFX.setVolume(sfxVolume);
+    }
+
+    public void LoadVolumesOnStart()
+    {
+        LoadVolumes();
+    }
+
+    public void SaveVolumesOnQuit()
+    {
+        SaveVolumes();
     }
 }
