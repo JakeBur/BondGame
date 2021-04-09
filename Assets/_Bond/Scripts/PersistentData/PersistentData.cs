@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PersistentData : MonoBehaviour
 {
@@ -51,6 +52,17 @@ public class PersistentData : MonoBehaviour
 
     public List<RelicStats> availableRelics;
 
+    [Header("InputActionAsset")]
+    public InputActionAsset playerInputs;
+
+
+    private void OnApplicationQuit()
+    {
+        //------------------------------------------------
+        // saves PlayerPrefs for next application launch
+        //------------------------------------------------
+        PlayerPrefs.Save();
+    }
 
     private void Awake() 
     {
@@ -86,7 +98,7 @@ public class PersistentData : MonoBehaviour
             
         }
         Camera.main.GetComponent<CamFollow>().toFollow = Player.transform;
-
+        LoadControls();
 
 
         if(ShopRelicUI == null)
@@ -369,5 +381,24 @@ public class PersistentData : MonoBehaviour
             yield return null;
         }
         loadScreen.alpha = 0;
+    }
+
+    public void SaveControls()
+    {
+        string bindings = playerInputs.ToJson();
+        PlayerPrefs.SetString("Bindings", bindings);
+    }
+
+    public void LoadControls()
+    {
+        string bindings = PlayerPrefs.GetString("Bindings", string.Empty);
+
+        if (string.IsNullOrEmpty(bindings))
+        {
+            Debug.Log("a");
+            return;
+        }
+
+        playerInputs.LoadFromJson(bindings);
     }
 }

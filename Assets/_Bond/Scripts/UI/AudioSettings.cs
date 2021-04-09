@@ -50,6 +50,16 @@ public class AudioSettings : MonoBehaviour
         _sfxSlider.value = sfxVolume;
     }
 
+    private void OnEnable()
+    {
+        LoadVolumes();
+    }
+
+    private void OnDisable()
+    {
+        SaveVolumes();
+    }
+
     private void Update()
     {
         Master.setVolume(masterVolume);
@@ -60,18 +70,33 @@ public class AudioSettings : MonoBehaviour
     public void SetMasterVolume(float newVolume)
     {
         masterVolume = newVolume;
-        Debug.Log("a");
     }
 
     public void SetMusicVolume(float newVolume)
     {
         musicVolume = newVolume;
-        Debug.Log("b");
     }
 
     public void SetSFXVolume(float newVolume)
     {
         sfxVolume = newVolume;
-        Debug.Log("c");
+    }
+
+    private void SaveVolumes()
+    {
+        PlayerPrefs.SetFloat("Master Volume", masterVolume);
+        PlayerPrefs.SetFloat("Music Volume", musicVolume);
+        PlayerPrefs.SetFloat("SFX Volume", sfxVolume);
+    }
+
+    private void LoadVolumes()
+    {
+        masterVolume = PlayerPrefs.GetFloat("Master Volume", 1f);
+        musicVolume = PlayerPrefs.GetFloat("Music Volume", 1f);
+        sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 1f);
+
+        _masterSlider.value = masterVolume;
+        _musicSlider.value = musicVolume;
+        _sfxSlider.value = sfxVolume;
     }
 }
