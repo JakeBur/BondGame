@@ -12,7 +12,7 @@ public class EnemyAnimationEvent : MonoBehaviour
     {
        boxCollider.enabled = !boxCollider.enabled;
     }
-
+    
     public void PlayAttackSFX()
     {
         enemyAnimator.EventPlayAttackSFX();

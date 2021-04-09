@@ -4,13 +4,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class CreatureAnimator : MonoBehaviour
 {
     public GameObject model;
     public Animator animator => model.GetComponent<Animator>();
 
-    [FMODUnity.EventRef]
-    public string WalkSFX;
+    //----------
+    //for FMOD
+    //----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     public void Move(Vector3 moveSpeed) 
     {
@@ -65,6 +75,6 @@ public class CreatureAnimator : MonoBehaviour
 
     public void PlayWalkSFX()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(WalkSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.Misc3DWalkGrassSFX, transform.position);
     }
 }

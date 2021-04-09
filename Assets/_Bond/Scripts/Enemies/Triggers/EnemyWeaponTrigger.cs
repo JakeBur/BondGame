@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class EnemyWeaponTrigger : MonoBehaviour
 {
     [SerializeField]
@@ -9,8 +14,13 @@ public class EnemyWeaponTrigger : MonoBehaviour
 
     //public BoxCollider hitbox => gameObject.GetComponent<BoxCollider>();
 
-    [FMODUnity.EventRef]
-    public string playerHitSlashSFX;
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player")
@@ -19,7 +29,7 @@ public class EnemyWeaponTrigger : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().DeathCheck();
             other.GetComponent<PlayerController>().isHit = true;
 
-            FMODUnity.RuntimeManager.PlayOneShot(playerHitSlashSFX, transform.position);
+            SFXPlayer.PlayOneShot(SFX.PlayerDamagedDonutSFX, transform.position);
         }
         else if(other.gameObject.tag == "CaptCreature")
         {

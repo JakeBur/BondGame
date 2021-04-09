@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="DataFile" id="{fbf9e2d3-5346-4a7e-a3ca-0943340bdc27}">
+		<property name="assetPath">
+			<value>LEGACY/Sword Impact Enemy/sword_impact3.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46d66588-5640-4915-9ffe-128a7334e5da}</destination>
+		</relationship>
+	</object>
+</objects>

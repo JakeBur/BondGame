@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class UiFunctions : MonoBehaviour
 {
-
-    [FMODUnity.EventRef]
-    public string buttonClickSFX;
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     public void PlayClickSFX()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(buttonClickSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.ButtonClickSFX, transform.position);
     }
 
     public void TransitionScene(int index)

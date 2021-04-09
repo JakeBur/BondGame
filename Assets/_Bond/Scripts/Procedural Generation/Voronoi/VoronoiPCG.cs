@@ -42,6 +42,7 @@ public class VoronoiPCG : MonoBehaviour
 	[Header("Stuff To Spawn")]
 	public GameObject playerSpawnPoint;
 	public GameObject levelExit;
+	public GameObject Shopkeeper;
 	
 	public int numberOfCombat;
 	public int numberOfCombatIndicators;
@@ -363,6 +364,9 @@ public class VoronoiPCG : MonoBehaviour
 		possibleEnviornmentalObjectLocations.RemoveAt(0);
 		var exit = Instantiate(levelExit, new Vector3(possibleEncounterPositions[possibleEncounterPositions.Count-1].x, 0, possibleEncounterPositions[possibleEncounterPositions.Count-1].y), Quaternion.identity, Parent.transform);
 		possibleEncounterPositions.RemoveAt(possibleEncounterPositions.Count-1);
+		int tempPos = Random.Range(0,possibleEnviornmentalObjectLocations.Count);
+		var shop = Instantiate(Shopkeeper, new Vector3(possibleEnviornmentalObjectLocations[tempPos].x, 0, possibleEnviornmentalObjectLocations[tempPos].y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
+		possibleEncounterPositions.RemoveAt(tempPos);
 
 		//place random encounters on centerpoints of coarse cells
 		coarseVisitedCells.Sort((x,y)=> x.size.CompareTo(y.size));
@@ -371,6 +375,8 @@ public class VoronoiPCG : MonoBehaviour
 		List<GameObject> placedEncounters = new List<GameObject>();
 		placedEncounters.Add(spawnPoint);
 		placedEncounters.Add(exit);
+
+		
 
 		//Loop to place combat encounters
 		for(int i = 0; i < numberOfCombat; i++)

@@ -17,7 +17,13 @@ public class PlayerInteractRadius : MonoBehaviour
             {
                 PersistentData.Instance.UI.GetComponent<UIUpdates>().showInteractPrompt();
             }
-            
+        }
+        if(other.transform.tag == "Relic")
+        {
+            pc.interactableObjects.Add(other.gameObject, other.gameObject.GetComponent<InteractableBase>());
+            PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(other.gameObject.GetComponent<RelicInteractable>().relicStats,
+                                                                                     other.gameObject.GetComponent<RelicInteractable>().cost);
+            PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
         }
     }
 
@@ -37,6 +43,16 @@ public class PlayerInteractRadius : MonoBehaviour
                 pc.characterDialogManager = null;
                 pc.inCharacterDialog = false;
             }
+        }
+        if(other.transform.tag == "Relic")
+        {
+            pc.interactableObjects.Remove(other.gameObject);
+            if(pc.interactableObjects.Count == 0)
+            {
+                PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
+            }
+
+            PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
         }
     }
 }

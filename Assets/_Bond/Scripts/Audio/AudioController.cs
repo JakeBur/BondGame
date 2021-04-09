@@ -6,14 +6,12 @@ public class AudioController : MonoBehaviour
 {
     public FMODUnity.StudioEventEmitter masterMusicEvent;
     public FMODUnity.StudioEventEmitter ambientNoiseEvent;
-    private IEnumerator fanfareEnd;
     private float waitTime;
 
     private void Start()
     {
-        fanfareEnd = EndCombatMusicFanfare();
         //wait for one bar before resetting Game State
-        waitTime = 4f / 136f;
+        waitTime = 4f/ 118f * 60f;
     }
 
     private void Update()
@@ -36,12 +34,13 @@ public class AudioController : MonoBehaviour
         masterMusicEvent.SetParameter("Game State", 2);
     }
 
-    public void BeginCombatMusicFanfare()
+    public void BeginCombatMusicOutro()
     {
         masterMusicEvent.SetParameter("Game State", 3);
+        StartCoroutine(EndCombatMusicOutro());
     }
 
-    private IEnumerator EndCombatMusicFanfare()
+    private IEnumerator EndCombatMusicOutro()
     {
         yield return new WaitForSeconds(waitTime);
         masterMusicEvent.SetParameter("Game State", 1);
