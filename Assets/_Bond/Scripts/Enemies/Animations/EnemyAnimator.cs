@@ -27,19 +27,14 @@ public class EnemyAnimator : MonoBehaviour
     *   FMOD Refs
     *
     */
-
-    [FMODUnity.EventRef]
-    public string SlashSFX;
-
-    [FMODUnity.EventRef]
-    public string SpawnSFX;
-
-    [FMODUnity.EventRef]
-    public string DeathSFX;
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     private void Awake()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(SpawnSFX, transform.position);
+        SFXPlayer.PlayOneShot(SpawnSFX, transform.position);
     }
 
     /*
@@ -51,7 +46,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public void EventPlayAttackSFX()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(SlashSFX, transform.position);
+        SFXPlayer.PlayOneShot(SlashSFX, transform.position);
     }
 
     /*
@@ -120,7 +115,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public void Death()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(DeathSFX, transform.position);
+        SFXPlayer.PlayOneShot(DeathSFX, transform.position);
     }
 
 }
