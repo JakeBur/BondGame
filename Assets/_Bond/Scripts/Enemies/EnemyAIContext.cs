@@ -42,6 +42,8 @@ public class EnemyAIContext : MonoBehaviour
     public float attackCD;
     public float retreatDist;
 
+    public float hitstunDuration;
+
     public float movementSpeed;
     #endregion
 

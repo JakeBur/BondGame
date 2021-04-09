@@ -5,17 +5,25 @@ using UnityEngine;
 public class EnemyAnimationEvent : MonoBehaviour
 {
     private EnemyAnimator enemyAnimator => transform.parent.GetComponent<EnemyAnimator>();
-    public GameObject hitbox;
-    public BoxCollider boxCollider => hitbox.GetComponent<BoxCollider>();
 
-    public void ColliderOnOff()
+    public void ColliderOn()
     {
-       boxCollider.enabled = !boxCollider.enabled;
+        enemyAnimator.EventColliderOn();
     }
-    
+
+    public void ColliderOff()
+    {
+        enemyAnimator.EventColliderOff();
+    }
+
     public void PlayAttackSFX()
     {
         enemyAnimator.EventPlayAttackSFX();
+    }
+
+    public void DeathDone()
+    {
+        enemyAnimator.EventDeathDone();
     }
     
 }

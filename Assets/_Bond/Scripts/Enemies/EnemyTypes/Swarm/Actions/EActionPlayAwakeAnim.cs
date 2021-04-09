@@ -14,9 +14,7 @@ public class EActionPlayAwakeAnim : BTLeaf
 
     protected override void OnEnter()
     {
-
-        
-        //enemyContext.animator.Spawn(); //uncomment once finished
+        enemyContext.animator.Spawn();
         enemyContext.attackCD = Random.Range(1, enemyContext.EncounterManager.currEnemyCount);
     }
 
@@ -27,11 +25,10 @@ public class EActionPlayAwakeAnim : BTLeaf
 
     public override NodeState Evaluate() 
     {
-        // FOR HERMAN
-        // if(enemyContext.animator.inSpawn)
-        // {
-        //     return NodeState.RUNNING;
-        // }
+        if(enemyContext.animator.inSpawn)
+        {
+             return NodeState.RUNNING;
+        }
         OnParentExit();
         return NodeState.SUCCESS;
     }

@@ -68,10 +68,11 @@ public class EnemyAI : MonoBehaviour
         #region PLAYER NOTICED FIRST TIME
             List<BTNode> firstNoticedList = new List<BTNode>();
             EActionPlayAwakeAnim playAwakeAnim = new EActionPlayAwakeAnim("Play Awake Anim", context); //Anim when seeing player for first time
-            BTSucceeder succeeder = new BTSucceeder("Anim Succeeder", playAwakeAnim); //Always make anim succeed
+            //BTSucceeder succeeder = new BTSucceeder("Anim Succeeder", playAwakeAnim); //Always make anim succeed
             ECheckPlayerNoticedBefore playerNoticedBefore = new ECheckPlayerNoticedBefore("Player Noticed Before", context);
             firstNoticedList.Add(playerNoticedBefore);
-            firstNoticedList.Add(succeeder);
+            //firstNoticedList.Add(succeeder);
+            firstNoticedList.Add(playAwakeAnim);
             BTSequence firstNoticeSequence = new BTSequence("First Notice Sequence", firstNoticedList);
         #endregion
 

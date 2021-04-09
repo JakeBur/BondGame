@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EActionPlayHitstunAnim : BTLeaf
 {
+    float stunTimer = 0;
+
     public EActionPlayHitstunAnim(string _name, EnemyAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,6 +16,7 @@ public class EActionPlayHitstunAnim : BTLeaf
     {
         if(enemyContext.lastDamageTaken > 25)
         {
+            stunTimer = 0;
             //Play hitstun anim
             enemyContext.animator.Hitstun();
         }
@@ -21,20 +24,23 @@ public class EActionPlayHitstunAnim : BTLeaf
 
     protected override void OnExit()
     {
-        
+        stunTimer = 0;
     }
 
     public override NodeState Evaluate() 
     {
+        stunTimer += Time.deltaTime;
         // return NodeState.SUCCESS;
-        if(enemyContext.animator.inHitstun)
-        {
-            return NodeState.RUNNING;
-        } else 
+        if( stunTimer >= enemyContext.hitstunDuration )
         {
             enemyContext.tookDamage = false;
             OnParentExit();
+            enemyContext.animator.HitstunDone();
             return NodeState.SUCCESS;
+        }
+        else 
+        {
+            return NodeState.RUNNING;
         }
     }
 }

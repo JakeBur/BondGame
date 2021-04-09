@@ -1,12 +1,17 @@
-﻿// Jake
+﻿// Herman
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using SFXPlayer = FMODUnity.RuntimeManager;
 
 public class EnemyAnimator : MonoBehaviour
 {
     public GameObject model;
     private Animator animator => model.GetComponent<Animator>();
+
+    public GameObject hitbox;
+    public BoxCollider boxCollider => hitbox.GetComponent<BoxCollider>();
 
     /*
     *   Constants
@@ -14,27 +19,21 @@ public class EnemyAnimator : MonoBehaviour
     *
     *   Public constants Can be read by other scripts
     *   But can only be set in here
-    *   
     */
 
     public bool inAttack { get; private set; }
     public bool inHitstun { get; private set; }
     public bool inSpawn { get; private set; }
+    public bool inDeath { get; private set; }
 
     private int attackStatesActive = 0;
 
     /*
     *   FMOD Refs
-    *
     */
     private SFXManager SFX
     {
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
-    }
-
-    private void Awake()
-    {
-        SFXPlayer.PlayOneShot(SpawnSFX, transform.position);
     }
 
     /*
@@ -46,7 +45,22 @@ public class EnemyAnimator : MonoBehaviour
 
     public void EventPlayAttackSFX()
     {
-        SFXPlayer.PlayOneShot(SlashSFX, transform.position);
+        SFXPlayer.PlayOneShot(SFX.DonutSwipeSFX, transform.position);
+    }
+
+    public void EventColliderOn()
+    {
+        boxCollider.enabled = true;
+    }
+
+    public void EventColliderOff()
+    {
+        boxCollider.enabled = false;
+    }
+
+    public void EventDeathDone()
+    {
+        inDeath = false;
     }
 
     /*
@@ -72,6 +86,7 @@ public class EnemyAnimator : MonoBehaviour
         if( attackStatesActive < 1 )
         {
             inAttack = false;
+            boxCollider.enabled = false;
         }
     }
 
@@ -84,13 +99,15 @@ public class EnemyAnimator : MonoBehaviour
     public void Spawn()
     {
         animator.SetTrigger( "Spawn" );
+        SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
+
         inSpawn = true;
     }
 
-    public void Move(Vector3 moveSpeed) 
+    public void Move( Vector3 moveVector ) 
     {
-        Vector3 moveUnitVec = moveSpeed.Normalize();
-        animator.SetFloat( "MoveVelocity", moveSpeed.magnitude );
+        Vector3 moveUnitVec = moveVector.normalized;
+        animator.SetFloat( "MoveVelocity", moveVector.magnitude );
         animator.SetFloat( "MoveX", moveUnitVec[0] );
         animator.SetFloat( "MoveY", moveUnitVec[1] );
     }
@@ -101,8 +118,14 @@ public class EnemyAnimator : MonoBehaviour
         inAttack = true;
     }
 
+    public void ColliderOnOff()
+    {
+       boxCollider.enabled = !boxCollider.enabled;
+    }
+
     public void Hitstun()
     {
+        animator.SetTrigger( "HurtStunTrigger" );
         animator.SetBool( "HurtStun", true );
         inHitstun = true;
     }
@@ -115,7 +138,9 @@ public class EnemyAnimator : MonoBehaviour
 
     public void Death()
     {
-        SFXPlayer.PlayOneShot(DeathSFX, transform.position);
+        animator.SetTrigger( "Death" );
+        SFXPlayer.PlayOneShot(SFX.EnemyDeathSFX, transform.position);
+        inDeath = true;
     }
 
 }
