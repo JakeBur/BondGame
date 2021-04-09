@@ -1573,7 +1573,7 @@ PrefabInstance:
     - target: {fileID: 1079554487012967000, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemapControl
+      value: RemapControlComposite
       objectReference: {fileID: 0}
     - target: {fileID: 1079554487012967000, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
@@ -1748,7 +1748,7 @@ PrefabInstance:
     - target: {fileID: 2179168876085040477, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemapControl
+      value: RemapControlComposite
       objectReference: {fileID: 0}
     - target: {fileID: 2179168876085040477, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
@@ -1828,7 +1828,7 @@ PrefabInstance:
     - target: {fileID: 2643940263939303580, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemapControl
+      value: RemapControlComposite
       objectReference: {fileID: 0}
     - target: {fileID: 2643940263939303580, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
@@ -2500,6 +2500,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8452791767001026802, guid: 26f3023a54df5094d87c22b12c50d069,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6988978097916814267}
+    - target: {fileID: 8452791767001026802, guid: 26f3023a54df5094d87c22b12c50d069,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayClickSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452791767001026802, guid: 26f3023a54df5094d87c22b12c50d069,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8452791767001026803, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2768,7 +2783,7 @@ PrefabInstance:
     - target: {fileID: 8739288126205429173, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemapControl
+      value: RemapControlComposite
       objectReference: {fileID: 0}
     - target: {fileID: 8739288126205429173, guid: 26f3023a54df5094d87c22b12c50d069,
         type: 3}
