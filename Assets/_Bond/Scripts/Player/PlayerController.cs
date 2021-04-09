@@ -100,6 +100,9 @@ public class PlayerController : MonoBehaviour
     public Vector3 attackDestination;
     public Vector3 attackMoveVec;
 
+    [Header("PlayerInputs")]
+    public PlayerInput playerInputs;
+
     //-----------
     // for FMOD
     //-----------
@@ -449,12 +452,14 @@ public class PlayerController : MonoBehaviour
         {
             canvas.enabled = false;
             Time.timeScale = 1;
+            playerInputs.SwitchCurrentActionMap("Player");
         }
         // Pause
         else 
         {   
             canvas.enabled = true;
             Time.timeScale = 0f;
+            playerInputs.SwitchCurrentActionMap("Menu");
         }
 
         SFXPlayer.PlayOneShot(SFX.MenuOpenSFX, transform.position);

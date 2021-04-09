@@ -10129,6 +10129,7 @@ MonoBehaviour:
   isHit: 0
   attackDestination: {x: 0, y: 0, z: 0}
   attackMoveVec: {x: 0, y: 0, z: 0}
+  playerInputs: {fileID: 3008331729029387138}
   hitBoxes:
     slash0: {fileID: 7819646080185911571}
     slash1: {fileID: 3008331728240645142}
