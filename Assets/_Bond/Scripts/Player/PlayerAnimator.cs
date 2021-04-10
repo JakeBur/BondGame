@@ -249,9 +249,12 @@ public class PlayerAnimator : MonoBehaviour
             Debug.LogError($"Slash VFX prefab #{animationIndex} does not exist");
             return;
         }
-        GameObject slash = Instantiate(vfxData.slashes[animationIndex], transform.position, Quaternion.identity);
+
+        Vector3 pos = transform.position + new Vector3(0,1,0);
+
+        GameObject slash = Instantiate(vfxData.slashes[animationIndex], pos , Quaternion.identity);
         //slash.transform.LookAt(transform.forward);
-        slash.transform.LookAt(transform.position + transform.forward);
+        slash.transform.LookAt(pos + transform.forward);
     }
 
     // SOUND FX
