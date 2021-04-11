@@ -19,6 +19,8 @@ public class PersistentData : MonoBehaviour
     public GameObject UIPrefab;
     public GameObject UI { get; private set; }
     private GameObject ui;
+    [SerializeField]
+    private bool displayUI = true;
 
     [Header("PauseReference")]
     public GameObject PauseMenuPrefab;
@@ -119,11 +121,13 @@ public class PersistentData : MonoBehaviour
                 if(UI == null)
                 {
                     UI = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
+                    UI.SetActive( displayUI );
                 }
             }
             catch
             {
                 UI = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
+                UI.SetActive( displayUI );
             }
             
         }

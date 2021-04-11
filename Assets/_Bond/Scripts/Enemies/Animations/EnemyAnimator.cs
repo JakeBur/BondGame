@@ -27,6 +27,7 @@ public class EnemyAnimator : MonoBehaviour
     public bool inDeath { get; private set; }
 
     private int attackStatesActive = 0;
+    private float prevSpeed = 1;
 
     /*
     *   FMOD Refs
@@ -95,6 +96,17 @@ public class EnemyAnimator : MonoBehaviour
     *   Modifies the constants
     *   Called by the BT nodes
     */
+
+    public void Pause()
+    {
+        prevSpeed = animator.speed;
+        animator.speed = 0;
+    }
+
+    public void Play()
+    {
+        animator.speed = prevSpeed;
+    }
 
     public void Spawn()
     {
