@@ -5,7 +5,7 @@
 			<value>Fragaria</value>
 		</property>
 		<relationship name="folder">
-			<destination>{2840519f-aa82-4e96-bdbe-00a6bf62e813}</destination>
+			<destination>{4c73689a-6cd6-4ab3-bf50-9c507a9b9840}</destination>
 		</relationship>
 	</object>
 </objects>

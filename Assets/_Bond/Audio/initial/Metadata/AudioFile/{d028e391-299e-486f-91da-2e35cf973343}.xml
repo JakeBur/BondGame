@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{d028e391-299e-486f-91da-2e35cf973343}">
 		<property name="assetPath">
-			<value>Music/Combat Music/SnareIntro.wav</value>
+			<value>LEGACY/Old Combat Music/SnareIntro.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{d3b665a6-dcab-4f79-bc99-8bf66f3a4042}">
 		<property name="assetPath">
-			<value>Music/Combat Music/BassDrum.wav</value>
+			<value>LEGACY/Old Combat Music/BassDrum.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

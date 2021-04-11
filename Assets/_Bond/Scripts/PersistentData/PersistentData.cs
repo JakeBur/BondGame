@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PersistentData : MonoBehaviour
 {
@@ -30,15 +31,42 @@ public class PersistentData : MonoBehaviour
     public GameObject StatUI { get; private set;}
     private GameObject statUI;
 
+    [Header("ShopRelicUIReference")]
+    public GameObject ShopRelicUIPrefab;
+    public GameObject ShopRelicUI { get; private set;}
+    private GameObject shopRelicUI;
+
     [Header("AudioReference")]
     public GameObject AudioControllerPrefab;
     public GameObject AudioController {get; private set;}
     private GameObject audioController;
 
+    public GameObject SFXManagerPrefab;
+    public GameObject SFXManager {get; private set;}
+    private GameObject sfxManager;
+
+    private AudioSettings audioSettings;
+
+    [Header("LoadScreen")]
     public CanvasGroup loadScreen;
 
     public bool isGeneratorDone;
 
+    public List<RelicStats> availableRelics;
+
+    [Header("InputActionAsset")]
+    public PlayerInput playerInputs;
+
+
+    private void OnApplicationQuit()
+    {
+        //------------------------------------------------
+        // saves PlayerPrefs for next application launch
+        //------------------------------------------------
+        audioSettings.SaveVolumesOnQuit();
+        SaveControls();
+        PlayerPrefs.Save();
+    }
 
     private void Awake() 
     {
@@ -74,6 +102,30 @@ public class PersistentData : MonoBehaviour
             
         }
         Camera.main.GetComponent<CamFollow>().toFollow = Player.transform;
+
+        playerInputs = Player.GetComponent<PlayerInput>();
+        //LoadControls();
+
+
+        if(ShopRelicUI == null)
+        {
+            try
+            {
+                ShopRelicUI = GameObject.FindGameObjectWithTag("ShopRelicUI");
+                if(ShopRelicUI == null)
+                {
+                    ShopRelicUI = Instantiate(ShopRelicUIPrefab, Vector3.zero, Quaternion.identity);
+                    ShopRelicUI.SetActive(false);
+                }
+                
+            }
+            catch
+            {
+                ShopRelicUI = Instantiate(ShopRelicUIPrefab, Vector3.zero, Quaternion.identity);
+                ShopRelicUI.SetActive(false);
+            }
+            
+        }
 
 
 
@@ -149,6 +201,28 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(AudioController);
+
+        if (SFXManager == null)
+        {
+            try
+            {
+                SFXManager = GameObject.FindGameObjectWithTag("SFXManager");
+                if (SFXManager == null)
+                {
+                    SFXManager = Instantiate(SFXManagerPrefab, Vector3.zero, Quaternion.identity);
+                }
+            }
+            catch
+            {
+                SFXManager = Instantiate(SFXManagerPrefab, Vector3.zero, Quaternion.identity);
+            }
+        }
+        MakeChild(SFXManager);
+
+        var settings = PauseMenu.transform.Find("Settings");
+        var backdrop = settings.Find("backdrop");
+        audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
+        audioSettings.LoadVolumesOnStart();
     }
 
 
@@ -183,6 +257,7 @@ public class PersistentData : MonoBehaviour
         MakeChild(UI);
         MakeChild(PauseMenu);
         MakeChild(StatUI);
+        MakeChild(ShopRelicUI);
         //Loading Scene, can make transition stuff here
          //for example, some screen fading stuff : 
             //transition OUT
@@ -204,6 +279,7 @@ public class PersistentData : MonoBehaviour
         UnmakeChild(UI);
         UnmakeChild(PauseMenu);
         UnmakeChild(StatUI);
+        UnmakeChild(ShopRelicUI);
 
         //set players position in new scene
         //CALL BUILD LEVEL, WHICH SHOULD GENERATE EVERYTHING, INCLUDING A SPAWNPOINT;
@@ -316,5 +392,23 @@ public class PersistentData : MonoBehaviour
             yield return null;
         }
         loadScreen.alpha = 0;
+    }
+
+    public void SaveControls()
+    {
+        string bindings = playerInputs.actions.ToJson();
+        PlayerPrefs.SetString("Bindings", bindings);
+    }
+
+    public void LoadControls()
+    {
+        string bindings = PlayerPrefs.GetString("Bindings", string.Empty);
+
+        if (string.IsNullOrEmpty(bindings))
+        {
+            return;
+        }
+    
+        playerInputs.actions.LoadFromJson(bindings);
     }
 }

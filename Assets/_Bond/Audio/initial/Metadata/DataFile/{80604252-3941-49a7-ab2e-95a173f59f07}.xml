@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="DataFile" id="{80604252-3941-49a7-ab2e-95a173f59f07}">
+		<property name="assetPath">
+			<value>LEGACY/Enemy Slam Ground/slam2.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46d66588-5640-4915-9ffe-128a7334e5da}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -7,6 +7,7 @@ public class RelicStats : ScriptableObject
 {
     public string relicName;
     public string relicInfo;
+    public Sprite relicSprite;
     //sprite
     [SerializeField]
     public List<Modifier> playerModifiers = new List<Modifier>();

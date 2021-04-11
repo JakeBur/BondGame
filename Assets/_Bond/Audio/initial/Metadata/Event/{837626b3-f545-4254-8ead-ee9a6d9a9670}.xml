@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{837626b3-f545-4254-8ead-ee9a6d9a9670}">
 		<property name="name">
-			<value>New Sword Impact Enemy</value>
+			<value>Player Sword Impact</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3276842a-79d1-461f-abe1-9f38aaa7c104}</destination>
+			<destination>{66211363-36ca-4185-9291-683a5a434697}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{5d3f591b-6451-4909-ad11-6f82906dd913}</destination>
@@ -92,6 +92,9 @@
 		<property name="length">
 			<value>0.46500000000000002</value>
 		</property>
+		<property name="volume">
+			<value>5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{c12ad8c9-7a92-4cbd-b6c9-15d932df2d84}</destination>
 			<destination>{9a90c252-5d2d-4633-b7ce-26483ccfedd3}</destination>
@@ -103,6 +106,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{49ec8c93-e569-4268-8fc1-94bb24395a66}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -121,7 +127,11 @@
 			<destination>{b5c07c1c-6f64-436d-a0c5-b477d1777dbc}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{1283a162-82cb-43d5-98cb-84e17418357b}" />
+	<object class="MixerBusPanner" id="{1283a162-82cb-43d5-98cb-84e17418357b}">
+		<property name="overridingOutputFormat">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{d128a221-b54c-4ee5-890d-23ba8a6a474b}" />
 	<object class="RandomizerModulator" id="{c12ad8c9-7a92-4cbd-b6c9-15d932df2d84}">
 		<property name="nameOfPropertyBeingModulated">

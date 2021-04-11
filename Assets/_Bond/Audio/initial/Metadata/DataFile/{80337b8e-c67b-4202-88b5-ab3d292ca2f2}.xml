@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="DataFile" id="{80337b8e-c67b-4202-88b5-ab3d292ca2f2}">
+		<property name="assetPath">
+			<value>LEGACY/Grass Walking/grass1.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46d66588-5640-4915-9ffe-128a7334e5da}</destination>
+		</relationship>
+	</object>
+</objects>
