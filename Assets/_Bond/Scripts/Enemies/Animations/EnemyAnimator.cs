@@ -14,6 +14,32 @@ public class EnemyAnimator : MonoBehaviour
     public BoxCollider boxCollider => hitbox.GetComponent<BoxCollider>();
 
     /*
+    *   Virtual Functions
+    *   These functions are overriden in enemy-specific animator classes
+    *   These functions are called in their respective base class function
+    *   All Enemies will perform the code in base class functions
+    */
+
+    protected virtual void InternalEventPlayAttackSFX() {}
+    protected virtual void InternalEventColliderOn() {}
+    protected virtual void InternalEventColliderOff() {}
+    protected virtual void InternalEventDeathDone() {}
+
+    protected virtual void InternalSMBSpawnEnter() {}
+    protected virtual void InternalSMBSpawnExit() {}
+    protected virtual void InternalSMBAttackEnter() {}
+    protected virtual void InternalSMBAttackExit() {}
+
+    protected virtual void InternalPause() {}
+    protected virtual void InternalPlay() {}
+    protected virtual void InternalSpawn() {}
+    protected virtual void InternalMove() {}
+    protected virtual void InternalAttack() {}
+    protected virtual void InternalHitstun() {}
+    protected virtual void InternalHitstunDone() {}
+    protected virtual void InternalDeath() {}
+
+    /*
     *   Constants
     *   Should be formatted "isX" or "inX" like a question
     *
@@ -51,16 +77,12 @@ public class EnemyAnimator : MonoBehaviour
         InternalEventPlayAttackSFX();
     }
 
-    protected virtual void InternalEventPlayAttackSFX() {}
-
     public void EventColliderOn()
     {
         boxCollider.enabled = true;
 
         InternalEventColliderOn();
     }
-
-    protected virtual void InternalEventColliderOn() {}
 
     public void EventColliderOff()
     {
@@ -69,16 +91,12 @@ public class EnemyAnimator : MonoBehaviour
         InternalEventColliderOff();
     }
 
-    protected virtual void InternalEventColliderOff() {}
-
     public void EventDeathDone()
     {
         inDeath = false;
 
         InternalEventDeathDone();
     }
-
-    protected virtual void InternalEventDeathDone() {}
 
     /*
     *   State Machine Behavior Triggers
@@ -92,8 +110,6 @@ public class EnemyAnimator : MonoBehaviour
         InternalSMBSpawnEnter();
     }
 
-    protected virtual void InternalSMBSpawnEnter() {}
-
     public void SMBSpawnExit()
     {
         inSpawn = false;
@@ -101,16 +117,12 @@ public class EnemyAnimator : MonoBehaviour
         InternalSMBSpawnExit();
     }
 
-    protected virtual void InternalSMBSpawnExit() {}
-
     public void SMBAttackEnter()
     {
         attackStatesActive += 1;
 
         InternalSMBAttackEnter();
     }
-
-    protected virtual void InternalSMBAttackEnter() {}
 
     public void SMBAttackExit()
     {
@@ -123,8 +135,6 @@ public class EnemyAnimator : MonoBehaviour
             InternalSMBAttackExit();
         }
     }
-
-    protected virtual void InternalSMBAttackExit() {}
 
     /*
     *   Actual Functions
@@ -140,8 +150,6 @@ public class EnemyAnimator : MonoBehaviour
         InternalPause();
     }
 
-    protected virtual void InternalPause() {}
-
     public void Play()
     {
         animator.speed = prevSpeed;
@@ -149,19 +157,14 @@ public class EnemyAnimator : MonoBehaviour
         InternalPlay();
     }
 
-    protected virtual void InternalPlay() {}
-
     public void Spawn()
     {
         animator.SetTrigger( "Spawn" );
-        SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
 
         inSpawn = true;
 
         InternalSpawn();
     }
-
-    protected virtual void InternalSpawn() {}
 
     public void Move( Vector3 moveVector ) 
     {
@@ -173,8 +176,6 @@ public class EnemyAnimator : MonoBehaviour
         InternalMove();
     }
 
-    protected virtual void InternalMove() {}
-
     public void Attack()
     {
         animator.SetTrigger( "Attack1" );
@@ -182,8 +183,6 @@ public class EnemyAnimator : MonoBehaviour
 
         InternalAttack();
     }
-
-    protected virtual void InternalAttack() {}
 
     public void Hitstun()
     {
@@ -194,8 +193,6 @@ public class EnemyAnimator : MonoBehaviour
         InternalHitstun();
     }
 
-    protected virtual void InternalHitstun() {}
-
     public void HitstunDone()
     {
         animator.SetBool( "HurtStun", false );
@@ -203,8 +200,6 @@ public class EnemyAnimator : MonoBehaviour
 
         InternalHitstunDone();
     }
-
-    protected virtual void InternalHitstunDone() {}
 
     public void Death()
     {
@@ -214,7 +209,5 @@ public class EnemyAnimator : MonoBehaviour
 
         InternalDeath();
     }
-
-    protected virtual void InternalDeath() {}
 
 }
