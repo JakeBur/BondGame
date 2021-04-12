@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6291353365164977454}
   - component: {fileID: 6980785135001199243}
   - component: {fileID: 5117298991050135105}
+  - component: {fileID: 613061712174259815}
   m_Layer: 0
-  m_Name: fence4
+  m_Name: PF_fence4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &613061712174259815
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630618211164206996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9044755778638986613, guid: 4dde7aa9dcf1da1428d9f5ffcecee712, type: 3}

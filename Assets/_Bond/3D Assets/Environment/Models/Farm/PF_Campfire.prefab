@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4903364514236963019}
   - component: {fileID: 8332674841380820846}
   - component: {fileID: 6072942294401967012}
+  - component: {fileID: -6615427573817030710}
   m_Layer: 0
-  m_Name: Campfire
+  m_Name: PF_Campfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-6615427573817030710
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5712693701187846769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1692526996606061409, guid: 07d9b4338cb973a4d9432e5157434c0c, type: 3}

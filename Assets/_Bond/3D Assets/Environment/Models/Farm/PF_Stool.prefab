@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5256215597767888909}
   - component: {fileID: 9177790311464542120}
   - component: {fileID: 6393696263636609890}
+  - component: {fileID: -2368787268540499673}
   m_Layer: 0
-  m_Name: Stool
+  m_Name: PF_Stool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-2368787268540499673
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880218164163693239}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -83691389621061638, guid: 24c6332b4fc49b443a944c4042dec567, type: 3}

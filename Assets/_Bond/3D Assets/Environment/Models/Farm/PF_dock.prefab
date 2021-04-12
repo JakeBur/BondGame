@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2482993142942356378}
   - component: {fileID: 1574718968168471615}
   - component: {fileID: 3620456250045671669}
+  - component: {fileID: -5509007398679004615}
   m_Layer: 0
-  m_Name: dock
+  m_Name: PF_dock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-5509007398679004615
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971968622076823840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3778190644101360755, guid: b30f1a92db9096c499a433e7f742afd7, type: 3}

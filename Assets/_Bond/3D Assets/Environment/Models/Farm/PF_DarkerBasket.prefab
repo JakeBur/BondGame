@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6722444797046665383}
   - component: {fileID: 7702616030717984514}
   - component: {fileID: 5548935232020564936}
+  - component: {fileID: -2379574413924401850}
   m_Layer: 0
-  m_Name: DarkerBasket
+  m_Name: PF_DarkerBasket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-2379574413924401850
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197299715224365597}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5214659172218046519, guid: efe1a99af2a592148b6b7a132c954014, type: 3}

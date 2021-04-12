@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1781823015874563815}
   - component: {fileID: 3392781734140346690}
   - component: {fileID: 644404296050177416}
+  - component: {fileID: -4169263270285771078}
   m_Layer: 0
-  m_Name: Rake
+  m_Name: PF_Rake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-4169263270285771078
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437103733210207325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7283632384059259063, guid: 5b4677b1ce1046e4c9b51f6fe559f0ef, type: 3}

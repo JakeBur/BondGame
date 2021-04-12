@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 674300448296866632}
   - component: {fileID: 4536324641635966189}
   - component: {fileID: 1806141859953698855}
+  - component: {fileID: 7339045352643930071}
   m_Layer: 0
   m_Name: PF_Wheelbarrow
   m_TagString: Untagged
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7339045352643930071
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148697969689840114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6343955302410293145, guid: 08aad15b29e87aa41a7a8d5899061d1a, type: 3}
