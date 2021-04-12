@@ -39,4 +39,9 @@ public class DonutAnimator : EnemyAnimator
     {
         armMesh.enabled = false;
     }
+
+    protected override void InternalSpawn()
+    {
+        SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
+    }
 }
