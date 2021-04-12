@@ -26,11 +26,11 @@ public class CActionAttackRain : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnRain(attack.projectile, context.targetEnemy, attack.baseDmg, attack.abilityBuff);
+        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnRain(attack.projectile, attack.baseDmg, attack.abilityBuff);
         
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
+        if(true)
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();

@@ -104,10 +104,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6351474368709352788}
   - component: {fileID: 6351474368709352789}
-  - component: {fileID: 5648878358136823888}
   - component: {fileID: 6351474368709352790}
   - component: {fileID: 6351474368709352791}
   - component: {fileID: 6974659741722871838}
+  - component: {fileID: -3170354620845567656}
   m_Layer: 0
   m_Name: AquaphimRain
   m_TagString: Untagged
@@ -138,18 +138,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6351474368709352784}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5648878358136823888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6351474368709352784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064b9047a2d80204b8a30dcf17770931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &6351474368709352790
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -218,3 +206,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-3170354620845567656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351474368709352784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37c1dbc8a1dfcb49b77da27fb13fb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

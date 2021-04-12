@@ -6,11 +6,10 @@ public class Rain : MonoBehaviour
 {
     private float damage;
     private Buff debuff;
-    private bool onRain;
 
     private void Awake() 
     {
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 4.1f);
     }
 
     public void setDamage(float _damage, Buff _debuff)
@@ -20,7 +19,7 @@ public class Rain : MonoBehaviour
     }
     IEnumerator DoRainDamage(float damageDuration, int damageCount, float damageAmount, Collider other)
     {
-        onRain = true;
+        other.transform.GetComponent<EnemyAIContext>().onRain = true;
         int currentCount = 0;
         while(currentCount < damageCount)
         {
@@ -28,11 +27,12 @@ public class Rain : MonoBehaviour
             yield return new WaitForSeconds(damageDuration);
             currentCount++;
         }
-        onRain = false;
+        other.transform.GetComponent<EnemyAIContext>().onRain = false;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.transform.tag == "Enemy" && !onRain)
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.transform.tag == "Enemy" && !other.transform.GetComponent<EnemyAIContext>().onRain)
         {
             StartCoroutine(DoRainDamage(0.25f, 16, damage, other));
         }    
