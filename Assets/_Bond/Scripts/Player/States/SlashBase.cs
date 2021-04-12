@@ -56,6 +56,7 @@ namespace PlayerState
             player.inputs.basicAttack = false;  
             nextState = GetNextState();
             
+            player.Slash();
             animator.Attack( index );
 
             // hitBox.SetActive(false);

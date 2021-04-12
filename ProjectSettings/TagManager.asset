@@ -19,6 +19,8 @@ TagManager:
   - Terrain
   - LevelGenerator
   - StatUI
+  - SFXManager
+  - ShopRelicUI
   layers:
   - Default
   - TransparentFX

@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
+  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
 --- !u!1 &1823558736048597768
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae5fe3e023031c42b07c6f4fd7977ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaSpawnSFX: event:/Sound Effects/SFX/Enemy SFX/Arena Spawn
   waves:
   - spawnWholeWave: 1
     waitUntilEnemiesLeft: 0
@@ -400,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
+  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
 --- !u!1 &1823558736675524420
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
+  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
 --- !u!1 &1823558736714116909
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
+  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
 --- !u!1 &2689973366936057927
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
+  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
 --- !u!1 &3201304443971535752
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
+  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
 --- !u!1 &4329136911897211221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
+  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
 --- !u!1 &6511716326348270092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: e411548f5ba2ebe4c94926b81ed42671, type: 3}
+  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
 --- !u!1 &7455600316609384494
 GameObject:
   m_ObjectHideFlags: 0

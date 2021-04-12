@@ -12,7 +12,7 @@ public class ECheckPlayerNoticedBefore : BTChecker
 
     public override NodeState Evaluate()
     {
-        if (enemyContext.playerNoticedBefore)
+        if (enemyContext.playerNoticedBefore && !enemyContext.animator.inSpawn)
         {
             return NodeState.FAILURE;
         }

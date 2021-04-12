@@ -3,13 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class WeaponTriggers : MonoBehaviour
 {
-    [FMODUnity.EventRef]
-    public string SlashHitSFX;
-
-    [FMODUnity.EventRef]
-    public string CritSFX;
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     private StatManager ps;
     private PlayerStateMachine fsm;
@@ -40,42 +47,42 @@ public class WeaponTriggers : MonoBehaviour
             if(fsm.currentState == fsm.Slash0)
             {
                 enemyAIContext.statManager.TakeDamage( damage * 1.2f, ModiferType.MELEE_RESISTANCE);
-                FMODUnity.RuntimeManager.PlayOneShot(SlashHitSFX, transform.position);
+                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
 
                 checkForCrit(damage);
             } 
             else if(fsm.currentState == fsm.Slash1)
             {
                 enemyAIContext.statManager.TakeDamage( damage * 1f, ModiferType.MELEE_RESISTANCE);
-                FMODUnity.RuntimeManager.PlayOneShot(SlashHitSFX, transform.position);
+                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
 
                 checkForCrit(damage);
             } 
             else if(fsm.currentState == fsm.Slash2)
             {
                 enemyAIContext.statManager.TakeDamage( damage * 1f, ModiferType.MELEE_RESISTANCE);
-                FMODUnity.RuntimeManager.PlayOneShot(SlashHitSFX, transform.position);
+                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
 
                 checkForCrit(damage);
             } 
             else if(fsm.currentState == fsm.Slash3)
             {
                 enemyAIContext.statManager.TakeDamage( damage * 1f, ModiferType.MELEE_RESISTANCE);
-                FMODUnity.RuntimeManager.PlayOneShot(SlashHitSFX, transform.position);
+                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
 
                 checkForCrit(damage);
             } 
             else if(fsm.currentState == fsm.Slash4)
             {
                 enemyAIContext.statManager.TakeDamage( damage * 1.5f, ModiferType.MELEE_RESISTANCE);
-                FMODUnity.RuntimeManager.PlayOneShot(SlashHitSFX, transform.position);
+                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
 
                 checkForCrit(damage);
             } 
             else if(fsm.currentState == fsm.HeavySlash)
             {
                 enemyAIContext.statManager.TakeDamage( damage * 2f, ModiferType.MELEE_RESISTANCE);
-                FMODUnity.RuntimeManager.PlayOneShot(SlashHitSFX, transform.position);
+                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
 
                 checkForCrit(damage);
             } 
@@ -97,7 +104,7 @@ public class WeaponTriggers : MonoBehaviour
     {
         if (damage != ps.getStat(ModiferType.DAMAGE))
         {
-            FMODUnity.RuntimeManager.PlayOneShot(CritSFX, transform.position);
+            SFXPlayer.PlayOneShot(SFX.PlayerSwordCritSFX, transform.position);
         }
     }
 }

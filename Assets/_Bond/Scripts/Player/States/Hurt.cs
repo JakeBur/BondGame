@@ -18,9 +18,10 @@ namespace PlayerState
 
         public override void OnStateEnter()
         {
-            
             player.isHit = false;
             animator.Hurt();
+            PersistentData.Instance.UI.GetComponent<UIUpdates>().HurtFeedback(1f, 0f); //makes the red flash on screen
+            PersistentData.Instance.UI.GetComponent<UIUpdates>().HurtFeedback(0f, 0.3f);
         }
 
         public override void OnStateUpdate()
@@ -48,7 +49,7 @@ namespace PlayerState
 
         public override void OnStateExit()
         {
-        
+            //PersistentData.Instance.UI.GetComponent<UIUpdates>().HurtFeedback(0f, 0.3f);
         }
     }
 }

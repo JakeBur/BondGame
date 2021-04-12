@@ -15,6 +15,7 @@ public class UIUpdates : MonoBehaviour
     public TextMeshProUGUI interactPrompt;
 
     public TextMeshProUGUI gold;
+    public Image goldIcon;
 
 
     [Header("Creature Icons")]
@@ -28,8 +29,15 @@ public class UIUpdates : MonoBehaviour
     public CanvasGroup abilityGroup;
     public Image ability1Icon;
     public Image ability2Icon;
+    public Image ability1BG;
+    public Image ability2BG;
     public TextMeshProUGUI ability1Description;
     public TextMeshProUGUI ability2Description;
+
+    public int abilityId1 = 0;
+    public int abilityId2 = 5;
+
+    
 
     [Header("Dialogue")]
     public GameObject CharacterDialogCanvas;
@@ -49,6 +57,8 @@ public class UIUpdates : MonoBehaviour
 
     private bool hasCD = false;
 
+    public Image hurtFeedback;
+
 //*****************End of variable declarations**********************//
 
 
@@ -56,6 +66,13 @@ public class UIUpdates : MonoBehaviour
     void Start()
     {
         UpdateCreatureUI();
+        //HurtFeedback(1.0f);
+        HurtFeedback(0f, 0.0f);
+        ability1BG.color = transparent;
+        ability2BG.color = transparent;
+
+        abilityId1 = 0;
+        abilityId2 = 1;
     }
 
 
@@ -69,45 +86,16 @@ public class UIUpdates : MonoBehaviour
         maxHealthUI.SetText("/ " + stats.getStat(ModiferType.MAX_HEALTH).ToString());
         gold.SetText(player.goldCount.ToString());
 
-        CheckForTarget();
-
-
+       
         //In progress, check if any of your curr creatures abilties have active cooldowns
-        if(hasCD) CooldownUpdate(); 
+        CooldownUpdate(); 
 
         
     }
 
 	
 
-	
-    private void CheckForTarget()
-    {
-        try
-        {
-            if(player.currCreatureContext.targetEnemy != null)
-            {
-                //Debug.Log("opaque");
-                ability1Icon.color = opaque;
-                ability2Icon.color = opaque;         
-            }
-            // else
-            // {
-                
-            // }
-        }
-        catch
-        {
-            //Debug.Log("transparent");
-            ability1Icon.color = transparent;
-            ability2Icon.color = transparent;
-        }
-    }
-
-
-
-
-
+    
     //updates both creature icon and the respective ability icons
     public void UpdateCreatureUI()
     {
@@ -116,12 +104,9 @@ public class UIUpdates : MonoBehaviour
             enthusiasmSlider.enabled = true;
             //updateEnthusiasm();
             currCreatureIcon.sprite = player.currCreatureContext.icon;
-            //abilityGroup.alpha = 1;
-            ability1Icon.sprite = player.currCreatureContext.creatureStats.abilities[0].abilityIcon;
-            ability2Icon.sprite = player.currCreatureContext.creatureStats.abilities[1].abilityIcon;
+            
 
-            ability1Description.SetText(player.currCreatureContext.creatureStats.abilities[0].abilityDescription);
-            ability2Description.SetText(player.currCreatureContext.creatureStats.abilities[1].abilityDescription);
+            UpdateAbilityUI();
 
             currCreatureName.SetText(player.currCreatureContext.creatureStats.name);
 
@@ -152,23 +137,48 @@ public class UIUpdates : MonoBehaviour
 
 
 
+    public void UpdateAbilityUI()
+    {
+        var creatureStats = player.currCreatureContext.creatureStats;
 
+        ability1Icon.sprite = creatureStats.abilities[0].abilityIcon;
+        ability1BG.sprite =  creatureStats.abilities[0].abilityIcon;
 
-    
+        ability2Icon.sprite = creatureStats.abilities[1].abilityIcon;
+        ability2BG.sprite = creatureStats.abilities[1].abilityIcon;
+        
+        
+
+        ability1Description.SetText(creatureStats.abilities[0].abilityDescription);
+        ability2Description.SetText(creatureStats.abilities[1].abilityDescription);
+    }
+
+   
     public void CooldownUpdate()
     {
         Debug.Log("cd update");
        
         //called every tick while cooldown is active
         //get specific creatures cooldown
-        if(player.cooldownSystem.GetRemainingDuration(0) != 0)
+        if(player.cooldownSystem.GetRemainingDuration(abilityId1) != 0)
         {
-            ability1Icon.fillAmount += (1.0f / player.cooldownSystem.GetTotalDuration(0)) * Time.deltaTime;
+            ability1Icon.fillAmount = (player.cooldownSystem.GetTotalDuration(abilityId1) - player.cooldownSystem.GetRemainingDuration(abilityId1) / player.cooldownSystem.GetTotalDuration(abilityId1))- 1;
+
         }
-        if(player.cooldownSystem.GetRemainingDuration(1) != 0)
+        else
         {
-            ability2Icon.fillAmount += (1.0f / player.cooldownSystem.GetTotalDuration(1)) * Time.deltaTime;
+            ability1Icon.fillAmount = 1;
         }
+
+        if(player.cooldownSystem.GetRemainingDuration(abilityId2) != 0)
+        {
+            ability2Icon.fillAmount = (player.cooldownSystem.GetTotalDuration(abilityId2) - player.cooldownSystem.GetRemainingDuration(abilityId2) / player.cooldownSystem.GetTotalDuration(abilityId2)) - 1;
+        }
+        else
+        {
+            ability2Icon.fillAmount = 1;
+        }
+
         // else
         // {
         //     hasCD = false;
@@ -179,63 +189,16 @@ public class UIUpdates : MonoBehaviour
         
     }
 
-
-
-
-
-
-    public void UsedAbility(int ability)
+    public void OnAbilityFail(int ability)
     {
-        hasCD = true;
-
-        if(ability == 1)
-        {
-            ability1Icon.fillAmount = 0;
-            ability1Icon.color = transparent;
-
-        }
-        if(ability == 2)
-        {
-            ability2Icon.fillAmount = 0;
-            ability2Icon.color = transparent;
-
-        }
+        
     }
+
+
+
+
+
     
-    // private void OnAttack2()
-    // {
-    //     Debug.Log("used 1");
-    //     UsedAbility(1);
-    //     hasCD = true;
-       
-    // }
-
-    // private void OnAttack3()
-    // {
-    //     Debug.Log("used 2");
-    //     UsedAbility(2);
-    //     hasCD = true;
-       
-    // }
-
-
-
-
-
-
-    //OLD
-    
-    // public void updateEnthusiasm()
-    // {
-    //     var creatureStats = player.currCreatureContext.creatureStats.statManager;
-    //     enthusiasmSlider.value = ((creatureStats.getStat(ModiferType.CURR_ENTHUSIASM) / creatureStats.getStat(ModiferType.MAX_ENTHUSIASM)) * 100);
-    // }
-
-
-
-
-
-
     public void showInteractPrompt()
     {
         interactPrompt.enabled = true;
@@ -259,6 +222,18 @@ public class UIUpdates : MonoBehaviour
     public void HideCharacterDialogue()
     {
         CharacterDialogCanvas.SetActive(false);
+    }
+
+
+
+
+
+
+    public void HurtFeedback(float amount, float time)
+    {
+        //Debug.Log("hurt");
+        //hurtFeedback.color = opaque;
+        hurtFeedback.CrossFadeAlpha(amount, time, false);       
     }
 
 
