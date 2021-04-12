@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: f197e440a3b0cfc49887911611c9ce2a
+guid: 63b2900149cfe7f43b89b5d69c91ae85
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Farm_texture
+    second: {fileID: 2100000, guid: d231fb9be7862744a80e34f9a8c221a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_texture
+    second: {fileID: 2100000, guid: ac07f4d015bb09143bf7a0a223c0f8f9, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
