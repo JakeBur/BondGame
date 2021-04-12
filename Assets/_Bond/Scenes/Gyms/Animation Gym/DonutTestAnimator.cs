@@ -12,7 +12,7 @@ public class DonutTestAnimator : MonoBehaviour
     private void OnButton1()
     {
         animator.Play();
-        animator.Spawn();
+        animator.Attack();
         Debug.Log("Play");
     }
 

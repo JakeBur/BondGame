@@ -9,6 +9,11 @@ public class DonutAnimator : EnemyAnimator
     public GameObject armModel;
     private SkinnedMeshRenderer armMesh => armModel.GetComponent<SkinnedMeshRenderer>();
 
+    private void Awake()
+    {
+        ArmOff();
+    }
+
     public void ArmOff()
     {
         armMesh.enabled = false;
