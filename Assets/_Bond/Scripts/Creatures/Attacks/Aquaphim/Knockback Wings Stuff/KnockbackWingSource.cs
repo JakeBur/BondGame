@@ -30,17 +30,18 @@ public class KnockbackWingSource : MonoBehaviour
                     Rigidbody rb =  hit.GetComponent<EnemyAIContext>().rb;
                     // hit.GetComponent<EnemyAIContext>().rb;
                     NavMeshAgent agent = hit.GetComponent<EnemyAIContext>().agent;
-                    agent.enabled = false;
+                    // agent.isStopped = false;
                     Debug.Log(hit);
+
+                    
                     rb.AddExplosionForce(power, explosionPos, radius, 1.0F, ForceMode.Impulse);
-                    // rb.AddForce(transform.up * 20f);
-                    // yield return new WaitForSeconds(2f);
-                    // agent.enabled = true;
+                    yield return new WaitForSeconds(0.1f);
+                    rb.velocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                    // agent.isStopped = true;
                 }
             }
-            yield return new WaitForSeconds(duration);
-            // rb.velocity = Vector3.zero;
-            // rb.angularVelocity = Vector3.zero;
+            // yield return new WaitForSeconds(duration);
             currentCount++;
         }
     }

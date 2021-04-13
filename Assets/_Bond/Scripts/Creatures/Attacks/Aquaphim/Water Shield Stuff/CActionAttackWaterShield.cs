@@ -30,7 +30,7 @@ public class CActionAttackWaterShield : BTLeaf
     public override NodeState Evaluate() 
     {
         PlayerController pc = PersistentData.Instance.Player.GetComponent<PlayerController>();
-        pc.stats.AddBuff(shield);
+        pc.stats.AddBuff(attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if(true) 
