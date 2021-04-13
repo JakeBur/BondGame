@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public CreatureAIContext currCreatureContext;
     public CooldownSystem cooldownSystem => GetComponent<CooldownSystem>();
+    public bool didWhistle;
 
     [Header("Combat")]
     public bool inCombat;
@@ -488,6 +489,11 @@ public class PlayerController : MonoBehaviour
             crouchModifier = 1f;
             animator.Crouch( false );
         }
+    }
+
+    private void onWhistle()
+    {
+        didWhistle = true;
     }
 
     private void OnFruitSpawn()

@@ -31,11 +31,11 @@ public class CActionWildWanderInLocation : BTLeaf
         //this is just to make sure the creature doesn't walk too short of a distance
         //might have to rework this in the future but eh, works now
         while (Vector3.Distance(context.wanderDestination, context.creatureTransform.position) < 6f) {
-            context.wanderDestination = context.wildStartingLocation + (Random.insideUnitSphere * context.wanderRadius);
+            context.wanderDestination = context.wildStartingLocation + (Random.insideUnitSphere * context.wanderDistance);
             //this stuff *might* run a bit slow, so we might have to edit this later
             //but basically finds the closest point on the navmesh to the random location
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(context.wanderDestination, out hit, context.wanderRadius, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(context.wanderDestination, out hit, context.wanderDistance, NavMesh.AllAreas))
                 context.wanderDestination = hit.position;
         }
         //Debug.Log(Vector3.Distance(context.wanderDestination, context.creatureTransform.position));

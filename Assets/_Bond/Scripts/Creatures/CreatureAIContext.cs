@@ -29,6 +29,10 @@ public class CreatureAIContext : MonoBehaviour
     public creatureAttackBase basicCreatureAttack;
     public GameObject PetalCone;
     
+    public List<GameObject> possiblePOIs = new List<GameObject>();
+    
+    public GameObject targetPOI;
+    
 
     
     [Header("Bools")]
@@ -51,7 +55,7 @@ public class CreatureAIContext : MonoBehaviour
     public int lastTriggeredAbility;
     public float enemyDetectRange;
     public float itemDetectRange; //range for detecting interesting items, only for clever creatures
-    public float wanderRadius; //how far from starting location the creature can wander
+    public float wanderDistance; //how far from starting location the creature can wander
     public float wanderIdleDuration;
     public float wanderIdleTimer;
     public Vector3 wanderDestination;
@@ -120,10 +124,7 @@ public class CreatureAIContext : MonoBehaviour
             boredom += Time.deltaTime * meterRate;
         }
 
-        if(tiredness < 100)
-        {
-            tiredness += Time.deltaTime * meterRate;
-        }
+
     }
 
 

@@ -5,11 +5,7 @@ using UnityEngine.AI;
 
 public class CActionFacePlayerAndReact : BTLeaf
 {
-
     private NavMeshAgent agent;
-    creatureAttackBase attack;
-    private float moveSpeed = 15f;
-    private float maxDist;
 
     public CActionFacePlayerAndReact(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
@@ -20,20 +16,25 @@ public class CActionFacePlayerAndReact : BTLeaf
 
     protected override void OnEnter()
     {
-
+        agent.isStopped = true;
+        context.creatureTransform.LookAt(context.player.transform.position);
+        context.animator.Wave();
     }
 
     protected override void OnExit()
     {
         context.hasReacted = true;
+        agent.isStopped = false;        
+        context.animator.interactPOIFalse();
     }
 
     public override NodeState Evaluate() 
     {
-        agent.ResetPath();
-        context.creatureTransform.LookAt(context.player.transform.position);
-        context.animator.Wave();
-        OnParentExit();
-        return NodeState.SUCCESS;
+        Debug.Log("FACE PLAYER AND REACT");
+        if(!context.animator.isWaving){
+            OnParentExit();
+            return NodeState.SUCCESS;   
+        }
+        return NodeState.RUNNING;
     }
 }
