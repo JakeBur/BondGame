@@ -52,6 +52,7 @@ public class SFXManager : MonoBehaviour
     [Header("Donut (Melee Enemy)")]
     [FMODUnity.EventRef] public string DonutSpawnSFX;
     [FMODUnity.EventRef] public string DonutSwipeSFX;
+    [FMODUnity.EventRef] public string DonutRetractSFX;
 
     //---------
     // UI SFX

@@ -11,4 +11,8 @@ public class DonutAnimationEvent : EnemyAnimationEvent
         donutAnimator.ArmOff();
     }
     
+    public void PlayDonutRetractSFX(int call)
+    {
+        donutAnimator.EventPlayDonutRetractSFX(call);
+    }
 }

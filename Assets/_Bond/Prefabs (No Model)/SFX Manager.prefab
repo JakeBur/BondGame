@@ -65,7 +65,10 @@ MonoBehaviour:
   ArenaSpawnSFX: event:/Sound Effects/Enemy SFX/General Enemy/Arena Spawn
   EnemyDeathSFX: event:/Sound Effects/Enemy SFX/General Enemy/Enemy Death
   DonutSpawnSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Spawn
-  DonutSwipeSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Swipe
+  DonutSwipeSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Attack/Donut
+    Swipe
+  DonutRetractSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Attack/Donut
+    Retract
   MenuOpenSFX: event:/Sound Effects/UI SFX/Menu Open
   ButtonClickSFX: event:/Sound Effects/UI SFX/Button Click
   CreatureSwapSFX: event:/Sound Effects/UI SFX/Creature Swap

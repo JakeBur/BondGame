@@ -104,7 +104,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.3825397
+      - time: 0.35671324
         functionName: PlayAttackSFX
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -124,6 +124,20 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
+        messageOptions: 0
+      - time: 0.62908125
+        functionName: PlayDonutRetractSFX
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.79992807
+        functionName: PlayDonutRetractSFX
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
         messageOptions: 0
       - time: 0.96732026
         functionName: ArmOff
