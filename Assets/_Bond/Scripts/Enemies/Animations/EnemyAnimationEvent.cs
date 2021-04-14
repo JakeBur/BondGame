@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAnimationEvent : MonoBehaviour
 {
-    private EnemyAnimator enemyAnimator => transform.parent.GetComponent<EnemyAnimator>();
+    protected virtual EnemyAnimator enemyAnimator => transform.parent.GetComponent<EnemyAnimator>();
 
     public void ColliderOn()
     {

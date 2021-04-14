@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 6922585741762726990}
   - component: {fileID: 524966823489210073}
   - component: {fileID: 8676250488157852478}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Temp ShopKeeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,6 +14,32 @@ public class EnemyAnimator : MonoBehaviour
     public BoxCollider boxCollider => hitbox.GetComponent<BoxCollider>();
 
     /*
+    *   Virtual Functions
+    *   These functions are overriden in enemy-specific animator classes
+    *   These functions are called in their respective base class function
+    *   All Enemies will perform the code in base class functions
+    */
+
+    protected virtual void InternalEventPlayAttackSFX() {}
+    protected virtual void InternalEventColliderOn() {}
+    protected virtual void InternalEventColliderOff() {}
+    protected virtual void InternalEventDeathDone() {}
+
+    protected virtual void InternalSMBSpawnEnter() {}
+    protected virtual void InternalSMBSpawnExit() {}
+    protected virtual void InternalSMBAttackEnter() {}
+    protected virtual void InternalSMBAttackExit() {}
+
+    protected virtual void InternalPause() {}
+    protected virtual void InternalPlay() {}
+    protected virtual void InternalSpawn() {}
+    protected virtual void InternalMove() {}
+    protected virtual void InternalAttack() {}
+    protected virtual void InternalHitstun() {}
+    protected virtual void InternalHitstunDone() {}
+    protected virtual void InternalDeath() {}
+
+    /*
     *   Constants
     *   Should be formatted "isX" or "inX" like a question
     *
@@ -27,11 +53,12 @@ public class EnemyAnimator : MonoBehaviour
     public bool inDeath { get; private set; }
 
     private int attackStatesActive = 0;
+    private float prevSpeed = 1;
 
     /*
     *   FMOD Refs
     */
-    private SFXManager SFX
+    protected SFXManager SFX
     {
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
@@ -46,21 +73,29 @@ public class EnemyAnimator : MonoBehaviour
     public void EventPlayAttackSFX()
     {
         SFXPlayer.PlayOneShot(SFX.DonutSwipeSFX, transform.position);
+
+        InternalEventPlayAttackSFX();
     }
 
     public void EventColliderOn()
     {
         boxCollider.enabled = true;
+
+        InternalEventColliderOn();
     }
 
     public void EventColliderOff()
     {
         boxCollider.enabled = false;
+
+        InternalEventColliderOff();
     }
 
     public void EventDeathDone()
     {
         inDeath = false;
+
+        InternalEventDeathDone();
     }
 
     /*
@@ -70,14 +105,23 @@ public class EnemyAnimator : MonoBehaviour
     *   Functions should be prepended by SMB
     */
 
+    public void SMBSpawnEnter()
+    {
+        InternalSMBSpawnEnter();
+    }
+
     public void SMBSpawnExit()
     {
         inSpawn = false;
+
+        InternalSMBSpawnExit();
     }
 
     public void SMBAttackEnter()
     {
         attackStatesActive += 1;
+
+        InternalSMBAttackEnter();
     }
 
     public void SMBAttackExit()
@@ -87,6 +131,8 @@ public class EnemyAnimator : MonoBehaviour
         {
             inAttack = false;
             boxCollider.enabled = false;
+
+            InternalSMBAttackExit();
         }
     }
 
@@ -96,12 +142,28 @@ public class EnemyAnimator : MonoBehaviour
     *   Called by the BT nodes
     */
 
+    public void Pause()
+    {
+        prevSpeed = animator.speed;
+        animator.speed = 0;
+
+        InternalPause();
+    }
+
+    public void Play()
+    {
+        animator.speed = prevSpeed;
+
+        InternalPlay();
+    }
+
     public void Spawn()
     {
         animator.SetTrigger( "Spawn" );
-        SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
 
         inSpawn = true;
+
+        InternalSpawn();
     }
 
     public void Move( Vector3 moveVector ) 
@@ -110,17 +172,16 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetFloat( "MoveVelocity", moveVector.magnitude );
         animator.SetFloat( "MoveX", moveUnitVec[0] );
         animator.SetFloat( "MoveY", moveUnitVec[1] );
+
+        InternalMove();
     }
 
     public void Attack()
     {
         animator.SetTrigger( "Attack1" );
         inAttack = true;
-    }
 
-    public void ColliderOnOff()
-    {
-       boxCollider.enabled = !boxCollider.enabled;
+        InternalAttack();
     }
 
     public void Hitstun()
@@ -128,12 +189,16 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetTrigger( "HurtStunTrigger" );
         animator.SetBool( "HurtStun", true );
         inHitstun = true;
+
+        InternalHitstun();
     }
 
     public void HitstunDone()
     {
         animator.SetBool( "HurtStun", false );
         inHitstun = false;
+
+        InternalHitstunDone();
     }
 
     public void Death()
@@ -141,6 +206,8 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetTrigger( "Death" );
         SFXPlayer.PlayOneShot(SFX.EnemyDeathSFX, transform.position);
         inDeath = true;
+
+        InternalDeath();
     }
 
 }
