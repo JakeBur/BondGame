@@ -8,6 +8,6 @@ public class CreatureAnimationEvent : MonoBehaviour
 
     public void PlayWalkSFX()
     {
-        creatureAnimator.PlayWalkSFX();
+        creatureAnimator.PlayWalkSFX(0);
     }
 }

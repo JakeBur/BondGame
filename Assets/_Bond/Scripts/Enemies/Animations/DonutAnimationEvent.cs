@@ -15,4 +15,9 @@ public class DonutAnimationEvent : EnemyAnimationEvent
     {
         donutAnimator.EventPlayDonutRetractSFX(call);
     }
+
+    public void PlayDonutWalkSFX()
+    {
+        donutAnimator.EventPlayDonutWalkSFX(2);
+    }
 }

@@ -9,14 +9,6 @@ public class DonutAnimator : EnemyAnimator
     public GameObject armModel;
     private SkinnedMeshRenderer armMesh => armModel.GetComponent<SkinnedMeshRenderer>();
 
-    //-----------
-    // for FMOD
-    //-----------
-    private SFXManager SFX
-    {
-        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
-    }
-
     private void Awake()
     {
         ArmOff();
@@ -61,5 +53,10 @@ public class DonutAnimator : EnemyAnimator
             return;
         }
         SFXPlayer.PlayOneShot(SFX.DonutRetractSFX, transform.position);
+    }
+
+    public void EventPlayDonutWalkSFX(int tag)
+    {
+        SFX.Play3DWalkGrassSFX(tag, transform.position);
     }
 }
