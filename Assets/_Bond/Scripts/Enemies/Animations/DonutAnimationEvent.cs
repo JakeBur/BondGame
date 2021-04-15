@@ -11,6 +11,21 @@ public class DonutAnimationEvent : EnemyAnimationEvent
         donutAnimator.ArmOff();
     }
     
+    public void PlayDonutSpawnExtendSFX()
+    {
+        donutAnimator.EventPlayDonutSpawnExtendSFX();
+    }
+
+    public void PlayDonutSpawnGrabSFX()
+    {
+        donutAnimator.EventPlayDonutSpawnGrabSFX();
+    }
+
+    public void PlayDonutAttackExtendSFX()
+    {
+        donutAnimator.EventPlayDonutAttackExtendSFX();
+    }
+
     public void PlayDonutRetractSFX(int call)
     {
         donutAnimator.EventPlayDonutRetractSFX(call);

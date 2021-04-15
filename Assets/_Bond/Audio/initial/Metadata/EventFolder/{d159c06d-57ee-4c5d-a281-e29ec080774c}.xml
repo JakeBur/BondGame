@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EventFolder" id="{d159c06d-57ee-4c5d-a281-e29ec080774c}">
+		<property name="name">
+			<value>Player Damaged Donut Events</value>
+		</property>
+		<relationship name="folder">
+			<destination>{238f3532-4e2f-4274-bc4e-3a9fdb2445f7}</destination>
+		</relationship>
+	</object>
+</objects>

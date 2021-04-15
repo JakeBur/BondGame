@@ -54,8 +54,13 @@ public class SFXManager : MonoBehaviour
     //----------------------
     [Header("Donut (Melee Enemy)")]
     [FMODUnity.EventRef] public string DonutSpawnSFX;
+    [FMODUnity.EventRef] public string DonutSpawnExtendSFX;
+    [FMODUnity.EventRef] public string DonutSpawnGrabSFX;
+    [FMODUnity.EventRef] public string DonutAttackExtendSFX;
     [FMODUnity.EventRef] public string DonutSwipeSFX;
     [FMODUnity.EventRef] public string DonutRetractSFX;
+
+    private bool spawning = false;
 
     //---------
     // UI SFX
@@ -78,5 +83,25 @@ public class SFXManager : MonoBehaviour
         instance.setParameterByName("MoverTag", tag);
         instance.start();
         instance.release();
+    }
+
+    public bool IsAlreadySpawning()
+    {
+        return spawning;
+    }
+
+    public void SetSpawning(bool state)
+    {
+        spawning = state;
+        if (spawning)
+        {
+            StartCoroutine(WaitForSpawning());
+        }
+    }
+
+    private IEnumerator WaitForSpawning()
+    {
+        yield return new WaitForSeconds(3.3f);
+        SetSpawning(false);
     }
 }

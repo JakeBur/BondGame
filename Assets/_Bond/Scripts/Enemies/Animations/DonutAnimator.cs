@@ -9,6 +9,8 @@ public class DonutAnimator : EnemyAnimator
     public GameObject armModel;
     private SkinnedMeshRenderer armMesh => armModel.GetComponent<SkinnedMeshRenderer>();
 
+    private bool alreadySpawning = false;
+
     private void Awake()
     {
         ArmOff();
@@ -21,7 +23,7 @@ public class DonutAnimator : EnemyAnimator
 
     protected override void InternalSMBSpawnEnter()
     {
-        SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
+        //SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
         armMesh.enabled = true;
     }
 
@@ -42,7 +44,41 @@ public class DonutAnimator : EnemyAnimator
 
     protected override void InternalSpawn()
     {
-        SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
+        //SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
+    }
+
+    public void EventPlayDonutSpawnExtendSFX()
+    {
+        //---------------------------------------------
+        // check if there is one other spawning event
+        // occuring to prevent multiple calls
+        //---------------------------------------------
+        if (!SFX.IsAlreadySpawning())
+        {
+            SFXPlayer.PlayOneShot(SFX.DonutSpawnExtendSFX, transform.position);
+            SFX.SetSpawning(true);
+            alreadySpawning = false;
+        }
+        else
+        {
+            alreadySpawning = true;
+        }
+    }
+
+    public void EventPlayDonutSpawnGrabSFX()
+    {
+        //--------------------------
+        // ditto for all spawn SFX
+        //--------------------------
+        if (!alreadySpawning)
+        {
+            SFXPlayer.PlayOneShot(SFX.DonutSpawnGrabSFX, transform.position);
+        }
+    }
+
+    public void EventPlayDonutAttackExtendSFX()
+    {
+        SFXPlayer.PlayOneShot(SFX.DonutAttackExtendSFX, transform.position);
     }
 
     public void EventPlayDonutRetractSFX(int call)
