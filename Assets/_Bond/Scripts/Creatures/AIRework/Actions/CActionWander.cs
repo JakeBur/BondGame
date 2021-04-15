@@ -41,7 +41,6 @@ public class CActionWander : BTLeaf
 
     public override NodeState Evaluate()
     {
-        Debug.Log("WANDER is stopped:" + agent.isStopped);
         
         context.agent.speed = context.creatureStats.statManager.getStat(ModiferType.MOVESPEED) / 4;
         context.agent.angularSpeed = tempTurnSpeed/8;

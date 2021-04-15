@@ -5330,7 +5330,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 524.7
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5462,6 +5462,39 @@ MonoBehaviour:
   boredom: 0
   tiredness: 0
   meterRate: 3
+  wanderDistanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.79087675
+      value: 0.23312251
+      inSlope: 0.8599871
+      outSlope: 0.8589776
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.46158338
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   icon: {fileID: 0}
   ability1Icon: {fileID: 0}
   ability2Icon: {fileID: 0}
@@ -5555,6 +5588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enthusiasm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473272381462853380, guid: 178f156dcca627242afc9a6aad8eb4c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2180592324084311790, guid: 178f156dcca627242afc9a6aad8eb4c4,
         type: 3}

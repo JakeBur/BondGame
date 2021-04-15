@@ -14,7 +14,7 @@ public class CCheckWildPlayerInRadius : BTChecker
 
     public override NodeState Evaluate()
     {
-        if (context.isNoticed && !context.hasReacted)
+        if ((context.isNoticed && !context.hasReacted )|| context.isReacting)
         {
             return NodeState.SUCCESS;
         }

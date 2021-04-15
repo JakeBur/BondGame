@@ -7,6 +7,7 @@ public class CActionApproachPOI : BTLeaf
 {
     private NavMeshAgent agent;
     float tempTurnSpeed;
+    bool justSetPath;
 
     public CActionApproachPOI(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
@@ -19,12 +20,14 @@ public class CActionApproachPOI : BTLeaf
 
     protected override void OnEnter()
     {
+        Debug.Log("approach poi - enter");
         context.targetPOI = null;
+        
     }
 
     protected override void OnExit()
     {
-
+        justSetPath = false;
         context.agent.angularSpeed = tempTurnSpeed;
         context.agent.speed = context.creatureStats.statManager.getStat(ModiferType.MOVESPEED);
     }
@@ -32,12 +35,11 @@ public class CActionApproachPOI : BTLeaf
     public override NodeState Evaluate()
     {
         Debug.Log("Approaching POI - status: " + agent.pathStatus);
-        if( agent.pathStatus == NavMeshPathStatus.PathComplete)
+        if(justSetPath)
         {
-            OnParentExit();
-            return NodeState.FAILURE;
+            justSetPath = false;
+            return NodeState.RUNNING;
         }
-        
         if(context.animator.isInteractPOI)
         {
             OnParentExit();
@@ -50,7 +52,14 @@ public class CActionApproachPOI : BTLeaf
         if(context.targetPOI == null && context.possiblePOIs.Count > 0)
         {
             context.targetPOI = context.possiblePOIs[Random.Range(0, context.possiblePOIs.Count)];
-            agent.SetDestination(context.targetPOI.transform.position);
+            Debug.Log("setting poi dest");
+            agent.destination = context.targetPOI.transform.position;
+            justSetPath = true;
+            return NodeState.RUNNING;
+        } else if(!agent.hasPath)
+        {
+            OnParentExit();
+            return NodeState.FAILURE;   
         }
         
         if(context.targetPOI != null)
@@ -61,6 +70,7 @@ public class CActionApproachPOI : BTLeaf
                 return NodeState.SUCCESS;
             } else 
             {
+                Debug.Log("approach poi - running");
                 return NodeState.RUNNING;
             }
         }

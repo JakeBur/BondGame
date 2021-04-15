@@ -49,6 +49,7 @@ public class CreatureAIContext : MonoBehaviour
     public bool autoAttack;
     public bool enthusiasmInteracted;
     public bool hasReacted;
+    public bool isReacting;
 
     [Header("Misc.Numbers")]
     public float playerSpeedToScare;
@@ -68,6 +69,8 @@ public class CreatureAIContext : MonoBehaviour
     public float tiredness;
 
     public float meterRate;
+
+    public AnimationCurve wanderDistanceCurve;
 
 
     private int debugNumber;

@@ -162,7 +162,7 @@ public class UIUpdates : MonoBehaviour
     
     public void CooldownUpdate()
     {
-        Debug.Log("cd update");
+        //Debug.Log("cd update");
        
         //called every tick while cooldown is active
         //get specific creatures cooldown

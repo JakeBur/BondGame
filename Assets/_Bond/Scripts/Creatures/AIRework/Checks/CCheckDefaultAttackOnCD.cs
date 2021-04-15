@@ -17,8 +17,8 @@ public class CCheckDefaultAttackOnCD : BTChecker
         if(context.player.GetComponent<PlayerController>().cooldownSystem.IsOnCooldown(10 + temp))
         {
           
-            return NodeState.SUCCESS;
+            return NodeState.FAILURE;
         }
-        return NodeState.FAILURE;
+        return NodeState.SUCCESS;
     }
 }

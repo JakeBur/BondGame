@@ -82,7 +82,6 @@ public class CreatureAIRework : MonoBehaviour
                     BTSequence wildBoredSequence = new BTSequence("", wildBoredSequenceList);
                 #endregion
                 
-                //Wandering
                 CActionWander wander = new CActionWander("", context);
 
                 wildActionSelectorList.Add(wildEnemyNearSequence);
@@ -103,10 +102,10 @@ public class CreatureAIRework : MonoBehaviour
             
             #region Whistled
                 List<BTNode> WhistledSequenceList = new List<BTNode>();
-                //CCheckPlayerWhistled didWhistle = new CCheckPlayerWhistled("", context);
-                //CActionIncreaseAttention increaseAttention = new CActionIncreaseAttention("", context);
-                // WhistledSequenceList.Add(didWhistle);
-                // WhistledSequenceList.Add(increaseAttention);
+                CCheckPlayerWhistled didWhistle = new CCheckPlayerWhistled("", context);
+                CActionIncreaseAttention increaseAttention = new CActionIncreaseAttention("", context);
+                WhistledSequenceList.Add(didWhistle);
+                WhistledSequenceList.Add(increaseAttention);
                 BTSequence WhistledSequence = new BTSequence("", WhistledSequenceList);
             #endregion
 
@@ -120,7 +119,6 @@ public class CreatureAIRework : MonoBehaviour
                         List<BTNode> abilityTriggeredSequenceList = new List<BTNode>();
                         CCheckPlayerTriggeredAbility playerTriggeredAbility = new CCheckPlayerTriggeredAbility("", context);
                         CCheckIfAbilityOnCd abilityOnCd = new CCheckIfAbilityOnCd("", context);
-                        CCheckInCombat inCombat = new CCheckInCombat("", context);
                         #region Ability Choosing Selector
                             List<BTNode> abilityChoosingSelectorList = new List<BTNode>();
                             #region Ability 1 Sequence
@@ -146,7 +144,6 @@ public class CreatureAIRework : MonoBehaviour
 
                         abilityTriggeredSequenceList.Add(playerTriggeredAbility);
                         abilityTriggeredSequenceList.Add(abilityOnCd);
-                        abilityTriggeredSequenceList.Add(inCombat);
                         abilityTriggeredSequenceList.Add(abilityChoosingSelector);
                         BTSequence AbilityTriggeredSequence = new BTSequence("", abilityTriggeredSequenceList);
                     #endregion
@@ -154,26 +151,32 @@ public class CreatureAIRework : MonoBehaviour
                     #region Attention Sequence
                         List<BTNode> attentionHighInCombatSequenceList = new List<BTNode>();
 
-                        // CCheckAttentionHigh attentionHigh = new CCheckAttentionHigh("", context);
-                        // CActionGetToPlayer getToPlayer = new CActionGetToPlayer("", context);
+                        CCheckAttentionHigh attentionHigh = new CCheckAttentionHigh("", context);
+                        CActionGetToPlayer getToPlayer = new CActionGetToPlayer("", context);
 
-                        // attentionHighInCombatSequenceList.Add(attentionHigh);
-                        // attentionHighInCombatSequenceList.Add(getToPlayer);
+                        attentionHighInCombatSequenceList.Add(attentionHigh);
+                        attentionHighInCombatSequenceList.Add(getToPlayer);
                         BTSequence attentionHighInCombatSequence = new BTSequence("", attentionHighInCombatSequenceList);
                     #endregion
 
                     #region Basic Attack Sequence
-                        List<BTNode> basicOnCooldownSequenceList = new List<BTNode>();
-                        CCheckDefaultAttackOnCD onCooldown = new CCheckDefaultAttackOnCD ("", context);
-                        // moveToEnemy = new CActionMoveToEnemy("", context);
-                        //basicOnCooldownSequenceList.Add(onCooldown);
-                        //basicOnCooldownSequenceList.Add(moveToEnemy);
-                        BTSequence basicOnCooldownSequence = new BTSequence("", basicOnCooldownSequenceList);
+                        List<BTNode> basicAttackSequenceList = new List<BTNode>();
+                        
+                        CCheckDefaultAttackOnCD basicOnCD = new CCheckDefaultAttackOnCD("", context);
+                        BTSequence basicAttackSubtree = context.basicCreatureAttack.abilityBehavior.BuildSequenceSubtree(context);
+                        basicAttackSequenceList.Add(basicOnCD);
+                        basicAttackSequenceList.Add(basicAttackSubtree);
+                        
+                        BTSequence basicAttackSequence = new BTSequence("", basicAttackSequenceList);
                     #endregion
+
+                    //Combat Wander
+                    CActionBefriendedWander befriendedWander = new CActionBefriendedWander("", context);
 
                     inCombatAbilitySelectorList.Add(AbilityTriggeredSequence);
                     inCombatAbilitySelectorList.Add(attentionHighInCombatSequence);
-                    inCombatAbilitySelectorList.Add(basicOnCooldownSequence);
+                    inCombatAbilitySelectorList.Add(basicAttackSequence);
+                    inCombatAbilitySelectorList.Add(befriendedWander);
                     
                     BTSelector inCombatAbilitySelector = new BTSelector("", inCombatAbilitySelectorList);
                 #endregion
@@ -186,31 +189,40 @@ public class CreatureAIRework : MonoBehaviour
                 List<BTNode> outOfCombatSelectorList = new List<BTNode>();
                 #region player moving
                     List<BTNode> playerMovingSequenceList = new List<BTNode>();
-                    // CCheckPlayerMoving checkPlayerMoving = new CCheckPlayerMoving("", context);
-                    // CActionFollowPlayer followPlayer = new CActionFollowPlayer("", context);
-                    // playerMovingSequenceList.Add(checkPlayerMoving);
-                    // playerMovingSequenceList.Add(followPlayer);
+                    CCheckPlayerMoving checkPlayerMoving = new CCheckPlayerMoving("", context);
+                    CActionFollowPlayer followPlayer = new CActionFollowPlayer("", context);
+                    playerMovingSequenceList.Add(checkPlayerMoving);
+                    playerMovingSequenceList.Add(followPlayer);
                     BTSequence playerMovingSequence = new BTSequence("", playerMovingSequenceList);
                 #endregion
                 
                 #region player not moving
                     List<BTNode> playerNotMovingSelectorList = new List<BTNode>();
-                    //player based wander action
-                    // playerNotMovingSelectorList.Add(wildBoredSequence);
-                    // playerNotMovingSelectorList.Add(player Wander Action);
+
+                    //CActionBefriendedWander befriendedWander = new CActionBefriendedWander("", context);
+
+                    //playerNotMovingSelectorList.Add(wildBoredSequence);
+                    playerNotMovingSelectorList.Add(befriendedWander);
 
                     BTSelector playerNotMovingSelector = new BTSelector("", playerNotMovingSelectorList);
                 #endregion
-                
+
+                outOfCombatSelectorList.Add(playerMovingSequence);
+                outOfCombatSelectorList.Add(playerNotMovingSelector);
                 BTSelector outOfCombatSelector = new BTSelector("", outOfCombatSelectorList);
             #endregion
-            outOfCombatSelectorList.Add(playerMovingSequence);
-            outOfCombatSelectorList.Add(playerNotMovingSelector);
+
+            //BefriendedSelectorList.Add(WhistledSequence);
+            BefriendedSelectorList.Add(inCombatSequence);
+            BefriendedSelectorList.Add(outOfCombatSelector);
+            
             BTSelector BefriendedSelector = new BTSelector("", BefriendedSelectorList);
         #endregion
 
-
-        behaviorTree = wildSequence;
+        rootList.Add(wildSequence);
+        rootList.Add(BefriendedSelector);
+        BTSelector root = new BTSelector("", rootList);
+        behaviorTree = root;
         Evaluate = true;
     }
 
