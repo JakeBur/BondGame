@@ -43,9 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a3e66874388534f87554303e5354ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fragariaSunbeamSFX: event:/Sound Effects/SFX/Creature SFX/Fragaria/Fragaria Sunbeam
-  fragariaSporeTossSFX: event:/Sound Effects/SFX/Creature SFX/Fragaria/Fragaria Spore
-    Toss
 --- !u!1 &2759757170665168599
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,7 +5097,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 21.546072
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0.15486908}
 --- !u!114 &7652944174037425992
 MonoBehaviour:
@@ -5223,13 +5220,13 @@ GameObject:
   - component: {fileID: 8167450192529632887}
   - component: {fileID: 8167450192529632878}
   - component: {fileID: 7652944173586669289}
-  - component: {fileID: 8167450192529632880}
   - component: {fileID: 8167450192529632883}
   - component: {fileID: 8167450192529632881}
   - component: {fileID: 6899150225298738526}
   - component: {fileID: 3045770925772636374}
   - component: {fileID: 4353762693751710805}
   - component: {fileID: 3520200349132130404}
+  - component: {fileID: 6930789815379080476}
   m_Layer: 9
   m_Name: FragariaPrefab
   m_TagString: CaptCreature
@@ -5333,7 +5330,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 524.7
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5388,21 +5385,6 @@ MonoBehaviour:
   m_DefaultActionMap: controller
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8167450192529632880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167450192529632886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff34448142251f54e9a8ad67fad61f9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalities: []
-  DefaultPersonality: {fileID: 11400000, guid: 57ec74726c94f2e41bbc8565a9e58457, type: 2}
-  Evaluate: 0
 --- !u!114 &8167450192529632883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5450,6 +5432,8 @@ MonoBehaviour:
     type: 2}
   PetalCone: {fileID: 8144200659242719062, guid: 31c4943d3422d804089b1c2262442c17,
     type: 3}
+  possiblePOIs: []
+  targetPOI: {fileID: 0}
   isWild: 1
   isInPlayerRadius: 0
   isInPlayerTrail: 0
@@ -5462,17 +5446,55 @@ MonoBehaviour:
   inCombat: 0
   autoAttack: 0
   enthusiasmInteracted: 0
+  hasReacted: 0
   playerSpeedToScare: 0.9
   lastTriggeredAbility: 0
   enemyDetectRange: 20
   itemDetectRange: 10
-  wanderRadius: 12
+  wanderDistance: 5
   wanderIdleDuration: 0
   wanderIdleTimer: 0
   wanderDestination: {x: 0, y: 0, z: 0}
   wildStartingLocation: {x: 0, y: 0, z: 0}
   stealDuration: 0
   stealTimer: 0
+  attention: 0
+  boredom: 0
+  tiredness: 0
+  meterRate: 3
+  wanderDistanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.79087675
+      value: 0.23312251
+      inSlope: 0.8599871
+      outSlope: 0.8589776
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.46158338
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   icon: {fileID: 0}
   ability1Icon: {fileID: 0}
   ability2Icon: {fileID: 0}
@@ -5489,7 +5511,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 3865513519326407494}
-  WalkSFX: event:/Sound Effects/SFX/New Walking Grass 3D
 --- !u!114 &3045770925772636374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5536,6 +5557,21 @@ MonoBehaviour:
   - {fileID: 2200964046070514977}
   - {fileID: 3526513323329918682}
   - {fileID: 9134508263310687475}
+--- !u!114 &6930789815379080476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167450192529632886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb935782b959c949bb43554eb0f29a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  personalities: []
+  DefaultPersonality: {fileID: 11400000, guid: 57ec74726c94f2e41bbc8565a9e58457, type: 2}
+  Evaluate: 0
 --- !u!1001 &926935731944446665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5552,6 +5588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enthusiasm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473272381462853380, guid: 178f156dcca627242afc9a6aad8eb4c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2180592324084311790, guid: 178f156dcca627242afc9a6aad8eb4c4,
         type: 3}
