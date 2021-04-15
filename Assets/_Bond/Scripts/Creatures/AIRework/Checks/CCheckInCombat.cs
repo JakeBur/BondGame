@@ -23,7 +23,7 @@ public class CCheckInCombat : BTChecker
         if(context.lastTriggeredAbility >= 0)
         {
             context.lastTriggeredAbility = -1;
-            //PersistentData.Instance.UI.GetComponent<UIUpdates>().DO_ABILITY_FAIL_UI
+            PersistentData.Instance.UI.GetComponent<UIUpdates>().OnAbilityFail();
         }
         return NodeState.FAILURE;
     }

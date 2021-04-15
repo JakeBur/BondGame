@@ -20,9 +20,7 @@ public class CActionApproachPOI : BTLeaf
 
     protected override void OnEnter()
     {
-        Debug.Log("approach poi - enter");
         context.targetPOI = null;
-        
     }
 
     protected override void OnExit()
@@ -34,7 +32,6 @@ public class CActionApproachPOI : BTLeaf
 
     public override NodeState Evaluate()
     {
-        Debug.Log("Approaching POI - status: " + agent.pathStatus);
         if(justSetPath)
         {
             justSetPath = false;
@@ -52,7 +49,6 @@ public class CActionApproachPOI : BTLeaf
         if(context.targetPOI == null && context.possiblePOIs.Count > 0)
         {
             context.targetPOI = context.possiblePOIs[Random.Range(0, context.possiblePOIs.Count)];
-            Debug.Log("setting poi dest");
             agent.destination = context.targetPOI.transform.position;
             justSetPath = true;
             return NodeState.RUNNING;
@@ -70,7 +66,6 @@ public class CActionApproachPOI : BTLeaf
                 return NodeState.SUCCESS;
             } else 
             {
-                Debug.Log("approach poi - running");
                 return NodeState.RUNNING;
             }
         }

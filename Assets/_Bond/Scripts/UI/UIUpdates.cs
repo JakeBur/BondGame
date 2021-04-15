@@ -189,9 +189,9 @@ public class UIUpdates : MonoBehaviour
         
     }
 
-    public void OnAbilityFail(int ability)
+    public void OnAbilityFail()
     {
-        
+        Debug.Log("OUT OF COMBAT ABILITY NO GO");
     }
 
 

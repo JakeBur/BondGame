@@ -129,6 +129,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""whistle"",
+                    ""type"": ""Button"",
+                    ""id"": ""01407524-9676-4728-a35e-7d9c6fbe5af3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -439,6 +447,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""action"": ""tab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3e88274-6596-4cc7-bc62-41ad2a4c4e2f"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""whistle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -592,6 +611,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_Player_mousePos = m_Player.FindAction("mousePos", throwIfNotFound: true);
         m_Player_creatureAutoAttack = m_Player.FindAction("creatureAutoAttack", throwIfNotFound: true);
         m_Player_tab = m_Player.FindAction("tab", throwIfNotFound: true);
+        m_Player_whistle = m_Player.FindAction("whistle", throwIfNotFound: true);
         // keyboard
         m_keyboard = asset.FindActionMap("keyboard", throwIfNotFound: true);
         m_keyboard_LeftClick = m_keyboard.FindAction("LeftClick", throwIfNotFound: true);
@@ -663,6 +683,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_mousePos;
     private readonly InputAction m_Player_creatureAutoAttack;
     private readonly InputAction m_Player_tab;
+    private readonly InputAction m_Player_whistle;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -681,6 +702,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @mousePos => m_Wrapper.m_Player_mousePos;
         public InputAction @creatureAutoAttack => m_Wrapper.m_Player_creatureAutoAttack;
         public InputAction @tab => m_Wrapper.m_Player_tab;
+        public InputAction @whistle => m_Wrapper.m_Player_whistle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -732,6 +754,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @tab.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
                 @tab.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
                 @tab.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
+                @whistle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWhistle;
+                @whistle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWhistle;
+                @whistle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWhistle;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -778,6 +803,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @tab.started += instance.OnTab;
                 @tab.performed += instance.OnTab;
                 @tab.canceled += instance.OnTab;
+                @whistle.started += instance.OnWhistle;
+                @whistle.performed += instance.OnWhistle;
+                @whistle.canceled += instance.OnWhistle;
             }
         }
     }
@@ -898,6 +926,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnMousePos(InputAction.CallbackContext context);
         void OnCreatureAutoAttack(InputAction.CallbackContext context);
         void OnTab(InputAction.CallbackContext context);
+        void OnWhistle(InputAction.CallbackContext context);
     }
     public interface IKeyboardActions
     {

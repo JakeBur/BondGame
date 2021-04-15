@@ -28,7 +28,6 @@ public class CActionSit : BTLeaf
 
     public override NodeState Evaluate() 
     {
-        Debug.Log("SIT");
         if(timer >= endTime)
         {
             OnParentExit();
