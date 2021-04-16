@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PersistentData : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PersistentData : MonoBehaviour
     public GameObject UIPrefab;
     public GameObject UI { get; private set; }
     private GameObject ui;
+    [SerializeField]
+    private bool displayUI = true;
 
     [Header("PauseReference")]
     public GameObject PauseMenuPrefab;
@@ -44,6 +47,8 @@ public class PersistentData : MonoBehaviour
     public GameObject SFXManager {get; private set;}
     private GameObject sfxManager;
 
+    private AudioSettings audioSettings;
+
     [Header("LoadScreen")]
     public CanvasGroup loadScreen;
 
@@ -51,6 +56,19 @@ public class PersistentData : MonoBehaviour
 
     public List<RelicStats> availableRelics;
 
+    [Header("InputActionAsset")]
+    public PlayerInput playerInputs;
+
+
+    private void OnApplicationQuit()
+    {
+        //------------------------------------------------
+        // saves PlayerPrefs for next application launch
+        //------------------------------------------------
+        audioSettings.SaveVolumesOnQuit();
+        SaveControls();
+        PlayerPrefs.Save();
+    }
 
     private void Awake() 
     {
@@ -87,6 +105,8 @@ public class PersistentData : MonoBehaviour
         }
         Camera.main.GetComponent<CamFollow>().toFollow = Player.transform;
 
+        playerInputs = Player.GetComponent<PlayerInput>();
+        //LoadControls();
 
 
         if(ShopRelicUI == null)
@@ -119,11 +139,13 @@ public class PersistentData : MonoBehaviour
                 if(UI == null)
                 {
                     UI = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
+                    UI.SetActive( displayUI );
                 }
             }
             catch
             {
                 UI = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
+                UI.SetActive( displayUI );
             }
             
         }
@@ -200,6 +222,11 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(SFXManager);
+
+        var settings = PauseMenu.transform.Find("Settings");
+        var backdrop = settings.Find("backdrop");
+        audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
+        audioSettings.LoadVolumesOnStart();
     }
 
 
@@ -369,5 +396,23 @@ public class PersistentData : MonoBehaviour
             yield return null;
         }
         loadScreen.alpha = 0;
+    }
+
+    public void SaveControls()
+    {
+        string bindings = playerInputs.actions.ToJson();
+        PlayerPrefs.SetString("Bindings", bindings);
+    }
+
+    public void LoadControls()
+    {
+        string bindings = PlayerPrefs.GetString("Bindings", string.Empty);
+
+        if (string.IsNullOrEmpty(bindings))
+        {
+            return;
+        }
+    
+        playerInputs.actions.LoadFromJson(bindings);
     }
 }

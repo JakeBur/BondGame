@@ -25,7 +25,7 @@ public class AbilitySpawner : MonoBehaviour
 
     public void SpawnPetals(GameObject projectile, Transform creatureTransform) 
     {
-        Debug.Log("Creature Rot: " + creatureTransform.eulerAngles.y);
+        //Debug.Log("Creature Rot: " + creatureTransform.eulerAngles.y);
         var creatureRotation = creatureTransform.rotation;
         creatureRotation *= Quaternion.Euler(0, -90, 0);
         Quaternion rot = new Quaternion(creatureTransform.rotation.x, creatureTransform.rotation.y, creatureTransform.rotation.z, creatureTransform.rotation.w);

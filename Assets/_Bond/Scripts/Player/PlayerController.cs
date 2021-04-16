@@ -1,4 +1,4 @@
-//Author : Colin
+//Author : Colin + Jamo
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -92,13 +92,16 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public CreatureAIContext currCreatureContext;
     public CooldownSystem cooldownSystem => GetComponent<CooldownSystem>();
+    public bool didWhistle;
 
     [Header("Combat")]
     public bool inCombat;
     public bool isAttacking = false;
     public bool isHit;
-    public Vector3 attackDestination;
     public Vector3 attackMoveVec;
+
+    [Header("PlayerInputs")]
+    public PlayerInput playerInputs;
 
     //-----------
     // for FMOD
@@ -145,7 +148,7 @@ public class PlayerController : MonoBehaviour
         charController = GetComponent<CharacterController>();
         dashStart = Time.time;
         animator.ResetAllAttackAnims();
-        inputs.usingMouse = false;
+        inputs.usingMouse = true;
     }
 
     // MOVEMENT FUNCTIONS ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -153,6 +156,7 @@ public class PlayerController : MonoBehaviour
     public void doMovement(float movementModifier)
     {
 
+        //TODO: Player should never be in the air
         // Detects if player is in the air
         if(!charController.isGrounded)
         {
@@ -333,24 +337,34 @@ public class PlayerController : MonoBehaviour
         {
             var temp = currCreature;
 
-            currCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                // Warp to off map
-            swapCreature.GetComponent<CreatureAIContext>().agent.Warp(backFollowPoint.position);    // Move new creature into position
-            swapCreature.transform.position = backFollowPoint.position;
+            // currCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                // Warp to off map
+            // swapCreature.GetComponent<CreatureAIContext>().agent.Warp(backFollowPoint.position);    // Move new creature into position
+            // swapCreature.transform.position = backFollowPoint.position;
 
             currCreature = swapCreature;                                                            // Actual Swap
             currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
-            currCreatureContext.isInPlayerRadius = false;
-            currCreatureContext.isActive = true;
+            // currCreatureContext.isInPlayerRadius = false;
+            // currCreatureContext.isActive = true;
 
             swapCreature = temp;
 
-            swapCreature.GetComponent<CreatureAIContext>().isActive = false;
+            // swapCreature.GetComponent<CreatureAIContext>().isActive = false;
             
             //Update the creature's enthusiasm bars
-            swapCreature.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
-            currCreature.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+            // swapCreature.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+            // currCreature.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
 
             hasSwapped = !hasSwapped;
+            if(hasSwapped)
+            {
+                PersistentData.Instance.UI.GetComponent<UIUpdates>().abilityId1 = 100;
+                PersistentData.Instance.UI.GetComponent<UIUpdates>().abilityId2 = 101;
+            }
+            else 
+            {
+                PersistentData.Instance.UI.GetComponent<UIUpdates>().abilityId1 = 0;
+                PersistentData.Instance.UI.GetComponent<UIUpdates>().abilityId2 = 1;
+            }
             
             PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();                // UI Update
 
@@ -365,8 +379,11 @@ public class PlayerController : MonoBehaviour
     private void OnAttack1()
     {
         inputs.basicAttack = true;
+    }
 
-        if(inputs.usingMouse)
+    public void Slash()//helper function for OnAttack1
+    {
+         if(inputs.usingMouse)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(inputs.mousePos);
@@ -379,8 +396,7 @@ public class PlayerController : MonoBehaviour
                 // Debug.Log(hit.point);
                 //gameObject.transform.LookAt(hit.point);
 
-                attackDestination = hit.point;
-
+               
                 Vector3 direction = hit.point - transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
 
@@ -391,7 +407,7 @@ public class PlayerController : MonoBehaviour
                 
                 // Rotates player in direction of attack
                 transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
-                
+                          
             } 
         }
     }
@@ -425,7 +441,6 @@ public class PlayerController : MonoBehaviour
             currCreatureContext.lastTriggeredAbility = 0;
         }
 
-        PersistentData.Instance.UI.GetComponent<UIUpdates>().UsedAbility(1);
     }  
 
 
@@ -437,8 +452,6 @@ public class PlayerController : MonoBehaviour
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 1;
         }
-
-        PersistentData.Instance.UI.GetComponent<UIUpdates>().UsedAbility(2);
     }
 
     private void OnPause()
@@ -449,12 +462,14 @@ public class PlayerController : MonoBehaviour
         {
             canvas.enabled = false;
             Time.timeScale = 1;
+            playerInputs.SwitchCurrentActionMap("Player");
         }
         // Pause
         else 
         {   
             canvas.enabled = true;
             Time.timeScale = 0f;
+            playerInputs.SwitchCurrentActionMap("Menu");
         }
 
         SFXPlayer.PlayOneShot(SFX.MenuOpenSFX, transform.position);
@@ -472,6 +487,8 @@ public class PlayerController : MonoBehaviour
         
         SFXPlayer.PlayOneShot(SFX.MenuOpenSFX, transform.position);
 
+        
+
     }
 
     private void OnCrouch()
@@ -488,6 +505,30 @@ public class PlayerController : MonoBehaviour
             crouchModifier = 1f;
             animator.Crouch( false );
         }
+    }
+
+    private void OnWhistle()
+    {
+        Debug.Log("WHISTLED");
+        if(currCreature == null) return;
+        
+        didWhistle = true;
+
+        currCreatureContext.attention += 100;
+        
+        if(currCreatureContext.attention >150)
+        {
+            currCreatureContext.attention = 150;
+        }
+        if(swapCreature != null)
+        {
+            swapCreature.GetComponent<CreatureAIContext>().attention += 100;
+            if(swapCreature.GetComponent<CreatureAIContext>().attention >150)
+            {
+                swapCreature.GetComponent<CreatureAIContext>().attention = 150;
+            }
+        }
+        
     }
 
     private void OnFruitSpawn()
@@ -510,8 +551,8 @@ public class PlayerController : MonoBehaviour
             {
                 wildCreature.GetComponent<CreatureAIContext>().isWild = false;                                  // Marks wild creature as not wild
                 swapCreature = wildCreature;                                                                    // Stores wild creature as swap creature
-                swapCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                        // Warps off map
-                swapCreature.GetComponent<CreatureAIContext>().isActive = false;
+                // swapCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                        // Warps off map
+                // swapCreature.GetComponent<CreatureAIContext>().isActive = false;
 
                 ApplyCreatureRelics(swapCreature.GetComponent<CreatureAIContext>().creatureStats.statManager);  // Apply relics to the creature
             }
@@ -520,7 +561,7 @@ public class PlayerController : MonoBehaviour
                 wildCreature.GetComponent<CreatureAIContext>().isWild = false;
                 currCreature = wildCreature;
                 currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
-                currCreatureContext.isActive = true;
+                //currCreatureContext.isActive = true;
                 ApplyCreatureRelics(currCreatureContext.creatureStats.statManager);
             }
 

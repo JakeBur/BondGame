@@ -58,7 +58,6 @@ MonoBehaviour:
     type: 3}
   SFXManagerPrefab: {fileID: 5507915083244159709, guid: 53a217a311bb35947a70cf6bec49fe58,
     type: 3}
-  SFXManager: {fileID: 0}
   loadScreen: {fileID: 2837024482875620880}
   isGeneratorDone: 0
   availableRelics:
@@ -67,6 +66,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86f221ed2007bb14e931f4ece15c90c1, type: 2}
   - {fileID: 11400000, guid: 6f35e3eb7f08a4b4382697f103a9bdeb, type: 2}
   - {fileID: 11400000, guid: baa816bd472dc214d92babe6bc20bea8, type: 2}
+  playerInputs: {fileID: -944628639613478452, guid: 4f481f4d5c1fa064683bc179d470de21,
+    type: 3}
 --- !u!225 &2837024482875620880
 CanvasGroup:
   m_ObjectHideFlags: 0

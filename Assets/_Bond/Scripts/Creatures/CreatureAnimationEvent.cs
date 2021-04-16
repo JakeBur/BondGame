@@ -10,4 +10,14 @@ public class CreatureAnimationEvent : MonoBehaviour
     {
         creatureAnimator.PlayWalkSFX();
     }
+
+    public void interactPOIFalse()
+    {
+        creatureAnimator.interactPOIFalse();
+    }
+
+    public void waveFalse()
+    {
+        creatureAnimator.waveFalse();
+    }
 }
