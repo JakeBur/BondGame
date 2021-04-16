@@ -10250,7 +10250,7 @@ MonoBehaviour:
   slashVfx: {fileID: 766551116}
   vfxData:
     slashes:
-    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
+    - {fileID: 4254348646603466417, guid: 5417def051106c64fa9daf02d1ee27c6, type: 3}
     - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
     - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
     - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
