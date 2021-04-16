@@ -9,12 +9,9 @@ Animation:
   m_GameObject: {fileID: 4020327280746047482}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: df2972f649085cf45bf30fee0ee552f2, type: 2}
+  m_Animation: {fileID: 7400000, guid: ef3825880c1e31e408e331d19850ca32, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: ef3825880c1e31e408e331d19850ca32, type: 2}
-  - {fileID: 0}
-  - {fileID: 7400000, guid: a0b5369ac6b0fc541b551c292e9206d7, type: 2}
-  - {fileID: 7400000, guid: df2972f649085cf45bf30fee0ee552f2, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -41,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4254348646603466418}
   m_Layer: 0
-  m_Name: Angled Burst
+  m_Name: Slash3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,8 +52,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4254348646603466417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1.3987}
+  m_LocalPosition: {x: 0, y: 0, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2129209193356539772}
   m_Father: {fileID: 0}
@@ -113,15 +110,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8200749404848590399}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.1, y: 0.13, z: 0.881}
+  m_LocalRotation: {x: 0.13863166, y: -0.66758734, z: -0.15583037, w: -0.7147205}
+  m_LocalPosition: {x: 0.08, y: 0.12, z: 1.19}
   m_LocalScale: {x: 1.483658, y: 1.483658, z: 1.483658}
   m_Children:
   - {fileID: 4359698779153005888}
   - {fileID: 6882510085807127349}
   m_Father: {fileID: 4254348646603466418}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -23.968, y: -274.40698, z: 2.3620002}
 --- !u!1001 &4254348646170172075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,7 +210,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -2124705421725058983, guid: 7659960fba740cc4f95d569daa746b85,
+      objectReference: {fileID: -2124705421725058983, guid: 6b260e7181ed0514f851860b136b7d6f,
         type: 3}
     - target: {fileID: 919132149155446097, guid: 6b260e7181ed0514f851860b136b7d6f,
         type: 3}
