@@ -21,6 +21,9 @@ TagManager:
   - StatUI
   - SFXManager
   - ShopRelicUI
+  - POITree
+  - POIFlower
+  - POIOther
   layers:
   - Default
   - TransparentFX

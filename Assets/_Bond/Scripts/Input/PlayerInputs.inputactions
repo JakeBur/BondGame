@@ -116,6 +116,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "whistle",
+                    "type": "Button",
+                    "id": "01407524-9676-4728-a35e-7d9c6fbe5af3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -424,6 +432,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3e88274-6596-4cc7-bc62-41ad2a4c4e2f",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "whistle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
