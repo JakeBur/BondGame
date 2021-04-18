@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class LevelUpSystem : MonoBehaviour
 {
+    StatManager playerStats => PersistentData.Instance.Player.GetComponent<StatManager>();
+    StatUIFunctions statUI =>  PersistentData.Instance.StatUI.GetComponent<StatUIFunctions>();
+
     [SerializeField]
     public int level = 1;
    
@@ -15,7 +18,20 @@ public class LevelUpSystem : MonoBehaviour
     public int xpNeededForNext = 0;
     public int xpGainedThisLevel = 0;
 
+    [Header("Upgrade Points")]
     public int upgradePoints = 0;
+    //how many points are in each
+    private int healthPoints = 0;
+    private int damagePoints = 0;
+    private int bondPoints = 0;
+    private int critPoints = 0;
+    //max amount for each
+    private int healthPointsMax = 20;
+    private int damagePointsMax = 10;
+    private int bondPointsMax = 10;
+    private int critPointsMax = 10;
+    
+
 
     [Header("Equation Variables")]
     public float A = 16;
@@ -31,6 +47,8 @@ public class LevelUpSystem : MonoBehaviour
         xpNeededForNext = GetNextXpForLevel();
         xpGainedThisLevel = 0;
         upgradePoints = 0;
+        UpdateStats();
+
     }
 
 
@@ -67,15 +85,32 @@ public class LevelUpSystem : MonoBehaviour
         xpNeededForNext = GetNextXpForLevel();
 
         if(xpGainedThisLevel >= xpNeededForNext) LevelUp(); //cases where you may level up multiple times from one source, prob never
-
     }
 
 
 
-
-    public void UseUpgradePoint()
+    //Will be called from StatUI updates, and function there will determin if a stat is maxed or not
+    public void UseUpgradePoint(int i)
     {
         upgradePoints--;
+
+        switch (i)
+        {
+            case 1:
+                healthPoints++;
+                break;
+            case 2:
+                damagePoints++;
+                break;
+            case 3:
+                bondPoints++;
+                break;
+            case 4:
+                critPoints++;
+                break;
+        }
+
+        UpdateStats();
     }
 
 
@@ -83,6 +118,21 @@ public class LevelUpSystem : MonoBehaviour
     public float PercentToNextLevel()
     {
         return (float)xpGainedThisLevel/xpNeededForNext;
+    }
+
+
+    public void UpdateStats()
+    {  
+        float healthRatio = playerStats.getStat(ModiferType.CURR_HEALTH)/playerStats.getStat(ModiferType.MAX_HEALTH);
+
+        playerStats.setStat(ModiferType.MAX_HEALTH, 300 + (healthPoints * 5) );
+        playerStats.setStat(ModiferType.CURR_HEALTH, Mathf.CeilToInt(playerStats.getStat(ModiferType.MAX_HEALTH) * healthRatio));//keeps health ratio same on level up
+        playerStats.setStat(ModiferType.DAMAGE, 20 + damagePoints);
+        //playerStats.setStat(ModiferType.CREATURE_POWER, playerStats.getStat(ModiferType.CREATURE_POWER) + bondPoints); //Need stat for player that mods creature, this dont work
+        playerStats.setStat(ModiferType.CRIT_CHANCE, 2 + critPoints);
+
+
+        statUI.UpdatePlayerStats();
     }
 
 

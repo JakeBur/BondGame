@@ -61,6 +61,8 @@ public class StatUIFunctions : MonoBehaviour
 
     public void UpdatePlayerStats()
     {
+        //levelSys.UpdateStats();
+
         playerTextLists[0].SetText(stats.getStat(ModiferType.MAX_HEALTH).ToString());
         playerTextLists[1].SetText(stats.getStat(ModiferType.DAMAGE).ToString());
         playerTextLists[2].SetText("0"); //bond aka creature damage

@@ -477,9 +477,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTab()
     {
-        var canvas = PersistentData.Instance.StatUI.GetComponent<Canvas>();
-        canvas.enabled = !canvas.enabled;
-        PersistentData.Instance.StatUI.GetComponent<StatUIFunctions>().UpdateCreatureStats(1);
+        var ui = PersistentData.Instance.StatUI;
+        ui.SetActive(!ui.activeInHierarchy);
+        //PersistentData.Instance.StatUI.GetComponent<StatUIFunctions>().UpdateCreatureStats(1);
        
 
 
