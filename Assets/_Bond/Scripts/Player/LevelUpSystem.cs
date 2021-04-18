@@ -21,15 +21,15 @@ public class LevelUpSystem : MonoBehaviour
     [Header("Upgrade Points")]
     public int upgradePoints = 0;
     //how many points are in each
-    private int healthPoints = 0;
-    private int damagePoints = 0;
-    private int bondPoints = 0;
-    private int critPoints = 0;
+    public int healthPoints { get; private set; } = 0 ;
+    public int damagePoints { get; private set; } = 0;
+    public int bondPoints { get; private set; } = 0;
+    public int critPoints { get; private set; } = 0;
     //max amount for each
-    private int healthPointsMax = 20;
-    private int damagePointsMax = 10;
-    private int bondPointsMax = 10;
-    private int critPointsMax = 10;
+    public int healthPointsMax { get; private set; } = 20;
+    public int damagePointsMax { get; private set; } = 10;
+    public int bondPointsMax { get; private set; } = 10;
+    public int critPointsMax { get; private set; } = 10;
     
 
 
@@ -40,13 +40,24 @@ public class LevelUpSystem : MonoBehaviour
 
 
 
+    private void Awake() 
+    {
+        upgradePoints = 0;
+        level = 1;
+        healthPoints = 0;
+        damagePoints = 0;
+        bondPoints = 0;
+        critPoints = 0;
+    }
+
+
 
     private void Start() 
     {
-        level = 1;// will be adjusted for save data later on
+        //level = 1;// will be adjusted for save data later on
         xpNeededForNext = GetNextXpForLevel();
         xpGainedThisLevel = 0;
-        upgradePoints = 0;
+        //upgradePoints = 0;
         UpdateStats();
 
     }
@@ -85,6 +96,7 @@ public class LevelUpSystem : MonoBehaviour
         xpNeededForNext = GetNextXpForLevel();
 
         if(xpGainedThisLevel >= xpNeededForNext) LevelUp(); //cases where you may level up multiple times from one source, prob never
+        statUI.ButtonsAvailable();
     }
 
 
@@ -111,6 +123,9 @@ public class LevelUpSystem : MonoBehaviour
         }
 
         UpdateStats();
+
+        statUI.ButtonsAvailable();
+  
     }
 
 
@@ -131,8 +146,6 @@ public class LevelUpSystem : MonoBehaviour
         //playerStats.setStat(ModiferType.CREATURE_POWER, playerStats.getStat(ModiferType.CREATURE_POWER) + bondPoints); //Need stat for player that mods creature, this dont work
         playerStats.setStat(ModiferType.CRIT_CHANCE, 2 + critPoints);
 
-
-        statUI.UpdatePlayerStats();
     }
 
 
