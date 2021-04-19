@@ -160,7 +160,7 @@ public class UIUpdates : MonoBehaviour
    
     public void CooldownUpdate()
     {
-        Debug.Log("cd update");
+        //Debug.Log("cd update");
        
         //called every tick while cooldown is active
         //get specific creatures cooldown
@@ -193,9 +193,9 @@ public class UIUpdates : MonoBehaviour
         
     }
 
-    public void OnAbilityFail(int ability)
+    public void OnAbilityFail()
     {
-        
+        Debug.Log("OUT OF COMBAT ABILITY NO GO");
     }
 
 
