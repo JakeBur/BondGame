@@ -133,5 +133,12 @@ public class StatUIFunctions : MonoBehaviour
             }
         }
     }
+
+
+    public void UseUpgrade(int i)
+    {
+        levelSys.UseUpgradePoint(i);
+        UpdatePlayerStats();
+    }
     
 }
