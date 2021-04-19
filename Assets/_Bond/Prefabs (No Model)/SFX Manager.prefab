@@ -69,6 +69,8 @@ MonoBehaviour:
     Spawn/Donut Spawn Extend
   DonutSpawnGrabSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut NEW
     Spawn/Donut Spawn Grab
+  DonutSpawnDragSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut NEW
+    Spawn/Donut Spawn Drag
   DonutAttackExtendSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut
     Attack/Donut Attack Extend
   DonutSwipeSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Attack/Donut

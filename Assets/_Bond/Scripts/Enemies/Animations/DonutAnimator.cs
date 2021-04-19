@@ -76,6 +76,14 @@ public class DonutAnimator : EnemyAnimator
         }
     }
 
+    public void EventPlayDonutSpawnDragSFX()
+    {
+        if (!alreadySpawning)
+        {
+            SFXPlayer.PlayOneShot(SFX.DonutSpawnDragSFX, transform.position);
+        }
+    }
+
     public void EventPlayDonutAttackExtendSFX()
     {
         SFXPlayer.PlayOneShot(SFX.DonutAttackExtendSFX, transform.position);

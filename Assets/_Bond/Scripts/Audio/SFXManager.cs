@@ -56,6 +56,7 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string DonutSpawnSFX;
     [FMODUnity.EventRef] public string DonutSpawnExtendSFX;
     [FMODUnity.EventRef] public string DonutSpawnGrabSFX;
+    [FMODUnity.EventRef] public string DonutSpawnDragSFX;
     [FMODUnity.EventRef] public string DonutAttackExtendSFX;
     [FMODUnity.EventRef] public string DonutSwipeSFX;
     [FMODUnity.EventRef] public string DonutRetractSFX;
