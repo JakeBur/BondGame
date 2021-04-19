@@ -72,7 +72,7 @@ public class CreatureSpawner : MonoBehaviour
         
         //build BT
         Creature.GetComponent<CreatureAIContext>().GetActiveCreatureData();
-        Creature.GetComponent<CreatureAI>().BuildBT();
+        Creature.GetComponent<CreatureAIRework>().BuildBT();
     }
 
     List<Personality> choosePersonalities(ActiveCreatureData _ActiveCreatureData, creatureData _CreatureData){

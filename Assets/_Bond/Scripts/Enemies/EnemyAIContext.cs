@@ -103,6 +103,7 @@ public class EnemyAIContext : MonoBehaviour
     public void DestroyEnemy()
     {
         animator.Death();
+        player.GetComponent<LevelUpSystem>().GainXp(5); //probably add something to determine enemy type or difficulty to adjust reward
         Destroy(gameObject);
     }
 
@@ -115,5 +116,6 @@ public class EnemyAIContext : MonoBehaviour
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.goldCount++;
+        //play a sound and make a particle or something of acorns flying out
     }
 }
