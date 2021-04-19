@@ -19,7 +19,7 @@ public class DonutTestAnimator : MonoBehaviour
     private void OnButton2()
     {
         animator.Spawn();
-        animator.Pause();
+        //animator.Pause();
         Debug.Log("Pause");
     }
 }
