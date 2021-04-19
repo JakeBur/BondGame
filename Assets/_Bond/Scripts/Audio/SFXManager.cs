@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using SFXPlayer = FMODUnity.RuntimeManager;
+using SFXUtils = FMODUnity.RuntimeUtils;
+
 public class SFXManager : MonoBehaviour
 {
     //------------------
@@ -51,7 +54,14 @@ public class SFXManager : MonoBehaviour
     //----------------------
     [Header("Donut (Melee Enemy)")]
     [FMODUnity.EventRef] public string DonutSpawnSFX;
+    [FMODUnity.EventRef] public string DonutSpawnExtendSFX;
+    [FMODUnity.EventRef] public string DonutSpawnGrabSFX;
+    [FMODUnity.EventRef] public string DonutSpawnDragSFX;
+    [FMODUnity.EventRef] public string DonutAttackExtendSFX;
     [FMODUnity.EventRef] public string DonutSwipeSFX;
+    [FMODUnity.EventRef] public string DonutRetractSFX;
+
+    private bool spawning = false;
 
     //---------
     // UI SFX
@@ -60,4 +70,39 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string MenuOpenSFX;
     [FMODUnity.EventRef] public string ButtonClickSFX;
     [FMODUnity.EventRef] public string CreatureSwapSFX;
+
+    public void Play3DWalkGrassSFX(int tag, Vector3 position = new Vector3())
+    {
+        //--------------------------------
+        // List of creature + enemy tags
+        // 0 - Fragaria
+        // 1 - Rabbit
+        // 2 - Donut (Melee Enemy)
+        //--------------------------------
+        var instance = SFXPlayer.CreateInstance(Misc3DWalkGrassSFX);
+        instance.set3DAttributes(SFXUtils.To3DAttributes(position));
+        instance.setParameterByName("MoverTag", tag);
+        instance.start();
+        instance.release();
+    }
+
+    public bool IsAlreadySpawning()
+    {
+        return spawning;
+    }
+
+    public void SetSpawning(bool state)
+    {
+        spawning = state;
+        if (spawning)
+        {
+            StartCoroutine(WaitForSpawning());
+        }
+    }
+
+    private IEnumerator WaitForSpawning()
+    {
+        yield return new WaitForSeconds(3.3f);
+        SetSpawning(false);
+    }
 }

@@ -38,7 +38,7 @@ public class EncounterManager : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
-            SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
+            //SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
             blobs.SetActive(true);
             barrier.SetActive(true);
             SpawnEncounter();

@@ -14,6 +14,7 @@ public class Conversation : ScriptableObject {
     public List<string> dialog = new List<string>();
 
     [Header("programmer stuff no touchy")]
+    [HideInInspector]
     public int step;
 }
 

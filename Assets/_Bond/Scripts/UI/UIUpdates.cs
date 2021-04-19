@@ -17,6 +17,8 @@ public class UIUpdates : MonoBehaviour
     public TextMeshProUGUI gold;
     public Image goldIcon;
 
+    public Image xpbar;
+
 
     [Header("Creature Icons")]
     public Image currCreatureIcon;
@@ -85,6 +87,8 @@ public class UIUpdates : MonoBehaviour
         currHealthUI.SetText((Mathf.Round(stats.getStat(ModiferType.CURR_HEALTH))).ToString());
         maxHealthUI.SetText("/ " + stats.getStat(ModiferType.MAX_HEALTH).ToString());
         gold.SetText(player.goldCount.ToString());
+        XpGain();
+
 
        
         //In progress, check if any of your curr creatures abilties have active cooldowns
@@ -156,7 +160,7 @@ public class UIUpdates : MonoBehaviour
    
     public void CooldownUpdate()
     {
-        Debug.Log("cd update");
+        //Debug.Log("cd update");
        
         //called every tick while cooldown is active
         //get specific creatures cooldown
@@ -189,9 +193,9 @@ public class UIUpdates : MonoBehaviour
         
     }
 
-    public void OnAbilityFail(int ability)
+    public void OnAbilityFail()
     {
-        
+        Debug.Log("OUT OF COMBAT ABILITY NO GO");
     }
 
 
@@ -234,6 +238,11 @@ public class UIUpdates : MonoBehaviour
         //Debug.Log("hurt");
         //hurtFeedback.color = opaque;
         hurtFeedback.CrossFadeAlpha(amount, time, false);       
+    }
+
+    public void XpGain()
+    {
+        xpbar.fillAmount = player.GetComponent<LevelUpSystem>().PercentToNextLevel();
     }
 
 

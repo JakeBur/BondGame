@@ -13,6 +13,20 @@ public class CreatureAnimator : MonoBehaviour
 {
     public GameObject model;
     public Animator animator => model.GetComponent<Animator>();
+    
+
+    /*
+    *   Constants
+    *   Should be formatted "isX" like a question
+    *
+    *   Public constants Can be read by other scripts
+    *   But can only be set in here
+    *   
+    */
+    public bool isInteractPOI { get; private set; }
+    public bool isWaving { get; private set; }
+
+
 
     //----------
     //for FMOD
@@ -55,6 +69,7 @@ public class CreatureAnimator : MonoBehaviour
 
     public void Wave()
     {
+        isWaving = true;
         animator.SetTrigger("Wave");
     }
 
@@ -73,8 +88,41 @@ public class CreatureAnimator : MonoBehaviour
         animator.SetTrigger("Wave");
     }
 
-    public void PlayWalkSFX()
+    public void PlayWalkSFX(int tag)
     {
-        SFXPlayer.PlayOneShot(SFX.Misc3DWalkGrassSFX, transform.position);
+        SFX.Play3DWalkGrassSFX(tag, transform.position);
+    }
+
+    public void interactPOI(string _tag)
+    {
+        switch(_tag)
+        {
+            case "POITree" :
+                isInteractPOI = true;
+                Sit(); // sit might be looping and might break
+                break;
+            case "POIFlower" :
+                isInteractPOI = true;
+                Sit(); //temp anim call - replace later
+                break;
+            case "POIOther" :
+                isInteractPOI = true;
+                Sit();
+                break;
+            default :
+                isInteractPOI = true;   
+                Sit();
+                break;
+        }
+    }
+
+    public void interactPOIFalse()
+    {
+        isInteractPOI = false;
+    }
+
+    public void waveFalse()
+    {
+        isWaving = false;
     }
 }

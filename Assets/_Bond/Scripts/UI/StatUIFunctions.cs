@@ -16,41 +16,17 @@ public class StatUIFunctions : MonoBehaviour
     public List<TextMeshProUGUI> playerTextLists; //ORDER: life[0], power[1], bond[2], crit[3], speed[4], level[5], xp to next[6]
     public List<TextMeshProUGUI> creature1TextLists; //Order: life[0], power[1], Dex[2], utility[4], behavior[5], name[6]
     public List<TextMeshProUGUI> creature2TextLists; //Order: life[0], power[1], Dex[2], utility[4], behavior[5], name[6]
+    public List<Button> levelUpButtons;
 
     public Image xpBar;
     
-    /*
-    [Header("Player Stats")]
-    public TextMeshProUGUI lifeText;
-    public TextMeshProUGUI powerText;
-    public TextMeshProUGUI bondText;
-    public TextMeshProUGUI critText;
-    public TextMeshProUGUI speedText;
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI remainingXP;
-    
 
-    [Header("Creature 1 Stats")]
-    public TextMeshProUGUI creaturelifeText;
-    public TextMeshProUGUI creaturePowerText;
-    public TextMeshProUGUI creatureDexterityText;
-    public TextMeshProUGUI creatureUtilityText;
-    public TextMeshProUGUI creatureBehaviorText;
-
-
-    [Header("Creature 2 Stats")]
-    public TextMeshProUGUI creature2lifeText;
-    public TextMeshProUGUI creature2PowerText;
-    public TextMeshProUGUI creature2DexterityText;
-    public TextMeshProUGUI creature2UtilityText;
-    public TextMeshProUGUI creature2BehaviorText;
-*/
-
-
+   
     private void Start()
     { 
         UpdatePlayerStats();
         UpdateCreatureStats(1);
+        ButtonsAvailable();
     }
 
     // Update is called once per frame
@@ -61,6 +37,8 @@ public class StatUIFunctions : MonoBehaviour
 
     public void UpdatePlayerStats()
     {
+        //levelSys.UpdateStats();
+
         playerTextLists[0].SetText(stats.getStat(ModiferType.MAX_HEALTH).ToString());
         playerTextLists[1].SetText(stats.getStat(ModiferType.DAMAGE).ToString());
         playerTextLists[2].SetText("0"); //bond aka creature damage
@@ -123,6 +101,44 @@ public class StatUIFunctions : MonoBehaviour
     {
         UpdatePlayerStats();
         UpdateCreatureStats(1);
+        ButtonsAvailable();
+    }
+
+    public void ButtonsAvailable()
+    {
+        if(levelSys.upgradePoints > 0)
+        {
+            if(levelSys.healthPoints <= levelSys.healthPointsMax)
+            {
+                levelUpButtons[0].interactable = true;
+            }
+            if(levelSys.damagePoints <= levelSys.damagePointsMax)
+            {
+                levelUpButtons[1].interactable = true;
+            }
+            if(levelSys.bondPoints <= levelSys.bondPointsMax)
+            {
+                levelUpButtons[2].interactable = true;
+            }
+            if(levelSys.critPoints <= levelSys.critPointsMax)
+            {
+                levelUpButtons[3].interactable = true;
+            }
+        }
+        else
+        {
+            foreach (Button b in levelUpButtons)
+            {
+                b.interactable = false;
+            }
+        }
+    }
+
+
+    public void UseUpgrade(int i)
+    {
+        levelSys.UseUpgradePoint(i);
+        UpdatePlayerStats();
     }
     
 }
