@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EActionPlayAwakeAnim : BTLeaf
 {
-
-
     public EActionPlayAwakeAnim(string _name, EnemyAIContext _context ) : base(_name, _context)
     {
         name = _name;
