@@ -29,6 +29,12 @@ public class SFXManager : MonoBehaviour
     [Header("Player Damaged")]
     [FMODUnity.EventRef] public string PlayerDamagedDonutSFX;
 
+    //--------------
+    // Player Misc
+    //--------------
+    [Header("Player Misc.")]
+    [FMODUnity.EventRef] public string PlayerWhistleSFX;
+
     //----------------------------
     // Creature + Enemy Movement
     //----------------------------

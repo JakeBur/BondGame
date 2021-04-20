@@ -57,6 +57,7 @@ MonoBehaviour:
     Sword Crit
   PlayerDamagedDonutSFX: event:/Sound Effects/Player SFX/Player Damaged/Player Damaged
     Donut
+  PlayerWhistleSFX: event:/Sound Effects/Player SFX/Player Whistle/Player Whistle
   Misc3DWalkGrassSFX: event:/Sound Effects/Creature + Enemy Movement/Misc 3D Walk
     Grass
   FragariaSunbeamSFX: event:/Sound Effects/Creature SFX/Fragaria/Fragaria Sunbeam
