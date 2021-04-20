@@ -35,7 +35,19 @@ public class EActionPlayDeathAnim : BTLeaf
         enemyContext.EncounterManager.enemyKilled();
         if(enemyContext.attacking)
         {
-            enemyContext.EncounterManager.numberOfCurrMeleeAttackers--;
+            switch(enemyContext.enemyType)
+            {
+                case "MeleeEnemy":
+                    enemyContext.EncounterManager.numberOfCurrMeleeAttackers--;
+                    break;
+                case "RangedEnemy":
+                    enemyContext.EncounterManager.numberOfCurrRangedAttackers--;
+                    break;
+                default:
+                    Debug.Log("Couldn't find enemy type in death anim");
+                    enemyContext.EncounterManager.numberOfCurrMeleeAttackers--;
+                    break;
+            }
         }
 
         //Destroy enemy

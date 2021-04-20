@@ -49,8 +49,8 @@ public class EnemyAnimator : MonoBehaviour
 
     public bool inAttack { get; private set; }
     public bool inHitstun { get; private set; }
-    public bool inSpawn { get; private set; }
-    public bool inDeath { get; private set; }
+    public bool inSpawn { get; protected set; }
+    public bool inDeath { get; protected set; }
 
     private int attackStatesActive = 0;
     private float prevSpeed = 1;

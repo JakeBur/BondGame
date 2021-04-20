@@ -23,6 +23,9 @@ public class EncounterManager : MonoBehaviour
     public int maxCurrMeleeAttackers;
     public int numberOfCurrMeleeAttackers;
 
+    public int maxCurrRangedAttackers;
+    public int numberOfCurrRangedAttackers;
+
     public Transform playerTransform;
 
     //-----------
