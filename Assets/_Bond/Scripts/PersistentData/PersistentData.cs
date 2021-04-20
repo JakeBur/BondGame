@@ -300,7 +300,7 @@ public class PersistentData : MonoBehaviour
         {
             yield return null;
         }
-        
+        Player.transform.position = GetSpawnpoint();
         playerController.warpPlayer(GetSpawnpoint());
         //update Game State for FMOD if necessary
         switch(_scene)
