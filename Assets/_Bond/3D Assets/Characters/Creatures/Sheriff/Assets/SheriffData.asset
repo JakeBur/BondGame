@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a3331ee17959149bb875f18942f0d3, type: 3}
   m_Name: SheriffData
   m_EditorClassIdentifier: 
-  creaturePrefab: {fileID: 8167450192529632886, guid: 3f7d1a709a71d7a43b0e4fddd6f49673,
+  creaturePrefab: {fileID: 8167450192529632886, guid: c53e1b820b505e244878aecdc56e7f31,
     type: 3}
   maxLife: 0
   level: 0

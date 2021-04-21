@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: ebbffab783f1ca14eb5d185c768f05e1
+guid: 41e246b84b9c82945a37ef94d3c49b2f
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rabbit_mat
+    second: {fileID: 2100000, guid: 925d8192e7a5a7e4e8d4a3cc63a1d9ac, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
