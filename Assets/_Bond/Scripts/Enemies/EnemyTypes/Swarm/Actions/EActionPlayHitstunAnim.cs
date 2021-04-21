@@ -19,6 +19,8 @@ public class EActionPlayHitstunAnim : BTLeaf
             stunTimer = 0;
             //Play hitstun anim
             enemyContext.animator.Hitstun();
+            //Stop them from moving
+            enemyContext.agent.ResetPath();
         }
     }
 
@@ -30,12 +32,11 @@ public class EActionPlayHitstunAnim : BTLeaf
     public override NodeState Evaluate() 
     {
         stunTimer += Time.deltaTime;
-        // return NodeState.SUCCESS;
         if( stunTimer >= enemyContext.hitstunDuration )
         {
             enemyContext.tookDamage = false;
-            OnParentExit();
             enemyContext.animator.HitstunDone();
+            OnParentExit();
             return NodeState.SUCCESS;
         }
         else 
