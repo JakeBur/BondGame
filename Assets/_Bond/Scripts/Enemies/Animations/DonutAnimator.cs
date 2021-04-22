@@ -49,39 +49,17 @@ public class DonutAnimator : EnemyAnimator
 
     public void EventPlayDonutSpawnExtendSFX()
     {
-        //---------------------------------------------
-        // check if there is one other spawning event
-        // occuring to prevent multiple calls
-        //---------------------------------------------
-        if (!SFX.IsAlreadySpawning())
-        {
-            SFXPlayer.PlayOneShot(SFX.DonutSpawnExtendSFX, transform.position);
-            SFX.SetSpawning(true);
-            alreadySpawning = false;
-        }
-        else
-        {
-            alreadySpawning = true;
-        }
+        SFXPlayer.PlayOneShot(SFX.DonutSpawnExtendSFX, transform.position);
     }
 
     public void EventPlayDonutSpawnGrabSFX()
     {
-        //--------------------------
-        // ditto for all spawn SFX
-        //--------------------------
-        if (!alreadySpawning)
-        {
-            SFXPlayer.PlayOneShot(SFX.DonutSpawnGrabSFX, transform.position);
-        }
+        SFXPlayer.PlayOneShot(SFX.DonutSpawnGrabSFX, transform.position);
     }
 
     public void EventPlayDonutSpawnDragSFX()
     {
-        if (!alreadySpawning)
-        {
-            SFXPlayer.PlayOneShot(SFX.DonutSpawnDragSFX, transform.position);
-        }
+        SFXPlayer.PlayOneShot(SFX.DonutSpawnDragSFX, transform.position);
     }
 
     public void EventPlayDonutAttackExtendSFX()

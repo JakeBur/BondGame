@@ -91,24 +91,4 @@ public class SFXManager : MonoBehaviour
         instance.start();
         instance.release();
     }
-
-    public bool IsAlreadySpawning()
-    {
-        return spawning;
-    }
-
-    public void SetSpawning(bool state)
-    {
-        spawning = state;
-        if (spawning)
-        {
-            StartCoroutine(WaitForSpawning());
-        }
-    }
-
-    private IEnumerator WaitForSpawning()
-    {
-        yield return new WaitForSeconds(3.3f);
-        SetSpawning(false);
-    }
 }
