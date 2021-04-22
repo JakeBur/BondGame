@@ -16,11 +16,12 @@ public class EnemyAIContext : MonoBehaviour
     [Header("Objects")]
     public GameObject player;
     public Transform enemyTransform;
+    public string enemyType => GetComponent<EnemyAI>().currentEnemyType.enemyName;
     public Rigidbody rb;
     public NavMeshAgent agent;
     public EnemyAnimator animator;
     public EncounterManager EncounterManager; //to tell it when to spawn the next enemy
-
+    public GameObject attackSpawner;
     public Canvas enemyUI;
     public Slider healthSlider;
     public ParticleSystem hitVFX;
