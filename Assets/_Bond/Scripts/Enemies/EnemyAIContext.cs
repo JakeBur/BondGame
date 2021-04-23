@@ -33,6 +33,7 @@ public class EnemyAIContext : MonoBehaviour
     public bool isIdling = false;
     public bool tookDamage = false;
     public bool attacking = false;
+    public bool onRain = false;
 
     [Header("Misc.Numbers")]
     public float delayBetweenAttacks;
