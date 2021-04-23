@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{dc25a477-2419-40a6-91bc-ab5b7965acf5}">
+		<property name="name">
+			<value>MoverTag</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b37d0d2b-31fe-4f4c-b324-34a35e8ccadc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7141d227-7fdb-46ba-b797-9325fdfc5c5f}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7141d227-7fdb-46ba-b797-9325fdfc5c5f}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

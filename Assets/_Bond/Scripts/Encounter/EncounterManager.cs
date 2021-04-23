@@ -23,6 +23,9 @@ public class EncounterManager : MonoBehaviour
     public int maxCurrMeleeAttackers;
     public int numberOfCurrMeleeAttackers;
 
+    public int maxCurrRangedAttackers;
+    public int numberOfCurrRangedAttackers;
+
     public Transform playerTransform;
 
     //-----------
@@ -38,7 +41,7 @@ public class EncounterManager : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
-            SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
+            //SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
             blobs.SetActive(true);
             barrier.SetActive(true);
             SpawnEncounter();

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EncodableAsset" id="{a4c69068-2a73-44dd-8d3d-c5d14af11bd7}">
+		<property name="assetPath">
+			<value>Enemy SFX/Donut (Melee Enemy)/Donut Spawn Grab/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46d66588-5640-4915-9ffe-128a7334e5da}</destination>
+		</relationship>
+	</object>
+</objects>

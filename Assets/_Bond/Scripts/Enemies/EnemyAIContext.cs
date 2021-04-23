@@ -16,11 +16,12 @@ public class EnemyAIContext : MonoBehaviour
     [Header("Objects")]
     public GameObject player;
     public Transform enemyTransform;
+    public string enemyType => GetComponent<EnemyAI>().currentEnemyType.enemyName;
     public Rigidbody rb;
     public NavMeshAgent agent;
     public EnemyAnimator animator;
     public EncounterManager EncounterManager; //to tell it when to spawn the next enemy
-
+    public GameObject attackSpawner;
     public Canvas enemyUI;
     public Slider healthSlider;
     public ParticleSystem hitVFX;
@@ -103,6 +104,7 @@ public class EnemyAIContext : MonoBehaviour
     public void DestroyEnemy()
     {
         animator.Death();
+        player.GetComponent<LevelUpSystem>().GainXp(5); //probably add something to determine enemy type or difficulty to adjust reward
         Destroy(gameObject);
     }
 
@@ -115,5 +117,6 @@ public class EnemyAIContext : MonoBehaviour
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.goldCount++;
+        //play a sound and make a particle or something of acorns flying out
     }
 }

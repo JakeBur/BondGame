@@ -88,9 +88,9 @@ public class CreatureAnimator : MonoBehaviour
         animator.SetTrigger("Wave");
     }
 
-    public void PlayWalkSFX()
+    public void PlayWalkSFX(int tag)
     {
-        SFXPlayer.PlayOneShot(SFX.Misc3DWalkGrassSFX, transform.position);
+        SFX.Play3DWalkGrassSFX(tag, transform.position);
     }
 
     public void interactPOI(string _tag)

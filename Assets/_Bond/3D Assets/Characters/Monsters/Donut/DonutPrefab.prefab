@@ -294,6 +294,7 @@ MonoBehaviour:
   agent: {fileID: 1498083051}
   animator: {fileID: 0}
   EncounterManager: {fileID: 0}
+  attackSpawner: {fileID: 0}
   enemyUI: {fileID: 878230853263537682}
   healthSlider: {fileID: 878230852251512460}
   hitVFX: {fileID: 1095849670864674090}
@@ -324,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa16924dc2467ea4287d7e6f01d9bacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyType: {fileID: 0}
+  currentEnemyType: {fileID: 11400000, guid: a26756599bea56446bf8020d217b16c5, type: 2}
   DefaultEnemyType: {fileID: 11400000, guid: a26756599bea56446bf8020d217b16c5, type: 2}
   Evaluate: 0
 --- !u!195 &1498083051
