@@ -587,9 +587,26 @@ public class VoronoiPCG : MonoBehaviour
 				continue;
 			}
 			//each asset in the biomespecificassetlist has a weight that is being checked here to decide what to spawn
+			float lastPercent = 0;
 			foreach(BiomeSpecificAssetList b in currentBiomeObj.Assets)
 			{
-				if(randomNum < b.percentage)
+				if(lastPercent == 0)
+				{
+					if(randomNum < b.percentage + lastPercent)
+					{
+						float yoffset = 0;
+						if(currentBiomeObj == marshObjects)
+						{
+							yoffset = -0.6f;
+						}
+						Instantiate(b.objects[Random.Range(0, b.objects.Count)],
+							new Vector3(randomPos.x, yoffset, randomPos.y),
+							Quaternion.Euler(0,Random.Range(0,360), 0), 
+							Parent.transform);
+						break;
+					}
+					
+				} else if(lastPercent < randomNum && randomNum < b.percentage + lastPercent)
 				{
 					float yoffset = 0;
 					if(currentBiomeObj == marshObjects)
@@ -602,6 +619,7 @@ public class VoronoiPCG : MonoBehaviour
 						Parent.transform);
 					break;
 				}
+				lastPercent += b.percentage;
 			}
 		}
 	}

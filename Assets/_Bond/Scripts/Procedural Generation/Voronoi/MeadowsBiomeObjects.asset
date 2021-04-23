@@ -21,7 +21,7 @@ MonoBehaviour:
     - {fileID: 5522194230984570996, guid: 368747f9ddac1504da14285148c476c1, type: 3}
     - {fileID: 870831561299862861, guid: ff5e0c23be220b1458e8b8ce26521e4c, type: 3}
     - {fileID: 6917484149356104992, guid: 79b3daca5054a7c4ab84988b3ae80a46, type: 3}
-  - percentage: 12
+  - percentage: 5
     objects:
     - {fileID: 8955892621365856226, guid: eb8c9f39203b6a14ab01e99ebcb987e2, type: 3}
     - {fileID: 1692969624031310786, guid: 36d6af200e71f1d48aa7c91fae809dd8, type: 3}
@@ -32,7 +32,7 @@ MonoBehaviour:
     - {fileID: 1570591117820629595, guid: 5aee2423d08c16349a874378f4fc21f5, type: 3}
     - {fileID: 2226438097252485253, guid: 63acce43b4fe71541a3b6d904dd6e705, type: 3}
     - {fileID: 5830029678867911420, guid: ed193ed1d60b3f14e8b0a906d4ed5890, type: 3}
-  - percentage: 20
+  - percentage: 8
     objects:
     - {fileID: 7467758751032405590, guid: d2755ac399b88ff478c74704428d8fd0, type: 3}
     - {fileID: 1884628882024994649, guid: e82fb4e03a41bc248a69fa75d4e9cb6b, type: 3}
@@ -44,7 +44,7 @@ MonoBehaviour:
     - {fileID: 6389940238341708167, guid: 63ca45c325bdfa34c8e15a3a43eb821c, type: 3}
     - {fileID: 5595379326629581564, guid: 413d608d55b77b5409e24238f213187e, type: 3}
     - {fileID: 1665000454178429667, guid: 288bdb43ae982304cb024f965f145f38, type: 3}
-  - percentage: 20.3
+  - percentage: 0.3
     objects:
     - {fileID: 721110116925955506, guid: af483df06884dd544a7badc4def3fd3b, type: 3}
     - {fileID: 4416609756544894880, guid: ea6d92a81aa95b84989d7af1451d5bfd, type: 3}
