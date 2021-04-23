@@ -27,7 +27,10 @@ public class DonutAnimator : EnemyAnimator
 
     protected override void InternalSMBSpawnExit()
     {
-        armMesh.enabled = false;
+        if( attackStatesActive == 0 )
+        {
+            armMesh.enabled = false;
+        }
     }
 
     protected override void InternalSMBAttackEnter()
