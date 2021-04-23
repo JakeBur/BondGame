@@ -14,7 +14,7 @@ public class VoronoiPCG : MonoBehaviour
 	public int adjacencyCount;
 	public bool drawByDistance = false;
 	public int increment;
-
+	
 	public List<ConnectionPoints> connectionPoints;
 
 	public Terrain terrain;
@@ -82,13 +82,15 @@ public class VoronoiPCG : MonoBehaviour
 	IEnumerator GenerateLevel()
 	{
 		progressBar.value = 0;
-		yield return null;
+		terrain.gameObject.GetComponent<TerrainCollider>().enabled = true;
 		
 		//Get random seed and set it
-		gameSeed = Random.Range(0,999999);
-		
-		Random.InitState(gameSeed); 
-
+		//gameSeed = Random.Range(0,999999);
+		ConnectionPoints connection = connectionPoints[Random.Range(0, connectionPoints.Count)];
+		//gameSeed = connection.seeds[Random.Range(0, connections.seeds.count)];
+		Random.InitState(gameSeed);
+		Debug.Log("SEED INFO : " + connection.patternName + " " + gameSeed);
+		yield return null;
 		timerStart = Time.realtimeSinceStartup;
 		
 		Cell[] coarseCells = new Cell[coarseRegionAmount];
@@ -114,7 +116,7 @@ public class VoronoiPCG : MonoBehaviour
 		// relax(fineCells);
 
 		//connect cells using set pattern
-		connectCells(coarseCells);
+		connectCells(coarseCells, connection);
 
 		progressBar.value = 10;
 		yield return null;
@@ -227,13 +229,15 @@ public class VoronoiPCG : MonoBehaviour
 					alphaMapData[xSwap,ySwap,0] = 1;
 					tempDistance = Vector2.Distance(new Vector2(x,y), fineCells[fineIndex].center);
 					
-					if(Random.Range(0,100) < linearMap(tempDistance, 3, 15, 0, 100))
+					if(Random.Range(0,100) < linearMap(tempDistance, 3, 15, 0, 80))
 					{
 						detailMapData[xSwap,ySwap] = 1;
 					}
+					heights[xSwap,ySwap] = 0.001f;
 				} else if(pixelColor.Equals(corruptionColor))
 				{
 					alphaMapData[xSwap,ySwap,4] = 1;
+					heights[xSwap,ySwap] = 0.001f;
 					
 				} else if(pixelColor.Equals(marshColor))
 				{
@@ -245,6 +249,7 @@ public class VoronoiPCG : MonoBehaviour
 					{
 						detailMapData[xSwap,ySwap] = 1;
 					}
+					heights[xSwap,ySwap] = 0f;
 				} 
 				else if(pixelColor.Equals(meadowsColor))
 				{
@@ -256,6 +261,7 @@ public class VoronoiPCG : MonoBehaviour
 					{
 						detailMapData[xSwap,ySwap] = 1;
 					}
+					heights[xSwap,ySwap] = 0.001f;
 				}
 				else 
 				{
@@ -279,12 +285,15 @@ public class VoronoiPCG : MonoBehaviour
 		{
 			for(int y = 0; y < imageDim.y; y++)
 			{
-				heights[x,y] = 0f;
-
+				if(heights[x,y] == 0.1f)
+				{
+					heights[x,y] = 0.001f;
+				}
 			}
 		}
-		
+	
 		terrainData.SetHeights(0, 0, heights);
+		
 
 		Texture2D tex = GetImageFromColorArray(pixelColors);
 		//Draw Coarse Center points
@@ -297,7 +306,8 @@ public class VoronoiPCG : MonoBehaviour
 		progressBar.value = 100;
 		//Debug.Log("Finished : " + (Time.realtimeSinceStartup - timerStart));
 		LoadingUI.SetActive(false);
-		
+		terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
+
 		PersistentData.Instance.isGeneratorDone = true;
 		yield return null;
 	}
@@ -319,10 +329,10 @@ public class VoronoiPCG : MonoBehaviour
 	}
 
 	//Gets connection points and uses the FindNextCell function to draw lines between them
-	public void connectCells(Cell[] cells)
+	public void connectCells(Cell[] cells, ConnectionPoints _connection )
 	{
 		//pick random set of connection points
-		ConnectionPoints connection = connectionPoints[Random.Range(0, connectionPoints.Count)];
+		ConnectionPoints connection = _connection;
 		
 		//iterate through a set of points adding cells to a list and setting their biomes
 		foreach(Vector2Pair v in connection.points)
@@ -359,30 +369,61 @@ public class VoronoiPCG : MonoBehaviour
 		List<List<Vector2>> listOfList = encounterPositionFinder.GetPoints(new Vector3(0,37.5f,0), 512, 2);
 		List<Vector2> possibleEncounterPositions = listOfList[0];
 		List<Vector2> possibleEnviornmentalObjectLocations = listOfList[1];
+		List<GameObject> placedEncounters = new List<GameObject>();
 		//place player spawn point and level exit
 		var spawnPoint = Instantiate(playerSpawnPoint, new Vector3(possibleEnviornmentalObjectLocations[0].x, 0, possibleEnviornmentalObjectLocations[0].y), Quaternion.identity, Parent.transform);
 		possibleEnviornmentalObjectLocations.RemoveAt(0);
 		var exit = Instantiate(levelExit, new Vector3(possibleEncounterPositions[possibleEncounterPositions.Count-1].x, 0, possibleEncounterPositions[possibleEncounterPositions.Count-1].y), Quaternion.identity, Parent.transform);
 		possibleEncounterPositions.RemoveAt(possibleEncounterPositions.Count-1);
-		int tempPos = Random.Range(0,possibleEncounterPositions.Count-1);
-		var shop = Instantiate(Shopkeeper, new Vector3(possibleEncounterPositions[tempPos].x, 0, possibleEncounterPositions[tempPos].y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
-		possibleEncounterPositions.RemoveAt(tempPos);
+		placedEncounters.Add(spawnPoint);
+		placedEncounters.Add(exit);
+
+
+		//make sure shop keeper doesnt spawn too close to start or exit
+		bool overlap = true;
+		int encounterPositionsIndex;
+		Vector2 randomPos;
+		while(overlap)
+		{				
+			if(possibleEncounterPositions.Count < 1) break;
+
+			encounterPositionsIndex = Random.Range(0, possibleEncounterPositions.Count);
+			randomPos = possibleEncounterPositions[encounterPositionsIndex];
+			overlap = false;
+			foreach(GameObject e in placedEncounters){
+				//If chosen cell is too close to another encounter, remove it from the possible encounter cells
+				if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 70)
+				{
+					possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
+					overlap = true;
+					break;
+				}
+				
+			}
+
+			if(overlap)
+			{
+				continue;
+			}
+
+
+			int tempPos = Random.Range(0,possibleEncounterPositions.Count-1);
+			var shop = Instantiate(Shopkeeper, new Vector3(possibleEncounterPositions[tempPos].x, 0, possibleEncounterPositions[tempPos].y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
+			possibleEncounterPositions.RemoveAt(tempPos);
+			placedEncounters.Add(Shopkeeper);
+		}
 		//place random encounters on centerpoints of coarse cells
 		coarseVisitedCells.Sort((x,y)=> x.size.CompareTo(y.size));
 		List<Cell> encounterCells = new List<Cell>(coarseVisitedCells);
 
-		List<GameObject> placedEncounters = new List<GameObject>();
-		placedEncounters.Add(spawnPoint);
-		placedEncounters.Add(exit);
+		
 
 		
 
 		//Loop to place combat encounters
 		for(int i = 0; i < numberOfCombat; i++)
 		{
-			int encounterPositionsIndex;
-			Vector2 randomPos;
-			bool overlap = true;
+			overlap = true;
 			if(possibleEncounterPositions.Count < 1) break;
 
 			//Continue until we find a place to put encounter
@@ -436,9 +477,8 @@ public class VoronoiPCG : MonoBehaviour
 		//Loop to place creature encounters
 		for(int i = 0; i < numberOfCreature; i++)
 		{
-			int encounterPositionsIndex;
-			Vector2 randomPos;
-			bool overlap = true;
+
+			overlap = true;
 			if(possibleEncounterPositions.Count < 1) break;
 
 			//Continue until we find a place to put encounter
@@ -505,8 +545,8 @@ public class VoronoiPCG : MonoBehaviour
 		//Iterate through possible enviornmental object placement locations and decide what to place at each location
 		for(int i = 0; i < possibleEnviornmentalObjectLocations.Count; i++)
 		{
-			bool overlap = false;
-			Vector2 randomPos = possibleEnviornmentalObjectLocations[i];
+			overlap = false;
+			randomPos = possibleEnviornmentalObjectLocations[i];
 			foreach(GameObject e in placedEncounters){
 				//If chosen cell is too close to another encounter, remove it from the possible encounter cells
 				if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 5)
@@ -547,16 +587,39 @@ public class VoronoiPCG : MonoBehaviour
 				continue;
 			}
 			//each asset in the biomespecificassetlist has a weight that is being checked here to decide what to spawn
+			float lastPercent = 0;
 			foreach(BiomeSpecificAssetList b in currentBiomeObj.Assets)
 			{
-				if(randomNum < b.percentage)
+				if(lastPercent == 0)
 				{
+					if(randomNum < b.percentage + lastPercent)
+					{
+						float yoffset = 0;
+						if(currentBiomeObj == marshObjects)
+						{
+							yoffset = -0.6f;
+						}
+						Instantiate(b.objects[Random.Range(0, b.objects.Count)],
+							new Vector3(randomPos.x, yoffset, randomPos.y),
+							Quaternion.Euler(0,Random.Range(0,360), 0), 
+							Parent.transform);
+						break;
+					}
+					
+				} else if(lastPercent < randomNum && randomNum < b.percentage + lastPercent)
+				{
+					float yoffset = 0;
+					if(currentBiomeObj == marshObjects)
+					{
+						yoffset = -0.6f;
+					}
 					Instantiate(b.objects[Random.Range(0, b.objects.Count)],
-						new Vector3(randomPos.x, 0, randomPos.y),
-						new Quaternion(Quaternion.identity.x, Random.Range(0f, 1f), Quaternion.identity.z, Quaternion.identity.w), 
+						new Vector3(randomPos.x, yoffset, randomPos.y),
+						Quaternion.Euler(0,Random.Range(0,360), 0), 
 						Parent.transform);
 					break;
 				}
+				lastPercent += b.percentage;
 			}
 		}
 	}

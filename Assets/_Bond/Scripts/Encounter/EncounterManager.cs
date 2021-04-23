@@ -12,7 +12,10 @@ public class EncounterManager : MonoBehaviour
     public List<Wave> waves = new List<Wave>();
     public int currEnemyCount = 0;
     public GameObject barrier;
-    public GameObject blobs;
+    public float blobSpawnRadius;
+    public int blobAmount;
+    public GameObject blob;
+    public GameObject blobParent;
     public Buff corruptionDebuff;
     private int currWave = 0;
     public bool encounterTriggered;
@@ -42,7 +45,13 @@ public class EncounterManager : MonoBehaviour
         if(other.transform.tag == "Player")
         {
             //SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
-            blobs.SetActive(true);
+            for(int i = 0; i < blobAmount; i++)
+            {
+                Vector2 randomPos = Random.insideUnitCircle;
+                randomPos *= (Random.Range(10,blobSpawnRadius));
+                Instantiate(blob, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
+            }
+            blobParent.SetActive(true);
             barrier.SetActive(true);
             SpawnEncounter();
             GetComponent<Collider>().enabled = false;
@@ -131,11 +140,12 @@ public class EncounterManager : MonoBehaviour
     private void ClearEncounter()
     {
         barrier.SetActive(false);
-        blobs.SetActive(false);
+        blobParent.SetActive(false);
         PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(false);
         //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
+
     }
 }
 
