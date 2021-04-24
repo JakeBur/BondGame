@@ -12,6 +12,7 @@ public class EncounterManager : MonoBehaviour
     public List<Wave> waves = new List<Wave>();
     public int currEnemyCount = 0;
     public GameObject barrier;
+    public ArenaAnimator vfx;
     public GameObject blobs;
     public Buff corruptionDebuff;
     private int currWave = 0;
@@ -41,6 +42,7 @@ public class EncounterManager : MonoBehaviour
             SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
             blobs.SetActive(true);
             barrier.SetActive(true);
+            vfx.PlayEncounterBegin();
             SpawnEncounter();
             GetComponent<Collider>().enabled = false;
             
@@ -52,15 +54,14 @@ public class EncounterManager : MonoBehaviour
         }
     }
 
-    private void Update() {
+    private void Update() 
+    {
         if(encounterTriggered)
         {
             farthestPointFromPlayer = (transform.position - playerTransform.position).normalized * farthestDistRadius;
             farthestPointFromPlayer += transform.position;
             farthestPointFromPlayer.y = 0;
-
         }
-       
     }
 
 
@@ -129,6 +130,7 @@ public class EncounterManager : MonoBehaviour
     {
         barrier.SetActive(false);
         blobs.SetActive(false);
+        vfx.PlayDeathAnimation();
         PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(false);
         //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();

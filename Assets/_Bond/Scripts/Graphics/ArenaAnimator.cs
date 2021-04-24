@@ -45,6 +45,16 @@ public class ArenaAnimator : MonoBehaviour
         smokeScrollSpeed.Value = scrollSpeed;
     }
 
+    public void PlayEncounterBegin()
+    {
+        GetComponent<Animator>().SetBool("Trigger", true);
+    }
+
+    public void PlayDeathAnimation()
+    {
+        GetComponent<Animator>().SetBool("Die", true);
+    }
+
     public void MatchMaterialColor()
     {
         GradientColorKey[] keys = _smokeFlashGradient.colorKeys;
@@ -52,14 +62,9 @@ public class ArenaAnimator : MonoBehaviour
 
         _smokeFlashGradient.SetKeys(keys, _smokeFlashGradient.alphaKeys);
 
-        Debug.Log(_smokeFlashGradient.colorKeys[0].color);
+        /*Debug.Log(_smokeFlashGradient.colorKeys[0].color);
         Debug.Log(_smokeMaterial.GetColor("_BackgroundEndColor"));
 
-        Debug.Log(_smokeFlashGradient.colorKeys[0].color);
-    }
-
-    public void StartHeartbeat()
-    {
-
+        Debug.Log(_smokeFlashGradient.colorKeys[0].color);*/
     }
 }

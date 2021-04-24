@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70cfeefe681eb04e8f6b968e4fdc328, type: 3}
   m_Name: FragariaPetalThrow
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   cooldownDuration: 2
   abilityIcon: {fileID: 21300000, guid: 16ae60673231a4a4abbddb5f25874e7f, type: 3}
   abilityBehavior: {fileID: 11400000, guid: 7fd9952e9d9db8044be4184220b1015c, type: 2}
@@ -25,6 +25,6 @@ MonoBehaviour:
   anims: {fileID: 0}
   baseDmg: 50
   isHoming: 1
-  speed: 10
+  speed: 0.2
   damage: 100
   target: {fileID: 0}
