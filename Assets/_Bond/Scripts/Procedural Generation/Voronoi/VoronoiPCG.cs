@@ -85,7 +85,7 @@ public class VoronoiPCG : MonoBehaviour
 		terrain.gameObject.GetComponent<TerrainCollider>().enabled = true;
 		
 		//Get random seed and set it
-		//gameSeed = Random.Range(0,999999);
+		gameSeed = Random.Range(0,999999);
 		ConnectionPoints connection = connectionPoints[Random.Range(0, connectionPoints.Count)];
 		//gameSeed = connection.seeds[Random.Range(0, connections.seeds.count)];
 		Random.InitState(gameSeed);
