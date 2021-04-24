@@ -28,6 +28,11 @@ namespace PlayerState
                 SetState( fsm.Hurt );
                 return;
             }
+            if(player.inStandby)
+            {
+                SetState(fsm.Standby);
+                return;
+            }
             
         }
 

@@ -293,14 +293,16 @@ public class PersistentData : MonoBehaviour
             loadScreen.alpha = 0;
             GameObject levelGen = GameObject.FindGameObjectWithTag("LevelGenerator");
             levelGen.GetComponent<VoronoiPCG>().InitializeGenerator();
+
+             // Debug.Log(GetSpawnpoint());
+            while(!isGeneratorDone)
+            {
+                yield return null;
+            }
+        
         }
 
-        // Debug.Log(GetSpawnpoint());
-        while(!isGeneratorDone)
-        {
-            yield return null;
-        }
-        
+       
         playerController.warpPlayer(GetSpawnpoint());
         //update Game State for FMOD if necessary
         switch(_scene)
