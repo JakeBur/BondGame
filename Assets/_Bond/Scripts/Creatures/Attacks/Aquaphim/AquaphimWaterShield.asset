@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a952f2c33da1d45a80e2356f33ea5c, type: 3}
   m_Name: AquaphimWaterShield
   m_EditorClassIdentifier: 
-  id: 0
-  cooldownDuration: 10
-  abilityIcon: {fileID: 0}
+  id: 1
+  cooldownDuration: 2
+  abilityIcon: {fileID: 21300000, guid: 4d89400d6f5a9e047b8426205c131b46, type: 3}
   abilityBehavior: {fileID: 11400000, guid: 9033d6e45febd84429066490db740ac4, type: 2}
   abilityBuff: {fileID: 11400000, guid: 1c0c25453ba566347a6a00badcf68ec4, type: 2}
   abilityDescription: Grants the player  a watery aura that protects them against
