@@ -327,6 +327,16 @@ public class PersistentData : MonoBehaviour
             // playerController.currCreature.GetComponent<CreatureAIContext>().agent.SetDestination(playerController.backFollowPoint.transform.position);
              playerController.currCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
         }
+
+        // if( playerController.swapCreature != null)
+        // {
+        //     playerController.swapCreature.transform.position = 
+        //             playerController.backFollowPoint.transform.position;    
+               
+        //     // playerController.currCreature.GetComponent<CreatureAIContext>().agent.ResetPath();
+        //     // playerController.currCreature.GetComponent<CreatureAIContext>().agent.SetDestination(playerController.backFollowPoint.transform.position);
+        //      playerController.swapCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
+        // }
         
         /*
             //transition IN

@@ -17,6 +17,9 @@ public class CActionAttackWaterShield : BTLeaf
 
     protected override void OnEnter()
     {
+        //Look at the player before playing animation
+        context.creatureTransform.LookAt(context.player.transform.position);
+
         attack = (creatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play anim
         context.animator.Attack1();
