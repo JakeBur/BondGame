@@ -78,6 +78,8 @@ MonoBehaviour:
     Swipe
   DonutRetractSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Attack/Donut
     Retract
+  CollectMoneySFX: event:/Sound Effects/Shopkeeper + Currency SFX/Collecting Money/Collecting
+    Money
   MenuOpenSFX: event:/Sound Effects/UI SFX/Menu Open
   ButtonClickSFX: event:/Sound Effects/UI SFX/Button Click
   CreatureSwapSFX: event:/Sound Effects/UI SFX/Creature Swap

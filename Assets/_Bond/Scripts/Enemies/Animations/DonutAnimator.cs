@@ -23,7 +23,6 @@ public class DonutAnimator : EnemyAnimator
 
     protected override void InternalSMBSpawnEnter()
     {
-        //SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
         armMesh.enabled = true;
     }
 
@@ -44,7 +43,7 @@ public class DonutAnimator : EnemyAnimator
 
     protected override void InternalSpawn()
     {
-        //SFXPlayer.PlayOneShot(SFX.DonutSpawnSFX, transform.position);
+        
     }
 
     public void EventPlayDonutSpawnExtendSFX()

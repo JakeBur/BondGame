@@ -59,7 +59,6 @@ public class SFXManager : MonoBehaviour
     // Donut (Melee Enemy)
     //----------------------
     [Header("Donut (Melee Enemy)")]
-    [FMODUnity.EventRef] public string DonutSpawnSFX;
     [FMODUnity.EventRef] public string DonutSpawnExtendSFX;
     [FMODUnity.EventRef] public string DonutSpawnGrabSFX;
     [FMODUnity.EventRef] public string DonutSpawnDragSFX;
@@ -67,7 +66,11 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string DonutSwipeSFX;
     [FMODUnity.EventRef] public string DonutRetractSFX;
 
-    private bool spawning = false;
+    //----------------------------
+    // Shopkeeper + Currency SFX
+    //----------------------------
+    [Header("Shopkeeper + Currency")]
+    [FMODUnity.EventRef] public string CollectMoneySFX;
 
     //---------
     // UI SFX

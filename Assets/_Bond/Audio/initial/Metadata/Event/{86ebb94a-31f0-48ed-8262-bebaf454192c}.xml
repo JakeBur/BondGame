@@ -217,6 +217,9 @@
 		<property name="polyphony">
 			<value>4</value>
 		</property>
+		<property name="soundStealing">
+			<value>3</value>
+		</property>
 		<property name="spawnRate">
 			<value>74</value>
 		</property>
@@ -281,6 +284,9 @@
 		</property>
 		<property name="polyphony">
 			<value>6</value>
+		</property>
+		<property name="soundStealing">
+			<value>3</value>
 		</property>
 		<property name="spawnRate">
 			<value>18</value>
