@@ -192,7 +192,7 @@ public class CreatureAnimator : MonoBehaviour
 
     public void PlayerNoticed()
     {
-        animator.SetTrigger("Wave");
+        animator.SetTrigger("PlayerNoticed");
         isPlayerNoticed = true;
 
         InternalPlayerNoticed();
@@ -229,15 +229,7 @@ public class CreatureAnimator : MonoBehaviour
         isInteractPOI = false;
     }
 
-    public void TurtleTop()
-    {
-        animator.SetTrigger("Wave");
-    }
-
-    public void WaterBeam()
-    {
-        animator.SetTrigger("Wave");
-    }
+    public void WaterBeam() {}
 
     public bool isWaving = false;
 

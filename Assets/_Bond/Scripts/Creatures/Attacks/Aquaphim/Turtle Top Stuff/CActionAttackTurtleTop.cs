@@ -16,7 +16,12 @@ public class CActionAttackTurtleTop : BTLeaf
     {
         attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play anim
-        context.animator.TurtleTop();
+        AquaphimAnimator animator = context.animator as AquaphimAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not aquaphim animator");
+        }
+        animator.TurtleTop();
     }
 
     protected override void OnExit()
