@@ -37,7 +37,7 @@ public class CActionAttackPetalThrow : BTLeaf
             foreach (GameObject enemy in context.enemyList)
             {
                 context.abilitySpawner.GetComponent<AbilitySpawner>()
-                    .SpawnProjectile(attack.projectile, enemy, attack.projectileSpeed, attack.baseDmg, true);
+                    .SpawnProjectile(attack.projectile, enemy, attack.flyTime, attack.baseDamage);
             }
         }
 

@@ -28,8 +28,11 @@ public class ArenaAnimator : MonoBehaviour
 
     public void Start()
     {
-        _latticeMaterial = _lattice.GetComponent<MeshRenderer>().sharedMaterial;
-        _smokeMaterial = _smoke.GetComponent<MeshRenderer>().sharedMaterial;
+        _latticeMaterial = new Material(_lattice.GetComponent<MeshRenderer>().sharedMaterial);
+        _lattice.GetComponent<MeshRenderer>().sharedMaterial = _latticeMaterial;
+
+        _smokeMaterial = new Material(_smoke.GetComponent<MeshRenderer>().sharedMaterial);
+        _smoke.GetComponent<MeshRenderer>().sharedMaterial = _smokeMaterial;
 
         latticeFade = new ShaderFloatAnimator("_FadeinBreakpoint", _latticeMaterial);
         smokeFlare = new ShaderFloatAnimator("_TransparencyNoiseStrength", _smokeMaterial);
@@ -43,6 +46,11 @@ public class ArenaAnimator : MonoBehaviour
         smokeFlash.Value = _smokeFlashGradient.Evaluate(flash);
         smokeFlare.Value = flare;
         smokeScrollSpeed.Value = scrollSpeed;
+
+        /*latticeFade.UpdateMaterial(_lattice.GetComponent<MeshRenderer>().sharedMaterial);
+        smokeFlare.UpdateMaterial(_smoke.GetComponent<MeshRenderer>().sharedMaterial);
+        smokeFlash.UpdateMaterial(_smoke.GetComponent<MeshRenderer>().sharedMaterial);
+        smokeScrollSpeed.UpdateMaterial(_smoke.GetComponent<MeshRenderer>().sharedMaterial);*/
     }
 
     public void PlayEncounterBegin()

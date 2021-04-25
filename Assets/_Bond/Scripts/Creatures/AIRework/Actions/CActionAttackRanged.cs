@@ -28,7 +28,7 @@ public class CActionAttackRanged : BTLeaf
     {
         //Debug.Log("ATTACK RANGED");
         context.abilitySpawner.GetComponent<AbilitySpawner>()
-            .SpawnProjectile(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming);
+            .SpawnProjectile(attack.projectile, context.targetEnemy, attack.flyTime, attack.baseDamage);
         
         context.targetEnemy = null;
         context.isAbilityTriggered = false;

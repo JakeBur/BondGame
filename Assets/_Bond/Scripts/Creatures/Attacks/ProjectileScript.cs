@@ -5,34 +5,28 @@ using UnityEngine.Animations;
 
 public class ProjectileScript : MonoBehaviour
 {
-    GameObject target;
-    Rigidbody rigidBody;
+    [Header("Gameplay Data")]
+    public float damage = 50;
 
+    [Header("Animation Data")]
     public AnimationCurve momentumCurve;
     public float arcDistance;
-    // Start is called before the first frame update
-    float speed = 10;
-    public float damage = 50;
-    public bool isHoming = false;
     public float flyTime;
-
-    private float momentum;
-
-    private float impactTime;
-    private float startTime;
-
+    
     private Vector3 toTarget;
     private Vector3 toOffset;
     private Vector3 initialPosition;
 
+    [Header("References")]
     public GameObject trail;
 
-    void Start()
-    {
-        
-    }
+    private GameObject target;
+    private Rigidbody rigidBody;
 
-    private void Awake() 
+    private float impactTime;
+    private float startTime;
+
+    private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
         /////////////////////////////////////////////Destroy(gameObject, 5f);
@@ -47,10 +41,7 @@ public class ProjectileScript : MonoBehaviour
             return;
         }
 
-        if(isHoming)
-        {
-            toTarget = target.transform.position - initialPosition;
-        }
+        toTarget = target.transform.position - initialPosition;
 
         float normalizedTime = (Time.time - startTime) / (impactTime - startTime);
         float blend = momentumCurve.Evaluate(normalizedTime);
@@ -75,7 +66,7 @@ public class ProjectileScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetTarget(GameObject _target, float _speed, float _damage, bool _isHoming)
+    public void SetTarget(GameObject _target, float _speed, float _damage)
     {
         target = _target;
         if(target == null)
@@ -84,11 +75,7 @@ public class ProjectileScript : MonoBehaviour
             return;
         }
         
-        speed = _speed;
         damage = _damage;
-        isHoming = _isHoming;
-
-        //Time = 1/speed
 
         // add initial speed at a random offset from angle to enemy (only randomize when homing)
         toTarget = target.transform.position - transform.position;
