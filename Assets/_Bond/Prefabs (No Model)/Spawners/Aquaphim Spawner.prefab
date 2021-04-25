@@ -43,17 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632642965ae91da4681a88afb70468dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerPersonalities:
-  - {fileID: 11400000, guid: 2ceb164e0fb6e0d42b212388ea23c4b6, type: 2}
-  - {fileID: 11400000, guid: 0e3f79465bc3a8d4a93006cc5e726c20, type: 2}
-  - {fileID: 11400000, guid: b774e9d96ef6593458c68c65b53b31d4, type: 2}
-  - {fileID: 11400000, guid: 24d2bf337832bb14eb12249afb7126c3, type: 2}
-  UtilityPersonalities:
-  - {fileID: 11400000, guid: ebb1a4b899fae1240bd3b9b084fc095c, type: 2}
-  - {fileID: 11400000, guid: 6f05368308eec894fa677e5299efb097, type: 2}
-  DexterityPersonalities:
-  - {fileID: 11400000, guid: 1ce8e227a7ae45b4981fd06154c66a95, type: 2}
-  - {fileID: 11400000, guid: 082bd1bfe7b853d40b9f8075ed774399, type: 2}
+  PowerPersonalities: []
+  UtilityPersonalities: []
+  DexterityPersonalities: []
   creatureTypes:
   - {fileID: 11400000, guid: 46619baa8d16f184dacbdd424408353b, type: 2}
   test: 0

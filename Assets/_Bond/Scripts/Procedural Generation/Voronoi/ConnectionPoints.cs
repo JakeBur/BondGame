@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ConnectionPoints", menuName = "ScriptableObjects/ConnectionPoints")]
 public class ConnectionPoints : ScriptableObject
 {
+	public string patternName;
     public List<Vector2Pair> points = new List<Vector2Pair>();
+	public List<int> seeds = new List<int>();
 }
 
 [System.Serializable]
