@@ -13,7 +13,7 @@ public class CActionDoHitAnim : BTLeaf
     protected override void OnEnter()
     {
         //Play anim
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
         
     }
 

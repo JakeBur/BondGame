@@ -23,6 +23,8 @@ public class CreatureAnimator : MonoBehaviour
 
     protected virtual void InternalEventPlayWalkSFX() {}
 
+    protected virtual void InternalSMBAbilityEnter() {}
+    protected virtual void InternalSMBAbilityExit() {}
     protected virtual void InternalSMBAttackEnter() {}
     protected virtual void InternalSMBAttackExit() {}
     protected virtual void InternalSMBInteractPOIExit() {}
@@ -30,6 +32,7 @@ public class CreatureAnimator : MonoBehaviour
 
     protected virtual void InternalPause() {}
     protected virtual void InternalPlay() {}
+    protected virtual void InternalCry() {}
     protected virtual void InternalDefaultAttack() {}
     protected virtual void InternalEat() {}
     protected virtual void InternalInteractFlower() {}
@@ -37,6 +40,7 @@ public class CreatureAnimator : MonoBehaviour
     protected virtual void InternalInteractPOI() {}
     protected virtual void InternalMove() {}
     protected virtual void InternalPlayerNoticed() {}
+    protected virtual void InternalRelax() {}
 
     /*
     *   Constants
@@ -46,12 +50,14 @@ public class CreatureAnimator : MonoBehaviour
     *   But can only be set in here and child classes
     */
 
+    public bool inAbility { get; protected set; }
     public bool inAttack { get; protected set; }
     public bool isEating { get; protected set; }
     public bool isInteractPOI { get; protected set; }
     public bool isPlayerNoticed { get; protected set; }
 
     protected int attackStatesActive = 0;
+    protected int abilityStatesActive = 0;
     protected float prevPlaybackSpeed = 1;
 
     /*
@@ -83,6 +89,24 @@ public class CreatureAnimator : MonoBehaviour
     *   
     *   Functions should be prepended by SMB
     */
+
+    public void SMBAbilityEnter()
+    {
+        abilityStatesActive += 1;
+
+        InternalSMBAbilityEnter();
+    }
+
+    public void SMBAbilityExit()
+    {
+        abilityStatesActive -= 1;
+        if( abilityStatesActive < 1 )
+        {
+            inAbility = false;
+
+            InternalSMBAbilityExit();
+        }
+    }
 
     public void SMBAttackEnter()
     {
@@ -144,6 +168,12 @@ public class CreatureAnimator : MonoBehaviour
         InternalPlay();
     }
 
+    public void Cry()
+    {
+        animator.SetTrigger( "Cry" );
+        InternalCry();
+    }
+
     public void DefaultAttack()
     {
         animator.SetTrigger( "DefaultAttack" );
@@ -184,7 +214,7 @@ public class CreatureAnimator : MonoBehaviour
 
     public void InteractTree()
     {
-        animator.SetTrigger("InteractTree");
+        Relax();
         isInteractPOI = true;
 
         InternalInteractTree();
@@ -196,6 +226,13 @@ public class CreatureAnimator : MonoBehaviour
         isPlayerNoticed = true;
 
         InternalPlayerNoticed();
+    }
+
+    public void Relax()
+    {
+        animator.SetTrigger("Relax");
+
+        InternalRelax();
     }
 
     public void InteractPOI(string _tag)
@@ -228,16 +265,5 @@ public class CreatureAnimator : MonoBehaviour
     {
         isInteractPOI = false;
     }
-
-    public void WaterBeam() {}
-
-    public bool isWaving = false;
-
-    public void Attack1() {}
-    public void Wave() {}
-    public void Sit() {}
-    public void Jump() {}
-    public void Sad() {}
-    public void LayDown() {}
     
 }

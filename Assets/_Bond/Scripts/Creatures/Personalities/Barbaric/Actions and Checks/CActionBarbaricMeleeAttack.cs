@@ -15,7 +15,7 @@ public class CActionBarbaricMeleeAttack : BTLeaf
     {
         attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
    
     }
 

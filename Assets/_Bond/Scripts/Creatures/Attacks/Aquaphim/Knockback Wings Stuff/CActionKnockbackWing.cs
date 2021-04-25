@@ -17,7 +17,12 @@ public class CActionKnockbackWing : BTLeaf
     {
         attack = (creatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play anim
-        context.animator.Attack1();
+        AquaphimAnimator animator = context.animator as AquaphimAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not aquaphim animator");
+        }
+        animator.WingGust();
     }
     protected override void OnExit()
     {
@@ -29,14 +34,14 @@ public class CActionKnockbackWing : BTLeaf
         context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnKnockbackSource(attack.projectile);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
+        if( !context.animator.inAbility ) 
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 
 

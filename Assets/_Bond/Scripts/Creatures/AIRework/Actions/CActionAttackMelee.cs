@@ -17,7 +17,7 @@ public class CActionAttackMelee : BTLeaf
         attack = (creatureAttackMelee) context.basicCreatureAttack;
         //Play amim
         // Debug.Log("Attacking");
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()

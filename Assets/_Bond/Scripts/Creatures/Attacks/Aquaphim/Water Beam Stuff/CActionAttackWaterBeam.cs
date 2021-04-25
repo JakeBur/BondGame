@@ -16,7 +16,7 @@ public class CActionAttackWaterBeam : BTLeaf
     {
         attack = (creatureAttackRanged) context.basicCreatureAttack;
         //Play anim
-        context.animator.WaterBeam();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()
