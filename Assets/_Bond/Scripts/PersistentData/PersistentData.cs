@@ -252,7 +252,9 @@ public class PersistentData : MonoBehaviour
         }
 
         //probably want to make the game "pause" so you cant move or die
-        
+
+        //Hide UI while loading
+        UI.SetActive(false);
        
         //make child everything we want to keep
         MakeChild(Player);
@@ -300,7 +302,7 @@ public class PersistentData : MonoBehaviour
         {
             yield return null;
         }
-        
+        Player.transform.position = GetSpawnpoint();
         playerController.warpPlayer(GetSpawnpoint());
         //update Game State for FMOD if necessary
         switch(_scene)
@@ -323,11 +325,24 @@ public class PersistentData : MonoBehaviour
             playerController.currCreature.transform.position = 
                     playerController.backFollowPoint.transform.position;    
                
-            // playerController.currCreature.GetComponent<CreatureAIContext>().agent.ResetPath();
+            playerController.currCreature.GetComponent<CreatureAIContext>().agent.ResetPath();
             // playerController.currCreature.GetComponent<CreatureAIContext>().agent.SetDestination(playerController.backFollowPoint.transform.position);
              playerController.currCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
         }
-        
+
+        if( playerController.swapCreature != null)
+        {
+            playerController.swapCreature.transform.position = playerController.backFollowPoint.transform.position;    
+               
+            playerController.currCreature.GetComponent<CreatureAIContext>().agent.ResetPath();
+            // playerController.currCreature.GetComponent<CreatureAIContext>().agent.SetDestination(playerController.backFollowPoint.transform.position);
+             playerController.swapCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
+        }
+
+        //Turn UI back on
+        UI.SetActive(true);
+        //Set hurt feedback alpha to 0
+        UI.GetComponent<UIUpdates>().HurtFeedback(0, 0.0f);
         /*
             //transition IN
             yield return StartCoroutine(FadeLoadingScreen(0, 1));

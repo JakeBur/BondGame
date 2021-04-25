@@ -56,4 +56,14 @@ public class AbilitySpawner : MonoBehaviour
         proj.GetComponent<WaterBeam>().setTarget(target, speed, damage);
     }
 
+    public void SpawnRain(GameObject projectile, float damage, Buff debuff)
+    {
+        var proj = Instantiate(projectile, transform.position, Quaternion.identity);
+        proj.GetComponent<Rain>().setDamage(damage, debuff);
+    }
+    public void SpawnKnockbackSource(GameObject projectile)
+    {
+        var proj = Instantiate(projectile, transform.position, Quaternion.identity);
+    }
+
 }

@@ -259,7 +259,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 3
@@ -271,7 +271,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878230852319099018}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.9829788, y: 1.1775873, z: 0.77656484}
@@ -294,6 +294,7 @@ MonoBehaviour:
   agent: {fileID: 1498083051}
   animator: {fileID: 0}
   EncounterManager: {fileID: 0}
+  attackSpawner: {fileID: 0}
   enemyUI: {fileID: 878230853263537682}
   healthSlider: {fileID: 878230852251512460}
   hitVFX: {fileID: 1095849670864674090}
@@ -303,6 +304,7 @@ MonoBehaviour:
   isIdling: 0
   tookDamage: 0
   attacking: 0
+  onRain: 0
   delayBetweenAttacks: 1
   startingLocation: {x: 0, y: 0, z: 0}
   lastDamageTaken: 0
@@ -324,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa16924dc2467ea4287d7e6f01d9bacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyType: {fileID: 0}
+  currentEnemyType: {fileID: 11400000, guid: a26756599bea56446bf8020d217b16c5, type: 2}
   DefaultEnemyType: {fileID: 11400000, guid: a26756599bea56446bf8020d217b16c5, type: 2}
   Evaluate: 0
 --- !u!195 &1498083051

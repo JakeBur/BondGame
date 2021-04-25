@@ -478,9 +478,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTab()
     {
-        var canvas = PersistentData.Instance.StatUI.GetComponent<Canvas>();
-        canvas.enabled = !canvas.enabled;
-        PersistentData.Instance.StatUI.GetComponent<StatUIFunctions>().UpdateCreatureStats(1);
+        var ui = PersistentData.Instance.StatUI;
+        ui.SetActive(!ui.activeInHierarchy);
+        //PersistentData.Instance.StatUI.GetComponent<StatUIFunctions>().UpdateCreatureStats(1);
        
 
 
@@ -621,19 +621,19 @@ public class PlayerController : MonoBehaviour
     // Checks if health reaches 0
     public void DeathCheck()
     {
-       if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
-       {
-           // Hardcoded value: Teleports to Farm
-           PersistentData.Instance.LoadScene(1);
-           // Resets health to max
-           stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
+        if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
+        {
+            // Hardcoded value: Teleports to Farm
+            PersistentData.Instance.LoadScene(1);
+            // Resets health to max
+            stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
 
-            //Reset creature if knocked out
-            currCreatureContext.enthusiasmInteracted = false;
-            currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
-            //Update the creature's Enthusiasm Bar
-            currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
-       }
+                //Reset creature if knocked out
+                currCreatureContext.enthusiasmInteracted = false;
+                currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
+                //Update the creature's Enthusiasm Bar
+                // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+        }
        
     }
 
