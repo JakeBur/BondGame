@@ -8,16 +8,6 @@ public class CreatureAnimationEvent : MonoBehaviour
 
     public void PlayWalkSFX()
     {
-        creatureAnimator.PlayWalkSFX(0);
-    }
-
-    public void interactPOIFalse()
-    {
-        creatureAnimator.interactPOIFalse();
-    }
-
-    public void waveFalse()
-    {
-        creatureAnimator.waveFalse();
+        creatureAnimator.EventPlayWalkSFX(0);
     }
 }
