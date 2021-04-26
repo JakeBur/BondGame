@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ShopkeeperInteractable : InteractableBase
 {
-    CharacterDialogManager dialogManager => GetComponent<CharacterDialogManager>(); 
+    //CharacterDialogManager dialogManager => GetComponent<CharacterDialogManager>();
+
+    DialogueManager dialogueManager => GetComponent<DialogueManager>();
 
     private void Awake() {
         showUI = true;
@@ -13,7 +15,11 @@ public class ShopkeeperInteractable : InteractableBase
 
     public override void DoInteract()
     {
-        PersistentData.Instance.Player.GetComponent<PlayerController>().characterDialogManager = dialogManager;
-        dialogManager.StartConvo();
+        //PersistentData.Instance.Player.GetComponent<PlayerController>().characterDialogManager = dialogManager;
+        //dialogManager.StartConvo();
+
+        PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = dialogueManager;
+        dialogueManager.StartDialogue();
+
     }
 }

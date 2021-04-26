@@ -22,6 +22,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "button3",
+                    "type": "Button",
+                    "id": "56b0ed55-528b-407a-b768-7ce621566cf0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "attack1",
                     "type": "Button",
                     "id": "4704af23-c554-438e-a3b3-dcb204994a31",
@@ -350,6 +358,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "button1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f7756c2-fae8-4f78-9eeb-ee40fc71af38",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "button3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

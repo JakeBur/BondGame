@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public bool inCharacterDialog;
     public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
     [HideInInspector]
-    public CharacterDialogManager characterDialogManager;
+    public DialogueManager dialogueManager;
 
     [Header("Pause Menu")]
     public GameObject pauseMenu;
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private float crouchModifier = 1;
     public float isoSpeedADJ = 0f;
     public float currSpeed;
+    public bool inStandby = false; //for standby state
 
     [Header("Dash")]
     //[HideInInspector]
@@ -257,7 +258,7 @@ public class PlayerController : MonoBehaviour
         // For dialog scenes
         if(inCharacterDialog)
         {
-            characterDialogManager?.ContinueConvo();
+            dialogueManager?.NextSentence();
         }
         // If interactable is close by
         else if(interactableObjects.Count > 0)
@@ -510,6 +511,8 @@ public class PlayerController : MonoBehaviour
     private void OnWhistle()
     {
         Debug.Log("WHISTLED");
+        SFXPlayer.PlayOneShot(SFX.PlayerWhistleSFX, transform.position);
+
         if(currCreature == null) return;
         
         didWhistle = true;
@@ -621,19 +624,19 @@ public class PlayerController : MonoBehaviour
     // Checks if health reaches 0
     public void DeathCheck()
     {
-       if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
-       {
-           // Hardcoded value: Teleports to Farm
-           PersistentData.Instance.LoadScene(1);
-           // Resets health to max
-           stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
+        if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
+        {
+            // Hardcoded value: Teleports to Farm
+            PersistentData.Instance.LoadScene(1);
+            // Resets health to max
+            stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
 
-            //Reset creature if knocked out
-            currCreatureContext.enthusiasmInteracted = false;
-            currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
-            //Update the creature's Enthusiasm Bar
-            currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
-       }
+                //Reset creature if knocked out
+                currCreatureContext.enthusiasmInteracted = false;
+                currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
+                //Update the creature's Enthusiasm Bar
+                // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+        }
        
     }
 
@@ -657,5 +660,11 @@ public class PlayerController : MonoBehaviour
     public void warpPlayer(Vector3 position)
     {
         agent.Warp(position);
+    }
+
+
+    public void SetStandbyState(bool state)
+    {
+       inStandby = state;
     }
 }

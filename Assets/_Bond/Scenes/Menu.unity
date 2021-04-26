@@ -524,7 +524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8c5a735a77b914e9d1c58f65134e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonClickSFX: 
 --- !u!114 &504876986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +693,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -800,7 +799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8c5a735a77b914e9d1c58f65134e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonClickSFX: 
 --- !u!114 &643844759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,7 +2147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8c5a735a77b914e9d1c58f65134e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonClickSFX: event:/Sound Effects/SFX/UI SFX/Buttons
 --- !u!1 &1271184412
 GameObject:
   m_ObjectHideFlags: 0

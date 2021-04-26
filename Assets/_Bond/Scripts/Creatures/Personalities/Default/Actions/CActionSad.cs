@@ -14,7 +14,7 @@ public class CActionSad : BTLeaf
     {
         context.enthusiasmInteracted = false;
         context.interactRadius.SetActive(true);
-        context.animator.Sad();
+        context.animator.Cry();
     }
 
     protected override void OnExit()

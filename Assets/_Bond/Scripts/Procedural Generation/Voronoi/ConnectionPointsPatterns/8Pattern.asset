@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1930b507d021a2e45a9274e8fc7c5fbb, type: 3}
   m_Name: 8Pattern
   m_EditorClassIdentifier: 
+  patternName: 8pattern
   points:
   - start: {x: 100, y: 100}
     end: {x: 100, y: 256}
@@ -31,3 +32,4 @@ MonoBehaviour:
   - start: {x: 256, y: 400}
     end: {x: 400, y: 400}
     biome: 1
+  seeds: 

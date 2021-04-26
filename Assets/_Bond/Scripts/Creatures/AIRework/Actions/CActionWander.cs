@@ -60,7 +60,7 @@ public class CActionWander : BTLeaf
         {
             OnParentExit();
             return NodeState.SUCCESS;
-        } else if(agent.isStopped == true && !context.animator.isWaving) 
+        } else if(agent.isStopped == true && !context.animator.isPlayerNoticed) 
         {
             OnParentExit();
             return NodeState.SUCCESS;

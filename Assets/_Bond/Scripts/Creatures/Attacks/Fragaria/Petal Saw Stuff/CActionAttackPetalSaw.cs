@@ -17,7 +17,12 @@ public class CActionAttackPetalSaw : BTLeaf
         attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
         // Debug.Log("Attacking");
-        context.animator.Attack1();
+        FragariaAnimator animator = context.animator as FragariaAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not fragaria animator");
+        }
+        animator.PetalSaw();
     }
 
     protected override void OnExit()
@@ -30,7 +35,7 @@ public class CActionAttackPetalSaw : BTLeaf
         context.targetEnemy.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true)
+        if( !context.animator.inAbility )
         { //if animation done, have to add that 
       
             context.player.GetComponent<PlayerController>().PutOnCD();
@@ -40,7 +45,7 @@ public class CActionAttackPetalSaw : BTLeaf
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 
 }

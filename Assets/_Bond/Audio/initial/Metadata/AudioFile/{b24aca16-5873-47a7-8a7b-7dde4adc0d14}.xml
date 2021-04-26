@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{b24aca16-5873-47a7-8a7b-7dde4adc0d14}">
+		<property name="assetPath">
+			<value>Shopkeeper + Currency SFX/Shopkeeper Bells/Bell C# MidVelo.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.6696371882086165</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46d66588-5640-4915-9ffe-128a7334e5da}</destination>
+		</relationship>
+	</object>
+</objects>

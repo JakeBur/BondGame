@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 [System.Serializable]
 public class EnemyAIContext : MonoBehaviour
 {
@@ -16,11 +21,12 @@ public class EnemyAIContext : MonoBehaviour
     [Header("Objects")]
     public GameObject player;
     public Transform enemyTransform;
+    public string enemyType => GetComponent<EnemyAI>().currentEnemyType.enemyName;
     public Rigidbody rb;
     public NavMeshAgent agent;
     public EnemyAnimator animator;
     public EncounterManager EncounterManager; //to tell it when to spawn the next enemy
-
+    public GameObject attackSpawner;
     public Canvas enemyUI;
     public Slider healthSlider;
     public ParticleSystem hitVFX;
@@ -32,6 +38,7 @@ public class EnemyAIContext : MonoBehaviour
     public bool isIdling = false;
     public bool tookDamage = false;
     public bool attacking = false;
+    public bool onRain = false;
 
     [Header("Misc.Numbers")]
     public float delayBetweenAttacks;
@@ -45,6 +52,15 @@ public class EnemyAIContext : MonoBehaviour
     public float hitstunDuration;
 
     public float movementSpeed;
+
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
+
     #endregion
 
     private void Awake()
@@ -117,5 +133,7 @@ public class EnemyAIContext : MonoBehaviour
         PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.goldCount++;
         //play a sound and make a particle or something of acorns flying out
+
+        SFXPlayer.PlayOneShot(SFX.CollectMoneySFX, transform.position);
     }
 }

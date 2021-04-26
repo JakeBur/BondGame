@@ -11,15 +11,23 @@ public class DonutTestAnimator : MonoBehaviour
 
     private void OnButton1()
     {
-        animator.Play();
-        animator.Attack();
-        Debug.Log("Play");
+        animator.Spawn();
+        animator.Pause();
+        Debug.Log("Prep");
+        
     }
 
     private void OnButton2()
     {
+        animator.Play();
         animator.Spawn();
-        //animator.Pause();
-        Debug.Log("Pause");
+        Debug.Log("Spawn");
+    }
+
+    private void OnButton3()
+    {
+        animator.Play();
+        animator.Attack();
+        Debug.Log("Attack");
     }
 }

@@ -8,6 +8,7 @@ public class sceneManager : MonoBehaviour
     public int sceneIndex;
     private void OnTriggerEnter(Collider other) 
     {
+        
         // Debug.Log("entered : " + other.transform.name);
         if(other.transform.tag == "Player")
         {

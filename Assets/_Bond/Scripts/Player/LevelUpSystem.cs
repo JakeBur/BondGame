@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelUpSystem : MonoBehaviour
 {
     StatManager playerStats => PersistentData.Instance.Player.GetComponent<StatManager>();
+    PlayerController player => PersistentData.Instance.Player.GetComponent<PlayerController>();
     StatUIFunctions statUI =>  PersistentData.Instance.StatUI.GetComponent<StatUIFunctions>();
 
     [SerializeField]
@@ -138,13 +139,16 @@ public class LevelUpSystem : MonoBehaviour
 
     public void UpdateStats()
     {  
+
+       
+        //THIS OVERRIDES RELICS FIX SOON
         float healthRatio = playerStats.getStat(ModiferType.CURR_HEALTH)/playerStats.getStat(ModiferType.MAX_HEALTH);
 
-        playerStats.setStat(ModiferType.MAX_HEALTH, 300 + (healthPoints * 5) );
-        playerStats.setStat(ModiferType.CURR_HEALTH, Mathf.CeilToInt(playerStats.getStat(ModiferType.MAX_HEALTH) * healthRatio));//keeps health ratio same on level up
-        playerStats.setStat(ModiferType.DAMAGE, 20 + damagePoints);
+        playerStats.setStat(ModiferType.MAX_HEALTH,  playerStats.baseStats.stats[0].baseValue + (healthPoints * 5) );
+        playerStats.setStat(ModiferType.CURR_HEALTH, Mathf.CeilToInt(playerStats.baseStats.stats[1].baseValue * healthRatio));//keeps health ratio same on level up
+        playerStats.setStat(ModiferType.DAMAGE,  playerStats.baseStats.stats[3].baseValue + damagePoints);
         //playerStats.setStat(ModiferType.CREATURE_POWER, playerStats.getStat(ModiferType.CREATURE_POWER) + bondPoints); //Need stat for player that mods creature, this dont work
-        playerStats.setStat(ModiferType.CRIT_CHANCE, 2 + critPoints);
+        playerStats.setStat(ModiferType.CRIT_CHANCE,  playerStats.baseStats.stats[12].baseValue + critPoints);
 
     }
 
