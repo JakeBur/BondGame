@@ -19,6 +19,10 @@ public class StatUIFunctions : MonoBehaviour
     public List<Button> levelUpButtons;
 
     public Image xpBar;
+    public TextMeshProUGUI pointsAvail;
+
+    //relics
+    public List<GameObject> relicCells;
     
 
    
@@ -29,16 +33,23 @@ public class StatUIFunctions : MonoBehaviour
         ButtonsAvailable();
     }
 
-    // Update is called once per frame
-    private void Update()
+    
+
+    private void OnEnable() 
     {
-        
+        UpdatePlayerStats();
+        UpdateCreatureStats(1);
+        ButtonsAvailable();
+        UpdateRelicsUI();
     }
+
+
 
     public void UpdatePlayerStats()
     {
         //levelSys.UpdateStats();
 
+        
         playerTextLists[0].SetText(stats.getStat(ModiferType.MAX_HEALTH).ToString());
         playerTextLists[1].SetText(stats.getStat(ModiferType.DAMAGE).ToString());
         playerTextLists[2].SetText("0"); //bond aka creature damage
@@ -49,6 +60,9 @@ public class StatUIFunctions : MonoBehaviour
         playerTextLists[6].SetText(levelSys.GetNextXpForLevel().ToString() + " left");//Get remaining xp
 
         xpBar.fillAmount = levelSys.PercentToNextLevel();
+        pointsAvail.SetText("Points Available: " + levelSys.upgradePoints);
+
+
 
 
     }
@@ -97,12 +111,7 @@ public class StatUIFunctions : MonoBehaviour
         }        
     }
 
-    private void OnEnable() 
-    {
-        UpdatePlayerStats();
-        UpdateCreatureStats(1);
-        ButtonsAvailable();
-    }
+
 
     public void ButtonsAvailable()
     {
@@ -141,4 +150,21 @@ public class StatUIFunctions : MonoBehaviour
         UpdatePlayerStats();
     }
     
+
+    public void UpdateRelicsUI()
+    {
+        for(int i = 0; i < playerController.Relics.Count; i++)
+        {
+            if(playerController.Relics[i] != null)
+            {
+                relicCells[i].GetComponent<Image>().sprite = playerController.Relics[i].relicSprite;
+                relicCells[i].GetComponent<Image>().color = new Color(255,255,255,1);
+            }
+            else
+            {
+                 relicCells[i].GetComponent<Image>().sprite = null;
+                 relicCells[i].GetComponent<Image>().color = new Color(255,255,255,0);
+            }
+        }
+    }
 }

@@ -13,14 +13,23 @@ ModelImporter:
       74: 2539994089874624056
     second: AquaphimArmature|CryEnter
   - first:
+      74: 8549558050893312039
+    second: AquaphimArmature|DefaultAttack
+  - first:
       74: 7238722880667966249
     second: AquaphimArmature|Idle
+  - first:
+      74: 856615106591738404
+    second: AquaphimArmature|LayDown
   - first:
       74: 3749800166899428096
     second: AquaphimArmature|Move
   - first:
       74: -2714113596895289482
     second: AquaphimArmature|Rain
+  - first:
+      74: -1855918097217254523
+    second: AquaphimArmature|SmellFlower
   - first:
       74: -1169874959243262494
     second: AquaphimArmature|T-Pose
@@ -152,6 +161,35 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: AquaphimArmature|DefaultAttack
+      takeName: AquaphimArmature|DefaultAttack
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: AquaphimArmature|Idle
       takeName: AquaphimArmature|Idle
       internalID: 0
@@ -164,6 +202,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AquaphimArmature|LayDown
+      takeName: AquaphimArmature|LayDown
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -215,6 +282,35 @@ ModelImporter:
       internalID: 0
       firstFrame: 0
       lastFrame: 89
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AquaphimArmature|SmellFlower
+      takeName: AquaphimArmature|SmellFlower
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

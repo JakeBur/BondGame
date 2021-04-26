@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public bool inCharacterDialog;
     public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
     [HideInInspector]
-    public CharacterDialogManager characterDialogManager;
+    public DialogueManager dialogueManager;
 
     [Header("Pause Menu")]
     public GameObject pauseMenu;
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private float crouchModifier = 1;
     public float isoSpeedADJ = 0f;
     public float currSpeed;
+    public bool inStandby = false; //for standby state
 
     [Header("Dash")]
     //[HideInInspector]
@@ -257,7 +258,7 @@ public class PlayerController : MonoBehaviour
         // For dialog scenes
         if(inCharacterDialog)
         {
-            characterDialogManager?.ContinueConvo();
+            dialogueManager?.NextSentence();
         }
         // If interactable is close by
         else if(interactableObjects.Count > 0)
@@ -659,5 +660,11 @@ public class PlayerController : MonoBehaviour
     public void warpPlayer(Vector3 position)
     {
         agent.Warp(position);
+    }
+
+
+    public void SetStandbyState(bool state)
+    {
+       inStandby = state;
     }
 }
