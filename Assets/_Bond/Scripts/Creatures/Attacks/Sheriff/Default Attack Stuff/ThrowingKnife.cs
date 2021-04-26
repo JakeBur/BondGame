@@ -37,12 +37,11 @@ public class ThrowingKnife : MonoBehaviour
         }
     }
 
-    public void setTarget(GameObject _target, float _speed, float _damage, bool _isHoming)
+    public void setTarget(GameObject _target, float _speed, float _damage)
     {
         target = _target;
         transform.LookAt(target.transform.position);
         speed = _speed;
-        isHoming = _isHoming;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -50,6 +49,6 @@ public class ThrowingKnife : MonoBehaviour
         {
             other.transform.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
             Destroy(gameObject);
-        }    
+        }
     }
 }

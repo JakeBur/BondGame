@@ -27,7 +27,7 @@ public class CActionAttackThrowKnife : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.abilitySpawner.GetComponent<SheriffAbilitySpawner>().SpawnThrowingKnife(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming, attack.abilityBuff);
+        context.abilitySpawner.GetComponent<SheriffAbilitySpawner>().SpawnThrowingKnife(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDamage, attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if( !context.animator.inAttack ) 

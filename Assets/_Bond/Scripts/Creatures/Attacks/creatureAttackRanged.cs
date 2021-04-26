@@ -8,6 +8,7 @@ public class creatureAttackRanged : creatureAttackBase, HasCooldown
     public float maxDistanceToEnemy;
     public float flyTime;
     public GameObject projectile;
+    public float projectileSpeed;
     public float baseDamage;
 
     private void Awake() 
