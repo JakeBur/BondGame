@@ -13,7 +13,7 @@ public class CActionEnthusiasmUp : BTLeaf
     protected override void OnEnter()
     {
         //Play anim
-        context.animator.Jump();
+        context.animator.PlayerNoticed();
         
     }
 

@@ -16,7 +16,7 @@ public class CActionSit : BTLeaf
 
     protected override void OnEnter()
     {
-        context.animator.Sit();
+        context.animator.Relax();
         endTime = Time.time + Random.Range(5f,10f);
         timer = Time.time;
     }
@@ -35,7 +35,7 @@ public class CActionSit : BTLeaf
         }
         if(context.hasReacted)
         {
-            context.animator.Sit();
+            context.animator.Relax();
         }
         timer += Time.deltaTime;
         return NodeState.RUNNING;

@@ -17,7 +17,7 @@ public class CActionAttackMelee : BTLeaf
         attack = (creatureAttackMelee) context.basicCreatureAttack;
         //Play amim
         // Debug.Log("Attacking");
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()
@@ -30,8 +30,8 @@ public class CActionAttackMelee : BTLeaf
         context.targetEnemy.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true)
-        { //if animation done, have to add that 
+        if( !context.animator.inAttack )
+        {
       
             context.lastTriggeredAbility = 10;
             context.player.GetComponent<PlayerController>().PutBasicOnCD();
@@ -41,7 +41,7 @@ public class CActionAttackMelee : BTLeaf
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 
 }

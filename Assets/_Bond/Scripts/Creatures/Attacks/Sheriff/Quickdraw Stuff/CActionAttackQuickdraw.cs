@@ -17,7 +17,7 @@ public class CActionAttackQuickdraw : BTLeaf
         attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()
@@ -31,11 +31,13 @@ public class CActionAttackQuickdraw : BTLeaf
         context.abilitySpawner.GetComponent<SheriffAbilitySpawner>().SpawnQuickdrawBullet(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming, attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
+        if( !context.animator.inAttack ) 
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             return NodeState.SUCCESS;
         }
+
+        return NodeState.RUNNING;
     }
 }

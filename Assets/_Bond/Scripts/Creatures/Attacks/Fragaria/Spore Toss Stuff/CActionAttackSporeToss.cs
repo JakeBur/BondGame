@@ -19,7 +19,12 @@ public class CActionAttackSporeToss : BTLeaf
         attack = (creatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
         
         //Play anim
-        context.animator.Attack1();
+        FragariaAnimator animator = context.animator as FragariaAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not fragaria animator");
+        }
+        animator.SporeToss();
     }
 
     protected override void OnExit()
@@ -34,13 +39,13 @@ public class CActionAttackSporeToss : BTLeaf
         
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
+        if( !context.animator.inAbility ) 
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }

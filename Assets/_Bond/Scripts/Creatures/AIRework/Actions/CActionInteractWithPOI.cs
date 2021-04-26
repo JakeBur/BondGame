@@ -14,7 +14,7 @@ public class CActionInteractWithPOI : BTLeaf
 
     protected override void OnEnter()
     {
-        context.animator.interactPOI(context.targetPOI.tag);
+        context.animator.InteractPOI(context.targetPOI.tag);
         context.agent.ResetPath();
     }
 

@@ -17,7 +17,7 @@ public class CActionAttackNothingPersonal : BTLeaf
         attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()
@@ -46,11 +46,13 @@ public class CActionAttackNothingPersonal : BTLeaf
 
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
-        { //if animation done, have to add that 
+        if( !context.animator.inAttack ) 
+        {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             return NodeState.SUCCESS;
         }
+
+        return NodeState.RUNNING;
     }
 }
