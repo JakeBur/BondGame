@@ -33,12 +33,12 @@ public class CActionBarbaricRangedAttack : BTLeaf
         }
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
+        if( !context.animator.inAttack ) 
         { //if animation done, have to add that
             OnParentExit(); 
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }

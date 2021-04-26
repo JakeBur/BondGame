@@ -30,11 +30,13 @@ public class CActionAttackThrowKnife : BTLeaf
         context.abilitySpawner.GetComponent<SheriffAbilitySpawner>().SpawnThrowingKnife(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming, attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
-        { //if animation done, have to add that 
+        if( !context.animator.inAttack ) 
+        {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutBasicOnCD();
             return NodeState.SUCCESS;
         }
+
+        return NodeState.RUNNING;
     }
 }
