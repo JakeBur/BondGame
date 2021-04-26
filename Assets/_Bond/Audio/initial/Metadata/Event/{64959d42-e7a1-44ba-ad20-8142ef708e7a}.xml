@@ -121,16 +121,16 @@
 			<value>8</value>
 		</property>
 		<property name="volume">
-			<value>-3</value>
+			<value>-6</value>
 		</property>
 		<property name="polyphony">
 			<value>8</value>
 		</property>
 		<property name="minimumTimeBetweenSounds">
-			<value>88</value>
+			<value>70</value>
 		</property>
 		<property name="maximumTimeBetweenSounds">
-			<value>2000</value>
+			<value>1500</value>
 		</property>
 		<property name="spawnRate">
 			<value>82</value>
@@ -327,7 +327,7 @@
 	</object>
 	<object class="PlayPercentage" id="{c7ca9b44-373a-4206-ad2b-d4237697a29d}">
 		<property name="percentage">
-			<value>6</value>
+			<value>3</value>
 		</property>
 		<relationship name="sound">
 			<destination>{637cb1d7-8ac2-4645-9c39-15b793d1d6ef}</destination>
@@ -335,7 +335,7 @@
 	</object>
 	<object class="PlayPercentage" id="{265b73b7-6996-4525-b2f9-006dcec68605}">
 		<property name="percentage">
-			<value>6</value>
+			<value>3</value>
 		</property>
 		<relationship name="sound">
 			<destination>{4910a548-9304-4586-88bb-55ee1e7e5a12}</destination>
@@ -343,7 +343,7 @@
 	</object>
 	<object class="PlayPercentage" id="{434c43ea-d5c9-41fd-b9dd-58bf90e3c60f}">
 		<property name="percentage">
-			<value>6</value>
+			<value>3</value>
 		</property>
 		<relationship name="sound">
 			<destination>{efab73b3-f832-43d2-8edd-ab3acd14a1e1}</destination>
@@ -351,7 +351,7 @@
 	</object>
 	<object class="PlayPercentage" id="{ca66ec6c-85a6-46a1-97b2-8c690cc1ae55}">
 		<property name="percentage">
-			<value>6</value>
+			<value>3</value>
 		</property>
 		<relationship name="sound">
 			<destination>{e5f13045-7382-48e5-99fc-bb67f6152fa3}</destination>
@@ -359,7 +359,7 @@
 	</object>
 	<object class="PlayPercentage" id="{340e339a-c744-47c1-b103-b32d23610e4c}">
 		<property name="percentage">
-			<value>6</value>
+			<value>3</value>
 		</property>
 		<relationship name="sound">
 			<destination>{5278103e-cd9a-417c-b35b-03bb4ea2dd37}</destination>
@@ -367,7 +367,7 @@
 	</object>
 	<object class="PlayPercentage" id="{8084b084-db05-46f3-ae26-e84151e7bcaa}">
 		<property name="percentage">
-			<value>6</value>
+			<value>3</value>
 		</property>
 		<relationship name="sound">
 			<destination>{9c28b80d-5822-4cba-9ed3-98b8f1035263}</destination>
@@ -395,10 +395,10 @@
 	</object>
 	<object class="AutomationPoint" id="{cf81af90-1a3d-419b-ac10-05f8169b575a}">
 		<property name="position">
-			<value>85</value>
+			<value>80</value>
 		</property>
 		<property name="value">
-			<value>-8</value>
+			<value>-4</value>
 		</property>
 	</object>
 	<object class="Automator" id="{21a1dcdd-1232-47bb-8fc4-5e6f1e9ed8e2}">
