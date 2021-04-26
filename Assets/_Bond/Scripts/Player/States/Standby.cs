@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace PlayerState
 {
+
     [Serializable]
     public class Standby : State
     {
@@ -21,7 +22,11 @@ namespace PlayerState
 
         public override void OnStateUpdate()
         {
-           
+           if(!player.inStandby)
+           {
+               SetState(fsm.InputState);
+               return;
+           }
         }
 
         public override void OnStateFixedUpdate()

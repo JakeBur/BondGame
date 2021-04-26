@@ -54,6 +54,8 @@ public class UIUpdates : MonoBehaviour
     private StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
     private PlayerController player => PersistentData.Instance.Player.GetComponent<PlayerController>();
 
+    
+
     private Color opaque = new Color (255,255,255,1);
     private Color transparent = new Color (255,255,255,0.5f);
 
@@ -244,6 +246,10 @@ public class UIUpdates : MonoBehaviour
     {
         xpbar.fillAmount = player.GetComponent<LevelUpSystem>().PercentToNextLevel();
     }
+
+    
+
+
 
 
 }

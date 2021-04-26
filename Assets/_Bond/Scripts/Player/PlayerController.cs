@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private float crouchModifier = 1;
     public float isoSpeedADJ = 0f;
     public float currSpeed;
+    public bool inStandby = false; //for standby state
 
     [Header("Dash")]
     //[HideInInspector]
@@ -659,5 +660,11 @@ public class PlayerController : MonoBehaviour
     public void warpPlayer(Vector3 position)
     {
         agent.Warp(position);
+    }
+
+
+    public void SetStandbyState(bool state)
+    {
+       inStandby = state;
     }
 }

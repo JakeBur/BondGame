@@ -69,6 +69,7 @@ public class CharacterDialogManager : MonoBehaviour
         PersistentData.Instance.UI.GetComponent<UIUpdates>().HideCharacterDialogue();
         PersistentData.Instance.Player.GetComponent<PlayerController>().inCharacterDialog = false;
         PersistentData.Instance.Player.GetComponent<PlayerController>().characterDialogManager = null;
+         PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(false);
     }
 
     public IEnumerator LetterByLetter(string sentence)
@@ -82,6 +83,12 @@ public class CharacterDialogManager : MonoBehaviour
         }
         waitForContinue = true;
 
+    }
+
+
+    public void PlayerStandby()
+    {
+        PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(false);
     }
 
 
