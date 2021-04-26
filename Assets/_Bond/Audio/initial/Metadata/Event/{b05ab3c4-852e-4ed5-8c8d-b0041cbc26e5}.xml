@@ -56,7 +56,14 @@
 			<destination>{14d83936-e861-4db7-800c-b6f2277f64b5}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{db8a4a48-7d14-4a63-ade3-a8e356bb3cda}" />
+	<object class="EventAutomatableProperties" id="{db8a4a48-7d14-4a63-ade3-a8e356bb3cda}">
+		<property name="maxVoices">
+			<value>2</value>
+		</property>
+		<property name="voiceStealing">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{f4cb8162-8626-4166-82d7-2ad95cf18d00}" />
 	<object class="GroupTrack" id="{aac1b01f-3749-48fa-b030-6fed88ba99be}">
 		<relationship name="modules">
@@ -90,19 +97,16 @@
 	<object class="MixerBusPanner" id="{a6af7cc7-4022-4a34-8ad5-8567a619d9a2}" />
 	<object class="SingleSound" id="{0b531aae-a749-4fbf-bfc5-d929dc07f16b}">
 		<property name="length">
-			<value>1.4762358276643992</value>
+			<value>0.51279192509440086</value>
 		</property>
 		<property name="volume">
-			<value>-3.5</value>
+			<value>5.5</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{b6cab2bb-6f3e-420d-b180-56236d7648f0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{69326dea-16b5-4af0-a65a-9abc754c6b84}">
-		<property name="volume">
-			<value>10</value>
-		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>

@@ -511,6 +511,8 @@ public class PlayerController : MonoBehaviour
     private void OnWhistle()
     {
         Debug.Log("WHISTLED");
+        SFXPlayer.PlayOneShot(SFX.PlayerWhistleSFX, transform.position);
+
         if(currCreature == null) return;
         
         didWhistle = true;

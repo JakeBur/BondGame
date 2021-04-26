@@ -15,7 +15,7 @@ public class CActionBarbaricRangedAttack : BTLeaf
     {
         attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()
@@ -33,12 +33,12 @@ public class CActionBarbaricRangedAttack : BTLeaf
         }
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
+        if( !context.animator.inAttack ) 
         { //if animation done, have to add that
             OnParentExit(); 
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }
