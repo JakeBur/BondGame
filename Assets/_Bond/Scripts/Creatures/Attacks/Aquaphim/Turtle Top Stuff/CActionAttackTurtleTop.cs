@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CActionAttackTurtleTop : BTLeaf
 {
-    creatureAttackMelee attack;
+    CreatureAttackMelee attack;
     public CActionAttackTurtleTop(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,7 +14,7 @@ public class CActionAttackTurtleTop : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play anim
         AquaphimAnimator animator = context.animator as AquaphimAnimator;
         if (animator == null)

@@ -28,8 +28,11 @@ public class ArenaAnimator : MonoBehaviour
 
     public void Start()
     {
-        _latticeMaterial = _lattice.GetComponent<MeshRenderer>().sharedMaterial;
-        _smokeMaterial = _smoke.GetComponent<MeshRenderer>().sharedMaterial;
+        _latticeMaterial = new Material(_lattice.GetComponent<MeshRenderer>().sharedMaterial);
+        _lattice.GetComponent<MeshRenderer>().sharedMaterial = _latticeMaterial;
+
+        _smokeMaterial = new Material(_smoke.GetComponent<MeshRenderer>().sharedMaterial);
+        _smoke.GetComponent<MeshRenderer>().sharedMaterial = _smokeMaterial;
 
         latticeFade = new ShaderFloatAnimator("_FadeinBreakpoint", _latticeMaterial);
         smokeFlare = new ShaderFloatAnimator("_TransparencyNoiseStrength", _smokeMaterial);
@@ -43,6 +46,21 @@ public class ArenaAnimator : MonoBehaviour
         smokeFlash.Value = _smokeFlashGradient.Evaluate(flash);
         smokeFlare.Value = flare;
         smokeScrollSpeed.Value = scrollSpeed;
+
+        /*latticeFade.UpdateMaterial(_lattice.GetComponent<MeshRenderer>().sharedMaterial);
+        smokeFlare.UpdateMaterial(_smoke.GetComponent<MeshRenderer>().sharedMaterial);
+        smokeFlash.UpdateMaterial(_smoke.GetComponent<MeshRenderer>().sharedMaterial);
+        smokeScrollSpeed.UpdateMaterial(_smoke.GetComponent<MeshRenderer>().sharedMaterial);*/
+    }
+
+    public void PlayEncounterBegin()
+    {
+        GetComponent<Animator>().SetBool("Trigger", true);
+    }
+
+    public void PlayDeathAnimation()
+    {
+        GetComponent<Animator>().SetBool("Die", true);
     }
 
     public void MatchMaterialColor()
@@ -52,14 +70,9 @@ public class ArenaAnimator : MonoBehaviour
 
         _smokeFlashGradient.SetKeys(keys, _smokeFlashGradient.alphaKeys);
 
-        Debug.Log(_smokeFlashGradient.colorKeys[0].color);
+        /*Debug.Log(_smokeFlashGradient.colorKeys[0].color);
         Debug.Log(_smokeMaterial.GetColor("_BackgroundEndColor"));
 
-        Debug.Log(_smokeFlashGradient.colorKeys[0].color);
-    }
-
-    public void StartHeartbeat()
-    {
-
+        Debug.Log(_smokeFlashGradient.colorKeys[0].color);*/
     }
 }

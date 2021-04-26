@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class barks : MonoBehaviour
+public class Barks : MonoBehaviour
 {
     public List<string> barkList = new List<string>();
     public TextMeshProUGUI barkBox;

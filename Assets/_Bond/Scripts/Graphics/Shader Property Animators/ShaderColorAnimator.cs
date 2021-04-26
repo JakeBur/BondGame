@@ -44,4 +44,8 @@ public struct ShaderColorAnimator
         Name = name;
     }
 
+    public void UpdateMaterial(Material material)
+    {
+        _material = material;
+    }
 }

@@ -16,7 +16,7 @@ public class CCheckIfAbilityIsMelee : BTChecker
         if(context.lastTriggeredAbility >= 0)
         {
            
-            if(context.creatureStats.abilities[context.lastTriggeredAbility] is creatureAttackMelee)
+            if(context.creatureStats.abilities[context.lastTriggeredAbility] is CreatureAttackMelee)
             {
                
                 return NodeState.SUCCESS;

@@ -44,4 +44,9 @@ public struct ShaderFloatAnimator
         Name = name;
     }
 
+
+    public void UpdateMaterial(Material material)
+    {
+        _material = material;
+    }
 }

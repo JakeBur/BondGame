@@ -15,7 +15,7 @@ public class CCheckIfAbilityIsRanged : BTChecker
         if(context.lastTriggeredAbility >= 0)
         {
         
-            if(context.creatureStats.abilities[context.lastTriggeredAbility] is creatureAttackRanged)
+            if(context.creatureStats.abilities[context.lastTriggeredAbility] is CreatureAttackRanged)
             {
                
                 return NodeState.SUCCESS;

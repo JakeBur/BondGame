@@ -18,7 +18,7 @@ public class CreatureAIContext : MonoBehaviour
     public Transform creatureTransform;
     public Rigidbody rb;
     public ActiveCreatureData creatureStats;
-    public creatureData creatureBaseStats;
+    public CreatureData creatureBaseStats;
     public NavMeshAgent agent;
     public GameObject backFollowPoint;
     public GameObject followPoint;
@@ -26,7 +26,7 @@ public class CreatureAIContext : MonoBehaviour
     public CreatureAnimator animator;
     public GameObject interactRadius;
     public CooldownSystem cooldownSystem => GetComponent<CooldownSystem>();
-    public creatureAttackBase basicCreatureAttack;
+    public CreatureAttackBase basicCreatureAttack;
     public GameObject PetalCone;
     
     public List<GameObject> possiblePOIs = new List<GameObject>();
