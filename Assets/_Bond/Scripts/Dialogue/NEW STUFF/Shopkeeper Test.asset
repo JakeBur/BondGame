@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562d8734cccad2e46a0f40908ee12503, type: 3}
+  m_Name: Shopkeeper Test
+  m_EditorClassIdentifier: 
+  trigger: 0
+  triggerAmount: 0
+  dialog:
+  - Shopkeeper/Happy Hello I am shopkeeper haha yes.
+  - MC/Angry NO!!! I reject...\n\YOUR SHOPKEEPER LICENSE!
+  - Shopkeeper/Sad Och, that's a bit cringe, \d=20\innit.
+  - MC/Surprised !!!\d=30\ \f=Sad\ \n\Damn, I've been had...
+  - Shopkeeper/Surprised You can't tussle with the Fibble!
+  - MC/Sad Another day perhaps...
+  step: 0

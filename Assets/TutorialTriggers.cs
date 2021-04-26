@@ -5,7 +5,8 @@ using UnityEngine;
 public class TutorialTriggers : MonoBehaviour
 {
 
-    CharacterDialogManager dialogManager => GetComponent<CharacterDialogManager>();
+    //CharacterDialogManager dialogManager => GetComponent<CharacterDialogManager>();
+    DialogueManager dialogueManager => GetComponent<DialogueManager>();
 
     bool entered = false;
 
@@ -13,8 +14,9 @@ public class TutorialTriggers : MonoBehaviour
     {
        if(other.tag == "Player" && !entered)
        {
-           PersistentData.Instance.Player.GetComponent<PlayerController>().characterDialogManager = dialogManager;
-           dialogManager.StartConvo();
+           //PersistentData.Instance.Player.GetComponent<PlayerController>().characterDialogManager = dialogManager;
+           PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = dialogueManager;
+           dialogueManager.StartDialogue();
            entered = true;
 
             //set player in standby

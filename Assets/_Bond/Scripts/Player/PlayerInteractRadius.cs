@@ -40,7 +40,7 @@ public class PlayerInteractRadius : MonoBehaviour
             if(other.gameObject.layer == 13)
             {
                 PersistentData.Instance.UI.GetComponent<UIUpdates>().HideCharacterDialogue();
-                pc.characterDialogManager = null;
+                pc.dialogueManager = null;
                 pc.inCharacterDialog = false;
             }
         }
