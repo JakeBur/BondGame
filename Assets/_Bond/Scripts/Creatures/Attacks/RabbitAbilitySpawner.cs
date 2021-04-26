@@ -7,7 +7,7 @@ using UnityEngine;
 //-----------
 using SFXPlayer = FMODUnity.RuntimeManager;
 
-public class SheriffAbilitySpawner : MonoBehaviour
+public class RabbitAbilitySpawner : MonoBehaviour
 {
     //-----------
     // for FMOD

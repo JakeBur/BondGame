@@ -28,7 +28,7 @@ public class CActionAttackQuickdraw : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.abilitySpawner.GetComponent<SheriffAbilitySpawner>().SpawnQuickdrawBullet(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDamage, attack.abilityBuff);
+        context.abilitySpawner.GetComponent<RabbitAbilitySpawner>().SpawnQuickdrawBullet(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDamage, attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if( !context.animator.inAttack ) 
