@@ -97,5 +97,6 @@ public class DialogueManager : MonoBehaviour
         PersistentData.Instance.UI.GetComponent<UIUpdates>().HideCharacterDialogue();
         PersistentData.Instance.Player.GetComponent<PlayerController>().inCharacterDialog = false;
         PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = null;
+        PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(false);
     }
 }

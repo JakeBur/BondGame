@@ -15,7 +15,7 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - Phew, what a long day.
-  - " It\u2019s about time I get back to the farm. "
-  - Wait, what is that weird goop all over the place?
+  - MC/Sad Phew, what a long day.
+  - " MC/Happy It\u2019s about time I get back to the farm. "
+  - MC/Happy Wait, what is that weird goop all over the place?
   step: 0

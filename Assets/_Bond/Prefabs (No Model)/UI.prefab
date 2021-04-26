@@ -1230,7 +1230,6 @@ GameObject:
   - component: {fileID: 7189925099257062393}
   - component: {fileID: 8963960376976296589}
   - component: {fileID: 2068997141793688500}
-  - component: {fileID: 5819139554838154769}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -1295,20 +1294,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5819139554838154769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4602011535889911503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96270dcb1107b084f98dd13a6d1682f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MCFaces: []
-  ShopkeeperFaces: []
 --- !u!1 &4676912451966414040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -197.9, y: 27.4}
+  m_AnchoredPosition: {x: -548, y: -113}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1654421371643214349

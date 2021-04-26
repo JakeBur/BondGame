@@ -15,7 +15,7 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - MORE OF THEM?!?!?!?
-  - Shoot, they even trapped a poor little Fragaria in that yucky stuff.
-  - RELEASE THEM YOU MONSTERS, OR FEEL MY WRATH!!!
+  - MC/Surprised MORE OF THEM?!?!?!?
+  - MC/Sad Shoot, they even trapped a poor little Fragaria in that yucky stuff.
+  - MC/Angry RELEASE THEM YOU MONSTERS, OR FEEL MY WRATH!!!
   step: 0
