@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="DataFile" id="{d5bf8f13-8b35-4985-b5ca-9dbd08851ec0}">
+		<property name="assetPath">
+			<value>Enemy SFX/Donut (Melee Enemy)/Donut Swing/Donut Swing Layer/swipeLayer.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46d66588-5640-4915-9ffe-128a7334e5da}</destination>
+		</relationship>
+	</object>
+</objects>

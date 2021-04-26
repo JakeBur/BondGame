@@ -29,6 +29,12 @@ public class SFXManager : MonoBehaviour
     [Header("Player Damaged")]
     [FMODUnity.EventRef] public string PlayerDamagedDonutSFX;
 
+    //--------------
+    // Player Misc
+    //--------------
+    [Header("Player Misc.")]
+    [FMODUnity.EventRef] public string PlayerWhistleSFX;
+
     //----------------------------
     // Creature + Enemy Movement
     //----------------------------
@@ -53,7 +59,6 @@ public class SFXManager : MonoBehaviour
     // Donut (Melee Enemy)
     //----------------------
     [Header("Donut (Melee Enemy)")]
-    [FMODUnity.EventRef] public string DonutSpawnSFX;
     [FMODUnity.EventRef] public string DonutSpawnExtendSFX;
     [FMODUnity.EventRef] public string DonutSpawnGrabSFX;
     [FMODUnity.EventRef] public string DonutSpawnDragSFX;
@@ -61,7 +66,11 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string DonutSwipeSFX;
     [FMODUnity.EventRef] public string DonutRetractSFX;
 
-    private bool spawning = false;
+    //----------------------------
+    // Shopkeeper + Currency SFX
+    //----------------------------
+    [Header("Shopkeeper + Currency")]
+    [FMODUnity.EventRef] public string CollectMoneySFX;
 
     //---------
     // UI SFX
@@ -84,25 +93,5 @@ public class SFXManager : MonoBehaviour
         instance.setParameterByName("MoverTag", tag);
         instance.start();
         instance.release();
-    }
-
-    public bool IsAlreadySpawning()
-    {
-        return spawning;
-    }
-
-    public void SetSpawning(bool state)
-    {
-        spawning = state;
-        if (spawning)
-        {
-            StartCoroutine(WaitForSpawning());
-        }
-    }
-
-    private IEnumerator WaitForSpawning()
-    {
-        yield return new WaitForSeconds(3.3f);
-        SetSpawning(false);
     }
 }

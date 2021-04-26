@@ -152,7 +152,7 @@
 			<value>25.732154195011336</value>
 		</property>
 		<property name="volume">
-			<value>-18.5</value>
+			<value>-19.5</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{bc4238a2-aa58-4b5b-b1db-06bb0cc7933b}</destination>
@@ -216,6 +216,9 @@
 		</property>
 		<property name="polyphony">
 			<value>4</value>
+		</property>
+		<property name="soundStealing">
+			<value>3</value>
 		</property>
 		<property name="spawnRate">
 			<value>74</value>
@@ -281,6 +284,9 @@
 		</property>
 		<property name="polyphony">
 			<value>6</value>
+		</property>
+		<property name="soundStealing">
+			<value>3</value>
 		</property>
 		<property name="spawnRate">
 			<value>18</value>

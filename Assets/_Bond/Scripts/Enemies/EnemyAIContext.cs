@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 [System.Serializable]
 public class EnemyAIContext : MonoBehaviour
 {
@@ -47,6 +52,15 @@ public class EnemyAIContext : MonoBehaviour
     public float hitstunDuration;
 
     public float movementSpeed;
+
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
+
     #endregion
 
     private void Awake()
@@ -119,5 +133,7 @@ public class EnemyAIContext : MonoBehaviour
         PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.goldCount++;
         //play a sound and make a particle or something of acorns flying out
+
+        SFXPlayer.PlayOneShot(SFX.CollectMoneySFX, transform.position);
     }
 }
