@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2795a925bd39bc44da51868e51111157, type: 3}
-  m_Name: SheriffQuickdrawAttack
+  m_Name: RabbitQuickdrawAttack
   m_EditorClassIdentifier: 

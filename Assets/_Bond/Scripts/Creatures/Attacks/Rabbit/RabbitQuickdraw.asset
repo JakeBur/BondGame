@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b70cfeefe681eb04e8f6b968e4fdc328, type: 3}
-  m_Name: SheriffQuickdraw
+  m_Name: RabbitQuickdraw
   m_EditorClassIdentifier: 
   id: 10
   cooldownDuration: 2
@@ -19,12 +19,8 @@ MonoBehaviour:
   abilityBuff: {fileID: 11400000, guid: 33d72afe9342ce244b3a237183b9f44a, type: 2}
   abilityDescription: Quickly launch a projectile at the enemy that debuffs them.
   maxDistanceToEnemy: 10
-  projectileSpeed: 10
+  flyTime: 0
   projectile: {fileID: 1232755435502466787, guid: e32ed67689763a14e9f943c0d2bbb1e2,
     type: 3}
-  anims: {fileID: 0}
-  baseDmg: 50
-  isHoming: 1
-  speed: 0
-  damage: 0
-  target: {fileID: 0}
+  projectileSpeed: 10
+  baseDamage: 0
