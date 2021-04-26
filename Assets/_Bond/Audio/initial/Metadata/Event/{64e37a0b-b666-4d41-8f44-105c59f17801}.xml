@@ -56,7 +56,14 @@
 			<destination>{14d83936-e861-4db7-800c-b6f2277f64b5}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{a69ae779-832c-436e-bbae-5784245ff376}" />
+	<object class="EventAutomatableProperties" id="{a69ae779-832c-436e-bbae-5784245ff376}">
+		<property name="maxVoices">
+			<value>2</value>
+		</property>
+		<property name="voiceStealing">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{2dc8e271-8dc4-4aa1-981d-85c9ed2213fb}" />
 	<object class="GroupTrack" id="{0b590fdc-01b0-48bc-8fe3-2303d004fcb5}">
 		<relationship name="modules">
@@ -93,7 +100,7 @@
 			<value>0.84999999999999998</value>
 		</property>
 		<property name="volume">
-			<value>3</value>
+			<value>10</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{c0d870db-6a10-4d89-9a74-24a22b2c066d}</destination>
@@ -107,7 +114,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{370837ca-4fcf-45fb-8ac5-9e5b92b87926}">
 		<property name="volume">
-			<value>10</value>
+			<value>1</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -134,7 +141,7 @@
 			<value>volume</value>
 		</property>
 		<property name="amount">
-			<value>3</value>
+			<value>1</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{ed125b44-b627-414c-bd55-1b26bbc1d743}">

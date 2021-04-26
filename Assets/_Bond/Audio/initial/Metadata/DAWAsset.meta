@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Bond/Audio/initial/Metadata/DAWAsset.meta
 guid: ef56609c637520d4bafb45ad28c664c8
+=======
+guid: 3fa4b7ec853d8e14cba34c54a696ca0c
+>>>>>>> main:Assets/_Bond/Audio/initial/Assets/Enemy SFX/Donut (Melee Enemy)/Donut Swing/Donut Swing Layer.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

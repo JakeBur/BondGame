@@ -5,6 +5,7 @@ using UnityEngine;
 public class CActionAttackRain : BTLeaf
 {
     creatureAttackRanged attack;
+
     public CActionAttackRain(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,8 +15,13 @@ public class CActionAttackRain : BTLeaf
     protected override void OnEnter()
     {
         attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
-        //Play anim
-        context.animator.Attack1();
+
+        AquaphimAnimator animator = context.animator as AquaphimAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not aquaphim animator");
+        }
+        animator.Rain();
     }
 
     protected override void OnExit()
@@ -30,13 +36,13 @@ public class CActionAttackRain : BTLeaf
         
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true)
-        { //if animation done, have to add that 
+        if( !context.animator.inAbility )
+        {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }

@@ -16,7 +16,7 @@ public class CActionAttackWaterBeam : BTLeaf
     {
         attack = (creatureAttackRanged) context.basicCreatureAttack;
         //Play anim
-        context.animator.WaterBeam();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()
@@ -30,13 +30,13 @@ public class CActionAttackWaterBeam : BTLeaf
         context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnWaterBeam(attack.projectile, context.targetEnemy, attack.flyTime, attack.baseDamage, attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
-        { //if animation done, have to add that 
+        if( !context.animator.inAttack ) 
+        {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutBasicOnCD();
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5397868219692516351}
-  - component: {fileID: 2803146919207616236}
+  - component: {fileID: 7665453807866885792}
   m_Layer: 0
   m_Name: AbilitySpawner
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 8167450192529632875}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2803146919207616236
+--- !u!114 &7665453807866885792
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 372912646155600726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a3e66874388534f87554303e5354ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c87f2ea8695bda43948b757768334fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2759757170665168599
@@ -5266,7 +5266,7 @@ MonoBehaviour:
   abilitySpawner: {fileID: 372912646155600726}
   animator: {fileID: 0}
   interactRadius: {fileID: 7652944173022466313}
-  basicCreatureAttack: {fileID: 11400000, guid: 0f792a119603cf6458be42eb9173f011,
+  basicCreatureAttack: {fileID: 11400000, guid: d989743ce1beb1b4782aa6733094c4af,
     type: 2}
   PetalCone: {fileID: 8144200659242719062, guid: 31c4943d3422d804089b1c2262442c17,
     type: 3}

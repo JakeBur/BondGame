@@ -15,7 +15,7 @@ public class CActionBarbaricMeleeAttack : BTLeaf
     {
         attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
    
     }
 
@@ -32,12 +32,12 @@ public class CActionBarbaricMeleeAttack : BTLeaf
         } 
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
+        if( !context.animator.inAttack ) 
         { //if animation done, have to add that 
             OnParentExit();
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }
