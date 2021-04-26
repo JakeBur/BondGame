@@ -5220,12 +5220,12 @@ GameObject:
   - component: {fileID: 8167450192529632887}
   - component: {fileID: 8167450192529632878}
   - component: {fileID: 7652944173586669289}
-  - component: {fileID: 8167450192529632880}
   - component: {fileID: 8167450192529632883}
   - component: {fileID: 8167450192529632881}
   - component: {fileID: 6899150225298738526}
   - component: {fileID: 3045770925772636374}
   - component: {fileID: 4353762693751710805}
+  - component: {fileID: 4351126951801809735}
   m_Layer: 9
   m_Name: AquaphimPrefab
   m_TagString: CaptCreature
@@ -5328,7 +5328,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 524.7
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5383,21 +5383,6 @@ MonoBehaviour:
   m_DefaultActionMap: controller
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8167450192529632880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167450192529632886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff34448142251f54e9a8ad67fad61f9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalities: []
-  DefaultPersonality: {fileID: 11400000, guid: 57ec74726c94f2e41bbc8565a9e58457, type: 2}
-  Evaluate: 0
 --- !u!114 &8167450192529632883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5434,7 +5419,7 @@ MonoBehaviour:
   creatureTransform: {fileID: 8167450192529632875}
   rb: {fileID: 8167450192529632878}
   creatureStats: {fileID: 0}
-  creatureBaseStats: {fileID: 0}
+  creatureBaseStats: {fileID: 11400000, guid: 46619baa8d16f184dacbdd424408353b, type: 2}
   agent: {fileID: 0}
   backFollowPoint: {fileID: 0}
   followPoint: {fileID: 0}
@@ -5443,7 +5428,10 @@ MonoBehaviour:
   interactRadius: {fileID: 7652944173022466313}
   basicCreatureAttack: {fileID: 11400000, guid: b8b76c17d2364474ba75349cc49ab8b9,
     type: 2}
-  PetalCone: {fileID: 0}
+  PetalCone: {fileID: 8144200659242719062, guid: 31c4943d3422d804089b1c2262442c17,
+    type: 3}
+  possiblePOIs: []
+  targetPOI: {fileID: 0}
   isWild: 1
   isInPlayerRadius: 0
   isInPlayerTrail: 0
@@ -5456,17 +5444,47 @@ MonoBehaviour:
   inCombat: 0
   autoAttack: 0
   enthusiasmInteracted: 0
+  hasReacted: 0
+  isReacting: 0
   playerSpeedToScare: 0.9
   lastTriggeredAbility: 0
   enemyDetectRange: 20
   itemDetectRange: 10
-  wanderRadius: 12
+  wanderDistance: 5
   wanderIdleDuration: 0
   wanderIdleTimer: 0
   wanderDestination: {x: 0, y: 0, z: 0}
   wildStartingLocation: {x: 0, y: 0, z: 0}
   stealDuration: 0
   stealTimer: 0
+  attention: 0
+  boredom: 0
+  tiredness: 0
+  meterRate: 3
+  wanderDistanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   icon: {fileID: 0}
   ability1Icon: {fileID: 0}
   ability2Icon: {fileID: 0}
@@ -5508,6 +5526,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dcb6f939f67aba42800bd4fb14b180a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4351126951801809735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167450192529632886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb935782b959c949bb43554eb0f29a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  personalities: []
+  DefaultPersonality: {fileID: 11400000, guid: 57ec74726c94f2e41bbc8565a9e58457, type: 2}
+  Evaluate: 0
 --- !u!1001 &3406110195015824975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5515,6 +5548,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8167450192529632875}
     m_Modifications:
+    - target: {fileID: -8790035401616707840, guid: 9eaf575e4cdfbb1409239e5051abc648,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 95c2e35f815e0e8458e82a17aa8161a6, type: 2}
     - target: {fileID: -8679921383154817045, guid: 9eaf575e4cdfbb1409239e5051abc648,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5570,11 +5608,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7134313132463239899, guid: 9eaf575e4cdfbb1409239e5051abc648,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 95c2e35f815e0e8458e82a17aa8161a6, type: 2}
     - target: {fileID: -4842778239200643810, guid: 9eaf575e4cdfbb1409239e5051abc648,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 268878347071510516, guid: 9eaf575e4cdfbb1409239e5051abc648,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 95c2e35f815e0e8458e82a17aa8161a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 9eaf575e4cdfbb1409239e5051abc648,
         type: 3}
       propertyPath: m_Name
@@ -5585,6 +5633,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5290191599511811766, guid: 9eaf575e4cdfbb1409239e5051abc648,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 95c2e35f815e0e8458e82a17aa8161a6, type: 2}
     - target: {fileID: 7045829414642389914, guid: 9eaf575e4cdfbb1409239e5051abc648,
         type: 3}
       propertyPath: m_Layer
