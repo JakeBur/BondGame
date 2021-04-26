@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 0
   triggerAmount: 0
-  dialog: []
+  dialog:
+  - Shopkeeper/Happy Hello I am shopkeeper haha yes.
+  - MC/Angry NO!!! I reject...\n\YOUR SHOPKEEPER LICENSE!
+  - Shopkeeper/Sad Och, that's a bit cringe, \d=20\innit.
+  - MC/Surprised !!!\d=30\ \f=Sad\ \n\Damn, I've been had...
+  - Shopkeeper/Surprised You can't tussle with the Fibble!
+  - MC/Sad Another day perhaps...
   step: 0
