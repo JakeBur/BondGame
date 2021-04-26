@@ -13,7 +13,7 @@ public class CActionCleverAlertPlayer : BTLeaf
 
     protected override void OnEnter()
     {
-        context.animator.Wave();
+        context.animator.PlayerNoticed();
     }
 
     protected override void OnExit()

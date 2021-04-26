@@ -15,7 +15,7 @@ public class CActionBarbaricRangedAttack : BTLeaf
     {
         attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()

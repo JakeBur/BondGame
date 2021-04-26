@@ -22,7 +22,12 @@ public class CActionAttackWaterShield : BTLeaf
 
         attack = (creatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play anim
-        context.animator.Attack1();
+        AquaphimAnimator animator = context.animator as AquaphimAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not aquaphim animator");
+        }
+        animator.WaterShield();
     }
 
     protected override void OnExit()
@@ -36,11 +41,13 @@ public class CActionAttackWaterShield : BTLeaf
         pc.stats.AddBuff(attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
+        if( !context.animator.inAbility ) 
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             return NodeState.SUCCESS;
         }
+
+        return NodeState.RUNNING;
     }
 }

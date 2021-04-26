@@ -62,7 +62,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6076427688486000359
+--- !u!114 &1442447496155579995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2559600384075893534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0339c87fea27ea147960b1fc232d41a2, type: 3}
+  m_Script: {fileID: 11500000, guid: bfd9f13254ecdfc429662fa7eed2b81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2759757170665168599
@@ -5222,10 +5222,10 @@ GameObject:
   - component: {fileID: 7652944173586669289}
   - component: {fileID: 8167450192529632883}
   - component: {fileID: 8167450192529632881}
-  - component: {fileID: 6899150225298738526}
   - component: {fileID: 3045770925772636374}
   - component: {fileID: 4353762693751710805}
   - component: {fileID: 4351126951801809735}
+  - component: {fileID: 3890853820108131349}
   m_Layer: 9
   m_Name: AquaphimPrefab
   m_TagString: CaptCreature
@@ -5488,19 +5488,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   ability1Icon: {fileID: 0}
   ability2Icon: {fileID: 0}
---- !u!114 &6899150225298738526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167450192529632886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f77c9130777d174da4c8e5da55b7da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 2559600384075893534}
 --- !u!114 &3045770925772636374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5541,6 +5528,20 @@ MonoBehaviour:
   personalities: []
   DefaultPersonality: {fileID: 11400000, guid: 57ec74726c94f2e41bbc8565a9e58457, type: 2}
   Evaluate: 0
+--- !u!114 &3890853820108131349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167450192529632886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5763d4ac92a1b3448e894f29c67bfb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 2559600384075893534}
+  isWaving: 0
 --- !u!1001 &3406110195015824975
 PrefabInstance:
   m_ObjectHideFlags: 0

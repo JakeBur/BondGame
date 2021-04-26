@@ -19,7 +19,12 @@ public class CActionAttackPetalThrow : BTLeaf
         attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
         
         //Play anim
-        context.animator.Attack1();
+        FragariaAnimator animator = context.animator as FragariaAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not fragaria animator");
+        }
+        animator.PetalThrow();
     }
 
     protected override void OnExit()
@@ -43,13 +48,13 @@ public class CActionAttackPetalThrow : BTLeaf
 
         context.enemyList.Clear();
         context.isAbilityTriggered = false;
-        if(true) 
+        if( !context.animator.inAbility ) 
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }

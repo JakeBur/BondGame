@@ -18,7 +18,7 @@ public class CActionFacePlayerAndReact : BTLeaf
     {
         agent.isStopped = true;
         context.creatureTransform.LookAt(context.player.transform.position);
-        context.animator.Wave();
+        context.animator.PlayerNoticed();
         context.isReacting = true;
     }
 
@@ -32,7 +32,7 @@ public class CActionFacePlayerAndReact : BTLeaf
 
     public override NodeState Evaluate() 
     {
-        if(!context.animator.isWaving){
+        if(!context.animator.isPlayerNoticed){
             OnParentExit();
             return NodeState.SUCCESS;   
         }
