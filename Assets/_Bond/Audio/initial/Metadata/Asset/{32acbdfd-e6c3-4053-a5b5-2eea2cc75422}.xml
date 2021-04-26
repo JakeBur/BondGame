@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="EncodableAsset" id="{32acbdfd-e6c3-4053-a5b5-2eea2cc75422}">
 		<property name="assetPath">
-			<value>Enemy SFX/Donut (Melee Enemy)/Donut Swing/Donut Swipe Layer/</value>
+			<value>Enemy SFX/Donut (Melee Enemy)/Donut Swing/Donut Swing Layer/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{46d66588-5640-4915-9ffe-128a7334e5da}</destination>

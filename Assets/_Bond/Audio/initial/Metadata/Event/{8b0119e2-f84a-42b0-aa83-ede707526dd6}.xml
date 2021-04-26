@@ -5,7 +5,7 @@
 			<value>Menu Open</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{19cee580-8036-4185-a2ea-c0feab82e6e2}</destination>
@@ -92,6 +92,9 @@
 		<property name="length">
 			<value>1.5259410430839002</value>
 		</property>
+		<property name="volume">
+			<value>3.5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{79006b3a-d8d6-48df-bdda-d5dc78fb7801}</destination>
 		</relationship>
@@ -136,7 +139,11 @@
 			<destination>{f793a2f9-189c-4368-98c2-f4fc2a94c2d9}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{b0c316fa-14a0-436f-9517-ee3c1a8f72d2}" />
+	<object class="MixerBusPanner" id="{b0c316fa-14a0-436f-9517-ee3c1a8f72d2}">
+		<property name="overridingOutputFormat">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{fb55b221-795c-40f2-95d5-4f112393c240}" />
 	<object class="MixerBusFader" id="{f793a2f9-189c-4368-98c2-f4fc2a94c2d9}" />
 </objects>
