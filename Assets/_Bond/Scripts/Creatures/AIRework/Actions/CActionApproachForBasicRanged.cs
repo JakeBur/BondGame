@@ -19,7 +19,7 @@ public class CActionApproachForBasicRanged : BTLeaf
 
     protected override void OnEnter()
     {
-        creatureAttackRanged _attack = (creatureAttackRanged) context.basicCreatureAttack;
+        CreatureAttackRanged _attack = (CreatureAttackRanged) context.basicCreatureAttack;
         maxDist = _attack.maxDistanceToEnemy;
 
         agent.speed = moveSpeed;

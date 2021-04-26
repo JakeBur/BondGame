@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CActionAttackQuickdraw : BTLeaf
 {
-    creatureAttackRanged attack;
+    CreatureAttackRanged attack;
     public CActionAttackQuickdraw(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,7 +14,7 @@ public class CActionAttackQuickdraw : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
         context.animator.DefaultAttack();

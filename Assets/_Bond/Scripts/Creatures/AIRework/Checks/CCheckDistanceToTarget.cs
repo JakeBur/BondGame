@@ -21,9 +21,9 @@ public class CCheckDistanceToTarget : BTChecker
             
             if (distance < attack.maxDistanceToEnemy) return NodeState.FAILURE; 
         } 
-        else if(context.creatureStats.abilities[context.lastTriggeredAbility] is creatureAttackRanged) 
+        else if(context.creatureStats.abilities[context.lastTriggeredAbility] is CreatureAttackRanged) 
         {
-            creatureAttackRanged attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
+            CreatureAttackRanged attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
             if (distance < attack.maxDistanceToEnemy) return NodeState.FAILURE; 
         }
         

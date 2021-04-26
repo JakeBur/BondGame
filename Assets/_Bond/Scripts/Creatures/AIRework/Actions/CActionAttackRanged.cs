@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CActionAttackRanged : BTLeaf
 {
-    creatureAttackRanged attack;
+    CreatureAttackRanged attack;
     public CActionAttackRanged(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -13,7 +13,7 @@ public class CActionAttackRanged : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
         // Debug.Log("Attacking");
         context.animator.DefaultAttack();

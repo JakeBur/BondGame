@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CActionAttackThrowKnife : BTLeaf
 {
-    creatureAttackRanged attack;
+    CreatureAttackRanged attack;
     public CActionAttackThrowKnife(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,7 +14,7 @@ public class CActionAttackThrowKnife : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackRanged) context.basicCreatureAttack;
+        attack = (CreatureAttackRanged) context.basicCreatureAttack;
 
         context.animator.DefaultAttack();
     }

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class CActionAttackPetalThrow : BTLeaf
 {
-    creatureAttackRanged attack;
+    CreatureAttackRanged attack;
     private NavMeshAgent agent;
     public CActionAttackPetalThrow(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
@@ -16,7 +16,7 @@ public class CActionAttackPetalThrow : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
         
         //Play anim
         FragariaAnimator animator = context.animator as FragariaAnimator;
