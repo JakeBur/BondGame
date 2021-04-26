@@ -32,8 +32,8 @@ public class CActionAttackRanged : BTLeaf
         
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
-        { //if animation done, have to add that 
+        if( !context.animator.inAttack ) 
+        {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             // Debug.Log("Ability Id: ");
@@ -41,6 +41,6 @@ public class CActionAttackRanged : BTLeaf
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }

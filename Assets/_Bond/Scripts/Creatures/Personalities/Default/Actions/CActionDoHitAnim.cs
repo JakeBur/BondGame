@@ -25,7 +25,7 @@ public class CActionDoHitAnim : BTLeaf
     public override NodeState Evaluate() 
     {
         
-        if(true) 
+        if( !context.animator.inAttack ) 
         { //if animation done, have to add that 
             
             
@@ -33,6 +33,6 @@ public class CActionDoHitAnim : BTLeaf
             return NodeState.SUCCESS;
         }
         
-
+        return NodeState.RUNNING;
     }
 }

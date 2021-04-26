@@ -46,11 +46,13 @@ public class CActionAttackNothingPersonal : BTLeaf
 
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) 
-        { //if animation done, have to add that 
+        if( !context.animator.inAttack ) 
+        {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
             return NodeState.SUCCESS;
         }
+
+        return NodeState.RUNNING;
     }
 }
