@@ -304,11 +304,7 @@ public class PersistentData : MonoBehaviour
         
         }
 
-        // Debug.Log(GetSpawnpoint());
-        while(!isGeneratorDone)
-        {
-            yield return null;
-        }
+       
         Player.transform.position = GetSpawnpoint();
         playerController.warpPlayer(GetSpawnpoint());
         //update Game State for FMOD if necessary
