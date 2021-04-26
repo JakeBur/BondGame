@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using TMPro;
 
@@ -7,20 +8,14 @@ public class DialogueTextManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueBox;
     public DialoguePortrait dialoguePortrait;
+    public bool sentenceFinished = true;
 
     private IEnumerator typeText;
-    private float textSpeed;
-    private float textSpeedMult;
-    private float textSpeedBackup;
+    private float textSpeed = 0.0375f;
+    private float textSpeedMult = 1f;
+    private float textSpeedBackup = 0.0375f;
     private string speaker;
-
-    private void Start()
-    {
-
-        textSpeedBackup = 0.0375f;
-        textSpeed = textSpeedBackup;
-        textSpeedMult = 1f;
-    }
+    private string sentence;
 
     public void ResetSpeed()
     {
@@ -28,7 +23,48 @@ public class DialogueTextManager : MonoBehaviour
         textSpeed = textSpeedBackup;
     }
 
-    public void ChangeText(string _speaker, string sentence)
+    public void FinishSentence()
+    {
+        if (typeText != null)
+        {
+            StopCoroutine(typeText);
+        }
+        string strippedSentence = StripSentence(sentence);
+        dialogueBox.text = strippedSentence;
+        sentenceFinished = true;
+    }
+
+    private string StripSentence(string _sentence)
+    {
+        string newSentence = _sentence;
+    
+        //----------------------------------------------------
+        // Replace all newline tags with actual newline char
+        //----------------------------------------------------
+        newSentence = newSentence.Replace("\\n\\", "\n");
+
+        //--------------------------------------------
+        // Get last portrait change call information
+        //--------------------------------------------
+        int lastPortraitChangeIndex = newSentence.LastIndexOf("\\f");
+        if (lastPortraitChangeIndex >= 0)
+        {
+            string temp = newSentence.Substring(lastPortraitChangeIndex + 3);
+            int closingTagIndex = temp.IndexOf("\\");
+            string newPortrait = temp.Substring(0, closingTagIndex);
+            Debug.Log(newPortrait);
+            dialoguePortrait.ChangePortrait(speaker, newPortrait);
+        }
+
+        //-----------------------------------------
+        // Strip the sentence of tags using regex
+        //-----------------------------------------
+        newSentence = Regex.Replace(newSentence, @"\\.*?\\", "").Trim();
+
+        return newSentence;
+    }
+
+    public void ChangeText(string _speaker, string _sentence)
     {
         //-----------------------------------------------
         // If a dialogue is skipped, stop the coroutine
@@ -39,6 +75,8 @@ public class DialogueTextManager : MonoBehaviour
         }
         dialogueBox.text = "";
         speaker = _speaker;
+        sentence = _sentence;
+        sentenceFinished = false;
         typeText = LetterByLetter(sentence);
         StartCoroutine(typeText);
     }
@@ -145,6 +183,7 @@ public class DialogueTextManager : MonoBehaviour
         //-----------------------------------------------------------
         // Once sentence is over, reset the speed values to default
         //-----------------------------------------------------------
+        sentenceFinished = true;
         textSpeedBackup = 0.0375f;
         textSpeed = textSpeedBackup;
     }
