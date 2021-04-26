@@ -16,8 +16,7 @@ public class CActionAttackThrowKnife : BTLeaf
     {
         attack = (creatureAttackRanged) context.basicCreatureAttack;
 
-        //Play correct anim once its made
-        context.animator.WaterBeam();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()

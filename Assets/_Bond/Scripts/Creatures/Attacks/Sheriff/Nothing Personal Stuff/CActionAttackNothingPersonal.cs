@@ -17,7 +17,7 @@ public class CActionAttackNothingPersonal : BTLeaf
         attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
-        context.animator.Attack1();
+        context.animator.DefaultAttack();
     }
 
     protected override void OnExit()
