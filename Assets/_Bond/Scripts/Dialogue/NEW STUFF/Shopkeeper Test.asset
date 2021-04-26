@@ -14,11 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 0
   triggerAmount: 0
-  dialog:
-  - Shopkeeper/Happy This is a test dialogue.
-  - MC/Sad Why must\n\you do this.
-  - Shopkeeper/Surprised \s=0.5\Hahaha.
-  - MC/Surprised Bluh\d=20\.\f=Sad\This is no fun.
-  - Shopkeeper/Sad Nonsense, this is \d=20\very fun!
-  - MC/Happy Pssh, whatever.
+  dialog: []
   step: 0

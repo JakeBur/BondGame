@@ -20,6 +20,8 @@ public class DialoguePortrait : MonoBehaviour
         emotionIndex.Add("Happy", 0);
         emotionIndex.Add("Surprised", 1);
         emotionIndex.Add("Sad", 2);
+        emotionIndex.Add("Cheerful", 3);
+        emotionIndex.Add("Angry", 4);
 
         image = GetComponent<Image>();
     }

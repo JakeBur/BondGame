@@ -3509,13 +3509,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MCFaces:
-  - {fileID: 21300000, guid: 342e197d1c97fe543b89a55f3a547ac8, type: 3}
-  - {fileID: 21300000, guid: 004c4d287b0b96a46af69cc4c99e6cd4, type: 3}
-  - {fileID: 21300000, guid: e1d0f59bf85452642a20891456ccda62, type: 3}
+  - {fileID: 21300000, guid: 1a5f60f919b99fc4b8145a48a645cdee, type: 3}
+  - {fileID: 21300000, guid: dc311b8bf94ba3a49a990323fe5d288c, type: 3}
+  - {fileID: 21300000, guid: 746488bdca12eb54dafd6b798f59d395, type: 3}
+  - {fileID: 21300000, guid: fb373c24d6d59794d8a4aaab0dd58884, type: 3}
+  - {fileID: 21300000, guid: a56dc4f9bc8932b4991ba05364d5135f, type: 3}
   ShopkeeperFaces:
-  - {fileID: 21300000, guid: 360391c560b336549bf8538e9cda5526, type: 3}
-  - {fileID: 21300000, guid: d93e8f4a93957db4095966455abcbb58, type: 3}
-  - {fileID: 21300000, guid: 837183131a4261a4ebcbc7d15556b35b, type: 3}
+  - {fileID: 21300000, guid: 302f7336d0cc6b542a1316ce8ebbfc74, type: 3}
+  - {fileID: 21300000, guid: 302f7336d0cc6b542a1316ce8ebbfc74, type: 3}
+  - {fileID: 21300000, guid: 302f7336d0cc6b542a1316ce8ebbfc74, type: 3}
+  - {fileID: 21300000, guid: 302f7336d0cc6b542a1316ce8ebbfc74, type: 3}
+  - {fileID: 21300000, guid: 302f7336d0cc6b542a1316ce8ebbfc74, type: 3}
 --- !u!1 &7886494778136042791
 GameObject:
   m_ObjectHideFlags: 0
