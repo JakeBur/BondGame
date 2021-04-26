@@ -11,7 +11,7 @@ public class Conversation : ScriptableObject {
     public DialogTrigger trigger;
     public float triggerAmount;
     [Header("Dialog : ")]
-    public List<string> dialog = new List<string>();
+    [TextArea(3, 5)] public List<string> dialog = new List<string>();
 
     [Header("programmer stuff no touchy")]
     [HideInInspector]

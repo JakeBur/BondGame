@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public bool inCharacterDialog;
     public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
     [HideInInspector]
-    public CharacterDialogManager characterDialogManager;
+    public DialogueManager dialogueManager;
 
     [Header("Pause Menu")]
     public GameObject pauseMenu;
@@ -257,7 +257,7 @@ public class PlayerController : MonoBehaviour
         // For dialog scenes
         if(inCharacterDialog)
         {
-            characterDialogManager?.ContinueConvo();
+            dialogueManager?.NextSentence();
         }
         // If interactable is close by
         else if(interactableObjects.Count > 0)
