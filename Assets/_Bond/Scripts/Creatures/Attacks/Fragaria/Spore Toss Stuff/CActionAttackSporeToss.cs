@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class CActionAttackSporeToss : BTLeaf
 {
-    creatureAttackUtility attack;
+    CreatureAttackUtility attack;
     private NavMeshAgent agent;
     public CActionAttackSporeToss(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
@@ -16,7 +16,7 @@ public class CActionAttackSporeToss : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
         
         //Play anim
         FragariaAnimator animator = context.animator as FragariaAnimator;

@@ -9,7 +9,7 @@ public class PetalThrow : MonoBehaviour
     private void Awake() 
     {
         context=PersistentData.Instance.Player.GetComponent<PlayerController>().currCreatureContext;
-        Destroy(gameObject, 1f);
+        Destroy(transform.parent.gameObject, 1f);
     }
 
     private void OnTriggerEnter(Collider other) {

@@ -10,26 +10,38 @@ using SFXPlayer = FMODUnity.RuntimeManager;
 public class EncounterManager : MonoBehaviour
 {
     public List<Wave> waves = new List<Wave>();
-    public int currEnemyCount = 0;
     public GameObject barrier;
+	
+    [Header("VFX")]
+    public ArenaAnimator vfx;
+
+    [Header("Blobs")]
     public float blobSpawnRadius;
     public int blobAmount;
-    public GameObject blob;
+    public GameObject blobPrefab;
     public GameObject blobParent;
     public Buff corruptionDebuff;
-    private int currWave = 0;
-    public bool encounterTriggered;
 
-    public float farthestDistRadius;
-    public Vector3 farthestPointFromPlayer;
-
+    [Header("Enemies")]
     public int maxCurrMeleeAttackers;
-    public int numberOfCurrMeleeAttackers;
-
     public int maxCurrRangedAttackers;
-    public int numberOfCurrRangedAttackers;
 
+    [HideInInspector]
+    public bool encounterTriggered;
+    [HideInInspector]
+    public int currEnemyCount = 0;
+    [HideInInspector]
+    public float arenaRadius;
+    [HideInInspector]
+    public Vector3 farthestPointFromPlayer;
+    [HideInInspector]
+    public int numberOfCurrMeleeAttackers;
+    [HideInInspector]
+    public int numberOfCurrRangedAttackers;
+    [HideInInspector]
     public Transform playerTransform;
+
+    private int currWave = 0;
 
     //-----------
     // for FMOD
@@ -49,10 +61,11 @@ public class EncounterManager : MonoBehaviour
             {
                 Vector2 randomPos = Random.insideUnitCircle;
                 randomPos *= (Random.Range(10,blobSpawnRadius));
-                Instantiate(blob, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
+                Instantiate(blobPrefab, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
             }
             blobParent.SetActive(true);
             barrier.SetActive(true);
+            vfx.PlayEncounterBegin();
             SpawnEncounter();
             GetComponent<Collider>().enabled = false;
             
@@ -64,15 +77,14 @@ public class EncounterManager : MonoBehaviour
         }
     }
 
-    private void Update() {
+    private void Update() 
+    {
         if(encounterTriggered)
         {
-            farthestPointFromPlayer = (transform.position - playerTransform.position).normalized * farthestDistRadius;
+            farthestPointFromPlayer = (transform.position - playerTransform.position).normalized * arenaRadius;
             farthestPointFromPlayer += transform.position;
             farthestPointFromPlayer.y = 0;
-
         }
-       
     }
 
 
@@ -140,6 +152,7 @@ public class EncounterManager : MonoBehaviour
     private void ClearEncounter()
     {
         barrier.SetActive(false);
+        vfx.PlayDeathAnimation();
         blobParent.SetActive(false);
         PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(false);
         //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();

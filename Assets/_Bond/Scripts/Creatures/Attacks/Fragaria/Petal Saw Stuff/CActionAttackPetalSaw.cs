@@ -5,7 +5,7 @@ using UnityEngine;
 public class CActionAttackPetalSaw : BTLeaf
 {
 
-    creatureAttackMelee attack;
+    CreatureAttackMelee attack;
     public CActionAttackPetalSaw(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,7 +14,7 @@ public class CActionAttackPetalSaw : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
         // Debug.Log("Attacking");
         FragariaAnimator animator = context.animator as FragariaAnimator;

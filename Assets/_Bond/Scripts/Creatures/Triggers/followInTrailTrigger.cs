@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class followInTrailTrigger : MonoBehaviour
+public class FollowInTrailTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {

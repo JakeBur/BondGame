@@ -32,7 +32,7 @@ public class EActionRetreat : BTLeaf
             retreatPoint = (enemyContext.enemyTransform.position - enemyContext.player.transform.position).normalized * 5;
             retreatPoint += enemyContext.enemyTransform.position;
 
-            if(Vector3.Distance(retreatPoint, enemyContext.EncounterManager.transform.position) < enemyContext.EncounterManager.farthestDistRadius && goToFarthestPoint == false)
+            if(Vector3.Distance(retreatPoint, enemyContext.EncounterManager.transform.position) < enemyContext.EncounterManager.arenaRadius && goToFarthestPoint == false)
             {
 
                 enemyContext.agent.SetDestination(retreatPoint);

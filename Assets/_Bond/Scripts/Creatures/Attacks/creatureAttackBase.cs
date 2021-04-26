@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class creatureAttackBase : ScriptableObject, HasCooldown
+public class CreatureAttackBase : ScriptableObject, HasCooldown
 {
     public int id;
     public float cooldownDuration;

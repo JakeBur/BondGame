@@ -167,7 +167,8 @@ public class PlayerAnimator : MonoBehaviour
         {
             animator.SetTrigger("HeavyCharge");
 
-            heavyChargeVfx.Play();
+            //heavyChargeVfx.Play();
+            PlaySlashVFX(5);
         }
         else
         {
@@ -182,7 +183,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetTrigger("HeavyAttack");
         animator.ResetTrigger("HeavyCharge");
 
-        heavyHitVfx.Play();
+        //heavyHitVfx.Play();
     }
 
     public void Crouch(bool state)

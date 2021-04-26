@@ -1,59 +1,92 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class ProjectileScript : MonoBehaviour
 {
-    GameObject target;
-    Rigidbody rigidBody;
-    // Start is called before the first frame update
-    float speed = 10;
+    [Header("Gameplay Data")]
     public float damage = 50;
-    public bool isHoming = false;
 
-    void Start()
-    {
-        
-    }
+    [Header("Animation Data")]
+    public AnimationCurve momentumCurve;
+    public float arcDistance;
+    public float flyTime;
+    
+    private Vector3 toTarget;
+    private Vector3 toOffset;
+    private Vector3 initialPosition;
 
-    private void Awake() 
+    [Header("References")]
+    public GameObject trail;
+
+    private GameObject target;
+    private Rigidbody rigidBody;
+
+    private float impactTime;
+    private float startTime;
+
+    private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
-        Destroy(gameObject, 5f);
+        /////////////////////////////////////////////Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target != null)
+        if (target == null)
         {
-            if(isHoming) 
-            {
-                transform.LookAt(target.transform.position);
-            }
-            
-            rigidBody.velocity = (transform.rotation*Vector3.forward*speed);
+            End();
+            return;
+        }
+
+        toTarget = target.transform.position - initialPosition;
+
+        float normalizedTime = (Time.time - startTime) / (impactTime - startTime);
+        float blend = momentumCurve.Evaluate(normalizedTime);
+        transform.position = initialPosition + (((toTarget * blend) + (toOffset * (1-blend))) * normalizedTime);
+
+        if (Time.time > impactTime)
+        {
+            target.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
+            End();
         }
     }
 
-    public void setTarget(GameObject _target, float _speed, float _damage, bool _isHoming)
+    private void OnDestroy()
+    {
+        
+    }
+
+    private void End()
+    {
+        trail.transform.parent = null;
+        trail.AddComponent<DestroyOnDelay>().Apply(2f);
+        Destroy(gameObject);
+    }
+
+    public void SetTarget(GameObject _target, float _speed, float _damage)
     {
         target = _target;
-        if(target != null)
+        if(target == null)
         {
-            transform.LookAt(target.transform.position);
+            Destroy(gameObject);
+            return;
         }
         
-        speed = _speed;
         damage = _damage;
-        isHoming = _isHoming;
-    }
 
-    private void OnCollisionEnter(Collision other) {
-        if(other.transform.tag == "Enemy")
-        {
-            other.transform.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
-            Destroy(gameObject);
-        }    
+        // add initial speed at a random offset from angle to enemy (only randomize when homing)
+        toTarget = target.transform.position - transform.position;
+        toOffset = Quaternion.Euler(0, Mathf.Sign(Random.Range(-1, 1)) * Random.Range(60, 110), 0) * toTarget;
+        toOffset = toOffset.normalized;
+        toOffset -= toOffset.y * Vector3.up;
+        toOffset = toOffset.normalized * arcDistance;
+
+        impactTime = Time.time + flyTime;
+        startTime = Time.time;
+
+        initialPosition = transform.position;
     }
 }

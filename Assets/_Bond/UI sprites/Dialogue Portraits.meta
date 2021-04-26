@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Bond/Audio/initial/Metadata/MixerView.meta
+guid: b28e4c8a95f67e041b055d5da27df9cd
+=======
 guid: 5aa78bd17ff73584f824efdb88de79a9
+>>>>>>> main:Assets/_Bond/UI sprites/Dialogue Portraits.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
