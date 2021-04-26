@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CActionAttackNothingPersonal : BTLeaf
 {
-    creatureAttackMelee attack;
+    CreatureAttackMelee attack;
     public CActionAttackNothingPersonal(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,7 +14,7 @@ public class CActionAttackNothingPersonal : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
         context.animator.DefaultAttack();

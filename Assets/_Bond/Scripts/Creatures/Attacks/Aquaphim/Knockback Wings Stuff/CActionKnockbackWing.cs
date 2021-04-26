@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CActionKnockbackWing : BTLeaf
 {
-    creatureAttackUtility attack;
+    CreatureAttackUtility attack;
 
     public CActionKnockbackWing(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
@@ -15,7 +15,7 @@ public class CActionKnockbackWing : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play anim
         AquaphimAnimator animator = context.animator as AquaphimAnimator;
         if (animator == null)

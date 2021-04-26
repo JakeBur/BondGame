@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class wildNoticeTrigger : MonoBehaviour
+public class WildNoticeTrigger : MonoBehaviour
 {
 
     public GameObject creature;

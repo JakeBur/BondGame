@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class CActionApproachForBasicMelee : BTLeaf
 {
     private NavMeshAgent agent;
-    creatureAttackBase attack;
+    CreatureAttackBase attack;
     private float moveSpeed = 15f;
     private float maxDist;
 
@@ -19,7 +19,7 @@ public class CActionApproachForBasicMelee : BTLeaf
 
     protected override void OnEnter()
     {
-        creatureAttackMelee _attack = (creatureAttackMelee) context.basicCreatureAttack;
+        CreatureAttackMelee _attack = (CreatureAttackMelee) context.basicCreatureAttack;
         maxDist = _attack.maxDistanceToEnemy;
 
         agent.speed = moveSpeed;

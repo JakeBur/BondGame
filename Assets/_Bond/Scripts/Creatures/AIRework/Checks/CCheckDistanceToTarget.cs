@@ -15,9 +15,9 @@ public class CCheckDistanceToTarget : BTChecker
     {
         float distance = Vector3.Distance(context.creatureTransform.position, context.targetEnemy.transform.position);
        
-        if(context.creatureStats.abilities[context.lastTriggeredAbility] is creatureAttackMelee)
+        if(context.creatureStats.abilities[context.lastTriggeredAbility] is CreatureAttackMelee)
         {
-            creatureAttackMelee attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
+            CreatureAttackMelee attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
             
             if (distance < attack.maxDistanceToEnemy) return NodeState.FAILURE; 
         } 

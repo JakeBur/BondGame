@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DefaultAttack", menuName = "ScriptableObjects/BTSubtrees/Attacks/Sheriff/Default Attack")]
-public class SheriffDefaultAttack : BTSubtree
+[CreateAssetMenu(fileName = "SheriffQuickdrawAttack", menuName = "ScriptableObjects/BTSubtrees/Attacks/Sheriff/Quickdraw")]
+public class RabbitQuickdrawAttack : BTSubtree
 {
     public override BTSequence BuildSequenceSubtree(CreatureAIContext context) 
     {
@@ -24,11 +24,11 @@ public class SheriffDefaultAttack : BTSubtree
             List<BTNode> RangedApproachSelectorList = new List<BTNode>();
             CActionApproachForBasicRanged approachForAttack = new CActionApproachForBasicRanged("Approach for attack", context);
             BTInverter invertApproachForAttack = new BTInverter("Invert Approach for Attack", approachForAttack);
-            CActionAttackThrowKnife attackRanged = new CActionAttackThrowKnife("Throw Knife Default Attack", context);
+            CActionAttackQuickdraw quickdraw = new CActionAttackQuickdraw("Quickdraw Attack", context);
             RangedApproachSelectorList.Add(invertApproachForAttack);
-            RangedApproachSelectorList.Add(attackRanged);
+            RangedApproachSelectorList.Add(quickdraw);
             
-            BTSelector RangedApproachAttackSelector = new BTSelector("Water Beam Approach / Attack Sequence", RangedApproachSelectorList);
+            BTSelector RangedApproachAttackSelector = new BTSelector("Approach / Attack Sequence", RangedApproachSelectorList);
         #endregion
 
         AbilitySequenceList.Add(TargetExistsSelector);

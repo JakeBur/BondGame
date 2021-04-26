@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class CActionApproachForBasicRanged : BTLeaf
 {
     private NavMeshAgent agent;
-    creatureAttackBase attack;
+    CreatureAttackBase attack;
     private float moveSpeed = 15f;
     private float maxDist;
 

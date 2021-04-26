@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class followInRadiusTrigger : MonoBehaviour
+public class FollowInRadiusTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) 
     {

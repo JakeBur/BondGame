@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class goldPickup : MonoBehaviour
+public class GoldPickup : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
