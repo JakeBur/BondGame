@@ -26,7 +26,7 @@ public class CActionAttackRain : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnRain(attack.projectile, attack.baseDmg, attack.abilityBuff);
+        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnRain(attack.projectile, attack.baseDamage, attack.abilityBuff);
         
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
