@@ -609,11 +609,11 @@ public class PlayerController : MonoBehaviour
             // Resets health to max
             stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
 
-                //Reset creature if knocked out
-                currCreatureContext.enthusiasmInteracted = false;
-                currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
-                //Update the creature's Enthusiasm Bar
-                // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+            //Reset creature if knocked out
+            currCreatureContext.enthusiasmInteracted = false;
+            currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
+            //Update the creature's Enthusiasm Bar
+            // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
         }
        
     }
@@ -660,7 +660,7 @@ public class PlayerController : MonoBehaviour
                 
                 // Rotates player in direction of attack
                 transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
-                          
+                facingDirection = attackMoveVec;
             } 
         }
     }
