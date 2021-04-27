@@ -224,11 +224,6 @@ public class PlayerController : MonoBehaviour
     // WASD and Joystick
     private void OnMovement(InputValue value)
     {
-        if ( inStandby )
-        {
-            return;
-        }
-        
         // Takes 2D movement vector and converts to 3D
         inputs.rawDirection = value.Get<Vector2>();
         inputs.rawDirection.Normalize();
