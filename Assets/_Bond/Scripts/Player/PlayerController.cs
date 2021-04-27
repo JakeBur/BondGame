@@ -224,6 +224,11 @@ public class PlayerController : MonoBehaviour
     // WASD and Joystick
     private void OnMovement(InputValue value)
     {
+        if ( inStandby )
+        {
+            return;
+        }
+        
         // Takes 2D movement vector and converts to 3D
         inputs.rawDirection = value.Get<Vector2>();
         inputs.rawDirection.Normalize();
@@ -294,26 +299,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Shift and 
-    // Sets the autoAttack field of currCreature appropriately
-    private void OnCreatureAutoAttack()
-    {
-        if(currCreatureContext != null)
-        {
-            if(currCreatureContext.autoAttack)
-            {
-                currCreatureContext.autoAttack = false;
-            } 
-            else 
-            {
-                currCreatureContext.autoAttack = true;
-            }
-        }
-    }
-
     // Space and South button
     private void OnDash()
     {
+        if ( inStandby )
+        {
+            return;
+        }
+
         // cant dash until more time than dash delay has elapsed,
         if(Time.time > dashStart + stats.getStat(ModiferType.DASH_COOLDOWN))
         {
@@ -334,7 +327,7 @@ public class PlayerController : MonoBehaviour
     // X
     private void OnSwap()
     {
-        if(swapCreature != null)
+        if( swapCreature != null  && !inStandby )
         {
             var temp = currCreature;
 
@@ -379,37 +372,9 @@ public class PlayerController : MonoBehaviour
     //Slash (X)
     private void OnAttack1()
     {
-        inputs.basicAttack = true;
-    }
-
-    public void Slash()//helper function for OnAttack1
-    {
-         if(inputs.usingMouse)
+        if ( !inStandby )
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(inputs.mousePos);
-            int layerMask = 1 << 10;
-
-            // If the raycast hits the ground
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-            {
-                // Debug.Log("RAYCAST : " + hit.transform.gameObject);
-                // Debug.Log(hit.point);
-                //gameObject.transform.LookAt(hit.point);
-
-               
-                Vector3 direction = hit.point - transform.position;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
-
-                //Creates a movement vector for DoMovement to use on attacks. Moves player in direction of click
-                Vector2 tempVec = new Vector2(newDirection.x,newDirection.z);
-                tempVec.Normalize();
-                attackMoveVec = new Vector3(tempVec.x, 0, tempVec.y);
-                
-                // Rotates player in direction of attack
-                transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
-                          
-            } 
+            inputs.basicAttack = true;
         }
     }
 
@@ -417,6 +382,11 @@ public class PlayerController : MonoBehaviour
     //Holding X
     private void OnHeavyAttack(InputValue value)
     {
+        if ( inStandby )
+        {
+            return;
+        }
+
         float val = value.Get<float>();
 
         if(val == 1)
@@ -436,7 +406,7 @@ public class PlayerController : MonoBehaviour
     {
         // var id = currCreatureContext.CD.abilities[0].id;
         // var cooldownDuration = currCreatureContext.CD.abilities[0].cooldownDuration;
-        if( currCreature != null )
+        if( currCreature != null && !inStandby )
         {
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 0;
@@ -448,7 +418,7 @@ public class PlayerController : MonoBehaviour
     //creature ability 2 (B)
     private void OnAttack3()
     {
-        if( currCreature != null )
+        if( currCreature != null && !inStandby )
         {
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 1;
@@ -477,8 +447,13 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnTab()
+    private void OnOpenStats()
     {
+        if ( inStandby )
+        {
+            return;
+        }
+
         var ui = PersistentData.Instance.StatUI;
         ui.SetActive(!ui.activeInHierarchy);
         //PersistentData.Instance.StatUI.GetComponent<StatUIFunctions>().UpdateCreatureStats(1);
@@ -488,12 +463,15 @@ public class PlayerController : MonoBehaviour
         
         SFXPlayer.PlayOneShot(SFX.MenuOpenSFX, transform.position);
 
-        
-
     }
 
     private void OnCrouch()
     {
+        if ( inStandby )
+        {
+            return;
+        }
+
         // If standing, then crouch
         if(crouchModifier == 1f)
         {
@@ -510,6 +488,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnWhistle()
     {
+        if ( inStandby )
+        {
+            return;
+        }
+
         Debug.Log("WHISTLED");
         SFXPlayer.PlayOneShot(SFX.PlayerWhistleSFX, transform.position);
 
@@ -653,6 +636,37 @@ public class PlayerController : MonoBehaviour
             {
                 swapCreature.GetComponent<CreatureAIContext>().inCombat = inCombat;
             }
+        }
+    }
+
+    public void Slash()
+    {
+         if(inputs.usingMouse)
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(inputs.mousePos);
+            int layerMask = 1 << 10;
+
+            // If the raycast hits the ground
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+            {
+                // Debug.Log("RAYCAST : " + hit.transform.gameObject);
+                // Debug.Log(hit.point);
+                //gameObject.transform.LookAt(hit.point);
+
+               
+                Vector3 direction = hit.point - transform.position;
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
+
+                //Creates a movement vector for DoMovement to use on attacks. Moves player in direction of click
+                Vector2 tempVec = new Vector2(newDirection.x,newDirection.z);
+                tempVec.Normalize();
+                attackMoveVec = new Vector3(tempVec.x, 0, tempVec.y);
+                
+                // Rotates player in direction of attack
+                transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
+                          
+            } 
         }
     }
     
