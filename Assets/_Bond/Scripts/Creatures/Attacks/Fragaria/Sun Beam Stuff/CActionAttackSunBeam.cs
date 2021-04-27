@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CActionAttackSunBeam : BTLeaf
 {
-    creatureAttackRanged attack;
+    CreatureAttackRanged attack;
     public CActionAttackSunBeam(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,7 +14,7 @@ public class CActionAttackSunBeam : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play anim
         FragariaAnimator animator = context.animator as FragariaAnimator;
         if (animator == null)
@@ -32,7 +32,7 @@ public class CActionAttackSunBeam : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnSunBeam(attack.projectile, context.targetEnemy, attack.baseDmg, attack.abilityBuff);
+        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnSunBeam(attack.projectile, context.targetEnemy, attack.baseDamage, attack.abilityBuff);
         
         context.targetEnemy = null;
         context.isAbilityTriggered = false;

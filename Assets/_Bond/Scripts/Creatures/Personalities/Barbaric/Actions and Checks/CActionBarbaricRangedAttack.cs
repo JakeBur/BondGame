@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CActionBarbaricRangedAttack : BTLeaf
 {
-    creatureAttackRanged attack;
+    CreatureAttackRanged attack;
     public CActionBarbaricRangedAttack(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -13,7 +13,7 @@ public class CActionBarbaricRangedAttack : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
         context.animator.DefaultAttack();
     }
@@ -25,11 +25,10 @@ public class CActionBarbaricRangedAttack : BTLeaf
 
     public override NodeState Evaluate() 
     {
-       
-        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnProjectile(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming);
+        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnProjectile(attack.projectile, context.targetEnemy, attack.flyTime, attack.baseDamage);
         if(Random.Range(0f,1f) < 0.5) 
         {
-            context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnProjectile(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming);
+            context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnProjectile(attack.projectile, context.targetEnemy, attack.flyTime, attack.baseDamage);
         }
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
@@ -38,7 +37,7 @@ public class CActionBarbaricRangedAttack : BTLeaf
             OnParentExit(); 
             return NodeState.SUCCESS;
         }
-        
+
         return NodeState.RUNNING;
     }
 }

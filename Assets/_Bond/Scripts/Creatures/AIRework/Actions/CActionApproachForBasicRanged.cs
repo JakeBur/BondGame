@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class CActionApproachForBasicRanged : BTLeaf
 {
     private NavMeshAgent agent;
-    creatureAttackBase attack;
+    CreatureAttackBase attack;
     private float moveSpeed = 15f;
     private float maxDist;
 
@@ -19,7 +19,7 @@ public class CActionApproachForBasicRanged : BTLeaf
 
     protected override void OnEnter()
     {
-        creatureAttackRanged _attack = (creatureAttackRanged) context.basicCreatureAttack;
+        CreatureAttackRanged _attack = (CreatureAttackRanged) context.basicCreatureAttack;
         maxDist = _attack.maxDistanceToEnemy;
 
         agent.speed = moveSpeed;

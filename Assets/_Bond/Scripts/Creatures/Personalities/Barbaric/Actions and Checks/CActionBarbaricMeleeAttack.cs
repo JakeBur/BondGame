@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CActionBarbaricMeleeAttack : BTLeaf
 {
-    creatureAttackMelee attack;
+    CreatureAttackMelee attack;
     public CActionBarbaricMeleeAttack(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -13,7 +13,7 @@ public class CActionBarbaricMeleeAttack : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play amim
         context.animator.DefaultAttack();
    

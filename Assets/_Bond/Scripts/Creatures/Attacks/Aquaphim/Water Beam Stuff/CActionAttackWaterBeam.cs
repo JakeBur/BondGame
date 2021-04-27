@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CActionAttackWaterBeam : BTLeaf
 {
-    creatureAttackRanged attack;
+    CreatureAttackRanged attack;
     public CActionAttackWaterBeam(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
         name = _name;
@@ -14,7 +14,7 @@ public class CActionAttackWaterBeam : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackRanged) context.basicCreatureAttack;
+        attack = (CreatureAttackRanged) context.basicCreatureAttack;
         //Play anim
         context.animator.DefaultAttack();
     }
@@ -27,7 +27,7 @@ public class CActionAttackWaterBeam : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnWaterBeam(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming, attack.abilityBuff);
+        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnWaterBeam(attack.projectile, context.targetEnemy, attack.flyTime, attack.baseDamage, attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if( !context.animator.inAttack ) 

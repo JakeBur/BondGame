@@ -8,7 +8,7 @@ public class CreatureSpawner : MonoBehaviour
     public List<Personality> UtilityPersonalities = new List<Personality>();
     public List<Personality> DexterityPersonalities = new List<Personality>();
 
-    public List<creatureData> creatureTypes = new List<creatureData>();
+    public List<CreatureData> creatureTypes = new List<CreatureData>();
 
 
     [ContextMenuItem("SpawnCreature", "SpawnCreature")]
@@ -44,7 +44,7 @@ public class CreatureSpawner : MonoBehaviour
                 (int) Random.Range(creatureTypes[_randomCreatureNumber].dexterityRange.x, creatureTypes[_randomCreatureNumber].dexterityRange.y);
         
         //select random abilities;
-        List<creatureAttackBase> _copyOfAttacks = new List<creatureAttackBase>(creatureTypes[_randomCreatureNumber].creatureAttacks); //make a copy of the list of abilities so we can edit it without losing data
+        List<CreatureAttackBase> _copyOfAttacks = new List<CreatureAttackBase>(creatureTypes[_randomCreatureNumber].creatureAttacks); //make a copy of the list of abilities so we can edit it without losing data
         
         int _firstAttackNumber = Random.Range(0, _copyOfAttacks.Count);
         _ActiveCreatureData.abilities.Add(_copyOfAttacks[_firstAttackNumber]);
@@ -75,7 +75,7 @@ public class CreatureSpawner : MonoBehaviour
         Creature.GetComponent<CreatureAIRework>().BuildBT();
     }
 
-    List<Personality> choosePersonalities(ActiveCreatureData _ActiveCreatureData, creatureData _CreatureData){
+    List<Personality> choosePersonalities(ActiveCreatureData _ActiveCreatureData, CreatureData _CreatureData){
         List<Personality> finalPersonalities = new List<Personality>();
         foreach (Personality Personality in PowerPersonalities) 
         {

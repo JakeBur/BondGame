@@ -7,7 +7,7 @@ public class CActionApproachForAttack : BTLeaf
 {
 
     private NavMeshAgent agent;
-    creatureAttackBase attack;
+    CreatureAttackBase attack;
     private float moveSpeed = 15f;
     private float maxDist;
 
@@ -21,15 +21,15 @@ public class CActionApproachForAttack : BTLeaf
     protected override void OnEnter()
     {
         // Debug.Log("Enter Approach for attack");
-        if(context.creatureStats.abilities[context.lastTriggeredAbility] is creatureAttackMelee) 
+        if(context.creatureStats.abilities[context.lastTriggeredAbility] is CreatureAttackMelee) 
         {
-            creatureAttackMelee _attack = (creatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
+            CreatureAttackMelee _attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
             maxDist = _attack.maxDistanceToEnemy;
             // Debug.Log("melee max dist" + _attack.maxDistanceToEnemy);
            
-        } else if(context.creatureStats.abilities[context.lastTriggeredAbility] is creatureAttackRanged) 
+        } else if(context.creatureStats.abilities[context.lastTriggeredAbility] is CreatureAttackRanged) 
         {
-            creatureAttackRanged _attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];   
+            CreatureAttackRanged _attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];   
             maxDist = _attack.maxDistanceToEnemy;
             // Debug.Log("ranged max dist" + _attack.maxDistanceToEnemy);
         }

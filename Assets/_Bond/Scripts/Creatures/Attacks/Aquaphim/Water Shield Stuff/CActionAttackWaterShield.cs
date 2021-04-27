@@ -7,7 +7,7 @@ public class CActionAttackWaterShield : BTLeaf
     private float damage;
     private Buff shield;
     private bool onRain;
-    creatureAttackUtility attack;
+    CreatureAttackUtility attack;
 
     public CActionAttackWaterShield(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
@@ -20,7 +20,7 @@ public class CActionAttackWaterShield : BTLeaf
         //Look at the player before playing animation
         context.creatureTransform.LookAt(context.player.transform.position);
 
-        attack = (creatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
         //Play anim
         AquaphimAnimator animator = context.animator as AquaphimAnimator;
         if (animator == null)

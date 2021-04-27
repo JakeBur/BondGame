@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CActionAttackRain : BTLeaf
 {
-    creatureAttackRanged attack;
+    CreatureAttackRanged attack;
 
     public CActionAttackRain(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
@@ -14,7 +14,7 @@ public class CActionAttackRain : BTLeaf
 
     protected override void OnEnter()
     {
-        attack = (creatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
+        attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         AquaphimAnimator animator = context.animator as AquaphimAnimator;
         if (animator == null)
@@ -32,7 +32,7 @@ public class CActionAttackRain : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnRain(attack.projectile, attack.baseDmg, attack.abilityBuff);
+        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnRain(attack.projectile, attack.baseDamage, attack.abilityBuff);
         
         context.targetEnemy = null;
         context.isAbilityTriggered = false;

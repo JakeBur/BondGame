@@ -110,7 +110,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "tab",
+                    "name": "openStats",
                     "type": "Button",
                     "id": "5ae8ab5c-242b-49dd-877c-ce4e357dcca3",
                     "expectedControlType": "Button",
@@ -431,7 +431,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "tab",
+                    "action": "openStats",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

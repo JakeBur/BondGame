@@ -10252,12 +10252,13 @@ MonoBehaviour:
   slashVfx: {fileID: 766551116}
   vfxData:
     slashes:
+    - {fileID: 4254348646603466417, guid: 5417def051106c64fa9daf02d1ee27c6, type: 3}
     - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
-    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
-    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
-    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
-    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
-    - {fileID: 4254348646603466417, guid: e31905ef13868de49a71ed4637d798ce, type: 3}
+    - {fileID: 4254348646603466417, guid: 5b23cb6fd250e334baf546bd64b79b35, type: 3}
+    - {fileID: 4254348646603466417, guid: a56d201d70cc60045815fc32f771a1aa, type: 3}
+    - {fileID: 4254348646603466417, guid: 9e7058604e11ef84f8a5a6231cc03999, type: 3}
+    - {fileID: 4254348646603466417, guid: a8e2c9e4b2e1bd443ba2fb1b0a927c14, type: 3}
+    - {fileID: 4254348646603466417, guid: 96df1f441f0dc39468b34e1dfa856b0c, type: 3}
 --- !u!114 &2139760117
 MonoBehaviour:
   m_ObjectHideFlags: 0

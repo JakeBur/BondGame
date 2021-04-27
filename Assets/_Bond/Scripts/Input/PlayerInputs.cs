@@ -123,7 +123,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""tab"",
+                    ""name"": ""openStats"",
                     ""type"": ""Button"",
                     ""id"": ""5ae8ab5c-242b-49dd-877c-ce4e357dcca3"",
                     ""expectedControlType"": ""Button"",
@@ -444,7 +444,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""tab"",
+                    ""action"": ""openStats"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -610,7 +610,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_Player_dash = m_Player.FindAction("dash", throwIfNotFound: true);
         m_Player_mousePos = m_Player.FindAction("mousePos", throwIfNotFound: true);
         m_Player_creatureAutoAttack = m_Player.FindAction("creatureAutoAttack", throwIfNotFound: true);
-        m_Player_tab = m_Player.FindAction("tab", throwIfNotFound: true);
+        m_Player_openStats = m_Player.FindAction("openStats", throwIfNotFound: true);
         m_Player_whistle = m_Player.FindAction("whistle", throwIfNotFound: true);
         // keyboard
         m_keyboard = asset.FindActionMap("keyboard", throwIfNotFound: true);
@@ -682,7 +682,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_dash;
     private readonly InputAction m_Player_mousePos;
     private readonly InputAction m_Player_creatureAutoAttack;
-    private readonly InputAction m_Player_tab;
+    private readonly InputAction m_Player_openStats;
     private readonly InputAction m_Player_whistle;
     public struct PlayerActions
     {
@@ -701,7 +701,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @dash => m_Wrapper.m_Player_dash;
         public InputAction @mousePos => m_Wrapper.m_Player_mousePos;
         public InputAction @creatureAutoAttack => m_Wrapper.m_Player_creatureAutoAttack;
-        public InputAction @tab => m_Wrapper.m_Player_tab;
+        public InputAction @openStats => m_Wrapper.m_Player_openStats;
         public InputAction @whistle => m_Wrapper.m_Player_whistle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -751,9 +751,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @creatureAutoAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCreatureAutoAttack;
                 @creatureAutoAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCreatureAutoAttack;
                 @creatureAutoAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCreatureAutoAttack;
-                @tab.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
-                @tab.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
-                @tab.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
+                @openStats.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenStats;
+                @openStats.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenStats;
+                @openStats.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenStats;
                 @whistle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWhistle;
                 @whistle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWhistle;
                 @whistle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWhistle;
@@ -800,9 +800,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @creatureAutoAttack.started += instance.OnCreatureAutoAttack;
                 @creatureAutoAttack.performed += instance.OnCreatureAutoAttack;
                 @creatureAutoAttack.canceled += instance.OnCreatureAutoAttack;
-                @tab.started += instance.OnTab;
-                @tab.performed += instance.OnTab;
-                @tab.canceled += instance.OnTab;
+                @openStats.started += instance.OnOpenStats;
+                @openStats.performed += instance.OnOpenStats;
+                @openStats.canceled += instance.OnOpenStats;
                 @whistle.started += instance.OnWhistle;
                 @whistle.performed += instance.OnWhistle;
                 @whistle.canceled += instance.OnWhistle;
@@ -925,7 +925,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnCreatureAutoAttack(InputAction.CallbackContext context);
-        void OnTab(InputAction.CallbackContext context);
+        void OnOpenStats(InputAction.CallbackContext context);
         void OnWhistle(InputAction.CallbackContext context);
     }
     public interface IKeyboardActions
