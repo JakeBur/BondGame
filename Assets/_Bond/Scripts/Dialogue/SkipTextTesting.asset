@@ -15,7 +15,7 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - MC/Happy \s=1\This is a test \f=Cheerful\dialogue\n\ for\f=Sad\ skipping.
+  - MC/Happy This is a test \f=Cheerful\dialogue\n\ for\f=Sad\ skipping.
   - MC/Happy \s=1\This is a test \f=Cheerful\dialogue\n\ for\f=Sad\ skipping.
   - MC/Happy \s=1\This is a test \f=Cheerful\dialogue\n\ for\f=Sad\ skipping.
   step: 0

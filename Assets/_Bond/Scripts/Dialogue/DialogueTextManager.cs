@@ -115,53 +115,56 @@ public class DialogueTextManager : MonoBehaviour
                     currLetter = sentence.Substring(0, 1);
                     sentence = sentence.Substring(2);
 
-                    //---------------------------------------------
-                    // "\n\" -   makes a newline w/o delay in text
-                    //---------------------------------------------
-                    if (currLetter == "n")
+                    int index;
+                    switch(currLetter)
                     {
-                        currLetter = "\n";
-                        textSpeed = 0;
-                    }
+                        //---------------------------------------------
+                        // "\n\" -   makes a newline w/o delay in text
+                        //---------------------------------------------
+                        case "n":
+                            currLetter = "\n";
+                            textSpeed = 0;
+                            break;
 
-                    //-------------------------------------
-                    // "\f=x\" -    changes portrait to x
-                    //-------------------------------------
-                    if (currLetter == "f")
-                    {
-                        int index = sentence.IndexOf("\\");
-                        string newPortrait = sentence.Substring(0, index);
-                        dialoguePortrait.ChangePortrait(speaker, newPortrait);
+                        //-------------------------------------
+                        // "\f=x\" -    changes portrait to x
+                        //-------------------------------------
+                        case "f":
+                            index = sentence.IndexOf("\\");
+                            string newPortrait = sentence.Substring(0, index);
+                            dialoguePortrait.ChangePortrait(speaker, newPortrait);
 
-                        currLetter = sentence.Substring(index + 1, 1);
-                        sentence = sentence.Substring(index + 2);
-                    }
+                            currLetter = sentence.Substring(index + 1, 1);
+                            sentence = sentence.Substring(index + 2);
+                            break;
 
-                    //-------------------------------------------------
-                    // "\d=x\" -    delays next letter by factor of x
-                    //-------------------------------------------------
-                    if (currLetter == "d")
-                    {
-                        int index = sentence.IndexOf("\\");
-                        float factor = float.Parse(sentence.Substring(0, index));
-                        textSpeed *= factor;
+                        //-------------------------------------------------
+                        // "\d=x\" -    delays next letter by factor of x
+                        //-------------------------------------------------
+                        case "d":
+                            index = sentence.IndexOf("\\");
+                            float factor = float.Parse(sentence.Substring(0, index));
+                            textSpeed *= factor;
 
-                        currLetter = sentence.Substring(index +1, 1);
-                        sentence = sentence.Substring(index + 2);
-                    }
+                            currLetter = sentence.Substring(index +1, 1);
+                            sentence = sentence.Substring(index + 2);
+                            break;
 
-                    //--------------------------------------------
-                    // "\s=x\" -    changes base text speed to x
-                    //--------------------------------------------
-                    if (currLetter == "s")
-                    {
-                        int index = sentence.IndexOf("\\");
-                        float newSpeed = float.Parse(sentence.Substring(0, index));
-                        textSpeedBackup = newSpeed;
-                        textSpeed = textSpeedBackup;
+                        //--------------------------------------------
+                        // "\s=x\" -    changes base text speed to x
+                        //--------------------------------------------
+                        case "s":
+                            index = sentence.IndexOf("\\");
+                            float newSpeed = float.Parse(sentence.Substring(0, index));
+                            textSpeedBackup = newSpeed;
+                            textSpeed = textSpeedBackup;
 
-                        currLetter = sentence.Substring(index + 1, 1);
-                        sentence = sentence.Substring(index + 2);
+                            currLetter = sentence.Substring(index + 1, 1);
+                            sentence = sentence.Substring(index + 2);
+                            break;
+
+                        default:
+                            break;
                     }
                 }
                 else
