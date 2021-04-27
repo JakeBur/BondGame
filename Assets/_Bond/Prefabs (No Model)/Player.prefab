@@ -10072,7 +10072,7 @@ Transform:
   m_GameObject: {fileID: 3008331729029387198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3008331728745216814}
   - {fileID: 3008331727805981669}
@@ -10104,7 +10104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Relics: []
   inCharacterDialog: 0
-  characterDialogManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
   pauseMenu: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
     type: 3}
   goldCount: 0
@@ -10112,6 +10112,7 @@ MonoBehaviour:
   isoMovement: 1
   isoSpeedADJ: 1.5
   currSpeed: 0
+  inStandby: 0
   isDashing: 0
   facingDirection: {x: 0, y: 0, z: 0}
   lastMoveVec: {x: 0, y: 0, z: 0}
