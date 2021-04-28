@@ -54,6 +54,8 @@ public class MonsterSkinBufferGenerator : MonoBehaviour
 
         // copy all settings from main camera
         _camera.CopyFrom(Camera.main);
+        _camera.transform.localPosition = Vector3.zero;
+        _camera.transform.localRotation = Quaternion.identity;
 
         // restore settings that differ from the main camera
         _camera.backgroundColor = background;

@@ -43,9 +43,12 @@ public class EActionPlayDeathAnim : BTLeaf
                 case "RangedEnemy":
                     enemyContext.EncounterManager.numberOfCurrRangedAttackers--;
                     break;
+                // case "SwarmEnemy":
+                //     enemyContext.EncounterManager.numberOfCurrSwarmAttackers--;
+                    // break;
                 default:
                     Debug.Log("Couldn't find enemy type in death anim");
-                    enemyContext.EncounterManager.numberOfCurrMeleeAttackers--;
+                    // enemyContext.EncounterManager.numberOfCurrMeleeAttackers--;
                     break;
             }
         }
