@@ -1,9 +1,10 @@
-﻿void GenerateLighting_half(float3 WorldPos, out half3 Direction, out half3 Color, out half Attenuation)
+﻿void GenerateLighting_half(float3 WorldPos, out half3 Direction, out half3 Color, out half Attenuation, out half Shadow)
 {
 #if defined(SHADERGRAPH_PREVIEW)
 	Direction = half3(0.5, 0.5, 0);
 	Color = 1;
 	Attenuation = 1;
+	Shadow = 1;
 #else
 #if SHADOWS_SCREEN
 	half4 clipPos = TransformWorldToHClip(WorldPos);
@@ -15,5 +16,7 @@
 	Direction = mainLight.direction;
 	Color = mainLight.color;
 	Attenuation = mainLight.distanceAttenuation * mainLight.shadowAttenuation;
+	Shadow = mainLight.shadowAttenuation;
 #endif
+
 }
