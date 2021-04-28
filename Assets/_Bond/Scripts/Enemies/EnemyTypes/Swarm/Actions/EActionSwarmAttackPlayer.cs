@@ -34,12 +34,15 @@ public class EActionSwarmAttackPlayer : BTLeaf
         {
             delayTimer += Time.deltaTime;
             //Delay after attack
-            if(delayTimer >= enemyContext.delayBetweenAttacks)
+            // if(delayTimer >= enemyContext.delayBetweenAttacks)
+            if(delayTimer >= enemyContext.statManager.getStat(ModiferType.ATTACK_CHARGE_TIME))
             {
                 OnParentExit();
                 return NodeState.SUCCESS;
             }
             return NodeState.RUNNING;
         }
+        // OnParentExit();
+        // return NodeState.SUCCESS;
     }
 }
