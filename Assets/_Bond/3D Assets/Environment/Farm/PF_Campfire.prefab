@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8332674841380820846}
   - component: {fileID: 6072942294401967012}
   - component: {fileID: -6615427573817030710}
+  - component: {fileID: 7039368889828643113}
   m_Layer: 0
   m_Name: PF_Campfire
   m_TagString: Untagged
@@ -89,8 +90,22 @@ MeshCollider:
   m_GameObject: {fileID: 5712693701187846769}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1692526996606061409, guid: 07d9b4338cb973a4d9432e5157434c0c, type: 3}
+--- !u!136 &7039368889828643113
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5712693701187846769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.017510898
+  m_Height: 0.04683924
+  m_Direction: 2
+  m_Center: {x: 0.00021953465, y: 0.0009759315, z: 0.01582796}

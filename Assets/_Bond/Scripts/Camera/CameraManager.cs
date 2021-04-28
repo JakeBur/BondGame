@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamFollow : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
     public Vector3 offset;
     public Transform toFollow;

@@ -103,7 +103,7 @@ public class PersistentData : MonoBehaviour
             }
             
         }
-        Camera.main.GetComponent<CamFollow>().toFollow = Player.transform;
+        Camera.main.transform.parent.GetComponent<CameraManager>().toFollow = Player.transform;
 
         playerInputs = Player.GetComponent<PlayerInput>();
         //LoadControls();
