@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4191796187044294155}
   - component: {fileID: 2146166594694044353}
   - component: {fileID: -7786992107310771800}
+  - component: {fileID: 8788542628761691408}
   m_Layer: 0
   m_Name: PF_Crate
   m_TagString: Untagged
@@ -89,8 +90,21 @@ MeshCollider:
   m_GameObject: {fileID: 488723390549719828}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2622194315728622614, guid: bb9cebf6b573f1a4c82e979b832d7636, type: 3}
+--- !u!65 &8788542628761691408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488723390549719828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.007127935, y: 0.007127938, z: 0.034525078}
+  m_Center: {x: 0.000048968494, y: -0.000062499945, z: 0.01726891}
