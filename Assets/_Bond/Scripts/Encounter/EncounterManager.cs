@@ -38,6 +38,8 @@ public class EncounterManager : MonoBehaviour
     public int numberOfCurrMeleeAttackers;
     [HideInInspector]
     public int numberOfCurrRangedAttackers;
+    // [HideInInspector]
+    // public int numberOfCurrSwarmAttackers;
     [HideInInspector]
     public Transform playerTransform;
 
