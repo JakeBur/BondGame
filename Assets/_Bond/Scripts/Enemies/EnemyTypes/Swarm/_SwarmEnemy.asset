@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 043294e32bb6b9c4690c1b3548300721, type: 3}
-  m_Name: _Swarm
+  m_Name: _SwarmEnemy
   m_EditorClassIdentifier: 
-  enemyName: Swarm Enemy
+  enemyName: SwarmEnemy
   attack: {fileID: 11400000, guid: ab53fe631682e7f438b387e0ed421f8e, type: 2}
   idle: {fileID: 11400000, guid: e2d2a38bee513c5459db4d2b3f7d117e, type: 2}
