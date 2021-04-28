@@ -31,7 +31,7 @@ public class EncounterManager : MonoBehaviour
     [HideInInspector]
     public int currEnemyCount = 0;
     [HideInInspector]
-    public float arenaRadius;
+    public float arenaRadius = 23;
     [HideInInspector]
     public Vector3 farthestPointFromPlayer;
     [HideInInspector]
@@ -76,6 +76,7 @@ public class EncounterManager : MonoBehaviour
             PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(true);
             PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusic();
             encounterTriggered = true;
+            arenaRadius = 23;
         }
     }
 
