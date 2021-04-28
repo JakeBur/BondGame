@@ -60,12 +60,20 @@ MonoBehaviour:
   PlayerWhistleSFX: event:/Sound Effects/Player SFX/Player Whistle/Player Whistle
   Misc3DWalkGrassSFX: event:/Sound Effects/Creature + Enemy Movement/Misc 3D Walk
     Grass
-  FragariaSunbeamSFX: event:/Sound Effects/Creature SFX/Fragaria/Fragaria Sunbeam
-  FragariaSporeTossSFX: event:/Sound Effects/Creature SFX/Fragaria/Fragaria Spore
-    Toss
+  FragariaSunbeamSFX: event:/Sound Effects/Creature SFX/Fragaria/Sunbeam/Fragaria
+    Sunbeam
+  FragariaSporeTossSFX: event:/Sound Effects/Creature SFX/Fragaria/Spore Toss/Fragaria
+    Spore Toss
+  FragariaPetalThrowWhooshSFX: event:/Sound Effects/Creature SFX/Fragaria/Petal Throw/Fragaria
+    Petal Throw Whoosh
+  FragariaPetalThrowEndingSFX: event:/Sound Effects/Creature SFX/Fragaria/Petal Throw/Fragaria
+    Petal Throw Ending
+  FragariaPetalSawSFX: event:/Sound Effects/Creature SFX/Fragaria/Petal Saw/Fragaria
+    Petal Saw
   ArenaSpawnSFX: event:/Sound Effects/Enemy SFX/General Enemy/Arena Spawn
   EnemyDeathSFX: event:/Sound Effects/Enemy SFX/General Enemy/Enemy Death
-  DonutSpawnSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut Spawn
+  LeafProjectileHitSFX: event:/Sound Effects/Enemy SFX/General Enemy/Leaf Projectile
+    Hit
   DonutSpawnExtendSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut NEW
     Spawn/Donut Spawn Extend
   DonutSpawnGrabSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut NEW

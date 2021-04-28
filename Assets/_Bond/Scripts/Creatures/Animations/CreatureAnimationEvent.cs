@@ -6,8 +6,8 @@ public class CreatureAnimationEvent : MonoBehaviour
 {
     private CreatureAnimator creatureAnimator => transform.parent.GetComponent<CreatureAnimator>();
 
-    public void PlayWalkSFX()
+    public void PlayWalkSFX(int tag)
     {
-        creatureAnimator.EventPlayWalkSFX(0);
+        creatureAnimator.EventPlayWalkSFX(tag);
     }
 }

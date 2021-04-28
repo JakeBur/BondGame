@@ -11,9 +11,24 @@ public class FragariaAnimator : CreatureAnimator
         animator.SetTrigger("PetalSaw");
     }
 
+    public void EventPlayPetalSawSFX()
+    {
+        SFXPlayer.PlayOneShot(SFX.FragariaPetalSawSFX, transform.position);
+    }
+
     public void PetalThrow()
     {
         animator.SetTrigger("PetalThrow");
+    }
+
+    public void EventPlayPetalThrowWhooshSFX(int count)
+    {
+        SFX.PlayFragariaPetalThrowWhooshSFX(count, transform.position);
+    }
+
+    public void EventPlayPetalThrowEndingSFX()
+    {
+        SFXPlayer.PlayOneShot(SFX.FragariaPetalThrowEndingSFX, transform.position);
     }
 
     public void SporeToss()

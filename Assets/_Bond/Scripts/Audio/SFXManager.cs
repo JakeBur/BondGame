@@ -47,6 +47,9 @@ public class SFXManager : MonoBehaviour
     [Header("Fragaria")]
     [FMODUnity.EventRef] public string FragariaSunbeamSFX;
     [FMODUnity.EventRef] public string FragariaSporeTossSFX;
+    [FMODUnity.EventRef] public string FragariaPetalThrowWhooshSFX;
+    [FMODUnity.EventRef] public string FragariaPetalThrowEndingSFX;
+    [FMODUnity.EventRef] public string FragariaPetalSawSFX;
 
     //----------------
     // General Enemy
@@ -54,6 +57,7 @@ public class SFXManager : MonoBehaviour
     [Header("General Enemy")]
     [FMODUnity.EventRef] public string ArenaSpawnSFX;
     [FMODUnity.EventRef] public string EnemyDeathSFX;
+    [FMODUnity.EventRef] public string LeafProjectileHitSFX;
 
     //----------------------
     // Donut (Melee Enemy)
@@ -91,6 +95,15 @@ public class SFXManager : MonoBehaviour
         var instance = SFXPlayer.CreateInstance(Misc3DWalkGrassSFX);
         instance.set3DAttributes(SFXUtils.To3DAttributes(position));
         instance.setParameterByName("MoverTag", tag);
+        instance.start();
+        instance.release();
+    }
+
+    public void PlayFragariaPetalThrowWhooshSFX(int tag, Vector3 position = new Vector3())
+    {
+        var instance = SFXPlayer.CreateInstance(FragariaPetalThrowWhooshSFX);
+        instance.set3DAttributes(SFXUtils.To3DAttributes(position));
+        instance.setParameterByName("Count", tag);
         instance.start();
         instance.release();
     }
