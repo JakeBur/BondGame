@@ -6,6 +6,8 @@ using UnityEngine.Animations;
 [RequireComponent(typeof(Animation))]
 public class SwordSlashVFX : MonoBehaviour
 {
+    public GameObject offset;
+
     private void Update()
     {
         if(!GetComponent<Animation>().isPlaying)
@@ -13,5 +15,4 @@ public class SwordSlashVFX : MonoBehaviour
             Destroy(transform.parent.parent.gameObject);
         }
     }
-
 }
