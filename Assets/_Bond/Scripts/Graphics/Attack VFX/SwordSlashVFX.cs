@@ -7,12 +7,20 @@ using UnityEngine.Animations;
 public class SwordSlashVFX : MonoBehaviour
 {
     public GameObject offset;
+    public GameObject rootObject;
 
     private void Update()
     {
         if(!GetComponent<Animation>().isPlaying)
         {
-            Destroy(transform.parent.parent.gameObject);
+            if ( rootObject != null )
+            {
+                Destroy( rootObject );
+            }
+            else
+            {
+                Destroy(transform.parent.parent.gameObject);
+            }
         }
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99478675cfc3e5742b8bea0a5e81dc98, type: 3}
+  m_Name: Earthern Core
+  m_EditorClassIdentifier: 
+  relicName: Earthern Core
+  relicInfo: Smells of nature.
+  relicSprite: {fileID: 21300000, guid: f267dcf7e1eb55f45910c6fbe7989c15, type: 3}
+  playerModifiers:
+  - modifierIdentifier: Increases Player's resistance to melee attacks.
+    modiferType: 4
+    Additive: 0.25
+    Multiplicitive: 1
+  creatureModifiers: []

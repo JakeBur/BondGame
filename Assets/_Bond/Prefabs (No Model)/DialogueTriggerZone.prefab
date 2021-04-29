@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2671126338423157962}
   - component: {fileID: 2671126338423157963}
   - component: {fileID: 2671126338423157942}
-  - component: {fileID: 2671126338423157943}
+  - component: {fileID: 2967679288230938661}
   m_Layer: 0
   m_Name: DialogueTriggerZone
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fcd9f6c4271954b8d367258e9daff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2671126338423157943
+--- !u!114 &2967679288230938661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,8 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2671126338423157960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4710dd3a87df17841a183c2d68945955, type: 3}
+  m_Script: {fileID: 11500000, guid: 7317b9c03e4cb6348b0a18dc4cdc92e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversations:
-  - {fileID: 11400000, guid: 1a6532c8d37142846a3d30c004ba21d5, type: 2}
+  dialogue: {fileID: 0}

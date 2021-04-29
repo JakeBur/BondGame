@@ -21,9 +21,16 @@ public class PlayerInteractRadius : MonoBehaviour
         if(other.transform.tag == "Relic")
         {
             pc.interactableObjects.Add(other.gameObject, other.gameObject.GetComponent<InteractableBase>());
-            PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(other.gameObject.GetComponent<RelicInteractable>().relicStats,
-                                                                                     other.gameObject.GetComponent<RelicInteractable>().cost);
-            PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+            foreach(KeyValuePair<GameObject, InteractableBase> interactObj in pc.interactableObjects)
+            {
+                if(interactObj.Key.transform.tag == "Relic")
+                {
+                    PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<RelicInteractable>().relicStats,
+                                                                                            interactObj.Key.GetComponent<RelicInteractable>().cost);
+                    PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                    break;
+                }                
+            }
         }
     }
 
@@ -50,9 +57,22 @@ public class PlayerInteractRadius : MonoBehaviour
             if(pc.interactableObjects.Count == 0)
             {
                 PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
+                PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
             }
-
-            PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
+            else
+            {
+                foreach(KeyValuePair<GameObject, InteractableBase> interactObj in pc.interactableObjects)
+                {
+                    if(interactObj.Key.transform.tag == "Relic")
+                    {
+                        PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<RelicInteractable>().relicStats,
+                                                                                                interactObj.Key.GetComponent<RelicInteractable>().cost);
+                        PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                        break;
+                    }   
+                    PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();             
+                }
+            }
         }
     }
 }

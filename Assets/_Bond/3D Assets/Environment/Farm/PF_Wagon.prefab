@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7914834700163117042}
   - component: {fileID: 5346849661904263992}
   - component: {fileID: 1987443788059428111}
+  - component: {fileID: 2759552184031550486}
   m_Layer: 0
   m_Name: PF_Wagon
   m_TagString: Untagged
@@ -94,3 +95,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3740794797962081251, guid: f197e440a3b0cfc49887911611c9ce2a, type: 3}
+--- !u!65 &2759552184031550486
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851072020004420333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.017653773, y: 0.032318216, z: 0.058948863}
+  m_Center: {x: -0.00000952519, y: -0.004160685, z: 0.029918328}

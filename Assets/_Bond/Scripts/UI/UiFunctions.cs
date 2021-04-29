@@ -13,9 +13,21 @@ public class UiFunctions : MonoBehaviour
     //-----------
     // for FMOD
     //-----------
-    private SFXManager SFX
+    private SFXManager SFX;
+
+    private void Start()
     {
-        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+        if (SFX == null)
+        {
+            try
+            {
+                SFX = PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+            }
+            catch
+            {
+                SFX = GameObject.FindGameObjectWithTag("SFXManager").GetComponent<SFXManager>();
+            }
+        }
     }
 
     public void PlayClickSFX()
