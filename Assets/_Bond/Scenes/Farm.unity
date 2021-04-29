@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -108,8 +108,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 0.8
-    agentSlope: 39.2
-    agentClimb: 0.75
+    agentSlope: 35
+    agentClimb: 0.3
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -1238,8 +1238,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.075798, y: 3.678977, z: 1}
-  m_Center: {x: -1.9780335, y: 1.3394885, z: 0.0000004715999}
+  m_Size: {x: 10.873844, y: 3.678977, z: 1}
+  m_Center: {x: -2.3770564, y: 1.3394885, z: 0.0000005667343}
 --- !u!1001 &27566033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10362,8 +10362,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.652874, y: 4.3437343, z: 1}
-  m_Center: {x: -3.8264408, y: 1.6718671, z: 0.00000091229447}
+  m_Size: {x: 9.618024, y: 4.3437343, z: 1}
+  m_Center: {x: -3.3438656, y: 1.6718671, z: 0.0000007972396}
 --- !u!4 &292707799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6566347254859404910, guid: 68fad678f193c5f45a44b5c74f04d2c9,
@@ -10661,6 +10661,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a08d573f5017da9439ab3acb60622adc, type: 3}
+--- !u!1 &300069972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5966858130378786911, guid: 2110dda451f100f4f9122618bde1a43e,
+    type: 3}
+  m_PrefabInstance: {fileID: 330242495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &300069973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300069972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eab10b5f904d6e4fb6e135e23f0abbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 10, z: 0}
+  toFollow: {fileID: 0}
+  smoothSpeed: 0.125
 --- !u!4 &300273953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5079204211284524056, guid: 2b44f04c2ff0f8b4381498066986377e,
@@ -28974,7 +28995,7 @@ PrefabInstance:
     - target: {fileID: 1303084404, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 824386381}
+      objectReference: {fileID: 1578831973}
     - target: {fileID: 1303084404, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: far clip plane
       value: 200
@@ -28994,7 +29015,7 @@ PrefabInstance:
     - target: {fileID: 1882045992, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1793031255}
+      objectReference: {fileID: 2106886329}
     - target: {fileID: 1882045992, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: near clip plane
       value: 0.01
@@ -31138,41 +31159,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 941541439}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &824386381
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 891
-  m_Height: 501
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &825253526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39462,41 +39448,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2109093011}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &1015331237
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 891
-  m_Height: 501
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!4 &1015665047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6566347254859404910, guid: 68fad678f193c5f45a44b5c74f04d2c9,
@@ -59185,6 +59136,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68fad678f193c5f45a44b5c74f04d2c9, type: 3}
+--- !u!84 &1578831973
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 891
+  m_Height: 501
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1580538768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 51d42e82e855ecd4ea896591d83e73eb,
@@ -68480,41 +68466,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a08d573f5017da9439ab3acb60622adc, type: 3}
---- !u!84 &1793031255
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 891
-  m_Height: 501
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1793833627
 GameObject:
   m_ObjectHideFlags: 0
@@ -80520,6 +80471,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2144179986}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &2106886329
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 891
+  m_Height: 501
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!4 &2107252950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6566347254859404910, guid: 68fad678f193c5f45a44b5c74f04d2c9,

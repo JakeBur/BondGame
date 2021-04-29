@@ -1,4 +1,4 @@
-﻿//Author : Colin
+﻿//Author : Herman
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +9,6 @@ public class CameraManager : MonoBehaviour
     public Vector3 offset;
     public Transform toFollow;
     public GameObject cameraObject;
-    private Transform camera;
 
     public float smoothSpeed = 0.125f; 
 
@@ -26,15 +25,13 @@ public class CameraManager : MonoBehaviour
     private float zoomSpeed = 1;
 
     [Header("Zoom Speed")]
-    public float farmZoomSpeed = .01f;
-    public float exploreZoomSpeed = .01f;
-    public float combatZoomSpeed = .1f;
+    public float farmZoomSpeed = .99f;
+    public float exploreZoomSpeed = .99f;
+    public float combatZoomSpeed = .99f;
 
     void Start()
     {
         toFollow = PersistentData.Instance.Player.transform;
-
-        camera = cameraObject.GetComponent<Transform>();
         
         ResetCameraHeightOffset();
 
@@ -58,9 +55,9 @@ public class CameraManager : MonoBehaviour
 
     public void SetCameraDistance()
     {
-        Vector3 localPos = camera.localPosition;
+        Vector3 localPos = cameraObject.transform.localPosition;
         localPos.z = cameraDistance;
-        camera.localPosition = localPos;
+        cameraObject.transform.localPosition = localPos;
     }
 
     public void SetCameraDistanceForScene()
@@ -83,8 +80,7 @@ public class CameraManager : MonoBehaviour
         desiredCameraDistance = farmCameraDistance;
         zoomSpeed = farmZoomSpeed;
 
-        StopAllCoroutines();
-        StartCoroutine("AdjustZoom");
+        AdjustZoom();
     }
 
     public void SetExploreCameraDistance()
@@ -92,8 +88,7 @@ public class CameraManager : MonoBehaviour
         desiredCameraDistance = exploreCameraDistance;
         zoomSpeed = exploreZoomSpeed;
 
-        StopAllCoroutines();
-        StartCoroutine("AdjustZoom");
+        AdjustZoom();
     }
 
     public void SetCombatCameraDistance()
@@ -101,16 +96,21 @@ public class CameraManager : MonoBehaviour
         desiredCameraDistance = combatCameraDistance;
         zoomSpeed = combatZoomSpeed;
 
-        StopAllCoroutines();
-        StartCoroutine("AdjustZoom");
+        AdjustZoom();
     }
 
-    private IEnumerator AdjustZoom()
+    private void AdjustZoom()
+    {
+        StopAllCoroutines();
+        StartCoroutine("AdjustZoomCo");
+    }
+
+    private IEnumerator AdjustZoomCo()
     {
         while( Mathf.Abs( cameraDistance - desiredCameraDistance ) > .1 )
         {
-            Debug.Log(cameraDistance);
-            cameraDistance = Mathf.Lerp( cameraDistance, desiredCameraDistance, zoomSpeed * Time.fixedDeltaTime );
+            //cameraDistance = BondMath.Approach( cameraDistance, desiredCameraDistance, zoomSpeed, Time.deltaTime);
+            cameraDistance = Mathf.Lerp( cameraDistance, desiredCameraDistance, zoomSpeed * Time.deltaTime );
             SetCameraDistance();
         }
         

@@ -105,7 +105,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 100
+  far clip plane: 200
   field of view: 10
   orthographic: 0
   orthographic size: 6
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 286029354635359365}
   m_Layer: 14
   m_Name: ISO Camera
-  m_TagString: Untagged
+  m_TagString: CameraManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -501,9 +501,9 @@ MonoBehaviour:
   farmCameraDistance: -70
   exploreCameraDistance: -100
   combatCameraDistance: -70
-  farmZoomSpeed: 1
-  exploreZoomSpeed: 1
-  combatZoomSpeed: 3
+  farmZoomSpeed: 0.99
+  exploreZoomSpeed: 0.99
+  combatZoomSpeed: 0.99
 --- !u!23 &2282727311108969601
 MeshRenderer:
   m_ObjectHideFlags: 0
