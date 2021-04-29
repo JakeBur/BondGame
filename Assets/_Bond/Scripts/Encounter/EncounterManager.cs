@@ -145,6 +145,8 @@ public class EncounterManager : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         
         playerTransform = PersistentData.Instance.Player.transform;
+
+        PersistentData.Instance.CameraManager.SetCombatCameraDistance();
         
         PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(true);
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusic();
@@ -234,6 +236,7 @@ public class EncounterManager : MonoBehaviour
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
 
+        PersistentData.Instance.CameraManager.SetExploreCameraDistance();
     }
 }
 
