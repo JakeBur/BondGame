@@ -50,6 +50,7 @@ public class CreatureAIContext : MonoBehaviour
     public bool enthusiasmInteracted;
     public bool hasReacted;
     public bool isReacting;
+    public bool playerMoving;
 
     [Header("Misc.Numbers")]
     public float playerSpeedToScare;

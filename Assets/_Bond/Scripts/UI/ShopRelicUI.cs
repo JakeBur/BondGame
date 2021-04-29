@@ -35,14 +35,18 @@ public class ShopRelicUI : MonoBehaviour
         foreach(Modifier mod in _stats.playerModifiers)
         {
             if(mod.modifierIdentifier != ""){
+                statsText.text += "-";
                 statsText.text += mod.modifierIdentifier;
+                statsText.text += "\n";
             }
             
         }
         foreach(Modifier mod in _stats.creatureModifiers)
         {
             if(mod.modifierIdentifier != ""){
+                statsText.text += "-";
                 statsText.text += mod.modifierIdentifier;
+                statsText.text += "\n";
             }
         }
 

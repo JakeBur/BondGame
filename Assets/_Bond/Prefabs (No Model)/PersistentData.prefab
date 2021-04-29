@@ -48,6 +48,7 @@ MonoBehaviour:
     type: 3}
   UIPrefab: {fileID: 8580111774580001889, guid: ac92d26580688e2468b36dc953f472a1,
     type: 3}
+  displayUI: 1
   PauseMenuPrefab: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
     type: 3}
   StatUIPrefab: {fileID: 7511566296718916632, guid: 933624b543ab5024785c5a7a786b965f,
@@ -61,13 +62,26 @@ MonoBehaviour:
   loadScreen: {fileID: 2837024482875620880}
   isGeneratorDone: 0
   availableRelics:
-  - {fileID: 11400000, guid: d037f5bd56aad9b4a8eaf04f4e8d7815, type: 2}
-  - {fileID: 11400000, guid: 8a950f3d773b6d94faac53a59e4550ee, type: 2}
-  - {fileID: 11400000, guid: 86f221ed2007bb14e931f4ece15c90c1, type: 2}
+  - {fileID: 11400000, guid: fd33f6533df23f2468f37f71d6ba393d, type: 2}
+  - {fileID: 11400000, guid: 27e380cdf22e0824e959974d7dfc68fe, type: 2}
+  - {fileID: 11400000, guid: b3d62178366d37c4d89799e84b1c4232, type: 2}
+  - {fileID: 11400000, guid: a3ed3c4bd50816e4f8f0b2c1bfe5ff14, type: 2}
+  - {fileID: 11400000, guid: 1c4b3120efe35ef469e5a03099fb1fbe, type: 2}
   - {fileID: 11400000, guid: 6f35e3eb7f08a4b4382697f103a9bdeb, type: 2}
+  - {fileID: 11400000, guid: 1a253f38c50d373449f07db26fa6dac5, type: 2}
+  - {fileID: 11400000, guid: 22bc460e4013e9b4c9cc1b4f09fab81d, type: 2}
+  - {fileID: 11400000, guid: f2adb30c28e8ee04d8d567ae38a0494d, type: 2}
+  - {fileID: 11400000, guid: 97025883b0394f34e883adcae1d07f6b, type: 2}
+  - {fileID: 11400000, guid: 765d8a894877a1848b3b02aa4222286d, type: 2}
   - {fileID: 11400000, guid: baa816bd472dc214d92babe6bc20bea8, type: 2}
-  playerInputs: {fileID: -944628639613478452, guid: 4f481f4d5c1fa064683bc179d470de21,
-    type: 3}
+  - {fileID: 11400000, guid: cc64e1abd64b5f14a9ba68f3f99fe6a5, type: 2}
+  - {fileID: 11400000, guid: 6eebc8713b10328488094c5e73871568, type: 2}
+  - {fileID: 11400000, guid: 6229c74d3c2e0a242a59de44dded637b, type: 2}
+  - {fileID: 11400000, guid: e95528a7edbe337458fed0e7ae92366a, type: 2}
+  - {fileID: 11400000, guid: 8a950f3d773b6d94faac53a59e4550ee, type: 2}
+  - {fileID: 11400000, guid: d037f5bd56aad9b4a8eaf04f4e8d7815, type: 2}
+  - {fileID: 11400000, guid: 86f221ed2007bb14e931f4ece15c90c1, type: 2}
+  playerInputs: {fileID: 0}
 --- !u!225 &2837024482875620880
 CanvasGroup:
   m_ObjectHideFlags: 0
