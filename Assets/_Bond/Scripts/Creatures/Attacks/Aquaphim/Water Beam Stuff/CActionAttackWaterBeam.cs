@@ -17,6 +17,9 @@ public class CActionAttackWaterBeam : BTLeaf
         attack = (CreatureAttackRanged) context.basicCreatureAttack;
         //Play anim
         context.animator.DefaultAttack();
+        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnWaterBeam(attack.projectile, context.targetEnemy, attack.flyTime, attack.baseDamage, attack.abilityBuff);
+        context.targetEnemy = null;
+        context.isAbilityTriggered = false;
     }
 
     protected override void OnExit()
@@ -27,9 +30,7 @@ public class CActionAttackWaterBeam : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnWaterBeam(attack.projectile, context.targetEnemy, attack.flyTime, attack.baseDamage, attack.abilityBuff);
-        context.targetEnemy = null;
-        context.isAbilityTriggered = false;
+
         if( !context.animator.inAttack ) 
         {
             OnParentExit();

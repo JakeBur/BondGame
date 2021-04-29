@@ -21,6 +21,8 @@ public class EnemyAnimator : MonoBehaviour
     */
 
     protected virtual void InternalEventPlayAttackSFX() {}
+    protected virtual void InternalEventSpawnDone() {}
+    protected virtual void InternalEventAttackDone() {}
     protected virtual void InternalEventColliderOn() {}
     protected virtual void InternalEventColliderOff() {}
     protected virtual void InternalEventDeathDone() {}
@@ -75,6 +77,20 @@ public class EnemyAnimator : MonoBehaviour
         SFXPlayer.PlayOneShot(SFX.DonutSwipeSFX, transform.position);
 
         InternalEventPlayAttackSFX();
+    }
+
+    public void EventSpawnDone()
+    {
+        inSpawn = false;
+        InternalEventSpawnDone();
+    }
+
+    public void EventAttackDone()
+    {
+        inAttack = false;
+        boxCollider.enabled = false;
+
+        InternalEventAttackDone();
     }
 
     public void EventColliderOn()

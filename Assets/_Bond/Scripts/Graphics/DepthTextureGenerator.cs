@@ -33,6 +33,8 @@ public class DepthTextureGenerator : MonoBehaviour
         float farClippingPlane = _camera.farClipPlane;
         float priority = _camera.depth;
         _camera.CopyFrom(Camera.main);
+        _camera.transform.localPosition = Vector3.zero;
+        _camera.transform.localRotation = Quaternion.identity;
         _camera.backgroundColor = background;
         _camera.clearFlags = CameraClearFlags.Color;
         _camera.farClipPlane = farClippingPlane;

@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         context = GetComponent<EnemyAIContext>();
+        context.animator.Spawn();
         BuildBT();
     }
 
@@ -25,7 +26,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if(Evaluate)
+        if(Evaluate && !context.animator.inSpawn)
         {
             behaviorTree.OnParentEvaluate();
             context.animator.Move(context.agent.velocity);
@@ -65,16 +66,16 @@ public class EnemyAI : MonoBehaviour
             BTSequence playerNoticedSequence = new BTSequence("Is player noticed", playerNoticedList);
         #endregion
 
-        #region PLAYER NOTICED FIRST TIME
-            List<BTNode> firstNoticedList = new List<BTNode>();
-            EActionPlayAwakeAnim playAwakeAnim = new EActionPlayAwakeAnim("Play Awake Anim", context); //Anim when seeing player for first time
-            //BTSucceeder succeeder = new BTSucceeder("Anim Succeeder", playAwakeAnim); //Always make anim succeed
-            ECheckPlayerNoticedBefore playerNoticedBefore = new ECheckPlayerNoticedBefore("Player Noticed Before", context);
-            firstNoticedList.Add(playerNoticedBefore);
-            //firstNoticedList.Add(succeeder);
-            firstNoticedList.Add(playAwakeAnim);
-            BTSequence firstNoticeSequence = new BTSequence("First Notice Sequence", firstNoticedList);
-        #endregion
+        // #region PLAYER NOTICED FIRST TIME
+        //     List<BTNode> firstNoticedList = new List<BTNode>();
+        //     EActionPlayAwakeAnim playAwakeAnim = new EActionPlayAwakeAnim("Play Awake Anim", context); //Anim when seeing player for first time
+        //     //BTSucceeder succeeder = new BTSucceeder("Anim Succeeder", playAwakeAnim); //Always make anim succeed
+        //     ECheckPlayerNoticedBefore playerNoticedBefore = new ECheckPlayerNoticedBefore("Player Noticed Before", context);
+        //     firstNoticedList.Add(playerNoticedBefore);
+        //     //firstNoticedList.Add(succeeder);
+        //     firstNoticedList.Add(playAwakeAnim);
+        //     BTSequence firstNoticeSequence = new BTSequence("First Notice Sequence", firstNoticedList);
+        // #endregion
 
         #region HITSTUN
                 List<BTNode> hitstunList = new List<BTNode>();
@@ -99,7 +100,7 @@ public class EnemyAI : MonoBehaviour
             List<BTNode> RootList = new List<BTNode>();
             RootList.Add(deathSequence);
             RootList.Add(hitstunSequence);
-            RootList.Add(firstNoticeSequence);
+            //RootList.Add(firstNoticeSequence);
             RootList.Add(playerNoticedSequence);
             RootList.Add(idleSequence);
 
