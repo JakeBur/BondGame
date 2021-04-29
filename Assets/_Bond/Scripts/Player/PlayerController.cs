@@ -258,7 +258,7 @@ public class PlayerController : MonoBehaviour
         // For dialog scenes
         if(inCharacterDialog)
         {
-            dialogueManager?.NextSentence();
+            dialogueManager?.OnInteract();
         }
         // If interactable is close by
         else if(interactableObjects.Count > 0)

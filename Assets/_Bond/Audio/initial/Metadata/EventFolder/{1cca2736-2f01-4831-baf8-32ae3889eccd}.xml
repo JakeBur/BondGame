@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EventFolder" id="{1cca2736-2f01-4831-baf8-32ae3889eccd}">
+		<property name="name">
+			<value>Spore Toss</value>
+		</property>
+		<relationship name="folder">
+			<destination>{58f1d3b7-2e7f-4b36-93d4-5e90b9e78ef2}</destination>
+		</relationship>
+	</object>
+</objects>

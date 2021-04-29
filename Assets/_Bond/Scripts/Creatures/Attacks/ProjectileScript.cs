@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class ProjectileScript : MonoBehaviour
 {
     [Header("Gameplay Data")]
@@ -25,6 +30,14 @@ public class ProjectileScript : MonoBehaviour
 
     private float impactTime;
     private float startTime;
+
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     private void Awake()
     {
@@ -50,6 +63,7 @@ public class ProjectileScript : MonoBehaviour
         if (Time.time > impactTime)
         {
             target.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
+            SFXPlayer.PlayOneShot(SFX.LeafProjectileHitSFX, transform.position);
             End();
         }
     }
