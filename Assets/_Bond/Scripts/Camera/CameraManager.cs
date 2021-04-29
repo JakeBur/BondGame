@@ -109,6 +109,8 @@ public class CameraManager : MonoBehaviour
         {
             cameraDistance = farmCameraDistance;
             zoomSpeed = farmZoomSpeed;
+
+            SetCameraDistance();
         }
     }
 
@@ -125,6 +127,8 @@ public class CameraManager : MonoBehaviour
         {
             cameraDistance = exploreCameraDistance;
             zoomSpeed = exploreZoomSpeed;
+
+            SetCameraDistance();
         }
     }
 
@@ -141,6 +145,8 @@ public class CameraManager : MonoBehaviour
         {
             cameraDistance = combatCameraDistance;
             zoomSpeed = combatZoomSpeed;
+
+            SetCameraDistance();
         }
     }
 

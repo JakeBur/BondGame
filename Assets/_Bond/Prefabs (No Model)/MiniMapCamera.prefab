@@ -121,4 +121,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 10, z: 0}
   toFollow: {fileID: 0}
-  smoothSpeed: 0.125
+  smoothSpeed: 0.8
