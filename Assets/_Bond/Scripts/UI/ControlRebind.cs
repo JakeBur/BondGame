@@ -7,10 +7,8 @@ using TMPro;
 
 public class ControlRebind : MonoBehaviour
 {
-    private PlayerInput playerInput
-    {
-        get => PersistentData.Instance.playerInputs;
-    }
+    [SerializeField]
+    private PlayerInput playerInput;
     public List<TextMeshProUGUI> KeyText = new List<TextMeshProUGUI>();
     public List<Button> KeyButton = new List<Button>();
 
@@ -20,6 +18,11 @@ public class ControlRebind : MonoBehaviour
 
     private void OnEnable()
     {
+        if (PersistentData.Instance != null)
+        {
+            playerInput = PersistentData.Instance.playerInputs;
+        }
+
         //-----------------------------------------
         // update the text on the binds on enable
         //-----------------------------------------

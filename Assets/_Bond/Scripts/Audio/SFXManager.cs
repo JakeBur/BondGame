@@ -84,6 +84,11 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string ButtonClickSFX;
     [FMODUnity.EventRef] public string CreatureSwapSFX;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     public void Play3DWalkGrassSFX(int tag, Vector3 position = new Vector3())
     {
         //--------------------------------

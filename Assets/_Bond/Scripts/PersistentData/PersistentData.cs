@@ -205,6 +205,7 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(AudioController);
+        AudioController.transform.Find("Ambient Noise Event").gameObject.SetActive(true);
 
         if (SFXManager == null)
         {
