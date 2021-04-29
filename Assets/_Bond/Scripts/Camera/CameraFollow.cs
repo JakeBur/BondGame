@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         toFollow = PersistentData.Instance.Player.transform;
+        transform.position = toFollow.position + offset;
     }
 
     void FixedUpdate ()

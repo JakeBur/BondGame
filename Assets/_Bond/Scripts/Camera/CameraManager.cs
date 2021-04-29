@@ -23,15 +23,24 @@ public class CameraManager : MonoBehaviour
     public float combatCameraDistance = -70;
 
     private float zoomSpeed = 1;
+    private bool inZoom = false;
 
     [Header("Zoom Speed")]
+    [Range(0f, .999f)]
     public float farmZoomSpeed = .99f;
+    [Range(0f, .999f)]
     public float exploreZoomSpeed = .99f;
+    [Range(0f, .999f)]
     public float combatZoomSpeed = .99f;
 
     void Start()
     {
         toFollow = PersistentData.Instance.Player.transform;
+        transform.position = toFollow.position + offset;
+
+        farmZoomSpeed = Mathf.Clamp( farmZoomSpeed, 0, .999f );
+        exploreZoomSpeed = Mathf.Clamp( exploreZoomSpeed, 0, .999f );
+        combatZoomSpeed = Mathf.Clamp( combatZoomSpeed, 0, .999f );
         
         ResetCameraHeightOffset();
 
@@ -44,6 +53,18 @@ public class CameraManager : MonoBehaviour
 		Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
         smoothedPosition.y = Mathf.Round(smoothedPosition.y);
 		transform.position = smoothedPosition;
+
+        if( inZoom )
+        {
+            cameraDistance = BondMath.Approach( cameraDistance, desiredCameraDistance, zoomSpeed, Time.deltaTime);
+            //cameraDistance = Mathf.Lerp( cameraDistance, desiredCameraDistance, zoomSpeed * Time.deltaTime );
+            SetCameraDistance();
+
+            if( Mathf.Abs( cameraDistance - desiredCameraDistance ) < .1 )
+            {
+                inZoom = false;
+            }
+        }
 	}
 
     public void ResetCameraHeightOffset()
@@ -67,42 +88,67 @@ public class CameraManager : MonoBehaviour
 
         if ( sceneName == "Farm" )
         {
-            SetFarmCameraDistance();
+            SetFarmCameraDistance( true );
         }
         else
         {
-            SetExploreCameraDistance();
+            SetExploreCameraDistance( true );
         }
     }
 
-    public void SetFarmCameraDistance()
+    public void SetFarmCameraDistance( bool instant = false )
     {
-        desiredCameraDistance = farmCameraDistance;
-        zoomSpeed = farmZoomSpeed;
+        if( !instant )
+        {
+            desiredCameraDistance = farmCameraDistance;
+            zoomSpeed = farmZoomSpeed;
 
-        AdjustZoom();
+            AdjustZoom();
+        }
+        else
+        {
+            cameraDistance = farmCameraDistance;
+            zoomSpeed = farmZoomSpeed;
+        }
     }
 
-    public void SetExploreCameraDistance()
+    public void SetExploreCameraDistance( bool instant = false )
     {
-        desiredCameraDistance = exploreCameraDistance;
-        zoomSpeed = exploreZoomSpeed;
+        if( !instant )
+        {
+            desiredCameraDistance = exploreCameraDistance;
+            zoomSpeed = exploreZoomSpeed;
 
-        AdjustZoom();
+            AdjustZoom();
+        }
+        else
+        {
+            cameraDistance = exploreCameraDistance;
+            zoomSpeed = exploreZoomSpeed;
+        }
     }
 
-    public void SetCombatCameraDistance()
+    public void SetCombatCameraDistance( bool instant = false )
     {
-        desiredCameraDistance = combatCameraDistance;
-        zoomSpeed = combatZoomSpeed;
+        if( !instant )
+        {
+            desiredCameraDistance = combatCameraDistance;
+            zoomSpeed = combatZoomSpeed;
 
-        AdjustZoom();
+            AdjustZoom();
+        }
+        else
+        {
+            cameraDistance = combatCameraDistance;
+            zoomSpeed = combatZoomSpeed;
+        }
     }
 
     private void AdjustZoom()
     {
-        StopAllCoroutines();
-        StartCoroutine("AdjustZoomCo");
+        inZoom = true;
+        //StopAllCoroutines();
+        //StartCoroutine("AdjustZoomCo");
     }
 
     private IEnumerator AdjustZoomCo()

@@ -500,10 +500,10 @@ MonoBehaviour:
   cameraHeightOffset: 0
   farmCameraDistance: -70
   exploreCameraDistance: -100
-  combatCameraDistance: -70
-  farmZoomSpeed: 0.99
-  exploreZoomSpeed: 0.99
-  combatZoomSpeed: 0.99
+  combatCameraDistance: -80
+  farmZoomSpeed: 0.75
+  exploreZoomSpeed: 0.75
+  combatZoomSpeed: 0.147
 --- !u!23 &2282727311108969601
 MeshRenderer:
   m_ObjectHideFlags: 0
