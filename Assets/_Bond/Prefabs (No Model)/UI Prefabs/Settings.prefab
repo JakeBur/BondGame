@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 3372477141119256174}
   - component: {fileID: 2643940263939303580}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Move Up (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,7 +384,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3372477141119256174}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControlComposite
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &978579477182357891
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +408,7 @@ GameObject:
   - component: {fileID: 8408039022409191646}
   - component: {fileID: 4978073317763256009}
   m_Layer: 5
-  m_Name: Text (TMP) (4)
+  m_Name: Swap Creature (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -530,7 +541,7 @@ GameObject:
   - component: {fileID: 5145779304281242167}
   - component: {fileID: 7583369368747985789}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Swap Creature (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -664,7 +675,7 @@ GameObject:
   - component: {fileID: 720292412233127188}
   - component: {fileID: 1079554487012967000}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Move Down (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -769,7 +780,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720292412233127188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControlComposite
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1759601040316312127
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +804,7 @@ GameObject:
   - component: {fileID: 2105351629009801325}
   - component: {fileID: 823301354648457337}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Interact (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,7 +1004,7 @@ GameObject:
   - component: {fileID: 6373267704501505140}
   - component: {fileID: 5980267401974176033}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Ability 1 (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1087,7 +1109,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6373267704501505140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControl
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2315997058663026713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1133,7 @@ GameObject:
   - component: {fileID: 4892834030843683741}
   - component: {fileID: 2227592476287142543}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Move Right (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1233,7 +1266,7 @@ GameObject:
   - component: {fileID: 6528902092730312245}
   - component: {fileID: 8489104315934132246}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Ability 1 (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1366,7 +1399,7 @@ GameObject:
   - component: {fileID: 1842327860767613763}
   - component: {fileID: 5473790869316813544}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Ability 2 (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,7 +1532,7 @@ GameObject:
   - component: {fileID: 9163175016224586380}
   - component: {fileID: 5403902359555694765}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Attack (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1632,7 +1665,7 @@ GameObject:
   - component: {fileID: 3600830075384275662}
   - component: {fileID: 1187589033391789575}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Move Up (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1767,7 +1800,7 @@ GameObject:
   - component: {fileID: 4208173196326449026}
   - component: {fileID: 771335748948321883}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Move Right (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1901,7 +1934,7 @@ GameObject:
   - component: {fileID: 5128032001187427001}
   - component: {fileID: 8425132283683923320}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Interact (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2006,7 +2039,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5128032001187427001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControl
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3674229707716573015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,7 +2196,7 @@ GameObject:
   - component: {fileID: 1677326718614243629}
   - component: {fileID: 8739288126205429173}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Move Right (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2257,7 +2301,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1677326718614243629}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControlComposite
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5097562860059791212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,7 +2325,7 @@ GameObject:
   - component: {fileID: 1248452696458720693}
   - component: {fileID: 8030738912574268092}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: Ability 2 (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2404,7 +2459,7 @@ GameObject:
   - component: {fileID: 5354352177074427418}
   - component: {fileID: 7258137561450922130}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Swap Creature (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2509,7 +2564,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5354352177074427418}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControl
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5258866913491927462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,7 +2588,7 @@ GameObject:
   - component: {fileID: 6333280618673151617}
   - component: {fileID: 5718194833459671330}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Move Up (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2655,7 +2721,7 @@ GameObject:
   - component: {fileID: 3226986401631030004}
   - component: {fileID: 2132954913936298030}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Move Left (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2854,7 +2920,7 @@ GameObject:
   - component: {fileID: 6597431552782767884}
   - component: {fileID: 3290182360017285122}
   m_Layer: 5
-  m_Name: Text (TMP) (4)
+  m_Name: Roll (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3149,7 +3215,7 @@ GameObject:
   - component: {fileID: 923463877018956734}
   - component: {fileID: 8818153697070956304}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Attack (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3254,7 +3320,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 923463877018956734}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControl
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6866755486289261106
 GameObject:
   m_ObjectHideFlags: 0
@@ -3267,7 +3344,7 @@ GameObject:
   - component: {fileID: 3748274781508949341}
   - component: {fileID: 3768075721329592872}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Attack (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3400,6 +3477,8 @@ GameObject:
   - component: {fileID: 4003310662480817301}
   - component: {fileID: 2118490398035599846}
   - component: {fileID: 3557758231014877112}
+  - component: {fileID: 6053395208063390188}
+  - component: {fileID: 6803299177778038213}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -3553,6 +3632,83 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &6053395208063390188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147547307883892501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c2ebbaee466514d87a41323fdfd8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 6803299177778038213}
+  KeyText:
+  - {fileID: 1187589033391789575}
+  - {fileID: 2132954913936298030}
+  - {fileID: 5931842392629382430}
+  - {fileID: 771335748948321883}
+  - {fileID: 8671964001105732927}
+  - {fileID: 5403902359555694765}
+  - {fileID: 2250916688089600792}
+  - {fileID: 8489104315934132246}
+  - {fileID: 5473790869316813544}
+  - {fileID: 7583369368747985789}
+  KeyButton:
+  - {fileID: 2643940263939303580}
+  - {fileID: 2179168876085040477}
+  - {fileID: 1079554487012967000}
+  - {fileID: 8739288126205429173}
+  - {fileID: 3693495993469285942}
+  - {fileID: 8818153697070956304}
+  - {fileID: 8425132283683923320}
+  - {fileID: 5980267401974176033}
+  - {fileID: 4605374651392602541}
+  - {fileID: 7258137561450922130}
+  ActionsList:
+  - Up
+  - Left
+  - Down
+  - Right
+  - dash
+  - attack1
+  - interact
+  - attack2
+  - attack3
+  - Swap
+--- !u!114 &6803299177778038213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147547307883892501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4f481f4d5c1fa064683bc179d470de21,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &7633085246519456829
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,7 +3721,7 @@ GameObject:
   - component: {fileID: 2580703543718246568}
   - component: {fileID: 3023226266457393884}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Move Left (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3698,7 +3854,7 @@ GameObject:
   - component: {fileID: 4041148235674862003}
   - component: {fileID: 5931842392629382430}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Move Down (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3832,7 +3988,7 @@ GameObject:
   - component: {fileID: 8489459077322136616}
   - component: {fileID: 4605374651392602541}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Ability 2 (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3937,7 +4093,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8489459077322136616}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControl
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7959754821993092315
 GameObject:
   m_ObjectHideFlags: 0
@@ -3950,7 +4117,7 @@ GameObject:
   - component: {fileID: 214764003916991793}
   - component: {fileID: 2250916688089600792}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Interact (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4084,7 +4251,7 @@ GameObject:
   - component: {fileID: 8435005833630201048}
   - component: {fileID: 3693495993469285942}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Roll (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4189,7 +4356,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8435005833630201048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControl
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8236338819970466968
 GameObject:
   m_ObjectHideFlags: 0
@@ -4202,7 +4380,7 @@ GameObject:
   - component: {fileID: 3664089807092844995}
   - component: {fileID: 5845049255071061150}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Ability 1 (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4335,7 +4513,7 @@ GameObject:
   - component: {fileID: 7511432845539475283}
   - component: {fileID: 8671964001105732927}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Roll (Key)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4541,6 +4719,7 @@ GameObject:
   - component: {fileID: 8452791766075675549}
   - component: {fileID: 8452791766075675547}
   - component: {fileID: 8452791766075675548}
+  - component: {fileID: 6307635170433653028}
   m_Layer: 0
   m_Name: Volume sliders
   m_TagString: Untagged
@@ -4669,6 +4848,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6307635170433653028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452791766075675550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29c1f6e4d212874cb61bed54b7ce2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterSlider: {fileID: 8452791767380542351}
+  musicSlider: {fileID: 8452791767094331641}
+  sfxSlider: {fileID: 8452791766172434663}
 --- !u!1 &8452791766172434663
 GameObject:
   m_ObjectHideFlags: 0
@@ -4757,7 +4951,18 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6307635170433653028}
+        m_MethodName: SetSFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8452791766294995098
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5976,18 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6307635170433653028}
+        m_MethodName: SetMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8452791767130087606
 GameObject:
   m_ObjectHideFlags: 0
@@ -6042,7 +6258,18 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6307635170433653028}
+        m_MethodName: SetMasterVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8452791767449516216
 GameObject:
   m_ObjectHideFlags: 0
@@ -6630,7 +6857,7 @@ GameObject:
   - component: {fileID: 5947466990323672706}
   - component: {fileID: 2822180025374987625}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: Move Down (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6764,7 +6991,7 @@ GameObject:
   - component: {fileID: 5233672595888450162}
   - component: {fileID: 2179168876085040477}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Move Left (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6869,4 +7096,15 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5233672595888450162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053395208063390188}
+        m_MethodName: RemapControlComposite
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

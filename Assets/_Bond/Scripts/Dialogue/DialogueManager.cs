@@ -10,11 +10,23 @@ public class DialogueManager : MonoBehaviour
     private DialogueTextManager dialogueTextManager;
     private DialoguePortrait dialoguePortrait;
 
-    public void Start()
+    private void Start()
     {
         var DialogueCanvas = PersistentData.Instance.UI.transform.Find("CharacterDialogCanvas");
         dialogueTextManager = DialogueCanvas.transform.Find("CharacterDialog").GetComponent<DialogueTextManager>();
         dialoguePortrait = DialogueCanvas.transform.Find("Portrait").GetComponent<DialoguePortrait>();
+    }
+
+    public void OnInteract()
+    {
+        if (dialogueTextManager.sentenceFinished)
+        {
+            NextSentence();
+        }
+        else
+        {
+            dialogueTextManager.FinishSentence();
+        }
     }
 
     public void StartDialogue()

@@ -8,7 +8,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{58f1d3b7-2e7f-4b36-93d4-5e90b9e78ef2}</destination>
+			<destination>{bde73583-b2e8-4c61-8330-7bd729fed5f1}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{d8ecce85-ff06-4ede-8629-42c3a9f2e12c}</destination>
@@ -93,7 +93,7 @@
 			<value>12.566961451247165</value>
 		</property>
 		<property name="volume">
-			<value>-4.5</value>
+			<value>-3.5</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{3162a1f8-0bdd-4196-8d82-e7fa16f40c8c}</destination>

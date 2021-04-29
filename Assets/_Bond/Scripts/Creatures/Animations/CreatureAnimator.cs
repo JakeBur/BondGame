@@ -64,7 +64,7 @@ public class CreatureAnimator : MonoBehaviour
     *   FMOD Refs
     */
 
-    protected SFXManager SFX
+    protected private SFXManager SFX
     {
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
