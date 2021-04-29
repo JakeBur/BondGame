@@ -18,6 +18,8 @@ public class ShopkeeperManager : MonoBehaviour
             tempGameObj.GetComponent<RelicInteractable>().relicStats = PersistentData.Instance.availableRelics[randomRelic]; 
             PersistentData.Instance.availableRelics.Remove(PersistentData.Instance.availableRelics[randomRelic]);
             tempGameObj.GetComponent<RelicInteractable>().cost = Random.Range((int)costRange.x, (int)costRange.y);
+
+            tempGameObj.GetComponent<RelicInteractable>().updateSprite();
         }
     }
 }

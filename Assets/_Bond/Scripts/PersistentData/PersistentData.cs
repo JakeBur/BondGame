@@ -16,6 +16,11 @@ public class PersistentData : MonoBehaviour
     public GameObject Player { get; private set; }
     private GameObject player;
 
+    [Header("CameraReference")]
+    public GameObject CameraPrefab;
+    public GameObject Camera { get; private set; }
+    public CameraManager CameraManager { get; private set; }
+
     [Header("UIReference")]
     public GameObject UIPrefab;
     public GameObject UI { get; private set; }
@@ -83,9 +88,35 @@ public class PersistentData : MonoBehaviour
             Init();
         }
     }
-    
 
     private void Init() 
+    {
+        SetPlayerReference();
+
+        SetCameraReference();
+
+        SetShopRelicUIReference();
+
+        SetUIReference();
+
+        SetPauseMenuReference();
+
+        SetStatUIReference();
+
+        SetAudioControllerReference();
+
+        SetSFXManagerReference();
+
+        // Set Camera to follow player
+        CameraManager.toFollow = Player.transform;
+
+        var settings = PauseMenu.transform.Find("Settings");
+        var backdrop = settings.Find("backdrop");
+        audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
+        audioSettings.LoadVolumesOnStart();
+    }
+
+    private void SetPlayerReference()
     {
         if(Player == null)
         {
@@ -103,12 +134,34 @@ public class PersistentData : MonoBehaviour
             }
             
         }
-        Camera.main.transform.parent.GetComponent<CameraManager>().toFollow = Player.transform;
-
         playerInputs = Player.GetComponent<PlayerInput>();
         //LoadControls();
+    }
+    
+    private void SetCameraReference()
+    {
+        if(Camera == null)
+        {
+            try
+            {
+                Camera = GameObject.FindGameObjectWithTag("CameraManager");
+                if(Camera == null)
+                {
+                    Camera = Instantiate(CameraPrefab, GetSpawnpoint(), Quaternion.identity);
+                }
+            }
+            catch
+            {
+                Camera = Instantiate(CameraPrefab, GetSpawnpoint(), Quaternion.identity);
+            }
+            
+        }
+        
+        CameraManager = Camera.GetComponent<CameraManager>();
+    }
 
-
+    private void SetShopRelicUIReference()
+    {
         if(ShopRelicUI == null)
         {
             try
@@ -128,9 +181,10 @@ public class PersistentData : MonoBehaviour
             }
             
         }
+    }
 
-
-
+    private void SetUIReference()
+    {
         if(UI == null)
         {
             try
@@ -149,9 +203,11 @@ public class PersistentData : MonoBehaviour
             }
             
         }
+    }
 
-
-        if(PauseMenu == null)
+    private void SetPauseMenuReference()
+    {
+         if(PauseMenu == null)
         {
             try
             {
@@ -167,9 +223,10 @@ public class PersistentData : MonoBehaviour
             }
             
         }
+    }
 
-
-
+    private void SetStatUIReference()
+    {
         if(statUI == null)
         {
             try
@@ -186,9 +243,10 @@ public class PersistentData : MonoBehaviour
             }
             
         }
+    }
 
-
-
+    private void SetAudioControllerReference()
+    {
         if (AudioController == null)
         {
             try
@@ -205,8 +263,10 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(AudioController);
-        AudioController.transform.Find("Ambient Noise Event").gameObject.SetActive(true);
+    }
 
+    private void SetSFXManagerReference()
+    {
         if (SFXManager == null)
         {
             try
@@ -223,13 +283,7 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(SFXManager);
-
-        var settings = PauseMenu.transform.Find("Settings");
-        var backdrop = settings.Find("backdrop");
-        audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
-        audioSettings.LoadVolumesOnStart();
     }
-
 
     public void LoadScene(int _scene)
     {
@@ -261,6 +315,7 @@ public class PersistentData : MonoBehaviour
         MakeChild(Player);
         MakeChild(playerController.currCreature);
         MakeChild(playerController.swapCreature);
+        MakeChild(Camera);
         MakeChild(UI);
         MakeChild(PauseMenu);
         MakeChild(StatUI);
@@ -283,10 +338,13 @@ public class PersistentData : MonoBehaviour
         UnmakeChild(Player);
         UnmakeChild(playerController.currCreature);
         UnmakeChild(playerController.swapCreature);
+        UnmakeChild(Camera);
         UnmakeChild(UI);
         UnmakeChild(PauseMenu);
         UnmakeChild(StatUI);
         UnmakeChild(ShopRelicUI);
+
+        CameraManager.SetCameraDistanceForScene();
 
         //set players position in new scene
         //CALL BUILD LEVEL, WHICH SHOULD GENERATE EVERYTHING, INCLUDING A SPAWNPOINT;
