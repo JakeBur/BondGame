@@ -14,6 +14,18 @@ public class CCheckPlayerMoving : BTChecker
     {
         if(context.player.GetComponent<PlayerController>().inputs.rawDirection != Vector2.zero)
         {
+            context.playerMoving = true;
+        }
+        
+        if(context.player.GetComponent<PlayerController>().inputs.rawDirection == Vector2.zero && 
+        Vector3.Distance(context.creatureTransform.position, context.player.transform.position) < 5)
+        {
+            context.playerMoving = false;
+        }
+
+
+        if(context.playerMoving)
+        {
             return NodeState.SUCCESS;
         } else 
         {
