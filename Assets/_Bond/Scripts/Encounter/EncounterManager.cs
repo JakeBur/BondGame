@@ -38,6 +38,11 @@ public class EncounterManager : MonoBehaviour
     public int numberOfCurrMeleeAttackers;
     [HideInInspector]
     public int numberOfCurrRangedAttackers;
+
+    private bool playerInside;
+    private bool creature1Inside;
+    private bool creature2Inside;
+    private PlayerController pc;
     // [HideInInspector]
     // public int numberOfCurrSwarmAttackers;
     [HideInInspector]
@@ -53,31 +58,98 @@ public class EncounterManager : MonoBehaviour
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
 
+    private void Awake() {
+        pc = PersistentData.Instance.Player.GetComponent<PlayerController>();
+    }
 
+    // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
     private void OnTriggerEnter(Collider other) 
+    {
+        
+        if(other.transform.tag == "Player")
+        {
+           playerInside = true;
+           if(pc.currCreature == null)
+           {
+               creature1Inside = true;
+           }
+           if(pc.swapCreature == null)
+           {
+               creature2Inside = true;
+           }
+        }
+        else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.currCreature)
+        {
+            creature1Inside = true;
+        }
+        else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.swapCreature)
+        {
+            creature2Inside = true;
+        }
+        if(checkIfEveryoneInside())
+        {
+            startEncounter();
+        }
+    }
+
+    private void OnTriggerExit(Collider other) 
     {
         if(other.transform.tag == "Player")
         {
-            //SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
-            for(int i = 0; i < blobAmount; i++)
-            {
-                Vector2 randomPos = Random.insideUnitCircle;
-                randomPos *= (Random.Range(10,blobSpawnRadius));
-                Instantiate(blobPrefab, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
-            }
-            blobParent.SetActive(true);
-            barrier.SetActive(true);
-            vfx.PlayEncounterBegin();
-            SpawnEncounter();
-            GetComponent<Collider>().enabled = false;
-            
-            playerTransform = PersistentData.Instance.Player.transform;
-            
-            PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(true);
-            PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusic();
-            encounterTriggered = true;
-            arenaRadius = 23;
+           playerInside = false;
+            if(pc.currCreature == null)
+           {
+               creature1Inside = false;
+           }
+           if(pc.swapCreature == null)
+           {
+               creature2Inside = false;
+           }
         }
+        else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().currCreature)
+        {
+            creature1Inside = false;
+        }
+        else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().swapCreature)
+        {
+            creature2Inside = false;
+        }
+    }
+
+    // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
+    private bool checkIfEveryoneInside()
+    {
+        if(playerInside && creature1Inside && creature2Inside)
+        {
+            return true;
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+
+    private void startEncounter()
+    {
+        //SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
+        for(int i = 0; i < blobAmount; i++)
+        {
+            Vector2 randomPos = Random.insideUnitCircle;
+            randomPos *= (Random.Range(10,blobSpawnRadius));
+            Instantiate(blobPrefab, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
+        }
+        blobParent.SetActive(true);
+        barrier.SetActive(true);
+        vfx.PlayEncounterBegin();
+        SpawnEncounter();
+        GetComponent<Collider>().enabled = false;
+        
+        playerTransform = PersistentData.Instance.Player.transform;
+        
+        PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(true);
+        PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusic();
+        encounterTriggered = true;
+        arenaRadius = 23;
     }
 
     private void Update() 
