@@ -9,7 +9,7 @@ public class ThrowingKnife : MonoBehaviour
     GameObject target;
     Rigidbody rigidBody;
     float speed = 10;
-    private bool isHoming = false;
+    private bool isHoming = true;
 
     private void Awake() 
     {
