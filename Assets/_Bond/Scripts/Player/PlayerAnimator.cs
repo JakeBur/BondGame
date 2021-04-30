@@ -304,7 +304,10 @@ public class PlayerAnimator : MonoBehaviour
         {
             playerController.hitBoxes.slash1.SetActive(true);
         }
-    
+        else if(playerController.fsm.currentState == playerController.fsm.HeavySlash)
+        {
+            playerController.hitBoxes.heavy.SetActive(true);
+        }
     }
 
 
@@ -329,6 +332,10 @@ public class PlayerAnimator : MonoBehaviour
         else if(playerController.fsm.currentState == playerController.fsm.Slash4)
         {
             playerController.hitBoxes.slash1.SetActive(false);
+        }
+        else if(playerController.fsm.currentState == playerController.fsm.HeavySlash)
+        {
+            playerController.hitBoxes.heavy.SetActive(false);
         }
     }
 }
