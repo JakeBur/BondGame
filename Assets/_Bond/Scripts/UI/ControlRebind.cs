@@ -7,10 +7,8 @@ using TMPro;
 
 public class ControlRebind : MonoBehaviour
 {
-    private PlayerInput playerInput
-    {
-        get => PersistentData.Instance.playerInputs;
-    }
+    [SerializeField]
+    private PlayerInput playerInput;
     public List<TextMeshProUGUI> KeyText = new List<TextMeshProUGUI>();
     public List<Button> KeyButton = new List<Button>();
 
@@ -20,6 +18,11 @@ public class ControlRebind : MonoBehaviour
 
     private void OnEnable()
     {
+        if (PersistentData.Instance != null)
+        {
+            playerInput = PersistentData.Instance.playerInputs;
+        }
+
         //-----------------------------------------
         // update the text on the binds on enable
         //-----------------------------------------
@@ -70,6 +73,7 @@ public class ControlRebind : MonoBehaviour
 
         currentlyBound.Clear();
         playerInput.actions.FindAction("pause").Enable();
+        SaveControls();
     }
 
     public void RemapControl(int index)
@@ -176,7 +180,7 @@ public class ControlRebind : MonoBehaviour
         RebindOperation.Dispose();
         keyToUpdate.Enable();
         KeyButton[index].interactable = true;
-        PersistentData.Instance.SaveControls();
+        SaveControls();
     }
 
     private void UpdateButtonComposite(int index, string currButton, string currButtonDisplay)
@@ -217,7 +221,7 @@ public class ControlRebind : MonoBehaviour
         RebindOperation.Dispose();
         keyToUpdate.Enable();
         KeyButton[index].interactable = true;
-        PersistentData.Instance.SaveControls();
+        SaveControls();
     }
 
     private bool CheckIfBound(string key)
@@ -233,5 +237,11 @@ public class ControlRebind : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void SaveControls()
+    {
+        string bindings = playerInput.actions.ToJson();
+        PlayerPrefs.SetString("Bindings", bindings);
     }
 }

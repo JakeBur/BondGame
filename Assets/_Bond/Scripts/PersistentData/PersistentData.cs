@@ -71,7 +71,7 @@ public class PersistentData : MonoBehaviour
         // saves PlayerPrefs for next application launch
         //------------------------------------------------
         audioSettings.SaveVolumesOnQuit();
-        SaveControls();
+        //SaveControls();
         PlayerPrefs.Save();
     }
 
@@ -263,6 +263,7 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(AudioController);
+        AudioController.transform.Find("Ambient Noise Event").gameObject.SetActive(true);
     }
 
     private void SetSFXManagerReference()

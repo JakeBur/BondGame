@@ -34,6 +34,7 @@ public class WaterBeam : MonoBehaviour
             }
             
             rigidBody.velocity = (transform.rotation*Vector3.forward*speed);
+            Debug.Log("Proj velocity = " + rigidBody.velocity);
         }
     }
 
