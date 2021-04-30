@@ -109,6 +109,18 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    // Sets the target to the player
+    // if instant is false, then it lerps to it
+    // if instant is true, then it instantly sets to it
+    public void ResetCameraTargetToPlayer( bool instant = false )
+    {
+        cameraTarget = PersistentData.Instance.Player.transform;
+        if( instant )
+        {
+            transform.position = cameraTarget.position + offset;
+        }
+    }
+
     // Automatically detect what camera distance to use
     // Based on what scene is currently loaded
     public void SetCameraDistanceForScene()
