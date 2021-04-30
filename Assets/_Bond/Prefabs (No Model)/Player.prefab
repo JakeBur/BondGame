@@ -10259,6 +10259,8 @@ MonoBehaviour:
     - {fileID: 4254348646603466417, guid: 9e7058604e11ef84f8a5a6231cc03999, type: 3}
     - {fileID: 4254348646603466417, guid: a8e2c9e4b2e1bd443ba2fb1b0a927c14, type: 3}
     - {fileID: 4254348646603466417, guid: 96df1f441f0dc39468b34e1dfa856b0c, type: 3}
+    enemySquib: {fileID: 2123888225320283336, guid: 6168ff7a111306c44b05cfba20b20b3b,
+      type: 3}
 --- !u!114 &2139760117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15256,7 +15258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &226208229969507009
 Transform:
   m_ObjectHideFlags: 0

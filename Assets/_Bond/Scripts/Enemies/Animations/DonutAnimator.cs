@@ -6,6 +6,8 @@ using SFXPlayer = FMODUnity.RuntimeManager;
 
 public class DonutAnimator : EnemyAnimator
 {
+    public GameObject slashVFXPrefab;
+
     public GameObject armModel;
     private SkinnedMeshRenderer armMesh => armModel.GetComponent<SkinnedMeshRenderer>();
 
@@ -82,5 +84,10 @@ public class DonutAnimator : EnemyAnimator
     public void EventPlayDonutWalkSFX(int tag)
     {
         SFX.Play3DWalkGrassSFX(tag, transform.position);
+    }
+
+    public void EventPlaySlashVFX()
+    {
+        Instantiate(slashVFXPrefab, transform);
     }
 }

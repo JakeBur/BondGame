@@ -58,7 +58,7 @@ public class EncounterManager : MonoBehaviour
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
 
-    private void Awake() {
+    private void Start() {
         pc = PersistentData.Instance.Player.GetComponent<PlayerController>();
     }
 

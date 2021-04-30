@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class DestroyOnDelay : MonoBehaviour
 {
+    public bool destroyOnStart;
+    public float delay;
+
     // Start is called before the first frame update
     void Start()
     {
+        if(destroyOnStart)
+        {
+            Apply(delay);
+        }
     }
 
     public void Apply(float time)

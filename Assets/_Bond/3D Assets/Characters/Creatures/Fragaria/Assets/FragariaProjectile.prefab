@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc3def76c4866943801d3ba758e827f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
   momentumCurve:
     serializedVersion: 2
     m_Curve:
@@ -79,9 +80,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   arcDistance: 10
-  damage: 50
-  isHoming: 1
   flyTime: 1
+  squibPrefab: {fileID: 2123888225320283336, guid: 6168ff7a111306c44b05cfba20b20b3b,
+    type: 3}
   trail: {fileID: 894282350731235669}
 --- !u!1 &894282350731235669
 GameObject:

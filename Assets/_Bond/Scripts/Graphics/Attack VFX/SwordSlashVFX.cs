@@ -13,9 +13,9 @@ public class SwordSlashVFX : MonoBehaviour
     {
         if(!GetComponent<Animation>().isPlaying)
         {
-            if ( rootObject != null )
+            if (rootObject != null)
             {
-                Destroy( rootObject );
+                Destroy(rootObject);
             }
             else
             {

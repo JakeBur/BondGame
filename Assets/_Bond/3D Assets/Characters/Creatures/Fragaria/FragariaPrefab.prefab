@@ -5348,6 +5348,7 @@ MonoBehaviour:
   enthusiasmInteracted: 0
   hasReacted: 0
   isReacting: 0
+  playerMoving: 0
   playerSpeedToScare: 0.9
   lastTriggeredAbility: 0
   enemyDetectRange: 20
@@ -5474,6 +5475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 337987009181354822}
+  petalSawVFXPrefab: {fileID: 4254348646603466417, guid: 0de2a6307a8ae024d853c46bd6c4feeb,
+    type: 3}
 --- !u!1001 &608457318077478423
 PrefabInstance:
   m_ObjectHideFlags: 0
