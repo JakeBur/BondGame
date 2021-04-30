@@ -108,7 +108,7 @@ public class PersistentData : MonoBehaviour
         SetSFXManagerReference();
 
         // Set Camera to follow player
-        CameraManager.toFollow = Player.transform;
+        CameraManager.SetCameraTarget(Player, true );
 
         var settings = PauseMenu.transform.Find("Settings");
         var backdrop = settings.Find("backdrop");
