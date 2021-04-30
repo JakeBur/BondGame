@@ -13,16 +13,16 @@ public class AquaphimAnimator : CreatureAnimator
 
     public void TurtleTop()
     {
-        animator.SetTrigger("TurtleTop");
+        animator.SetTrigger("Turtle Top");
     }
 
     public void WaterShield()
     {
-        animator.SetTrigger("WaterShield");
+        animator.SetTrigger("Water Shield");
     }
 
     public void WingGust()
     {
-        animator.SetTrigger("WingGust");
+        animator.SetTrigger("Wing Gust");
     }
 }

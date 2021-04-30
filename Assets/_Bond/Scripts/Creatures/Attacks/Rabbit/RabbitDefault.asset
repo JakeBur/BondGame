@@ -19,8 +19,8 @@ MonoBehaviour:
   abilityBuff: {fileID: 0}
   abilityDescription: Blasts enemies with a jet of water
   maxDistanceToEnemy: 10
-  flyTime: 0
+  flyTime: 10
   projectile: {fileID: 1232755435502466787, guid: e6fad2ca31f26ea4d838a00759ddabec,
     type: 3}
-  projectileSpeed: 10
-  baseDamage: 0
+  projectileSpeed: 15
+  baseDamage: 15
