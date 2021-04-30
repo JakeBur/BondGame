@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SheriffNothingPersonalAttack", menuName = "ScriptableObjects/BTSubtrees/Attacks/Rabbit/Nothing Personal")]
-public class SheriffNothingPersonal : BTSubtree
+[CreateAssetMenu(fileName = "RabbitNothingPersonalAttack", menuName = "ScriptableObjects/BTSubtrees/Attacks/Rabbit/Nothing Personal")]
+public class RabbitNothingPersonalAttack : BTSubtree
 {
     public override BTSequence BuildSequenceSubtree(CreatureAIContext context) 
     {
