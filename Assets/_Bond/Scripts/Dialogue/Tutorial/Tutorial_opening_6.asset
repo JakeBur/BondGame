@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 562d8734cccad2e46a0f40908ee12503, type: 3}
-  m_Name: Tutorial_opening_5
+  m_Name: Tutorial_opening_6
   m_EditorClassIdentifier: 
   trigger: 0
   triggerAmount: 0
   dialog:
-  - "MC/Happy It\u2019s ok you\u2019re safe now little buddy, they won\u2019t hurt
-    you anymore."
-  - MC/Happy Come with me and we can fight these baddies together! I'll protect you.
-  - 'Shopkeeper/Surprised Fragaria: Fraaa...'
+  - 'Shopkeeper/Surprised Hello there young adventurer! '
+  - Shopkeeper/Surprised I am squibble, the traveling sales squirrel!
+  - Shopkeeper/Surprised Come over and chat, I'll show you my nu- I mean wares!
+  - MC/Sad .........whaaaa?
   step: 3

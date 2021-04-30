@@ -21,7 +21,7 @@ MonoBehaviour:
   - modiferType: 2
     baseValue: 20
   - modiferType: 3
-    baseValue: 12
+    baseValue: 8
   - modiferType: 4
     baseValue: 0
   - modiferType: 5
