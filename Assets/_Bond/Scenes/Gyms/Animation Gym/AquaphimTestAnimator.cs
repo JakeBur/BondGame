@@ -28,7 +28,7 @@ public class AquaphimTestAnimator : MonoBehaviour
     {
         
     }
-
+    // Mapped to WASD
     private void OnMovement(InputValue value)
     {
         var direction = value.Get<Vector2>();

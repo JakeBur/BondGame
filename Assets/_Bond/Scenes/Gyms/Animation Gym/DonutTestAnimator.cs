@@ -32,7 +32,7 @@ public class DonutTestAnimator : MonoBehaviour
         animator.Spawn();
         Debug.Log("Spawn");
     }
-
+    // Mapped to WASD
     private void OnMovement(InputValue value)
     {
         var direction = value.Get<Vector2>();
