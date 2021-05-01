@@ -201,6 +201,27 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    // Manually set the camera distance and zoom if you don't want to use any presets
+    // if instant is false, then it lerps to it
+    // if instant is true, then it instantly sets to it
+    public void SetManualCameraDistance( float distance, float zoom, bool instant = false )
+    {
+        if( !instant )
+        {
+            desiredCameraDistance = distance;
+            zoomSpeed = zoom;
+
+            AdjustZoom();
+        }
+        else
+        {
+            cameraDistance = distance;
+            zoomSpeed = zoom;
+
+            SetCameraDistance();
+        }
+    }
+
     // Allow CameraManager to begin lerping zoom levels
     private void AdjustZoom()
     {
