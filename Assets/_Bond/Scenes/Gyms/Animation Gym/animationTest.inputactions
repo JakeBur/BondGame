@@ -30,293 +30,95 @@
                     "interactions": ""
                 },
                 {
-                    "name": "attack1",
+                    "name": "button4",
                     "type": "Button",
-                    "id": "4704af23-c554-438e-a3b3-dcb204994a31",
+                    "id": "45c43c14-875c-413b-b122-21ca298e0507",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "attack2",
-                    "type": "Button",
-                    "id": "2a3ad70c-1a35-40b2-89b9-d4d5c680e85c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "attack3",
-                    "type": "Button",
-                    "id": "eb71bdbe-3c61-4bf9-8d45-236209bf4072",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "crouch",
-                    "type": "Button",
-                    "id": "07bcee4e-bf2a-42c0-b493-6f99a2e0a393",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "heavyAttack",
-                    "type": "Value",
-                    "id": "49b69718-c1ea-4d93-9d8c-58c5974ed64f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "FruitSpawn",
-                    "type": "Button",
-                    "id": "47f82084-3376-4531-afbc-b14bec32f5f9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "pause",
-                    "type": "Button",
-                    "id": "fd8646a0-b3a6-474e-929b-ec56826770d9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "dash",
-                    "type": "Button",
-                    "id": "bedf2fdc-5b46-4f74-8e9d-9a0a228af581",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "mousePos",
+                    "name": "movement",
                     "type": "PassThrough",
-                    "id": "8eb3b0fa-5f2c-464c-8b80-4806df1867b5",
+                    "id": "75dc4cef-2223-432b-9c39-131242abf863",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "creatureAutoAttack",
+                    "name": "Q",
                     "type": "Button",
-                    "id": "a64a9512-07bd-4628-aed9-d96e803bb9c0",
+                    "id": "2da7e2ab-38af-49d3-9bcc-5ea797198734",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "tab",
+                    "name": "E",
                     "type": "Button",
-                    "id": "5ae8ab5c-242b-49dd-877c-ce4e357dcca3",
+                    "id": "08dd6806-1b26-4fb6-9e2e-53c61e613f14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Z",
+                    "type": "Button",
+                    "id": "8d52d172-b786-4e5d-b0ca-89b9cd3a25c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "X",
+                    "type": "Button",
+                    "id": "85ef81b6-7509-4a84-bbe6-dddcfe4605cd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "C",
+                    "type": "Button",
+                    "id": "09bbec1e-833c-4cc0-a564-24ddc26b3512",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "P",
+                    "type": "Button",
+                    "id": "4d83fd96-9ae9-44b2-abe7-881b3006bce9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "O",
+                    "type": "Button",
+                    "id": "31d68465-2ecc-4dd4-aaaa-6595e9754601",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Semicolon",
+                    "type": "Button",
+                    "id": "57d0c6fc-44f6-492e-9c83-d2a3ab065c14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "L",
+                    "type": "Button",
+                    "id": "9ee24549-b697-47f8-bd6b-3280dd13f2c1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "59f1477a-4b67-46e0-b288-796d5ddb6db9",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "attack1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c871bcc5-1b95-4844-948d-8c9417f0f000",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "attack1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "98a9e6b6-cf63-4467-bab9-1e6d29b141fe",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "attack2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b4378cad-060b-4db2-addf-73b00f236578",
-                    "path": "<Keyboard>/#(Q)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "attack2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e2fdc11b-2b90-4524-abfa-68421e005f8f",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "attack3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "63167295-8c67-47e4-8411-8e10f397dea5",
-                    "path": "<Keyboard>/#(E)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "attack3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a4cd502b-835e-4bb3-bc33-0da0d4bc0fbe",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d3d9255e-6af9-436c-a839-cb38012b5eb0",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "208fbb25-b1e8-438d-84c2-9196bbb94e8b",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "Hold(duration=0.3)",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "heavyAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "89883276-c7e7-4004-a41a-e4cf5f29e5f4",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Hold(duration=0.3)",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "heavyAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "62016e48-e87e-4650-abc7-964de771f93a",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FruitSpawn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f57d2f7f-25ac-45bb-83dc-ad0f287846e4",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1f89fc27-6a66-46b5-97f4-46146e5dbef8",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "db806932-8136-4375-95e5-c1ddf6e4e415",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b6faa4cd-2cc1-45c0-b267-b7c74e8bc873",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f15b241e-fceb-4f3a-a778-55dd1a318581",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "mousePos",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "623b3dcc-c57b-45e1-8ee8-b7e7e53c14cc",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "creatureAutoAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c9cc6b91-898f-4f62-a466-64e7fa6fb403",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "tab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "368a5af7-77fa-4806-8e7c-c4cd95d70fc1",
@@ -369,6 +171,171 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "button3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfdac207-9239-4c70-81b5-0c0137154f6c",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "button4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD",
+                    "id": "eff7bf47-a25d-419e-a940-5c2b94f4adc3",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "d4bd28f7-3d61-4618-8e29-daebc52ae7ef",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "5dcc5e36-2d61-490c-9e98-39a1053a6ed7",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "6fd5ddae-5c32-4d7b-8850-513bcc0af2f8",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ea5446e5-451f-4e6c-a9b1-49a7dbf417cc",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "fd33a9d8-9e3f-4fe5-ace9-8ecdfb341f10",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Q",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43c318e7-4e86-4c16-a819-22dda7c08fb7",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "E",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "723565a4-19f0-40f5-9af1-e0020c3e2700",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Z",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24fa8f55-5347-48a4-af07-329da93e0145",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20ccbbd4-5cff-46ce-bdf8-0616bfa3c0ea",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "C",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d6cc1e8-67a0-4cec-820c-93a58c3e0edd",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "P",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "418052da-dd5b-4981-9a46-fab2df0341f4",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "O",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b62147f-d165-458e-8566-05b285a85317",
+                    "path": "<Keyboard>/semicolon",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Semicolon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68d8029d-041c-4212-9899-d7c5abaa05ed",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "L",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
