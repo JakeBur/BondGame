@@ -59,6 +59,11 @@ public class DonutTestAnimator : MonoBehaviour
         
     }
 
+    private void OnButton4()
+    {
+        
+    }
+
     private void OnQ()
     {
         animator.Hitstun();
@@ -72,6 +77,16 @@ public class DonutTestAnimator : MonoBehaviour
     private void OnZ()
     {
         animator.Death();
+    }
+
+    private void OnX()
+    {
+
+    }
+
+    private void OnC()
+    {
+
     }
     
 }
