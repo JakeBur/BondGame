@@ -21,6 +21,6 @@ public class CameraForAnimationGym : MonoBehaviour
     private void SetCameraParameters()
     {
         cameraManager.SetCameraTarget(target);
-        cameraManager.SetManualCameraDistance( -50f, 1f, true );
+        cameraManager.SetManualCameraDistance( -25f, 1f, true );
     }
 }

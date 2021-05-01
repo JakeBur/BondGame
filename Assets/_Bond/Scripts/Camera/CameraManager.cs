@@ -10,7 +10,8 @@ public class CameraManager : MonoBehaviour
     public Transform cameraTarget;
     public GameObject cameraObject;
 
-    public float smoothSpeed = 0.125f; 
+    public float smoothSpeed = 0.125f;
+    public bool roundY = true;
 
     public float cameraHeightOffset = 0f;
 
@@ -59,7 +60,10 @@ public class CameraManager : MonoBehaviour
 	{
 		Vector3 desiredPosition = cameraTarget.position + offset;
 		Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
-        smoothedPosition.y = Mathf.Round(smoothedPosition.y);
+        if( roundY )
+        {
+            smoothedPosition.y = Mathf.Round(smoothedPosition.y);
+        }
 		transform.position = smoothedPosition;
 
         if( inZoom )
