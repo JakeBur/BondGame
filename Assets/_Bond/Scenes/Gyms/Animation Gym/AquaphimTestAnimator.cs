@@ -1,13 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
 
-public class DonutTestAnimator : MonoBehaviour
+public class AquaphimTestAnimator : MonoBehaviour
 {
 
-    private DonutAnimator animator => GetComponent<DonutAnimator>();
+    private AquaphimAnimator animator => GetComponent<AquaphimAnimator>();
 
     private void OnSemicolon()
     {
@@ -21,16 +21,12 @@ public class DonutTestAnimator : MonoBehaviour
 
     private void OnP()
     {
-        animator.Spawn();
-        animator.Pause();
-        Debug.Log("Prep");
+        
     }
 
     private void OnO()
     {
-        animator.Play();
-        animator.Spawn();
-        Debug.Log("Spawn");
+        
     }
 
     private void OnMovement(InputValue value)
@@ -44,29 +40,35 @@ public class DonutTestAnimator : MonoBehaviour
 
     private void OnButton1()
     {
-        animator.Play();
-        animator.Attack();
-        Debug.Log("Attack");
+        animator.DefaultAttack();
     }
 
     private void OnButton2()
     {
-        
+        animator.Play();
+        animator.TurtleTop();
+        Debug.Log("TurtleTop");
     }
 
     private void OnButton3()
     {
-        
+        animator.Play();
+        animator.WaterShield();
+        Debug.Log("WaterShield");
     }
 
     private void OnButton4()
     {
-        
+        animator.Play();
+        animator.WingGust();
+        Debug.Log("WingGust");
     }
 
     private void OnButton5()
     {
-        
+        animator.Play();
+        animator.Rain();
+        Debug.Log("Rain");
     }
 
     private void OnButton6()
@@ -96,32 +98,32 @@ public class DonutTestAnimator : MonoBehaviour
 
     private void OnQ()
     {
-        animator.Hitstun();
+        animator.Cry();
     }
 
     private void OnE()
     {
-        animator.HitstunDone();
+        animator.Eat();
     }
 
     private void OnF()
     {
-
+        animator.Relax();
     }
 
     private void OnZ()
     {
-        animator.Death();
+        animator.InteractFlower();
     }
 
     private void OnX()
     {
-
+        animator.InteractTree();
     }
 
     private void OnC()
     {
-
+        animator.PlayerNoticed();
     }
     
 }

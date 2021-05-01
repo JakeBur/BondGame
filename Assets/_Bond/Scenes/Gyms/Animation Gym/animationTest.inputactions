@@ -38,6 +38,54 @@
                     "interactions": ""
                 },
                 {
+                    "name": "button5",
+                    "type": "Button",
+                    "id": "d1f08650-ac51-42ca-8700-e406f732a173",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "button6",
+                    "type": "Button",
+                    "id": "cb1c1401-8cef-4c4a-8323-df6e6ac17033",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "button7",
+                    "type": "Button",
+                    "id": "813dc5c5-9746-4a4d-8fc5-ef3d1cadc241",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "button8",
+                    "type": "Button",
+                    "id": "8b7bef16-f08c-470a-a86c-496803c03148",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "button9",
+                    "type": "Button",
+                    "id": "3bcfb9c0-ab1a-40ae-a7ba-212e7710fa8a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "button0",
+                    "type": "Button",
+                    "id": "e97dfe06-b7db-461f-9d9f-838ae4e62074",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "movement",
                     "type": "PassThrough",
                     "id": "75dc4cef-2223-432b-9c39-131242abf863",
@@ -57,6 +105,14 @@
                     "name": "E",
                     "type": "Button",
                     "id": "08dd6806-1b26-4fb6-9e2e-53c61e613f14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "F",
+                    "type": "Button",
+                    "id": "4f8bf6a6-264c-4843-83b2-ff200cec19b3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -336,6 +392,83 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "L",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dec0f0f5-4624-4eea-8d78-7be27bf240a9",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "button5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28f959d0-e989-47b7-99f8-9bdee1a2a982",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "button6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2592289f-b3e2-473c-9baf-50558d1f0e85",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "button7",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0cfce5a-a604-44a4-b254-8b1eeb287385",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "button8",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6244d639-74d0-4f37-b4d8-e32b68854c02",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "button9",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d790ca61-49e7-421e-bf65-492a29b1730a",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "button0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5652630-272b-4cf0-ba92-09f8a5319328",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "F",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
