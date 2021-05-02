@@ -420,28 +420,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnPause()
-    {
-        var canvas = PersistentData.Instance.PauseMenu.GetComponent<Canvas>();
-        // Unpause
-        if( canvas.enabled )
-        {
-            canvas.enabled = false;
-            Time.timeScale = 1;
-            playerInputs.SwitchCurrentActionMap("Player");
-        }
-        // Pause
-        else 
-        {   
-            canvas.enabled = true;
-            Time.timeScale = 0f;
-            playerInputs.SwitchCurrentActionMap("Menu");
-        }
-
-        SFXPlayer.PlayOneShot(SFX.MenuOpenSFX, transform.position);
-        
-    }
-
     private void OnOpenStats()
     {
         if ( inStandby )
@@ -675,5 +653,17 @@ public class PlayerController : MonoBehaviour
     public void SetStandbyState(bool state)
     {
        inStandby = state;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        playerInputs.SwitchCurrentActionMap("Menu");
+    }
+
+    public void Unpause()
+    {
+        Time.timeScale = 1;
+        playerInputs.SwitchCurrentActionMap("Player");
     }
 }

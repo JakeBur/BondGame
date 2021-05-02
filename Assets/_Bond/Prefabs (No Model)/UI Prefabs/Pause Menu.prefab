@@ -119,19 +119,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6988978097916814267}
-        m_MethodName: ExitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6988978097916814267}
-        m_MethodName: PlayClickSFX
+      - m_Target: {fileID: 7929329710652104436}
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -421,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c2ebbaee466514d87a41323fdfd8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
   KeyText:
   - {fileID: 5005331976049685299}
   - {fileID: 5229924054424040730}
@@ -467,6 +457,8 @@ GameObject:
   - component: {fileID: 7388749792863832314}
   - component: {fileID: 7388749792863832315}
   - component: {fileID: 6988978097916814267}
+  - component: {fileID: 7929329710652104436}
+  - component: {fileID: 5739520987379705657}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -567,6 +559,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8c5a735a77b914e9d1c58f65134e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7929329710652104436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388749792863832312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0f00222cc57e54a887ec92b0640140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingsMenu: {fileID: 2324968280748307688}
+--- !u!114 &5739520987379705657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388749792863832312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4f481f4d5c1fa064683bc179d470de21,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &7388749792979559630
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +796,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7388749793184216949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1196,8 +1232,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6988978097916814267}
-        m_MethodName: PlayClickSFX
+      - m_Target: {fileID: 7929329710652104436}
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1206,17 +1242,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2324968280748307688}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &7388749794540063376
 GameObject:
@@ -1467,8 +1492,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6988978097916814267}
-        m_MethodName: PlayClickSFX
+      - m_Target: {fileID: 7929329710652104436}
+        m_MethodName: RetireRun
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2844,6 +2869,18 @@ PrefabInstance:
     - {fileID: 6053395208063390188, guid: 26f3023a54df5094d87c22b12c50d069, type: 3}
     - {fileID: 9164300931595373501, guid: 26f3023a54df5094d87c22b12c50d069, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 26f3023a54df5094d87c22b12c50d069, type: 3}
+--- !u!1 &2324968280748307688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8452791767616606684, guid: 26f3023a54df5094d87c22b12c50d069,
+    type: 3}
+  m_PrefabInstance: {fileID: 6128742712950646068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2324968280748307699 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8452791767616606663, guid: 26f3023a54df5094d87c22b12c50d069,
+    type: 3}
+  m_PrefabInstance: {fileID: 6128742712950646068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &181432346692205584 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6307635170433653028, guid: 26f3023a54df5094d87c22b12c50d069,
@@ -2859,12 +2896,6 @@ MonoBehaviour:
 --- !u!1 &3908169475959548449 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7147547307883892501, guid: 26f3023a54df5094d87c22b12c50d069,
-    type: 3}
-  m_PrefabInstance: {fileID: 6128742712950646068}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2324968280748307688 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8452791767616606684, guid: 26f3023a54df5094d87c22b12c50d069,
     type: 3}
   m_PrefabInstance: {fileID: 6128742712950646068}
   m_PrefabAsset: {fileID: 0}
@@ -2892,12 +2923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2324968280748307699 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8452791767616606663, guid: 26f3023a54df5094d87c22b12c50d069,
-    type: 3}
-  m_PrefabInstance: {fileID: 6128742712950646068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5229924054424040730 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2132954913936298030, guid: 26f3023a54df5094d87c22b12c50d069,
