@@ -22,6 +22,8 @@ public class CreatureAnimator : MonoBehaviour
     */
 
     protected virtual void InternalEventPlayWalkSFX() {}
+    protected virtual void InternalEventAbilityDone() {}
+    protected virtual void InternalEventAttackDone() {}
 
     protected virtual void InternalSMBAbilityEnter() {}
     protected virtual void InternalSMBAbilityExit() {}
@@ -81,6 +83,20 @@ public class CreatureAnimator : MonoBehaviour
         SFX.Play3DWalkGrassSFX(tag, transform.position);
 
         InternalEventPlayWalkSFX();
+    }
+
+    public void EventAbilityDone()
+    {
+        inAbility = false;
+
+        InternalEventAbilityDone();
+    }
+
+    public void EventAttackDone()
+    {
+        inAttack = false;
+
+        InternalEventAttackDone();
     }
 
     /*
