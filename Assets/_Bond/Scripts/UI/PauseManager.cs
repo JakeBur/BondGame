@@ -31,18 +31,21 @@ public class PauseManager : MonoBehaviour
         PauseMenu.enabled = false;
     }
 
-    private void OnPause()
+    public void ProcessKeyPress()
     {
-        Debug.Log("Here");
+        Debug.Log("Current: " + currentState);
         switch( currentState )
         {
             case PauseState.GAMEPLAY:
+                Debug.Log("In Gameplay");
                 OpenPauseMenu();
                 break;
             case PauseState.PAUSE:
+                Debug.Log("In Pause");
                 ClosePauseMenu();
                 break;
             case PauseState.SETTINGS:
+                Debug.Log("In Setting");
                 CloseSettings();
                 break;
             default:

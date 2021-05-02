@@ -458,7 +458,6 @@ GameObject:
   - component: {fileID: 7388749792863832315}
   - component: {fileID: 6988978097916814267}
   - component: {fileID: 7929329710652104436}
-  - component: {fileID: 5739520987379705657}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -572,37 +571,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SettingsMenu: {fileID: 2324968280748307688}
---- !u!114 &5739520987379705657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7388749792863832312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4f481f4d5c1fa064683bc179d470de21,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &7388749792979559630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2869,18 +2837,6 @@ PrefabInstance:
     - {fileID: 6053395208063390188, guid: 26f3023a54df5094d87c22b12c50d069, type: 3}
     - {fileID: 9164300931595373501, guid: 26f3023a54df5094d87c22b12c50d069, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 26f3023a54df5094d87c22b12c50d069, type: 3}
---- !u!1 &2324968280748307688 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8452791767616606684, guid: 26f3023a54df5094d87c22b12c50d069,
-    type: 3}
-  m_PrefabInstance: {fileID: 6128742712950646068}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &2324968280748307699 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8452791767616606663, guid: 26f3023a54df5094d87c22b12c50d069,
-    type: 3}
-  m_PrefabInstance: {fileID: 6128742712950646068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &181432346692205584 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6307635170433653028, guid: 26f3023a54df5094d87c22b12c50d069,
@@ -2896,6 +2852,12 @@ MonoBehaviour:
 --- !u!1 &3908169475959548449 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7147547307883892501, guid: 26f3023a54df5094d87c22b12c50d069,
+    type: 3}
+  m_PrefabInstance: {fileID: 6128742712950646068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2324968280748307688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8452791767616606684, guid: 26f3023a54df5094d87c22b12c50d069,
     type: 3}
   m_PrefabInstance: {fileID: 6128742712950646068}
   m_PrefabAsset: {fileID: 0}
@@ -2923,6 +2885,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &2324968280748307699 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8452791767616606663, guid: 26f3023a54df5094d87c22b12c50d069,
+    type: 3}
+  m_PrefabInstance: {fileID: 6128742712950646068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5229924054424040730 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2132954913936298030, guid: 26f3023a54df5094d87c22b12c50d069,

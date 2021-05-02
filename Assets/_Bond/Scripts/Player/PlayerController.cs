@@ -490,6 +490,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void OnPause()
+    {
+        PersistentData.Instance.pauseManager.ProcessKeyPress();
+    }
+
     private void OnFruitSpawn()
     {
         var temp = Instantiate(fruit, transform.position, Quaternion.identity);
