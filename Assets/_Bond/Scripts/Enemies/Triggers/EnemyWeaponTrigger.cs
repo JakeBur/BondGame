@@ -22,7 +22,8 @@ public class EnemyWeaponTrigger : MonoBehaviour
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<StatManager>().TakeDamage(context.statManager.stats[ModiferType.DAMAGE].modifiedValue, ModiferType.MELEE_RESISTANCE);
@@ -36,6 +37,8 @@ public class EnemyWeaponTrigger : MonoBehaviour
             // other.GetComponent<PlayerController>().isHit = true;
 
             SFXPlayer.PlayOneShot(SFX.PlayerDamagedDonutSFX, transform.position);
+
+            DisableHitbox();
         }
         // else if(other.gameObject.tag == "CaptCreature")
         // {
@@ -50,5 +53,9 @@ public class EnemyWeaponTrigger : MonoBehaviour
     //     hitbox.enabled = !hitbox.enabled;
     // }
 
+    private void DisableHitbox()
+    {
+        GetComponent<BoxCollider>().enabled = false;
+    }
     
 }
