@@ -28,6 +28,24 @@ public class DialoguePortrait : MonoBehaviour
 
     public void ChangePortrait(string speaker, string emotion)
     {
+        Color tempColor = image.color;
+
+        if (speaker == "-")
+        {
+            //-------------------------------------------
+            // set the image to invisible if no speaker
+            //-------------------------------------------
+            tempColor.a = 0f;
+            image.color = tempColor;
+            return;
+        }
+
+        //----------------------------------
+        // otherwise, set image to visible
+        //----------------------------------
+        tempColor.a = 1f;
+        image.color = tempColor;
+
         if (speaker == "MC")
         {
             image.sprite = MCFaces[emotionIndex[emotion]];
