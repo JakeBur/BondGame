@@ -350,7 +350,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 200
+  far clip plane: 250
   field of view: 10
   orthographic: 0
   orthographic size: 6
@@ -494,9 +494,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  toFollow: {fileID: 0}
+  cameraTarget: {fileID: 0}
   cameraObject: {fileID: 2852933630149488235}
   smoothSpeed: 7
+  roundY: 1
   cameraHeightOffset: 0
   farmCameraDistance: -70
   exploreCameraDistance: -100
