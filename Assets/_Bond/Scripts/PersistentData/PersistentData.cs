@@ -408,7 +408,7 @@ public class PersistentData : MonoBehaviour
         //Turn UI back on
         UI.SetActive(true);
         //Set hurt feedback alpha to 0
-        UI.GetComponent<UIUpdates>().HurtFeedback(0, 0.0f);
+        UI.GetComponent<hudUI>().HurtFeedback(0, 0.0f);
         /*
             //transition IN
             yield return StartCoroutine(FadeLoadingScreen(0, 1));

@@ -30,7 +30,7 @@ public class PotionInteractable : InteractableBase
             pc.interactableObjects.Remove(gameObject);
             if(pc.interactableObjects.Count == 0)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
+                PersistentData.Instance.UI.GetComponent<hudUI>().hideIntereactPrompt();
                 PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
             }
             else

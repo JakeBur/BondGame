@@ -35,7 +35,7 @@ public class DialogueManager : MonoBehaviour
         // Tell PlayerController that dialogue is starting
         //--------------------------------------------------
         PersistentData.Instance.Player.GetComponent<PlayerController>().inCharacterDialog = true;
-        PersistentData.Instance.UI.GetComponent<UIUpdates>().ShowCharacterDialogue();
+        PersistentData.Instance.UI.GetComponent<hudUI>().ShowCharacterDialogue();
 
 
         //----------------------------
@@ -106,7 +106,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndConversation()
     {
-        PersistentData.Instance.UI.GetComponent<UIUpdates>().HideCharacterDialogue();
+        PersistentData.Instance.UI.GetComponent<hudUI>().HideCharacterDialogue();
         PersistentData.Instance.Player.GetComponent<PlayerController>().inCharacterDialog = false;
         PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = null;
         PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(false);
