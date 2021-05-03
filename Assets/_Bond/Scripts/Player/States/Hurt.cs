@@ -20,8 +20,8 @@ namespace PlayerState
         {
             player.isHit = false;
             animator.Hurt();
-            PersistentData.Instance.UI.GetComponent<hudUI>().HurtFeedback(1f, 0f); //makes the red flash on screen
-            PersistentData.Instance.UI.GetComponent<hudUI>().HurtFeedback(0f, 0.3f);
+            PersistentData.Instance.hudManager.HurtFeedback(1f, 0f); //makes the red flash on screen
+            PersistentData.Instance.hudManager.HurtFeedback(0f, 0.3f);
         }
 
         public override void OnStateUpdate()

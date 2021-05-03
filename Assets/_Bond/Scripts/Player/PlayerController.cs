@@ -289,7 +289,7 @@ public class PlayerController : MonoBehaviour
             // Hide the prompt if no interactables are near
             if(interactableObjects.Count == 0)
             {
-                PersistentData.Instance.UI.GetComponent<hudUI>().hideIntereactPrompt();
+                PersistentData.Instance.hudManager.hideIntereactPrompt();
             }
         }
     }
@@ -346,16 +346,16 @@ public class PlayerController : MonoBehaviour
             hasSwapped = !hasSwapped;
             if(hasSwapped)
             {
-                PersistentData.Instance.UI.GetComponent<hudUI>().abilityId1 = 100;
-                PersistentData.Instance.UI.GetComponent<hudUI>().abilityId2 = 101;
+                PersistentData.Instance.hudManager.abilityId1 = 100;
+                PersistentData.Instance.hudManager.abilityId2 = 101;
             }
             else 
             {
-                PersistentData.Instance.UI.GetComponent<hudUI>().abilityId1 = 0;
-                PersistentData.Instance.UI.GetComponent<hudUI>().abilityId2 = 1;
+                PersistentData.Instance.hudManager.abilityId1 = 0;
+                PersistentData.Instance.hudManager.abilityId2 = 1;
             }
             
-            PersistentData.Instance.UI.GetComponent<hudUI>().UpdateCreatureUI();                // UI Update
+            PersistentData.Instance.hudManager.UpdateCreatureUI();                // UI Update
 
             SFXPlayer.PlayOneShot(SFX.CreatureSwapSFX, transform.position);                      // Sound
         }
@@ -531,7 +531,7 @@ public class PlayerController : MonoBehaviour
 
             // HERMAN TODO: Place this in playerAnimator
             wildCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
-            PersistentData.Instance.UI.GetComponent<hudUI>().UpdateCreatureUI();
+            PersistentData.Instance.hudManager.UpdateCreatureUI();
 
             SetCombatState(inCombat);                                                   // Tells creature if it's in combat
         }
