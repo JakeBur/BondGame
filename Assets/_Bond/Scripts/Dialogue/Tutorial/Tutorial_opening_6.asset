@@ -15,8 +15,8 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - 'Shopkeeper/Surprised Hello there young adventurer! '
-  - Shopkeeper/Surprised I am squibble, the traveling sales squirrel!
-  - Shopkeeper/Surprised Come over and chat, I'll show you my nu- I mean wares!
+  - Shopkeeper/Surprised AHOY ME BOY
+  - Shopkeeper/Surprised bring those acorns to me and buy some relics
+  - Shopkeeper/Surprised YOU'LL BE STRONGER
   - MC/Sad .........whaaaa?
   step: 3
