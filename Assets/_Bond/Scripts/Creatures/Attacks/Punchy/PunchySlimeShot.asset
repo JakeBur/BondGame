@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70cfeefe681eb04e8f6b968e4fdc328, type: 3}
+  m_Name: PunchySlimeShot
+  m_EditorClassIdentifier: 
+  id: 0
+  cooldownDuration: 6
+  abilityIcon: {fileID: 21300000, guid: 0164f815d78332c43ad9e3efe347a563, type: 3}
+  abilityBehavior: {fileID: 0}
+  abilityBuff: {fileID: 11400000, guid: e7d8fb039779cd74d96d28fe6ac5b058, type: 2}
+  abilityDescription: Shoots a sticky ball of slime dealing damage and slowing
+  maxDistanceToEnemy: 10
+  projectileSpeed: 10
+  projectile: {fileID: 573035498810555202, guid: 882b04121eb97074193a69a53633b7cb,
+    type: 3}
+  anims: {fileID: 0}
+  baseDmg: 20
+  isHoming: 1
+  speed: 0
+  damage: 20
+  target: {fileID: 0}

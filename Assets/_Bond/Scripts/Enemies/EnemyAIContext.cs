@@ -85,6 +85,8 @@ public class EnemyAIContext : MonoBehaviour
         {
             tookDamage = true;
             lastDamageTaken = lastCheckedHealth - statManager.stats[ModiferType.CURR_HEALTH].modifiedValue;
+            // Debug.Log("lastCheckedHealth = " + lastCheckedHealth);
+            // Debug.Log("Took " + lastDamageTaken + " Damage");
             healthUIUpdate();
             lastCheckedHealth = statManager.stats[ModiferType.CURR_HEALTH].modifiedValue;
 
@@ -126,6 +128,10 @@ public class EnemyAIContext : MonoBehaviour
     void healthUIUpdate()
     {
         healthSlider.value = (statManager.stats[ModiferType.CURR_HEALTH].modifiedValue / statManager.stats[ModiferType.MAX_HEALTH].modifiedValue) * 100;
+        // (stats.getStat(ModiferType.CURR_HEALTH) / stats.getStat(ModiferType.MAX_HEALTH)) * 100
+        // Debug.Log("healthslider value = " + healthSlider.value);
+        // Debug.Log("curr health = " + statManager.stats[ModiferType.CURR_HEALTH].modifiedValue);
+        // Debug.Log("max health = " + statManager.stats[ModiferType.MAX_HEALTH].modifiedValue);
     }
 
     public void dropGold()
