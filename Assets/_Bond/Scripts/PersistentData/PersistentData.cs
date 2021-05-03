@@ -14,7 +14,6 @@ public class PersistentData : MonoBehaviour
     [Header("PlayerReference")]
     public GameObject PlayerPrefab;
     public GameObject Player { get; private set; }
-    private GameObject player;
 
     [Header("CameraReference")]
     public GameObject CameraPrefab;
@@ -417,6 +416,7 @@ public class PersistentData : MonoBehaviour
             //transition IN
             yield return StartCoroutine(FadeLoadingScreen(0, 1));
         */
+
         yield return StartCoroutine(FadeOutScreen(1));
 
 
@@ -481,6 +481,7 @@ public class PersistentData : MonoBehaviour
             yield return null;
         }
         loadScreen.alpha = 0;
+        
     }
 
     public void SaveControls()

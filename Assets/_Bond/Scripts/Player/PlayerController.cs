@@ -592,8 +592,11 @@ public class PlayerController : MonoBehaviour
             PersistentData.Instance.LoadScene(1);
 
             //Reset creature if knocked out
-            currCreatureContext.enthusiasmInteracted = false;
-            currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
+            if( currCreatureContext != null )
+            {
+                currCreatureContext.enthusiasmInteracted = false;
+                currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
+            }
             //Update the creature's Enthusiasm Bar
             // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
         }
