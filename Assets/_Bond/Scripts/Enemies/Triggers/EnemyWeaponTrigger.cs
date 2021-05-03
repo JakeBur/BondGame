@@ -11,6 +11,7 @@ public class EnemyWeaponTrigger : MonoBehaviour
 {
     [SerializeField]
     public EnemyAIContext context;
+    private bool hasHit;
 
     //public BoxCollider hitbox => gameObject.GetComponent<BoxCollider>();
 
@@ -23,10 +24,11 @@ public class EnemyWeaponTrigger : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && !hasHit)
         {
             other.gameObject.GetComponent<StatManager>().TakeDamage(context.statManager.stats[ModiferType.DAMAGE].modifiedValue, ModiferType.MELEE_RESISTANCE);
             other.gameObject.GetComponent<PlayerController>().DeathCheck();
+            hasHit = true;
 
 
             if(!(context.enemyType == "SwarmEnemy"))
@@ -44,6 +46,11 @@ public class EnemyWeaponTrigger : MonoBehaviour
         //     // other.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
         // }
     }
+    void OnTriggerExit(Collider other) {
+    if(other.gameObject.tag == "Player" && hasHit) {
+        hasHit = false;
+    }
+}
 
     // public void ColliderOnOff()
     // {

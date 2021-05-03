@@ -5,15 +5,16 @@ using UnityEngine.AI;
 public class KnockbackWingSource : MonoBehaviour
 {
 
-    public float radius = 50.0F;
+    public float radius = 10.0F;
     public float power = 5.0F;
     private Transform source;
     // Start is called before the first frame update
     private void Awake() 
     {
         source = gameObject.transform;
-        StartCoroutine(doKnockback(1f, 4));
-        Destroy(gameObject, 4.1f);
+        Debug.Log(source);
+        StartCoroutine(doKnockback(.5f, 8));
+        Destroy(gameObject, 4.5f);
     }
 
     IEnumerator doKnockback(float duration, int count)
@@ -28,17 +29,15 @@ public class KnockbackWingSource : MonoBehaviour
                 if(hit.transform.tag == "Enemy")
                 {
                     Rigidbody rb =  hit.GetComponent<EnemyAIContext>().rb;
-                    // hit.GetComponent<EnemyAIContext>().rb;
+                    // rb.velocity = Vector3.zero;
+                    // rb.angularVelocity = Vector3.zero;
                     NavMeshAgent agent = hit.GetComponent<EnemyAIContext>().agent;
-                    // agent.isStopped = false;
+                    agent.isStopped = true;
+                    // hit.GetComponent<EnemyAIContext>().rb;
+                    agent.isStopped = false;
                     Debug.Log(hit);
-
-                    
                     rb.AddExplosionForce(power, explosionPos, radius, 1.0F, ForceMode.Impulse);
-                    yield return new WaitForSeconds(0.1f);
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-                    // agent.isStopped = true;
+                    yield return new WaitForSeconds(duration);
                 }
             }
             // yield return new WaitForSeconds(duration);
