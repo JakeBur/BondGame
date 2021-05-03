@@ -350,6 +350,7 @@ public class PersistentData : MonoBehaviour
         UnmakeChild(ShopRelicUI);
 
         CameraManager.SetCameraDistanceForScene();
+        CameraManager.ResetCameraTargetToPlayer();
 
         //set players position in new scene
         //CALL BUILD LEVEL, WHICH SHOULD GENERATE EVERYTHING, INCLUDING A SPAWNPOINT;
