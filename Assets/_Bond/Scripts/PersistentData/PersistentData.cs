@@ -109,7 +109,7 @@ public class PersistentData : MonoBehaviour
         SetSFXManagerReference();
 
         // Set Camera to follow player
-        CameraManager.SetCameraTarget(Player, true );
+        CameraManager.ResetCameraTargetToPlayer( true );
 
         var settings = PauseMenu.transform.Find("Settings");
         var backdrop = settings.Find("backdrop");
@@ -350,7 +350,7 @@ public class PersistentData : MonoBehaviour
         UnmakeChild(ShopRelicUI);
 
         CameraManager.SetCameraDistanceForScene();
-        CameraManager.ResetCameraTargetToPlayer();
+        CameraManager.ResetCameraTargetToPlayer( true );
 
         //set players position in new scene
         //CALL BUILD LEVEL, WHICH SHOULD GENERATE EVERYTHING, INCLUDING A SPAWNPOINT;
