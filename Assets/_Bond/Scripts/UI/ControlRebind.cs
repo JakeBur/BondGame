@@ -9,11 +9,11 @@ public class ControlRebind : MonoBehaviour
 {
     [SerializeField]
     private PlayerInput playerInput;
-    public List<TextMeshProUGUI> KeyText = new List<TextMeshProUGUI>();
-    public List<Button> KeyButton = new List<Button>();
+    public List<TextMeshProUGUI> keyText = new List<TextMeshProUGUI>();
+    public List<Button> keyButton = new List<Button>();
 
-    private InputActionRebindingExtensions.RebindingOperation RebindOperation;
-    [SerializeField] private List<string> ActionsList = new List<string>();
+    private InputActionRebindingExtensions.RebindingOperation rebindOperation;
+    [SerializeField] private List<string> actionsList = new List<string>();
     private List<string> currentlyBound = new List<string>();
 
     private void OnEnable()
@@ -36,23 +36,23 @@ public class ControlRebind : MonoBehaviour
                 string displayString = binding.ToDisplayString();
                 if (displayString.StartsWith("\"") && displayString.EndsWith("\"") && displayString.Length > 1)
                 {
-                    KeyText[i].text = displayString.Substring(1, displayString.Length - 2);
+                    keyText[i].text = displayString.Substring(1, displayString.Length - 2);
                 }
                 else
                 {
-                    KeyText[i].text = displayString;
+                    keyText[i].text = displayString;
                 }           
             }
             else
             {
-                InputAction actionBind = playerInput.actions.FindAction(ActionsList[i]);
-                KeyText[i].text = actionBind.GetBindingDisplayString();
+                InputAction actionBind = playerInput.actions.FindAction(actionsList[i]);
+                keyText[i].text = actionBind.GetBindingDisplayString();
             }
 
             //--------------------------------------------------------------
             // form a list of already bound keys to prevent multiple binds
             //--------------------------------------------------------------
-            currentlyBound.Add(KeyText[i].text);
+            currentlyBound.Add(keyText[i].text);
         }
     }
     
@@ -61,11 +61,11 @@ public class ControlRebind : MonoBehaviour
         //-------------------------------------------------------------
         // check if a rebind operation is still active and dispose it
         //-------------------------------------------------------------
-        if(RebindOperation != null)
+        if(rebindOperation != null)
         {
-            if(RebindOperation.started)
+            if(rebindOperation.started)
             {
-                RebindOperation.Dispose();
+                rebindOperation.Dispose();
             }
         }
 
@@ -78,9 +78,9 @@ public class ControlRebind : MonoBehaviour
         //----------------------------------------------
         // find the operation to rebind and disable it
         //----------------------------------------------
-        InputAction actionToRebind = playerInput.actions.FindAction(ActionsList[index]);
+        InputAction actionToRebind = playerInput.actions.FindAction(actionsList[index]);
         actionToRebind.Disable();
-        KeyButton[index].interactable = false;
+        keyButton[index].interactable = false;
 
         //----------------------------------------
         // save the old button data just in case
@@ -88,27 +88,27 @@ public class ControlRebind : MonoBehaviour
         int bindIndex = actionToRebind.GetBindingIndexForControl(actionToRebind.controls[0]);
         string currButton = actionToRebind.bindings[bindIndex].effectivePath;
         string currButtonDisplay = actionToRebind.GetBindingDisplayString();
-        KeyText[index].text = "---";
+        keyText[index].text = "---";
 
         //---------------------------------------------
         // define rebinding operation before starting
         //---------------------------------------------
-        RebindOperation = actionToRebind.PerformInteractiveRebinding()
+        rebindOperation = actionToRebind.PerformInteractiveRebinding()
             .WithCancelingThrough("<Keyboard>/escape")
             .OnMatchWaitForAnother(0.1f);
         
-        RebindOperation.OnCancel(operation => {
+        rebindOperation.OnCancel(operation => {
             UpdateButton(index, currButton, currButtonDisplay);
         });
 
-        RebindOperation.OnComplete(operation => {
+        rebindOperation.OnComplete(operation => {
             UpdateButton(index, currButton, currButtonDisplay);
         });
 
         //--------------------------------
         // all set, ask player to rebind
         //--------------------------------
-        RebindOperation.Start();
+        rebindOperation.Start();
         playerInput.actions.FindAction("pause").Disable();
     }
 
@@ -119,7 +119,7 @@ public class ControlRebind : MonoBehaviour
         //----------------------------------------------
         InputAction actionToRebind = playerInput.actions.FindAction("movement");
         actionToRebind.Disable();
-        KeyButton[index].interactable = false;
+        keyButton[index].interactable = false;
 
         //----------------------------------------
         // save the old button data just in case
@@ -127,33 +127,33 @@ public class ControlRebind : MonoBehaviour
         var binding = actionToRebind.bindings[index + 1];
         string currButton = binding.effectivePath;
         string currButtonDisplay = binding.ToDisplayString();
-        KeyText[index].text = "---";
+        keyText[index].text = "---";
 
         //---------------------------------------------
         // define rebinding operation before starting
         //---------------------------------------------
-        RebindOperation = actionToRebind.PerformInteractiveRebinding(index + 1)
+        rebindOperation = actionToRebind.PerformInteractiveRebinding(index + 1)
             .WithCancelingThrough("<Keyboard>/escape")
             .OnMatchWaitForAnother(0.1f);
 
-        RebindOperation.OnCancel(operation => {
+        rebindOperation.OnCancel(operation => {
             UpdateButtonComposite(index, currButton, currButtonDisplay);
         });
 
-        RebindOperation.OnComplete(operation => {
+        rebindOperation.OnComplete(operation => {
             UpdateButtonComposite(index, currButton, currButtonDisplay);
         });
 
         //--------------------------------
         // all set, ask player to rebind
         //--------------------------------
-        RebindOperation.Start();
+        rebindOperation.Start();
         playerInput.actions.FindAction("pause").Disable();
     }
 
     private void UpdateButton(int index, string currButton, string currButtonDisplay)
     {
-        InputAction keyToUpdate = playerInput.actions.FindAction(ActionsList[index]);
+        InputAction keyToUpdate = playerInput.actions.FindAction(actionsList[index]);
       
         if (CheckIfBound(keyToUpdate.GetBindingDisplayString()))
         {
@@ -162,23 +162,23 @@ public class ControlRebind : MonoBehaviour
             //-------------------------------------------------
             Debug.Log("Already bound, reverting to original");
             keyToUpdate.ApplyBindingOverride(currButton);
-            KeyText[index].text = currButtonDisplay;
+            keyText[index].text = currButtonDisplay;
         }
         else
         {
             //------------------------------------
             // otherwise update text accordingly
             //------------------------------------
-            KeyText[index].text = keyToUpdate.GetBindingDisplayString();
-            currentlyBound[index] = KeyText[index].text;
+            keyText[index].text = keyToUpdate.GetBindingDisplayString();
+            currentlyBound[index] = keyText[index].text;
         }
 
         //------------------------------------------------
         // reset values to default and dispose operation
         //------------------------------------------------
-        RebindOperation.Dispose();
+        rebindOperation.Dispose();
         keyToUpdate.Enable();
-        KeyButton[index].interactable = true;
+        keyButton[index].interactable = true;
         SaveControls();
 
         playerInput.actions.FindAction("pause").Enable();
@@ -200,11 +200,11 @@ public class ControlRebind : MonoBehaviour
             keyToUpdate.ApplyBindingOverride(index + 1, currButton);
             if (currButtonDisplay.StartsWith("\"") && currButtonDisplay.EndsWith("\"") && currButtonDisplay.Length > 1)
             {
-                KeyText[index].text = currButtonDisplay.Substring(1, currButtonDisplay.Length - 2);
+                keyText[index].text = currButtonDisplay.Substring(1, currButtonDisplay.Length - 2);
             }
             else
             {
-                KeyText[index].text = currButtonDisplay;
+                keyText[index].text = currButtonDisplay;
             }
         }
         else
@@ -212,16 +212,16 @@ public class ControlRebind : MonoBehaviour
             //------------------------------------
             // otherwise update text accordingly
             //------------------------------------
-            KeyText[index].text = newKey;
-            currentlyBound[index] = KeyText[index].text;
+            keyText[index].text = newKey;
+            currentlyBound[index] = keyText[index].text;
         }
 
         //------------------------------------------------
         // reset values to default and dispose operation
         //------------------------------------------------
-        RebindOperation.Dispose();
+        rebindOperation.Dispose();
         keyToUpdate.Enable();
-        KeyButton[index].interactable = true;
+        keyButton[index].interactable = true;
         SaveControls();
 
         playerInput.actions.FindAction("pause").Enable();
