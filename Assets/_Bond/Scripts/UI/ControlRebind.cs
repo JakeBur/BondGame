@@ -54,8 +54,6 @@ public class ControlRebind : MonoBehaviour
             //--------------------------------------------------------------
             currentlyBound.Add(KeyText[i].text);
         }
-
-        playerInput.actions.FindAction("pause").Disable();
     }
     
     private void OnDisable()
@@ -72,7 +70,6 @@ public class ControlRebind : MonoBehaviour
         }
 
         currentlyBound.Clear();
-        playerInput.actions.FindAction("pause").Enable();
         SaveControls();
     }
 
@@ -112,6 +109,7 @@ public class ControlRebind : MonoBehaviour
         // all set, ask player to rebind
         //--------------------------------
         RebindOperation.Start();
+        playerInput.actions.FindAction("pause").Disable();
     }
 
     public void RemapControlComposite(int index)
@@ -150,6 +148,7 @@ public class ControlRebind : MonoBehaviour
         // all set, ask player to rebind
         //--------------------------------
         RebindOperation.Start();
+        playerInput.actions.FindAction("pause").Disable();
     }
 
     private void UpdateButton(int index, string currButton, string currButtonDisplay)
@@ -181,6 +180,8 @@ public class ControlRebind : MonoBehaviour
         keyToUpdate.Enable();
         KeyButton[index].interactable = true;
         SaveControls();
+
+        playerInput.actions.FindAction("pause").Enable();
     }
 
     private void UpdateButtonComposite(int index, string currButton, string currButtonDisplay)
@@ -222,6 +223,8 @@ public class ControlRebind : MonoBehaviour
         keyToUpdate.Enable();
         KeyButton[index].interactable = true;
         SaveControls();
+
+        playerInput.actions.FindAction("pause").Enable();
     }
 
     private bool CheckIfBound(string key)
