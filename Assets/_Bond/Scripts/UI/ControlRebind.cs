@@ -34,19 +34,12 @@ public class ControlRebind : MonoBehaviour
 
                 var binding = actionBind.bindings[i + 1];
                 string displayString = binding.ToDisplayString();
-                if (displayString.StartsWith("\"") && displayString.EndsWith("\"") && displayString.Length > 1)
-                {
-                    KeyText[i].text = displayString.Substring(1, displayString.Length - 2);
-                }
-                else
-                {
-                    KeyText[i].text = displayString;
-                }           
+                KeyText[i].text = StripQuotes(displayString);           
             }
             else
             {
                 InputAction actionBind = playerInput.actions.FindAction(ActionsList[i]);
-                KeyText[i].text = actionBind.GetBindingDisplayString();
+                KeyText[i].text = StripQuotes(actionBind.GetBindingDisplayString());
             }
 
             //--------------------------------------------------------------
@@ -54,8 +47,6 @@ public class ControlRebind : MonoBehaviour
             //--------------------------------------------------------------
             currentlyBound.Add(KeyText[i].text);
         }
-
-        playerInput.actions.FindAction("pause").Disable();
     }
     
     private void OnDisable()
@@ -72,7 +63,6 @@ public class ControlRebind : MonoBehaviour
         }
 
         currentlyBound.Clear();
-        playerInput.actions.FindAction("pause").Enable();
         SaveControls();
     }
 
@@ -88,6 +78,7 @@ public class ControlRebind : MonoBehaviour
         //----------------------------------------
         // save the old button data just in case
         //----------------------------------------
+        Debug.Log(actionToRebind.controls.Count);
         int bindIndex = actionToRebind.GetBindingIndexForControl(actionToRebind.controls[0]);
         string currButton = actionToRebind.bindings[bindIndex].effectivePath;
         string currButtonDisplay = actionToRebind.GetBindingDisplayString();
@@ -112,6 +103,7 @@ public class ControlRebind : MonoBehaviour
         // all set, ask player to rebind
         //--------------------------------
         RebindOperation.Start();
+        playerInput.actions.FindAction("pause").Disable();
     }
 
     public void RemapControlComposite(int index)
@@ -150,6 +142,7 @@ public class ControlRebind : MonoBehaviour
         // all set, ask player to rebind
         //--------------------------------
         RebindOperation.Start();
+        playerInput.actions.FindAction("pause").Disable();
     }
 
     private void UpdateButton(int index, string currButton, string currButtonDisplay)
@@ -163,14 +156,14 @@ public class ControlRebind : MonoBehaviour
             //-------------------------------------------------
             Debug.Log("Already bound, reverting to original");
             keyToUpdate.ApplyBindingOverride(currButton);
-            KeyText[index].text = currButtonDisplay;
+            KeyText[index].text = StripQuotes(currButtonDisplay);
         }
         else
         {
             //------------------------------------
             // otherwise update text accordingly
             //------------------------------------
-            KeyText[index].text = keyToUpdate.GetBindingDisplayString();
+            KeyText[index].text = StripQuotes(keyToUpdate.GetBindingDisplayString());
             currentlyBound[index] = KeyText[index].text;
         }
 
@@ -181,6 +174,8 @@ public class ControlRebind : MonoBehaviour
         keyToUpdate.Enable();
         KeyButton[index].interactable = true;
         SaveControls();
+
+        playerInput.actions.FindAction("pause").Enable();
     }
 
     private void UpdateButtonComposite(int index, string currButton, string currButtonDisplay)
@@ -188,7 +183,7 @@ public class ControlRebind : MonoBehaviour
         InputAction keyToUpdate = playerInput.actions.FindAction("movement");
 
         var binding = keyToUpdate.bindings[index + 1];
-        string newKey = binding.ToDisplayString();
+        string newKey = StripQuotes(binding.ToDisplayString());
 
         if (CheckIfBound(newKey))
         {
@@ -197,14 +192,7 @@ public class ControlRebind : MonoBehaviour
             //-------------------------------------------------
             Debug.Log("Already bound, reverting to original");
             keyToUpdate.ApplyBindingOverride(index + 1, currButton);
-            if (currButtonDisplay.StartsWith("\"") && currButtonDisplay.EndsWith("\"") && currButtonDisplay.Length > 1)
-            {
-                KeyText[index].text = currButtonDisplay.Substring(1, currButtonDisplay.Length - 2);
-            }
-            else
-            {
-                KeyText[index].text = currButtonDisplay;
-            }
+            KeyText[index].text = StripQuotes(currButtonDisplay);
         }
         else
         {
@@ -222,6 +210,8 @@ public class ControlRebind : MonoBehaviour
         keyToUpdate.Enable();
         KeyButton[index].interactable = true;
         SaveControls();
+
+        playerInput.actions.FindAction("pause").Enable();
     }
 
     private bool CheckIfBound(string key)
@@ -243,5 +233,15 @@ public class ControlRebind : MonoBehaviour
     {
         string bindings = playerInput.actions.ToJson();
         PlayerPrefs.SetString("Bindings", bindings);
+    }
+
+    private string StripQuotes(string toStrip)
+    {
+        if (toStrip.StartsWith("\"") && toStrip.EndsWith("\"") && toStrip.Length > 1)
+        {
+            toStrip = toStrip.Substring(1, toStrip.Length - 2);
+        }
+
+        return toStrip;
     }
 }

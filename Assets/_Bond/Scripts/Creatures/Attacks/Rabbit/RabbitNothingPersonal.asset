@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a949ee8558a1bc349a2b6e6c1b3846aa, type: 3}
   m_Name: RabbitNothingPersonal
   m_EditorClassIdentifier: 
-  id: 1
+  id: 13
   cooldownDuration: 2
   abilityIcon: {fileID: 21300000, guid: b57d5be0faa793f40b794c9bfd537ea8, type: 3}
   abilityBehavior: {fileID: 11400000, guid: 7488d58f2a720dd4f9ab72b15c3f014c, type: 2}
   abilityBuff: {fileID: 0}
   abilityDescription: Teleports to farthest enemy and deals damage in a line from
     where they started
-  maxDistanceToEnemy: 0
+  maxDistanceToEnemy: 15
   moveSpeed: 12
   anims: {fileID: 0}
   animTrigger: 
   baseDmg: 20
-  hitRadius: 0
+  hitRadius: 2

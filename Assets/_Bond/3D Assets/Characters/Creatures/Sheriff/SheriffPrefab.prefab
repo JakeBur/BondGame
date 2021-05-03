@@ -5031,7 +5031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3884466110691045218
 Transform:
   m_ObjectHideFlags: 0
@@ -5575,6 +5575,7 @@ MonoBehaviour:
   enthusiasmInteracted: 0
   hasReacted: 0
   isReacting: 0
+  playerMoving: 0
   playerSpeedToScare: 0.9
   lastTriggeredAbility: 0
   enemyDetectRange: 20

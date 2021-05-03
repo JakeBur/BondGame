@@ -48,9 +48,9 @@ MonoBehaviour:
     type: 3}
   CameraPrefab: {fileID: 4178489857079956520, guid: 956d718805b5b4344b54a225f3a66551,
     type: 3}
-  UIPrefab: {fileID: 8580111774580001889, guid: ac92d26580688e2468b36dc953f472a1,
+  HUDPrefab: {fileID: 8580111774580001889, guid: ac92d26580688e2468b36dc953f472a1,
     type: 3}
-  displayUI: 1
+  displayHUD: 1
   PauseMenuPrefab: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
     type: 3}
   StatUIPrefab: {fileID: 7511566296718916632, guid: 933624b543ab5024785c5a7a786b965f,

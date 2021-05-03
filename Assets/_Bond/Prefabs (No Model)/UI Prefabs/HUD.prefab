@@ -3060,6 +3060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 7836841669845932525}
   dialoguePortrait: {fileID: 1425868288347888679}
+  sentenceFinished: 1
 --- !u!1 &7037678510106328899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4067,7 +4068,7 @@ GameObject:
   - component: {fileID: 8580111774293709217}
   - component: {fileID: 8580111774293709246}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4234,7 +4235,7 @@ GameObject:
   - component: {fileID: 227419809014686142}
   - component: {fileID: -5131763764292963597}
   m_Layer: 5
-  m_Name: UI
+  m_Name: HUD
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4356,7 +4357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6daed3985057c418e58816fbe9646e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 8580111774293709246}
+  healthBar: {fileID: 8580111774293709246}
   maxHealthUI: {fileID: 8580111775800965615}
   currHealthUI: {fileID: 8478677401146227904}
   interactPrompt: {fileID: 2643196110682782409}

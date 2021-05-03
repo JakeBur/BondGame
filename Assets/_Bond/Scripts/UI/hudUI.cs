@@ -6,10 +6,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 
-public class UIUpdates : MonoBehaviour
+public class hudUI : MonoBehaviour
 {
     [Header("Health")]
-    public Slider slider;
+    public Slider healthBar;
     public TextMeshProUGUI maxHealthUI;
     public TextMeshProUGUI currHealthUI;
     public TextMeshProUGUI interactPrompt;
@@ -84,7 +84,7 @@ public class UIUpdates : MonoBehaviour
     private void FixedUpdate() 
     {
         //Probably change this to only get called on health changes for efficiency
-        slider.value = (stats.getStat(ModiferType.CURR_HEALTH) / stats.getStat(ModiferType.MAX_HEALTH)) * 100;
+        healthBar.value = (stats.getStat(ModiferType.CURR_HEALTH) / stats.getStat(ModiferType.MAX_HEALTH)) * 100;
 
         currHealthUI.SetText((Mathf.Round(stats.getStat(ModiferType.CURR_HEALTH))).ToString());
         maxHealthUI.SetText("/ " + stats.getStat(ModiferType.MAX_HEALTH).ToString());
@@ -105,7 +105,7 @@ public class UIUpdates : MonoBehaviour
     //updates both creature icon and the respective ability icons
     public void UpdateCreatureUI()
     {
-         if(player.currCreatureContext != null)
+        if(player.currCreatureContext != null)
         {
             enthusiasmSlider.enabled = true;
             //updateEnthusiasm();
@@ -205,12 +205,12 @@ public class UIUpdates : MonoBehaviour
 
 
     
-    public void showInteractPrompt()
+    public void ShowInteractPrompt()
     {
         interactPrompt.enabled = true;
     }
 
-    public void hideIntereactPrompt()
+    public void HideIntereactPrompt()
     {
         interactPrompt.enabled = false;
     }

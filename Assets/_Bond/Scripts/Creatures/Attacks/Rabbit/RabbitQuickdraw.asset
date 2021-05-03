@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70cfeefe681eb04e8f6b968e4fdc328, type: 3}
   m_Name: RabbitQuickdraw
   m_EditorClassIdentifier: 
-  id: 10
+  id: 20000
   cooldownDuration: 2
   abilityIcon: {fileID: 21300000, guid: 0164f815d78332c43ad9e3efe347a563, type: 3}
   abilityBehavior: {fileID: 11400000, guid: 602b75be82ac9ad46958db8573b000eb, type: 2}
