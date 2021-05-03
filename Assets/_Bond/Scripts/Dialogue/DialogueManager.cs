@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        var DialogueCanvas = PersistentData.Instance.UI.transform.Find("CharacterDialogCanvas");
+        var DialogueCanvas = PersistentData.Instance.hudManager.CharacterDialogCanvas;
         dialogueTextManager = DialogueCanvas.transform.Find("CharacterDialog").GetComponent<DialogueTextManager>();
         dialoguePortrait = DialogueCanvas.transform.Find("Portrait").GetComponent<DialoguePortrait>();
     }
@@ -35,7 +35,7 @@ public class DialogueManager : MonoBehaviour
         // Tell PlayerController that dialogue is starting
         //--------------------------------------------------
         PersistentData.Instance.Player.GetComponent<PlayerController>().inCharacterDialog = true;
-        PersistentData.Instance.UI.GetComponent<UIUpdates>().ShowCharacterDialogue();
+        PersistentData.Instance.hudManager.ShowCharacterDialogue();
 
 
         //----------------------------
@@ -106,7 +106,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndConversation()
     {
-        PersistentData.Instance.UI.GetComponent<UIUpdates>().HideCharacterDialogue();
+        PersistentData.Instance.hudManager.HideCharacterDialogue();
         PersistentData.Instance.Player.GetComponent<PlayerController>().inCharacterDialog = false;
         PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = null;
         PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(false);
