@@ -590,8 +590,6 @@ public class PlayerController : MonoBehaviour
         {
             // Hardcoded value: Teleports to Farm
             PersistentData.Instance.LoadScene(1);
-            // Resets health to max
-            stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
 
             //Reset creature if knocked out
             currCreatureContext.enthusiasmInteracted = false;
@@ -600,6 +598,11 @@ public class PlayerController : MonoBehaviour
             // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
         }
        
+    }
+
+    public void HealMaxHealth()
+    {
+        stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
     }
 
     public void SetCombatState(bool _inCombat)

@@ -407,6 +407,8 @@ public class PersistentData : MonoBehaviour
              playerController.swapCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
         }
 
+        playerController.HealMaxHealth();
+
         //Turn UI back on
         HUDObject.SetActive(true);
         //Set hurt feedback alpha to 0
