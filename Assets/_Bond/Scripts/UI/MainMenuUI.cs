@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 using SFXPlayer = FMODUnity.RuntimeManager;
 
@@ -21,27 +22,39 @@ public class MainMenuUI : MonoBehaviour
     private SFXManager SFX;
     private AudioController audioController;
 
+    private enum MenuState
+    {
+        MENU, SETTINGS, CREDITS
+    }
+
+    private MenuState currentState = MenuState.MENU;
+
     // Since PersistentData does not exist in Main Menu
     private void Start()
     {
-        /*
-        if (SFX == null)
-        {
-            try
-            {
-                SFX = PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
-            }
-            catch
-            {
-                SFX = GameObject.FindGameObjectWithTag("SFXManager").GetComponent<SFXManager>();
-            }
-        }
-        */
         SFX = SFXObject.GetComponent<SFXManager>();
         audioController = audioControllerObject.GetComponent<AudioController>();
 
         creditsObject.SetActive(false);
         settingsObject.SetActive(false);
+    }
+
+    private void OnPause()
+    {
+        switch( currentState )
+        {
+            case MenuState.MENU:
+                break;
+            case MenuState.CREDITS:
+                CloseCredits();
+                break;
+            case MenuState.SETTINGS:
+                CloseSettings();
+                break;
+            default:
+                Debug.LogError("Not in a valid menu state");
+                break;
+        }
     }
 
     public void Play()
@@ -53,20 +66,44 @@ public class MainMenuUI : MonoBehaviour
         audioController.BeginOverworldMusic();
     }
 
-    public void Settings()
+    public void OpenSettings()
     {
         PlayClickSFX();
 
         menuButtonsObject.SetActive(false);
         settingsObject.SetActive(true);
+
+        currentState = MenuState.SETTINGS;
     }
 
-    public void Credits()
+    public void CloseSettings()
+    {
+        PlayClickSFX();
+
+        menuButtonsObject.SetActive(true);
+        settingsObject.SetActive(false);
+
+        currentState = MenuState.MENU;
+    }
+
+    public void OpenCredits()
     {
         PlayClickSFX();
 
         menuButtonsObject.SetActive(false);
         creditsObject.SetActive(true);
+
+        currentState = MenuState.CREDITS;
+    }
+
+    public void CloseCredits()
+    {
+        PlayClickSFX();
+
+        menuButtonsObject.SetActive(true);
+        creditsObject.SetActive(false);
+
+        currentState = MenuState.MENU;
     }
 
     public void Exit()
