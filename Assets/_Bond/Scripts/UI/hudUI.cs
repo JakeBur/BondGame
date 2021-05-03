@@ -105,7 +105,7 @@ public class hudUI : MonoBehaviour
     //updates both creature icon and the respective ability icons
     public void UpdateCreatureUI()
     {
-         if(player.currCreatureContext != null)
+        if(player.currCreatureContext != null)
         {
             enthusiasmSlider.enabled = true;
             //updateEnthusiasm();

@@ -531,6 +531,7 @@ public class PlayerController : MonoBehaviour
 
             // HERMAN TODO: Place this in playerAnimator
             wildCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
+            
             PersistentData.Instance.hudManager.UpdateCreatureUI();
 
             SetCombatState(inCombat);                                                   // Tells creature if it's in combat
