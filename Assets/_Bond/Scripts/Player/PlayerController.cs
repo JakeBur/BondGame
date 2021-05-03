@@ -662,13 +662,11 @@ public class PlayerController : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0f;
         playerInputs.SwitchCurrentActionMap("Menu");
     }
 
     public void Unpause()
     {
-        Time.timeScale = 1;
         playerInputs.SwitchCurrentActionMap("Player");
     }
 }
