@@ -58,14 +58,19 @@ public class EncounterManager : MonoBehaviour
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
 
-    private void Awake() {
+    private void Start() 
+    {
         pc = PersistentData.Instance.Player.GetComponent<PlayerController>();
+    }
+
+    private void Awake() 
+    {
+
     }
 
     // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
     private void OnTriggerEnter(Collider other) 
     {
-        
         if(other.transform.tag == "Player")
         {
            playerInside = true;
