@@ -289,7 +289,7 @@ public class PlayerController : MonoBehaviour
             // Hide the prompt if no interactables are near
             if(interactableObjects.Count == 0)
             {
-                PersistentData.Instance.hudManager.hideIntereactPrompt();
+                PersistentData.Instance.hudManager.HideIntereactPrompt();
             }
         }
     }

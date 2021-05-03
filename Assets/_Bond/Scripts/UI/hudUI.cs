@@ -205,12 +205,12 @@ public class hudUI : MonoBehaviour
 
 
     
-    public void showInteractPrompt()
+    public void ShowInteractPrompt()
     {
         interactPrompt.enabled = true;
     }
 
-    public void hideIntereactPrompt()
+    public void HideIntereactPrompt()
     {
         interactPrompt.enabled = false;
     }

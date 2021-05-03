@@ -27,7 +27,7 @@ public class RelicInteractable : InteractableBase
             pc.interactableObjects.Remove(gameObject);
             if(pc.interactableObjects.Count == 0)
             {
-                PersistentData.Instance.hudManager.hideIntereactPrompt();
+                PersistentData.Instance.hudManager.HideIntereactPrompt();
                 PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
             }
             else
