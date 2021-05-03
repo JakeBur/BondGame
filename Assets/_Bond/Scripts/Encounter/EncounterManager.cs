@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 //-----------
 // for FMOD
@@ -39,9 +40,9 @@ public class EncounterManager : MonoBehaviour
     [HideInInspector]
     public int numberOfCurrRangedAttackers;
 
-    private bool playerInside;
-    private bool creature1Inside;
-    private bool creature2Inside;
+    // private bool playerInside;
+    // private bool creature1Inside;
+    // private bool creature2Inside;
     private PlayerController pc;
     // [HideInInspector]
     // public int numberOfCurrSwarmAttackers;
@@ -73,66 +74,74 @@ public class EncounterManager : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
-           playerInside = true;
-           if(pc.currCreature == null)
-           {
-               creature1Inside = true;
-           }
-           if(pc.swapCreature == null)
-           {
-               creature2Inside = true;
-           }
-        }
-        else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.currCreature)
-        {
-            creature1Inside = true;
-        }
-        else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.swapCreature)
-        {
-            creature2Inside = true;
-        }
-        if(checkIfEveryoneInside())
-        {
+            //Warp creatures to player
+            pc.currCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
+            if(pc.swapCreature)
+            {
+                pc.swapCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
+            }
+            
             startEncounter();
+        //    playerInside = true;
+        //    if(pc.currCreature == null)
+        //    {
+        //        creature1Inside = true;
+        //    }
+        //    if(pc.swapCreature == null)
+        //    {
+        //        creature2Inside = true;
+        //    }
         }
+        // else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.currCreature)
+        // {
+        //     creature1Inside = true;
+        // }
+        // else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.swapCreature)
+        // {
+        //     creature2Inside = true;
+        // }
+        // if(checkIfEveryoneInside())
+        // {
+        //     startEncounter();
+        // }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        if(other.transform.tag == "Player")
-        {
-           playerInside = false;
-            if(pc.currCreature == null)
-           {
-               creature1Inside = false;
-           }
-           if(pc.swapCreature == null)
-           {
-               creature2Inside = false;
-           }
-        }
-        else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().currCreature)
-        {
-            creature1Inside = false;
-        }
-        else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().swapCreature)
-        {
-            creature2Inside = false;
-        }
+        // if(other.transform.tag == "Player")
+        // {
+        //    playerInside = false;
+        //     if(pc.currCreature == null)
+        //    {
+        //        creature1Inside = false;
+        //    }
+        //    if(pc.swapCreature == null)
+        //    {
+        //        creature2Inside = false;
+        //    }
+        // }
+        // else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().currCreature)
+        // {
+        //     creature1Inside = false;
+        // }
+        // else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().swapCreature)
+        // {
+        //     creature2Inside = false;
+        // }
     }
 
     // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
-    private bool checkIfEveryoneInside()
-    {
-        if(playerInside && creature1Inside && creature2Inside)
-        {
-            return true;
-        } 
-        else 
-        {
-            return false;
-        }
-    }
+    // private bool checkIfEveryoneInside()
+    // {
+    //     if(playerInside && creature1Inside && creature2Inside)
+    //     {
+    //         return true;
+    //     } 
+    //     else 
+    //     {
+    //         return false;
+    //     }
+    // }
 
     private void startEncounter()
     {
