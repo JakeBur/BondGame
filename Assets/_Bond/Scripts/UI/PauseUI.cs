@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 using SFXPlayer = FMODUnity.RuntimeManager;
 
-public class PauseManager : MonoBehaviour
+public class PauseUI : MonoBehaviour
 {
     protected SFXManager SFX
     {

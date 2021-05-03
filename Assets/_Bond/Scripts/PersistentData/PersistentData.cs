@@ -32,7 +32,7 @@ public class PersistentData : MonoBehaviour
     public GameObject PauseMenuPrefab;
     public GameObject PauseMenu { get; private set; }
     private GameObject pauseMenu;
-    public PauseManager pauseManager { get; private set; }
+    public PauseUI pauseUI { get; private set; }
 
     [Header("StatUIReference")]
     public GameObject StatUIPrefab;
@@ -225,7 +225,7 @@ public class PersistentData : MonoBehaviour
             
         }
 
-        pauseManager = PauseMenu.GetComponent<PauseManager>();
+        pauseUI = PauseMenu.GetComponent<PauseUI>();
     }
 
     private void SetStatUIReference()

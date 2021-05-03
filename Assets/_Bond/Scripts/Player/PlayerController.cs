@@ -492,7 +492,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnPause()
     {
-        PersistentData.Instance.pauseManager.ProcessKeyPress();
+        PersistentData.Instance.pauseUI.ProcessKeyPress();
     }
 
     private void OnFruitSpawn()
