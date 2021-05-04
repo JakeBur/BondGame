@@ -7,8 +7,8 @@ public class EnemyProjectile : MonoBehaviour
     GameObject target;
     Rigidbody rigidBody;
     // Start is called before the first frame update
-    float speed = 10;
-    public float damage = 50;
+    private float speed = 0;
+    private float damage = 50;
     public bool isHoming = false;
 
     void Start()
@@ -48,7 +48,8 @@ public class EnemyProjectile : MonoBehaviour
         isHoming = _isHoming;
     }
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnTriggerEnter(Collider other) 
+    {
         if(other.transform.tag == "Player")
         {
             other.transform.GetComponent<StatManager>().TakeDamage(damage, ModiferType.RANGED_RESISTANCE);

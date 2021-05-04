@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PotionInteractable : InteractableBase
 {
-    // public RelicStats relicStats;
+    public RelicStats relicStats;
     public SpriteRenderer spriteRenderer;
     public int cost = 1;
     public float healingAmount;
