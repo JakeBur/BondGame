@@ -25,6 +25,7 @@ TagManager:
   - POIFlower
   - POIOther
   - CameraManager
+  - Potion
   layers:
   - Default
   - TransparentFX

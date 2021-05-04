@@ -12,6 +12,7 @@ public class EActionRangedAttackPlayer : BTLeaf
 
     protected override void OnEnter()
     {
+        Debug.Log("Attacking player");
         //Play attack anim
         enemyContext.animator.Attack();
         //Spawn the ranged attack
