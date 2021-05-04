@@ -146,7 +146,7 @@ public class LevelUpSystem : MonoBehaviour
 
         playerStats.setStat(ModiferType.MAX_HEALTH,  playerStats.baseStats.stats[0].baseValue + (healthPoints * 5) );
         playerStats.setStat(ModiferType.CURR_HEALTH, Mathf.CeilToInt(playerStats.baseStats.stats[1].baseValue * healthRatio));//keeps health ratio same on level up
-        playerStats.setStat(ModiferType.DAMAGE,  playerStats.baseStats.stats[3].baseValue + damagePoints);
+        playerStats.setStat(ModiferType.DAMAGE,  playerStats.baseStats.stats[2].baseValue + damagePoints);
         //playerStats.setStat(ModiferType.CREATURE_POWER, playerStats.getStat(ModiferType.CREATURE_POWER) + bondPoints); //Need stat for player that mods creature, this dont work
         playerStats.setStat(ModiferType.CRIT_CHANCE,  playerStats.baseStats.stats[12].baseValue + critPoints);
 
