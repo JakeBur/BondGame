@@ -95,9 +95,9 @@ public class AudioSettings : MonoBehaviour
         //--------------------------------------
         // load audio volumes from PlayerPrefs
         //--------------------------------------
-        masterVolume = PlayerPrefs.GetFloat("Master Volume", 1f);
-        musicVolume = PlayerPrefs.GetFloat("Music Volume", 1f);
-        sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 1f);
+        masterVolume = PlayerPrefs.GetFloat("Master Volume", 0.5f);
+        musicVolume = PlayerPrefs.GetFloat("Music Volume", 0.5f);
+        sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 0.5f);
 
         _masterSlider.value = masterVolume;
         _musicSlider.value = musicVolume;

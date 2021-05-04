@@ -45,10 +45,10 @@ MonoBehaviour:
   - modiferType: 14
     baseValue: 0
   - modiferType: 15
-    baseValue: 25
+    baseValue: 18
   - modiferType: 16
     baseValue: 0.5
   - modiferType: 17
-    baseValue: 1
+    baseValue: 2.5
   - modiferType: 18
     baseValue: 0

@@ -6,6 +6,16 @@ public class EnemyAnimationEvent : MonoBehaviour
 {
     protected virtual EnemyAnimator enemyAnimator => transform.parent.GetComponent<EnemyAnimator>();
 
+    public void SpawnDone()
+    {
+        enemyAnimator.EventSpawnDone();
+    }
+
+    public void AttackDone()
+    {
+        enemyAnimator.EventAttackDone();
+    }
+
     public void ColliderOn()
     {
         enemyAnimator.EventColliderOn();

@@ -11,7 +11,7 @@ public class PlayerNoticedTrigger : MonoBehaviour
         {
             if(!enemy.GetComponent<EnemyAIContext>().playerNoticed)
             enemy.GetComponent<EnemyAIContext>().playerNoticed = true;
-            enemy.GetComponent<EnemyAIContext>().playerNoticedBefore = true;
+            // enemy.GetComponent<EnemyAIContext>().playerNoticedBefore = true;
         }
     }
 

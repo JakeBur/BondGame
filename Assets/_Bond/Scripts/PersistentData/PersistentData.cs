@@ -14,19 +14,24 @@ public class PersistentData : MonoBehaviour
     [Header("PlayerReference")]
     public GameObject PlayerPrefab;
     public GameObject Player { get; private set; }
-    private GameObject player;
 
-    [Header("UIReference")]
-    public GameObject UIPrefab;
-    public GameObject UI { get; private set; }
-    private GameObject ui;
+    [Header("CameraReference")]
+    public GameObject CameraPrefab;
+    public GameObject Camera { get; private set; }
+    public CameraManager CameraManager { get; private set; }
+
+    [Header("HUDReference")]
+    public GameObject HUDPrefab;
+    public GameObject HUDObject;
+    public hudUI hudManager { get; private set; }
     [SerializeField]
-    private bool displayUI = true;
+    private bool displayHUD = true;
 
     [Header("PauseReference")]
     public GameObject PauseMenuPrefab;
     public GameObject PauseMenu { get; private set; }
     private GameObject pauseMenu;
+    public PauseUI pauseUI { get; private set; }
 
     [Header("StatUIReference")]
     public GameObject StatUIPrefab;
@@ -66,7 +71,7 @@ public class PersistentData : MonoBehaviour
         // saves PlayerPrefs for next application launch
         //------------------------------------------------
         audioSettings.SaveVolumesOnQuit();
-        SaveControls();
+        //SaveControls();
         PlayerPrefs.Save();
     }
 
@@ -83,9 +88,35 @@ public class PersistentData : MonoBehaviour
             Init();
         }
     }
-    
 
     private void Init() 
+    {
+        SetPlayerReference();
+
+        SetCameraReference();
+
+        SetShopRelicUIReference();
+
+        SetHUDReference();
+
+        SetPauseMenuReference();
+
+        SetStatUIReference();
+
+        SetAudioControllerReference();
+
+        SetSFXManagerReference();
+
+        // Set Camera to follow player
+        CameraManager.ResetCameraTargetToPlayer( true );
+
+        var settings = PauseMenu.transform.Find("Settings");
+        var backdrop = settings.Find("backdrop");
+        audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
+        audioSettings.LoadVolumesOnStart();
+    }
+
+    private void SetPlayerReference()
     {
         if(Player == null)
         {
@@ -103,12 +134,34 @@ public class PersistentData : MonoBehaviour
             }
             
         }
-        Camera.main.transform.parent.GetComponent<CameraManager>().toFollow = Player.transform;
-
         playerInputs = Player.GetComponent<PlayerInput>();
         //LoadControls();
+    }
+    
+    private void SetCameraReference()
+    {
+        if(Camera == null)
+        {
+            try
+            {
+                Camera = GameObject.FindGameObjectWithTag("CameraManager");
+                if(Camera == null)
+                {
+                    Camera = Instantiate(CameraPrefab, GetSpawnpoint(), Quaternion.identity);
+                }
+            }
+            catch
+            {
+                Camera = Instantiate(CameraPrefab, GetSpawnpoint(), Quaternion.identity);
+            }
+            
+        }
+        
+        CameraManager = Camera.GetComponent<CameraManager>();
+    }
 
-
+    private void SetShopRelicUIReference()
+    {
         if(ShopRelicUI == null)
         {
             try
@@ -128,30 +181,34 @@ public class PersistentData : MonoBehaviour
             }
             
         }
+    }
 
-
-
-        if(UI == null)
+    private void SetHUDReference()
+    {
+        if(HUDObject == null)
         {
             try
             {
-                UI = GameObject.FindGameObjectWithTag("UI");
-                if(UI == null)
+                HUDObject = GameObject.FindGameObjectWithTag("UI");
+                if(HUDObject == null)
                 {
-                    UI = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
-                    UI.SetActive( displayUI );
+                    HUDObject = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
                 }
             }
             catch
             {
-                UI = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
-                UI.SetActive( displayUI );
+                HUDObject = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
             }
-            
         }
 
+        HUDObject.SetActive( displayHUD );
 
-        if(PauseMenu == null)
+        hudManager = HUDObject.GetComponent<hudUI>();
+    }
+
+    private void SetPauseMenuReference()
+    {
+         if(PauseMenu == null)
         {
             try
             {
@@ -168,8 +225,11 @@ public class PersistentData : MonoBehaviour
             
         }
 
+        pauseUI = PauseMenu.GetComponent<PauseUI>();
+    }
 
-
+    private void SetStatUIReference()
+    {
         if(statUI == null)
         {
             try
@@ -186,9 +246,10 @@ public class PersistentData : MonoBehaviour
             }
             
         }
+    }
 
-
-
+    private void SetAudioControllerReference()
+    {
         if (AudioController == null)
         {
             try
@@ -205,7 +266,11 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(AudioController);
+        AudioController.transform.Find("Ambient Noise Event").gameObject.SetActive(true);
+    }
 
+    private void SetSFXManagerReference()
+    {
         if (SFXManager == null)
         {
             try
@@ -222,13 +287,7 @@ public class PersistentData : MonoBehaviour
             }
         }
         MakeChild(SFXManager);
-
-        var settings = PauseMenu.transform.Find("Settings");
-        var backdrop = settings.Find("backdrop");
-        audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
-        audioSettings.LoadVolumesOnStart();
     }
-
 
     public void LoadScene(int _scene)
     {
@@ -254,13 +313,14 @@ public class PersistentData : MonoBehaviour
         //probably want to make the game "pause" so you cant move or die
 
         //Hide UI while loading
-        UI.SetActive(false);
+        HUDObject.SetActive(false);
        
         //make child everything we want to keep
         MakeChild(Player);
         MakeChild(playerController.currCreature);
         MakeChild(playerController.swapCreature);
-        MakeChild(UI);
+        MakeChild(Camera);
+        MakeChild(HUDObject);
         MakeChild(PauseMenu);
         MakeChild(StatUI);
         MakeChild(ShopRelicUI);
@@ -282,10 +342,14 @@ public class PersistentData : MonoBehaviour
         UnmakeChild(Player);
         UnmakeChild(playerController.currCreature);
         UnmakeChild(playerController.swapCreature);
-        UnmakeChild(UI);
+        UnmakeChild(Camera);
+        UnmakeChild(HUDObject);
         UnmakeChild(PauseMenu);
         UnmakeChild(StatUI);
         UnmakeChild(ShopRelicUI);
+
+        CameraManager.SetCameraDistanceForScene();
+        CameraManager.ResetCameraTargetToPlayer( true );
 
         //set players position in new scene
         //CALL BUILD LEVEL, WHICH SHOULD GENERATE EVERYTHING, INCLUDING A SPAWNPOINT;
@@ -342,14 +406,17 @@ public class PersistentData : MonoBehaviour
              playerController.swapCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
         }
 
+        playerController.HealMaxHealth();
+
         //Turn UI back on
-        UI.SetActive(true);
+        HUDObject.SetActive(true);
         //Set hurt feedback alpha to 0
-        UI.GetComponent<UIUpdates>().HurtFeedback(0, 0.0f);
+        hudManager.HurtFeedback(0, 0.0f);
         /*
             //transition IN
             yield return StartCoroutine(FadeLoadingScreen(0, 1));
         */
+
         yield return StartCoroutine(FadeOutScreen(1));
 
 
@@ -414,6 +481,7 @@ public class PersistentData : MonoBehaviour
             yield return null;
         }
         loadScreen.alpha = 0;
+        
     }
 
     public void SaveControls()

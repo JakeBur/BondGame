@@ -27,7 +27,7 @@ public class CActionInteractWithPOI : BTLeaf
 
     public override NodeState Evaluate()
     {
-        Debug.Log("Interacting with POI");
+        // Debug.Log("Interacting with POI");
         if(context.animator.isInteractPOI)
         {
             return NodeState.RUNNING;
