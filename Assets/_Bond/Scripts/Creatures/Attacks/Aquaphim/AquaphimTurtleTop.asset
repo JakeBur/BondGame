@@ -22,5 +22,5 @@ MonoBehaviour:
   moveSpeed: 0
   anims: {fileID: 0}
   animTrigger: 
-  baseDmg: 100
+  baseDmg: 30
   hitRadius: 10
