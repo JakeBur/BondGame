@@ -12,11 +12,11 @@ public class EActionRangedAttackPlayer : BTLeaf
 
     protected override void OnEnter()
     {
-        Debug.Log("Attacking player");
+        // Debug.Log("Attacking player");
         //Play attack anim
         enemyContext.animator.Attack();
         //Spawn the ranged attack
-        enemyContext.attackSpawner.GetComponent<EnemyRangedAttackSpawner>().SpawnProjectile(enemyContext.player.gameObject, 20, enemyContext.statManager.getStat(ModiferType.DAMAGE), false);
+        enemyContext.attackSpawner.GetComponent<EnemyRangedAttackSpawner>().SpawnProjectile(enemyContext.player.gameObject, 10, enemyContext.statManager.getStat(ModiferType.DAMAGE), false);
     }
 
     protected override void OnExit()

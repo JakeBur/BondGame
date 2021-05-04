@@ -43,6 +43,7 @@ public class WeaponTriggers : MonoBehaviour
                 // Debug.Log("crit hit");
             }
 
+
             // Check which attack state we're in to determine damage
             if(fsm.currentState == fsm.Slash0)
             {
