@@ -36,6 +36,11 @@ public class PufferfishAnimator : EnemyAnimator
         
     }
 
+    protected override void InternalAttack()
+    {
+        inAttack = false;
+    }
+
     protected override void InternalSpawn()
     {
         inSpawn = false;

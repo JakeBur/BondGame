@@ -20,7 +20,6 @@ public class EActionStrafe : BTLeaf
     protected override void OnEnter()
     {
         randomDir = Random.Range(0,2);
-        
     }
 
     protected override void OnExit()

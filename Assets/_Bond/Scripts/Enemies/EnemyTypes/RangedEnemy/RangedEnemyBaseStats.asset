@@ -19,7 +19,7 @@ MonoBehaviour:
   - modiferType: 1
     baseValue: 200
   - modiferType: 2
-    baseValue: 30
+    baseValue: 10
   - modiferType: 3
     baseValue: 6
   - modiferType: 8

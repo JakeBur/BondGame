@@ -75,7 +75,10 @@ public class EncounterManager : MonoBehaviour
         if(other.transform.tag == "Player")
         {
             //Warp creatures to player
-            pc.currCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
+            if(pc.currCreature)
+            {
+                pc.currCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
+            }
             if(pc.swapCreature)
             {
                 pc.swapCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
