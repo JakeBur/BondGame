@@ -26,6 +26,7 @@ TagManager:
   - POIOther
   - CameraManager
   - Potion
+  - Water
   layers:
   - Default
   - TransparentFX

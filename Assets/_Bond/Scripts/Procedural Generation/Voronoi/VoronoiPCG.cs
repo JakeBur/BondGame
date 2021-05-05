@@ -306,7 +306,7 @@ public class VoronoiPCG : MonoBehaviour
 		progressBar.value = 100;
 		//Debug.Log("Finished : " + (Time.realtimeSinceStartup - timerStart));
 		LoadingUI.SetActive(false);
-		terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
+		//terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
 
 		PersistentData.Instance.isGeneratorDone = true;
 		yield return null;
