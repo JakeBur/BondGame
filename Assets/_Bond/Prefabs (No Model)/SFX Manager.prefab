@@ -49,6 +49,8 @@ MonoBehaviour:
     Roll Grass Initial
   PlayerRollGrassSecondarySFX: event:/Sound Effects/Player SFX/Player Movement SFX/Player
     Roll Grass Secondary
+  PlayerWalkWaterSFX: event:/Sound Effects/Player SFX/Player Movement SFX/Player
+    Walk Water
   PlayerSwordSwingSFX: event:/Sound Effects/Player SFX/Player Attacks Sword/Player
     Sword Swing
   PlayerSwordImpactSFX: event:/Sound Effects/Player SFX/Player Attacks Sword/Player
@@ -60,6 +62,8 @@ MonoBehaviour:
   PlayerWhistleSFX: event:/Sound Effects/Player SFX/Player Whistle/Player Whistle
   Misc3DWalkGrassSFX: event:/Sound Effects/Creature + Enemy Movement/Misc 3D Walk
     Grass
+  Misc3DWalkWaterSFX: event:/Sound Effects/Creature + Enemy Movement/Misc 3D Walk
+    Water
   FragariaSunbeamSFX: event:/Sound Effects/Creature SFX/Fragaria/Sunbeam/Fragaria
     Sunbeam
   FragariaSporeTossSFX: event:/Sound Effects/Creature SFX/Fragaria/Spore Toss/Fragaria

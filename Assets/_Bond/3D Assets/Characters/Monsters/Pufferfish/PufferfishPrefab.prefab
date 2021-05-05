@@ -1033,11 +1033,31 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: -6049712324306595269, guid: 3fdef513163f0f34bacae6744485c7cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -5471901410102084090, guid: 3fdef513163f0f34bacae6744485c7cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -4980995404229734536, guid: 3fdef513163f0f34bacae6744485c7cd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 26a3d6875e447794089694e36e8c1d39, type: 2}
+    - target: {fileID: -4819223349682164798, guid: 3fdef513163f0f34bacae6744485c7cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4203580435363462784, guid: 3fdef513163f0f34bacae6744485c7cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -4037798191895152097, guid: 3fdef513163f0f34bacae6744485c7cd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1048,10 +1068,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 26a3d6875e447794089694e36e8c1d39, type: 2}
+    - target: {fileID: -1747032878113275651, guid: 3fdef513163f0f34bacae6744485c7cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3fdef513163f0f34bacae6744485c7cd,
         type: 3}
       propertyPath: m_Name
       value: pufferfish_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3fdef513163f0f34bacae6744485c7cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002525191512600564, guid: 3fdef513163f0f34bacae6744485c7cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3645655498886586018, guid: 3fdef513163f0f34bacae6744485c7cd,
         type: 3}

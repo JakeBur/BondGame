@@ -7,6 +7,11 @@ using SFXPlayer = FMODUnity.RuntimeManager;
 public class DonutAnimator : EnemyAnimator
 {
     public GameObject armModel;
+
+    //----------------------------------------------
+    // Raycast origin for determining footstep SFX
+    //----------------------------------------------
+    public GameObject raycastOrigin;
     private SkinnedMeshRenderer armMesh => armModel.GetComponent<SkinnedMeshRenderer>();
 
     private bool alreadySpawning = false;
@@ -81,6 +86,7 @@ public class DonutAnimator : EnemyAnimator
 
     public void EventPlayDonutWalkSFX(int tag)
     {
-        SFX.Play3DWalkGrassSFX(tag, transform.position);
+        //SFX.Play3DWalkGrassSFX(tag, transform.position);
+        SFX.Play3DWalkSFX(tag, raycastOrigin.transform);
     }
 }
