@@ -510,36 +510,42 @@ public class VoronoiPCG : MonoBehaviour
 				GameObject toPlace; 
 
 				float chance = Random.Range(0f, 1f);
+				float angle;
 
 				switch(b)
 				{//some of these are commented out until we have the creatures implemented, so for now we just have the one.
 					case Biome.FOREST:
 						toPlace = PunchySnailEncounter;
+						angle = Random.Range(0,360);
 						break;
 					case Biome.MEADOWS:
 						toPlace = FragariaEncounter;
+						angle = 125;
 						break;
 					case Biome.MARSH:
 						toPlace = AquaphimEncounter;
+						angle = 0;
 						break;
 					// case Biome.CORRUPTION:
 						
 					// 	break;
 					default:
 						toPlace = FragariaEncounter;
+						angle = 125;
 						break;
 				}
 
 				if(chance <= .3)
 				{
 					toPlace = SheriffEncounter;
+					angle = 0;
 				}
 
 				//Spawn creature encounter
 				GameObject creatureEncounter = Instantiate(
 					toPlace, 
 					new Vector3(randomPos.x, 0, randomPos.y), 
-					Quaternion.identity, Parent.transform
+					Quaternion.Euler(0,angle,0) , Parent.transform
 				);
 				placedEncounters.Add(creatureEncounter);
 
