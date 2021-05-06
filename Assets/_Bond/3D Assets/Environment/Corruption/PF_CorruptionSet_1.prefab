@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2160461102925424511}
   - component: {fileID: 7102488503197071941}
   - component: {fileID: 5531266385491351289}
+  - component: {fileID: 7162302012986031554}
   m_Layer: 0
   m_Name: LongCorruptionStatue.002
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7162302012986031554
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698782579060402258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8795653924011821882, guid: 042ea749c003f904785546ef632c03ca, type: 3}
 --- !u!1 &2289698349890286849
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +105,7 @@ GameObject:
   - component: {fileID: 1377325412329898887}
   - component: {fileID: 2548308295056408510}
   - component: {fileID: 7132338247929628673}
+  - component: {fileID: 7612309631701075115}
   m_Layer: 0
   m_Name: ShortCorruptionStatue.002
   m_TagString: Untagged
@@ -158,6 +174,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7612309631701075115
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2289698349890286849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5155742386036190368, guid: 042ea749c003f904785546ef632c03ca, type: 3}
 --- !u!1 &2465884402051961252
 GameObject:
   m_ObjectHideFlags: 0
