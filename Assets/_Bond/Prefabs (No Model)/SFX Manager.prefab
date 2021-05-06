@@ -95,3 +95,4 @@ MonoBehaviour:
   MenuOpenSFX: event:/Sound Effects/UI SFX/Menu Open
   ButtonClickSFX: event:/Sound Effects/UI SFX/Button Click
   CreatureSwapSFX: event:/Sound Effects/UI SFX/Creature Swap
+  CreatureBefriendSFX: event:/Sound Effects/UI SFX/Creature Befriend

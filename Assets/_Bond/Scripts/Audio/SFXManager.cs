@@ -85,6 +85,7 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string MenuOpenSFX;
     [FMODUnity.EventRef] public string ButtonClickSFX;
     [FMODUnity.EventRef] public string CreatureSwapSFX;
+    [FMODUnity.EventRef] public string CreatureBefriendSFX;
 
     private void Start()
     {
@@ -182,6 +183,35 @@ public class SFXManager : MonoBehaviour
         var instance = SFXPlayer.CreateInstance(FragariaPetalThrowWhooshSFX);
         instance.set3DAttributes(SFXUtils.To3DAttributes(position));
         instance.setParameterByName("Count", tag);
+        instance.start();
+        instance.release();
+    }
+
+    public void PlayCreatureBefriendSFX(string creatureType, Vector3 position = new Vector3())
+    {
+        int creatureTag;
+        switch(creatureType)
+        {
+            case "Fragaria":
+                creatureTag = 0;
+                break;
+            case "Aquaphim":
+                creatureTag = 1;
+                break;
+            case "Lilibun":
+                creatureTag = 2;
+                break;
+            case "Slugger":
+                creatureTag = 3;
+                break;
+            default:
+                Debug.Log("Invalid creature type! " + creatureType);
+                return;
+        }
+
+        var instance = SFXPlayer.CreateInstance(CreatureBefriendSFX);
+        instance.set3DAttributes(SFXUtils.To3DAttributes(position));
+        instance.setParameterByName("Creature Tag", creatureTag);
         instance.start();
         instance.release();
     }
