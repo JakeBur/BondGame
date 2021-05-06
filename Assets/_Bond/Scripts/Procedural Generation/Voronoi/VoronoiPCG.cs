@@ -392,7 +392,7 @@ public class VoronoiPCG : MonoBehaviour
 			overlap = false;
 			foreach(GameObject e in placedEncounters){
 				//If chosen cell is too close to another encounter, remove it from the possible encounter cells
-				if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 70)
+				if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 55)
 				{
 					possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
 					overlap = true;
@@ -407,9 +407,9 @@ public class VoronoiPCG : MonoBehaviour
 			}
 
 
-			int tempPos = Random.Range(0,possibleEncounterPositions.Count-1);
-			var shop = Instantiate(Shopkeeper, new Vector3(possibleEncounterPositions[tempPos].x, 0, possibleEncounterPositions[tempPos].y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
-			possibleEncounterPositions.RemoveAt(tempPos);
+
+			var shop = Instantiate(Shopkeeper, new Vector3(randomPos.x, 0,randomPos.y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
+			possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
 			placedEncounters.Add(Shopkeeper);
 		}
 		//place random encounters on centerpoints of coarse cells
@@ -436,7 +436,7 @@ public class VoronoiPCG : MonoBehaviour
 				overlap = false;
 				foreach(GameObject e in placedEncounters){
 					//If chosen cell is too close to another encounter, remove it from the possible encounter cells
-					if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 70)
+					if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 65)
 					{
 						possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
 						overlap = true;
