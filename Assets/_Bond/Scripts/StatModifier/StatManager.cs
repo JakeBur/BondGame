@@ -49,6 +49,18 @@ public class StatManager : MonoBehaviour
         if(stats.ContainsKey(_modifier.modiferType))
         {
             Debug.Log("adding modifier " + _modifier.modiferType + " value " + _modifier.Additive);
+
+            //Check if modifying Curr_health and change value to make it not go over max
+            if(_modifier.modiferType == ModiferType.CURR_HEALTH)
+            {
+                float resultingValue = stats[ModiferType.CURR_HEALTH].modifiedValue + _modifier.Additive;
+                if(resultingValue > stats[ModiferType.MAX_HEALTH].modifiedValue)
+                {
+                    float difference = resultingValue - stats[ModiferType.MAX_HEALTH].modifiedValue;
+                    _modifier.Additive -= difference;
+                }
+            }
+
             stats[_modifier.modiferType].AddModifier(_modifier);
         }
     }
@@ -101,6 +113,7 @@ public class StatManager : MonoBehaviour
         stats[ModiferType.CURR_HEALTH].modifiedValue -= (baseAmount * (1 - stats[damageType].modifiedValue)); // FORMULA FOR DAMAGE RESISTANCE;
         // Debug.Log("Took " + (baseAmount * (1 - stats[damageType].modifiedValue)) + " damage");
         // Debug.Log("Base amount was " + baseAmount);
+        // Debug.Log("Base amount Multiplier: " + (1 - stats[damageType].modifiedValue));
 
     }
 

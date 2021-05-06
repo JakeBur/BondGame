@@ -22,6 +22,11 @@ public class PlayerAnimator : MonoBehaviour
     }
 
     public GameObject model;
+
+    //----------------------------------------------
+    // Raycast origin for determining footstep SFX
+    //----------------------------------------------
+    public GameObject raycastOrigin;
     private Animator animator => model.GetComponent<Animator>();
     private PlayerController playerController => GetComponent<PlayerController>();
 
@@ -269,7 +274,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void PlayWalkSFX()
     {
-        SFXPlayer.PlayOneShot(SFX.PlayerWalkGrassSFX, transform.position);
+        SFX.Play2DWalkSFX(raycastOrigin.transform);
     }
 
     public void PlayRollInitialSFX()
@@ -306,7 +311,10 @@ public class PlayerAnimator : MonoBehaviour
         {
             playerController.hitBoxes.slash1.SetActive(true);
         }
-    
+        else if(playerController.fsm.currentState == playerController.fsm.HeavySlash)
+        {
+            playerController.hitBoxes.heavy.SetActive(true);
+        }
     }
 
 
@@ -331,6 +339,10 @@ public class PlayerAnimator : MonoBehaviour
         else if(playerController.fsm.currentState == playerController.fsm.Slash4)
         {
             playerController.hitBoxes.slash1.SetActive(false);
+        }
+        else if(playerController.fsm.currentState == playerController.fsm.HeavySlash)
+        {
+            playerController.hitBoxes.heavy.SetActive(false);
         }
     }
 }

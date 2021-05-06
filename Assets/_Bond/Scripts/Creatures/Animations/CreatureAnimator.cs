@@ -12,6 +12,11 @@ using SFXPlayer = FMODUnity.RuntimeManager;
 public class CreatureAnimator : MonoBehaviour
 {
     public GameObject model;
+
+    //----------------------------------------------
+    // Raycast origin for determining footstep SFX
+    //----------------------------------------------
+    public GameObject raycastOrigin;
     public Animator animator => model.GetComponent<Animator>();
 
     /*
@@ -22,6 +27,8 @@ public class CreatureAnimator : MonoBehaviour
     */
 
     protected virtual void InternalEventPlayWalkSFX() {}
+    protected virtual void InternalEventAbilityDone() {}
+    protected virtual void InternalEventAttackDone() {}
 
     protected virtual void InternalSMBAbilityEnter() {}
     protected virtual void InternalSMBAbilityExit() {}
@@ -78,9 +85,26 @@ public class CreatureAnimator : MonoBehaviour
 
     public void EventPlayWalkSFX(int tag)
     {
-        SFX.Play3DWalkGrassSFX(tag, transform.position);
+        //SFX.Play3DWalkGrassSFX(tag, transform.position);
+        if (raycastOrigin == null)
+            Debug.LogError("raycastOrigin has not been assigned.", this);
+        SFX.Play3DWalkSFX(tag, raycastOrigin.transform);
 
         InternalEventPlayWalkSFX();
+    }
+
+    public void EventAbilityDone()
+    {
+        inAbility = false;
+
+        InternalEventAbilityDone();
+    }
+
+    public void EventAttackDone()
+    {
+        inAttack = false;
+
+        InternalEventAttackDone();
     }
 
     /*

@@ -15,7 +15,6 @@ public class EActionRetreat : BTLeaf
     protected override void OnEnter()
     {
         goToFarthestPoint = false;
-
     }
 
     protected override void OnExit()

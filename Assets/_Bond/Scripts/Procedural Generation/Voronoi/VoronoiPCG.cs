@@ -51,8 +51,8 @@ public class VoronoiPCG : MonoBehaviour
 	public int numberOfCreature;
 	public GameObject FragariaEncounter;
 	public GameObject AquaphimEncounter;
-	//public GameObject SherifEncounter;
-	//public GameObject PunchySnailEncounter;
+	public GameObject SheriffEncounter;
+	public GameObject PunchySnailEncounter;
 
 	public BiomeObjects meadowsObjects;
 	public BiomeObjects forestObjects;
@@ -306,7 +306,7 @@ public class VoronoiPCG : MonoBehaviour
 		progressBar.value = 100;
 		//Debug.Log("Finished : " + (Time.realtimeSinceStartup - timerStart));
 		LoadingUI.SetActive(false);
-		terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
+		//terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
 
 		PersistentData.Instance.isGeneratorDone = true;
 		yield return null;
@@ -508,23 +508,31 @@ public class VoronoiPCG : MonoBehaviour
 				Biome b = cells[GetClosestCellIndex((int)randomPos.x,(int)randomPos.y, cells)].biome;
 
 				GameObject toPlace; 
+
+				float chance = Random.Range(0f, 1f);
+
 				switch(b)
 				{//some of these are commented out until we have the creatures implemented, so for now we just have the one.
-					// case Biome.FOREST:
-					// 	//toPlace = punchy
-					// 	break;
+					case Biome.FOREST:
+						toPlace = PunchySnailEncounter;
+						break;
 					case Biome.MEADOWS:
 						toPlace = FragariaEncounter;
 						break;
-					// case Biome.MARSH:
-					// 	toPlace = AquaphimEncounter;
-					// 	break;
+					case Biome.MARSH:
+						toPlace = AquaphimEncounter;
+						break;
 					// case Biome.CORRUPTION:
 						
 					// 	break;
 					default:
 						toPlace = FragariaEncounter;
 						break;
+				}
+
+				if(chance <= .3)
+				{
+					toPlace = SheriffEncounter;
 				}
 
 				//Spawn creature encounter

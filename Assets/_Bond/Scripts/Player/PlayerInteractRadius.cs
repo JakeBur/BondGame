@@ -15,7 +15,21 @@ public class PlayerInteractRadius : MonoBehaviour
             pc.interactableObjects.Add(other.gameObject, other.gameObject.GetComponent<InteractableBase>());
             if( other.gameObject.GetComponent<InteractableBase>().showUI)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().showInteractPrompt();
+                PersistentData.Instance.hudManager.ShowInteractPrompt();
+            }
+        }
+        if(other.transform.tag == "Potion")
+        {
+            pc.interactableObjects.Add(other.gameObject, other.gameObject.GetComponent<InteractableBase>());
+            foreach(KeyValuePair<GameObject, InteractableBase> interactObj in pc.interactableObjects)
+            {
+                if(interactObj.Key.transform.tag == "Potion")
+                {
+                    PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<PotionInteractable>().relicStats,
+                                                                                            interactObj.Key.GetComponent<PotionInteractable>().cost);
+                    PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                    break;
+                }                
             }
         }
         if(other.transform.tag == "Relic")
@@ -41,14 +55,37 @@ public class PlayerInteractRadius : MonoBehaviour
             pc.interactableObjects.Remove(other.gameObject);
             if(pc.interactableObjects.Count == 0)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
+                PersistentData.Instance.hudManager.HideIntereactPrompt();
             }
             
             if(other.gameObject.layer == 13)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().HideCharacterDialogue();
+                PersistentData.Instance.hudManager.HideCharacterDialogue();
                 pc.dialogueManager = null;
                 pc.inCharacterDialog = false;
+            }
+        }
+        if(other.transform.tag == "Potion")
+        {
+            pc.interactableObjects.Remove(other.gameObject);
+            if(pc.interactableObjects.Count == 0)
+            {
+                PersistentData.Instance.hudManager.HideIntereactPrompt();
+                PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
+            }
+            else
+            {
+                foreach(KeyValuePair<GameObject, InteractableBase> interactObj in pc.interactableObjects)
+                {
+                    if(interactObj.Key.transform.tag == "Relic")
+                    {
+                        PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<RelicInteractable>().relicStats,
+                                                                                                interactObj.Key.GetComponent<RelicInteractable>().cost);
+                        PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                        break;
+                    }   
+                    PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();             
+                }
             }
         }
         if(other.transform.tag == "Relic")
@@ -56,7 +93,7 @@ public class PlayerInteractRadius : MonoBehaviour
             pc.interactableObjects.Remove(other.gameObject);
             if(pc.interactableObjects.Count == 0)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
+                PersistentData.Instance.hudManager.HideIntereactPrompt();
                 PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
             }
             else

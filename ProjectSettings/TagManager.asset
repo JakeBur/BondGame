@@ -25,6 +25,8 @@ TagManager:
   - POIFlower
   - POIOther
   - CameraManager
+  - Potion
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -41,7 +43,7 @@ TagManager:
   - MonsterGlobe
   - Dialogue
   - Camera
-  - 
+  - Terrain
   - 
   - 
   - 
