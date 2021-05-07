@@ -513,7 +513,7 @@ public class VoronoiPCG : MonoBehaviour
 				float angle;
 
 				switch(b)
-				{//some of these are commented out until we have the creatures implemented, so for now we just have the one.
+				{
 					case Biome.FOREST:
 						toPlace = PunchySnailEncounter;
 						angle = Random.Range(0,360);
