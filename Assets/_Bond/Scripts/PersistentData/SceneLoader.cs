@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public int sceneIndex;
+
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
     private void OnTriggerEnter(Collider other) 
     {
         
@@ -13,6 +21,7 @@ public class SceneLoader : MonoBehaviour
         if(other.transform.tag == "Player")
         {
             Debug.Log("try load");
+            SFX.PlayLevelTransitionSFX();
             PersistentData.Instance.LoadScene(sceneIndex);
         } 
     }

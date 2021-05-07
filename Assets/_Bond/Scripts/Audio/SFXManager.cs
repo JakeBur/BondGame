@@ -86,6 +86,7 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string ButtonClickSFX;
     [FMODUnity.EventRef] public string CreatureSwapSFX;
     [FMODUnity.EventRef] public string CreatureBefriendSFX;
+    [FMODUnity.EventRef] public string LevelTransitionSFX;
 
     private void Start()
     {
@@ -214,5 +215,10 @@ public class SFXManager : MonoBehaviour
         instance.setParameterByName("Creature Tag", creatureTag);
         instance.start();
         instance.release();
+    }
+
+    public void PlayLevelTransitionSFX()
+    {
+        SFXPlayer.PlayOneShot(LevelTransitionSFX, transform.position);
     }
 }

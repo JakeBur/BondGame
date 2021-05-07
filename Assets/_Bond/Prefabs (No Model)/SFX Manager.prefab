@@ -96,3 +96,4 @@ MonoBehaviour:
   ButtonClickSFX: event:/Sound Effects/UI SFX/Button Click
   CreatureSwapSFX: event:/Sound Effects/UI SFX/Creature Swap
   CreatureBefriendSFX: event:/Sound Effects/UI SFX/Creature Befriend
+  LevelTransitionSFX: event:/Sound Effects/UI SFX/Level Transition
