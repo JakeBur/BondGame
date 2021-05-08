@@ -63,7 +63,7 @@ public class ProjectileScript : MonoBehaviour
         if (Time.time > impactTime)
         {
             target.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
-            SFXPlayer.PlayOneShot(SFX.LeafProjectileHitSFX, transform.position);
+            SFXPlayer.PlayOneShot(SFX.EnemyLeafProjectileHitSFX, transform.position);
             End();
         }
     }

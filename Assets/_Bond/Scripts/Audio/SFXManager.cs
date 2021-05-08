@@ -59,7 +59,8 @@ public class SFXManager : MonoBehaviour
     [Header("General Enemy")]
     [FMODUnity.EventRef] public string ArenaSpawnSFX;
     [FMODUnity.EventRef] public string EnemyDeathSFX;
-    [FMODUnity.EventRef] public string LeafProjectileHitSFX;
+    [FMODUnity.EventRef] public string EnemyLeafProjectileHitSFX;
+    [FMODUnity.EventRef] public string EnemyPunchHitSFX;
 
     //----------------------
     // Donut (Melee Enemy)
