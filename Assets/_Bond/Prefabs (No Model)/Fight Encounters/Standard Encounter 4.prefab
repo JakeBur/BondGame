@@ -813,6 +813,7 @@ MonoBehaviour:
   farthestPointFromPlayer: {x: 0, y: 0, z: 0}
   numberOfCurrMeleeAttackers: 0
   numberOfCurrRangedAttackers: 0
+  encounterFinished: 0
   playerTransform: {fileID: 0}
 --- !u!136 &1823558736048597771
 CapsuleCollider:
@@ -824,7 +825,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 15
+  m_Radius: 12
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

@@ -56,3 +56,11 @@ MonoBehaviour:
     - {fileID: 5794877788283587796, guid: 68fad678f193c5f45a44b5c74f04d2c9, type: 3}
     - {fileID: 8467623601909985430, guid: a08d573f5017da9439ab3acb60622adc, type: 3}
     - {fileID: 5563957634705942178, guid: 2b44f04c2ff0f8b4381498066986377e, type: 3}
+  - percentage: 0.01
+    objects:
+    - {fileID: 4801281756750998927, guid: 91f2a70c08e4cf5429044211b969a9e2, type: 3}
+    - {fileID: 4801281756750998927, guid: 2d4959a0eec818040a7adb3a00282876, type: 3}
+  - percentage: 0.001
+    objects:
+    - {fileID: 4801281756750998927, guid: aa8b26be4c466b04e8ac325f0648de67, type: 3}
+    - {fileID: 4801281756750998927, guid: 4d32f2793187ac240b3b3920c3cf92a9, type: 3}

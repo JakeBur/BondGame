@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4805865254302324331}
   - component: {fileID: 8439190900350523854}
   - component: {fileID: 5979355479091637508}
+  - component: {fileID: 5371304761065776695}
   m_Layer: 0
-  m_Name: fragaria_statue
+  m_Name: PF_fragaria_statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,3 +81,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5371304761065776695
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330586650502581457}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2050378829609883934, guid: 8c6f3cabad44f0f45a6b5fe3718a5912, type: 3}
