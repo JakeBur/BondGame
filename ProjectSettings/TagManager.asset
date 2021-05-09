@@ -27,6 +27,7 @@ TagManager:
   - CameraManager
   - Potion
   - Water
+  - AcornBag
   layers:
   - Default
   - TransparentFX

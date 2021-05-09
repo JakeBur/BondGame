@@ -957,7 +957,7 @@ GameObject:
   - component: {fileID: 1823558736048597770}
   - component: {fileID: 1823558736048597771}
   m_Layer: 9
-  m_Name: Melee encounter
+  m_Name: _Encounter Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,6 +1038,7 @@ MonoBehaviour:
   farthestPointFromPlayer: {x: 0, y: 0, z: 0}
   numberOfCurrMeleeAttackers: 0
   numberOfCurrRangedAttackers: 0
+  encounterFinished: 0
   playerTransform: {fileID: 0}
 --- !u!136 &1823558736048597771
 CapsuleCollider:
@@ -1049,7 +1050,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 15
+  m_Radius: 12
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

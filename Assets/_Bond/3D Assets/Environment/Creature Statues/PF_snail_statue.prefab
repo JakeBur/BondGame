@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 31757378169889608}
   - component: {fileID: 4025946210654186733}
   - component: {fileID: 1169809961884031015}
+  - component: {fileID: 3020742530390342052}
   m_Layer: 0
-  m_Name: snail_statue
+  m_Name: PF_snail_statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,3 +83,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3020742530390342052
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809244433552783858}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1175508967946128956, guid: f5ae0c2e3ef0b1b4aad30c9ce1035b82, type: 3}
