@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4330921207215025693}
-  - component: {fileID: 5579923250694484841}
+  - component: {fileID: 2791639330458940143}
   m_Layer: 0
-  m_Name: RelicFragariaStatue
+  m_Name: RewardFragariaStatue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5579923250694484841
+--- !u!114 &2791639330458940143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,16 +42,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4801281756750998927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 723c7b09f3c694548965c601c9697122, type: 3}
+  m_Script: {fileID: 11500000, guid: a9158036bf0b987458a4687848dd80fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicSpawnLocations: []
-  potionSpawnLocation: {fileID: 2987494820526843197}
+  spawnLocation: {fileID: 2987494820526843197}
   relicBase: {fileID: 3018569099592749775, guid: 8a52dcb8dc1af38458c8e58baaee23f6,
     type: 3}
-  potionPrefab: {fileID: 1562028770156074076, guid: 613e02d716f4cc64f92649fa59d0eb64,
+  acornBagPrefab: {fileID: 1562028770156074076, guid: 613e02d716f4cc64f92649fa59d0eb64,
     type: 3}
   costRange: {x: 0, y: 0}
+  spawnOnStart: 1
+  relicSprite: {fileID: 7469941039214613456, guid: 039ebc7e6bc494745a6628551df07bba,
+    type: 3}
+  acornBagSprite: {fileID: 7799077114606762717, guid: eae050b15cc12ea47b332fe93f2f7f92,
+    type: 3}
 --- !u!1 &6677532837726262298
 GameObject:
   m_ObjectHideFlags: 0
