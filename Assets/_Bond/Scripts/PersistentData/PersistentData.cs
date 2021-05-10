@@ -58,6 +58,7 @@ public class PersistentData : MonoBehaviour
     public CanvasGroup loadScreen;
 
     public bool isGeneratorDone;
+    public int currRunLevel;
 
     public List<RelicStats> availableRelics;
 
@@ -297,6 +298,10 @@ public class PersistentData : MonoBehaviour
 
     IEnumerator Transition(int _scene) 
     {
+        if(_scene == 1)
+        {
+            currRunLevel = 0;
+        }
         PlayerController playerController = Player.GetComponent<PlayerController>();
 
         AsyncOperation loadNewScene;

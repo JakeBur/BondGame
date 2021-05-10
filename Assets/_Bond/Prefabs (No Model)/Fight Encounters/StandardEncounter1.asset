@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63dfbb1e1fdd64841be2350c5a869c25, type: 3}
+  m_Name: StandardEncounter1
+  m_EditorClassIdentifier: 
+  encounter: {fileID: 1823558736048597768, guid: c70a0ba4749059741893bef29fbbdd5c,
+    type: 3}
+  indicators:
+  - {fileID: 2465884402051961252, guid: 8a8ae1174fcbdfd499dd91b11f31c76e, type: 3}
+  - {fileID: 1920106683999811616, guid: 47415d5aa7bac854e9d8590c0c9ea662, type: 3}
+  - {fileID: 2027814768716513785, guid: 8d53b4b03382ed842a76fbf802b2075b, type: 3}
+  - {fileID: 4350673069867535226, guid: 7e3ec37c7468259469e5962df656a1c0, type: 3}
+  - {fileID: 1673555993349482212, guid: f8630c4999d53244db2ae7b658741b1e, type: 3}

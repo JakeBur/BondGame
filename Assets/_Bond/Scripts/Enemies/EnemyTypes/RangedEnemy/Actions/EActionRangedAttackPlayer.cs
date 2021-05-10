@@ -21,7 +21,7 @@ public class EActionRangedAttackPlayer : BTLeaf
 
     protected override void OnExit()
     {
-        enemyContext.attackCD = enemyContext.EncounterManager.currEnemyCount;
+        enemyContext.attackCD = enemyContext.EncounterManager.currEnemyCount + 1;
         enemyContext.EncounterManager.numberOfCurrRangedAttackers--;
         enemyContext.attacking = false;
     }

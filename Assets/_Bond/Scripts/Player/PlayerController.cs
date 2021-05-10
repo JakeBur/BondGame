@@ -466,7 +466,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Debug.Log("WHISTLED");
+        // Debug.Log("WHISTLED");
         SFXPlayer.PlayOneShot(SFX.PlayerWhistleSFX, transform.position);
 
         if(currCreature == null) return;

@@ -48,7 +48,7 @@ public class StatManager : MonoBehaviour
     {
         if(stats.ContainsKey(_modifier.modiferType))
         {
-            Debug.Log("adding modifier " + _modifier.modiferType + " value " + _modifier.Additive);
+            // Debug.Log("adding modifier " + _modifier.modiferType + " value " + _modifier.Additive);
 
             //Check if modifying Curr_health and change value to make it not go over max
             if(_modifier.modiferType == ModiferType.CURR_HEALTH)
