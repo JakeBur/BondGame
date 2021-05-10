@@ -97,7 +97,7 @@ public class EnemyAIContext : MonoBehaviour
         {
             attackCD -= Time.deltaTime;
         }
-        Debug.Log("Fixed Update Health Slider Value: " + healthSlider.value);
+        //Debug.Log("Fixed Update Health Slider Value: " + healthSlider.value);
     }
 
     // public void doMovement(float moveSpeed)
@@ -127,8 +127,8 @@ public class EnemyAIContext : MonoBehaviour
     {
         // healthSlider.value = (statManager.stats[ModiferType.CURR_HEALTH].modifiedValue / statManager.stats[ModiferType.MAX_HEALTH].modifiedValue) * 100;
         healthSlider.value = (statManager.getStat(ModiferType.CURR_HEALTH) / statManager.getStat(ModiferType.MAX_HEALTH)) * 100;
-        Debug.Log("UI Update Health Slider Value: " + healthSlider.value);
-        Debug.Log("Curr enemy health: " + statManager.getStat(ModiferType.CURR_HEALTH) + " from " + lastCheckedHealth);
+        //Debug.Log("UI Update Health Slider Value: " + healthSlider.value);
+        //Debug.Log("Curr enemy health: " + statManager.getStat(ModiferType.CURR_HEALTH) + " from " + lastCheckedHealth);
         // Debug.Log("Max enemy health: " + statManager.stats[ModiferType.MAX_HEALTH].modifiedValue);
     }
 

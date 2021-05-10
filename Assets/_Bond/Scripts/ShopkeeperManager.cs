@@ -27,9 +27,12 @@ public class ShopkeeperManager : MonoBehaviour
         }
 
         //Spawn potion
-        var potion = Instantiate(potionPrefab, potionSpawnLocation.position, Quaternion.Euler(new Vector3(25,-45,0)));
-        // potion.GetComponent<PotionInteractable>().relicStats = potionPrefab;
-        potion.GetComponent<PotionInteractable>().cost = Random.Range((int)costRange.x, (int)costRange.y);
-        // potion.GetComponent<PotionInteractable>().updateSprite();
+        if(potionPrefab)
+        {
+            var potion = Instantiate(potionPrefab, potionSpawnLocation.position, Quaternion.Euler(new Vector3(25,-45,0)));
+            // potion.GetComponent<PotionInteractable>().relicStats = potionPrefab;
+            potion.GetComponent<PotionInteractable>().cost = Random.Range((int)costRange.x, (int)costRange.y);
+            // potion.GetComponent<PotionInteractable>().updateSprite();
+        }
     }
 }
