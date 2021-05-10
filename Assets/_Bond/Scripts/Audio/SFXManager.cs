@@ -88,7 +88,7 @@ public class SFXManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
     }
 
     public void Play2DWalkSFX(Transform playerTransform)

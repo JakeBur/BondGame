@@ -29,7 +29,7 @@ public class RewardManager : MonoBehaviour
     private void Start()
     {
         randomRelic = Random.Range(0,PersistentData.Instance.availableRelics.Count);
-        Debug.Log("Relic Num: " + randomRelic);
+        // Debug.Log("Relic Num: " + randomRelic);
         randomNum = Random.Range(0f, 1f);
 
         //If both are given, choose one of them
@@ -89,7 +89,7 @@ public class RewardManager : MonoBehaviour
         var tempGameObj = Instantiate(relicBase, spawnLocation.position, Quaternion.Euler(new Vector3(25,-45,0)));
         Debug.Log("Setting up relic: " + randomRelic);
         tempGameObj.GetComponent<RelicInteractable>().relicStats = PersistentData.Instance.availableRelics[randomRelic]; 
-        PersistentData.Instance.availableRelics.Remove(PersistentData.Instance.availableRelics[randomRelic]);
+        // PersistentData.Instance.availableRelics.Remove(PersistentData.Instance.availableRelics[randomRelic]);
         tempGameObj.GetComponent<RelicInteractable>().cost = Random.Range((int)costRange.x, (int)costRange.y);
 
         tempGameObj.GetComponent<RelicInteractable>().updateSprite();

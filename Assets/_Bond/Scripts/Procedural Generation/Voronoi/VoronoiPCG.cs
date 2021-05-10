@@ -47,6 +47,7 @@ public class VoronoiPCG : MonoBehaviour
 	public int numberOfCombat;
 	public int numberOfCombatIndicators;
 	public List<Encounter> combatEncounters = new List<Encounter>();
+	public List<GameObject> noRotationItems = new List<GameObject>();
 
 	public int numberOfCreature;
 	public GameObject FragariaEncounter;
@@ -613,6 +614,7 @@ public class VoronoiPCG : MonoBehaviour
 						{
 							yoffset = -0.6f;
 						}
+
 						Instantiate(b.objects[Random.Range(0, b.objects.Count)],
 							new Vector3(randomPos.x, yoffset, randomPos.y),
 							Quaternion.Euler(0,Random.Range(0,360), 0), 

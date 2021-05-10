@@ -20,7 +20,7 @@ public class ShopkeeperManager : MonoBehaviour
             var tempGameObj = Instantiate(relicBase, _transform.position, Quaternion.Euler(new Vector3(25,-45,0)));
             int randomRelic = Random.Range(0,PersistentData.Instance.availableRelics.Count);
             tempGameObj.GetComponent<RelicInteractable>().relicStats = PersistentData.Instance.availableRelics[randomRelic]; 
-            PersistentData.Instance.availableRelics.Remove(PersistentData.Instance.availableRelics[randomRelic]);
+            // PersistentData.Instance.availableRelics.Remove(PersistentData.Instance.availableRelics[randomRelic]);
             tempGameObj.GetComponent<RelicInteractable>().cost = Random.Range((int)costRange.x, (int)costRange.y);
 
             tempGameObj.GetComponent<RelicInteractable>().updateSprite();
