@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88ac1c2213faa9840a512d121d74c35c, type: 3}
-  m_Name: PunchyBeegPunch
+  m_Name: PunchyBeegPunchAttack
   m_EditorClassIdentifier: 

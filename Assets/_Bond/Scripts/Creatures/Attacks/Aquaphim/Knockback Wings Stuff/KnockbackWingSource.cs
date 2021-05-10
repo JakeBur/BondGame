@@ -5,22 +5,22 @@ using UnityEngine.AI;
 public class KnockbackWingSource : MonoBehaviour
 {
 
-    public float radius = 10.0F;
-    public float power = 5.0F;
+    public float radius;
+    public float power;
     private Transform source;
     // Start is called before the first frame update
     private void Awake() 
     {
         source = gameObject.transform;
         Debug.Log(source);
-        StartCoroutine(doKnockback(.5f, 8));
+        Vector3 explosionPos = source.position;
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
+        StartCoroutine(doKnockback(.5f, 8, explosionPos, colliders));
         Destroy(gameObject, 4.5f);
     }
 
-    IEnumerator doKnockback(float duration, int count)
+    IEnumerator doKnockback(float duration, int count, Vector3 explosionPos, Collider[] colliders)
     {
-        Vector3 explosionPos = source.position;
-        Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
         int currentCount = 0;
         while(currentCount < count)
         {
@@ -30,19 +30,26 @@ public class KnockbackWingSource : MonoBehaviour
                 {
                     // Enemy = hit.GetComponent<Enemy>();
                     Rigidbody rb =  hit.GetComponent<EnemyAIContext>().rb;
-                    // rb.velocity = Vector3.zero;
-                    // rb.angularVelocity = Vector3.zero;
                     NavMeshAgent agent = hit.GetComponent<EnemyAIContext>().agent;
+                    rb.isKinematic = false;
                     agent.isStopped = true;
                     // hit.GetComponent<EnemyAIContext>().rb;
-                    agent.isStopped = false;
                     Debug.Log(hit);
                     rb.AddExplosionForce(power, explosionPos, radius, 1.0F, ForceMode.Impulse);
+                    StartCoroutine(resetForce(duration, rb, agent));
                     yield return new WaitForSeconds(duration);
                 }
             }
             // yield return new WaitForSeconds(duration);
             currentCount++;
         }
+    }
+    IEnumerator resetForce(float duration, Rigidbody rb, NavMeshAgent agent)
+    {
+        yield return new WaitForSeconds((float)(duration-.1));
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        agent.isStopped = false;
+        rb.isKinematic = true;    
     }
 }
