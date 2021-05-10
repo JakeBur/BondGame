@@ -109,7 +109,7 @@ public class SFXManager : MonoBehaviour
                     SFXPlayer.PlayOneShot(PlayerWalkGrassSFX, transform.position);
                     break;
                 case "Water":
-                    //SFXPlayer.PlayOneShot(PlayerWalkWaterSFX, transform.position);
+                    SFXPlayer.PlayOneShot(PlayerWalkWaterSFX, transform.position);
                     break;
                 default:
                     Debug.Log("2D Invalid ground");
@@ -137,7 +137,7 @@ public class SFXManager : MonoBehaviour
                     Play3DWalkOneShot(Misc3DWalkGrassSFX, tag, charTransform.position);
                     break;
                 case "Water":
-                    //Play3DWalkOneShot(Misc3DWalkWaterSFX, tag, charTransform.position);
+                    Play3DWalkOneShot(Misc3DWalkWaterSFX, tag, charTransform.position);
                     break;
                 default:
                     Debug.Log("3D Invalid ground");
