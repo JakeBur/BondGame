@@ -88,6 +88,7 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string CreatureSwapSFX;
     [FMODUnity.EventRef] public string CreatureBefriendSFX;
     [FMODUnity.EventRef] public string LevelTransitionSFX;
+    [FMODUnity.EventRef] public string RelicPickupSFX;
 
     private void Start()
     {

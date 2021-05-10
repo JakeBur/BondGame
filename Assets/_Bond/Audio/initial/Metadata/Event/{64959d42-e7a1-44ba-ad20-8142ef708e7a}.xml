@@ -120,9 +120,6 @@
 		<property name="length">
 			<value>8</value>
 		</property>
-		<property name="volume">
-			<value>-6</value>
-		</property>
 		<property name="polyphony">
 			<value>8</value>
 		</property>
@@ -376,13 +373,13 @@
 	<object class="MixerBusFader" id="{dde4a585-62e8-4775-814d-31e8d010d9a9}" />
 	<object class="AutomationPoint" id="{ab0e3736-d9f0-401e-9bc6-cc8bf80feb0d}">
 		<property name="position">
-			<value>5</value>
+			<value>2</value>
 		</property>
 		<property name="value">
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>0.283905894</value>
+			<value>-0.029830927</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{e9ccf57a-b629-40f0-8ec7-607991bb884f}">
@@ -398,7 +395,7 @@
 			<value>80</value>
 		</property>
 		<property name="value">
-			<value>-7</value>
+			<value>-14</value>
 		</property>
 	</object>
 	<object class="Automator" id="{21a1dcdd-1232-47bb-8fc4-5e6f1e9ed8e2}">
@@ -426,7 +423,7 @@
 			<value>22000</value>
 		</property>
 		<property name="curveShape">
-			<value>0.515937924</value>
+			<value>0.349285752</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{4f49823a-d3b3-4b6a-b8dd-08bba75d47ce}">
