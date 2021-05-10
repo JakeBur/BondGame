@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     {
         
         int index = Enemies.Count > 1 ? Random.Range(0,Enemies.Count) : 0;
-        GameObject enemy = Instantiate(Enemies[index], gameObject.transform.position, Quaternion.identity);
+        GameObject enemy = Instantiate(Enemies[index], gameObject.transform.position, Quaternion.identity, gameObject.transform);
         enemy.GetComponent<EnemyAIContext>().EncounterManager = _manager;
     }
 }

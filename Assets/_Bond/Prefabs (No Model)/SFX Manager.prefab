@@ -76,8 +76,9 @@ MonoBehaviour:
     Petal Saw
   ArenaSpawnSFX: event:/Sound Effects/Enemy SFX/General Enemy/Arena Spawn
   EnemyDeathSFX: event:/Sound Effects/Enemy SFX/General Enemy/Enemy Death
-  LeafProjectileHitSFX: event:/Sound Effects/Enemy SFX/General Enemy/Leaf Projectile
+  EnemyLeafProjectileHitSFX: event:/Sound Effects/Enemy SFX/General Enemy/Leaf Projectile
     Hit
+  EnemyPunchHitSFX: event:/Sound Effects/Enemy SFX/General Enemy/Punch Hit
   DonutSpawnExtendSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut NEW
     Spawn/Donut Spawn Extend
   DonutSpawnGrabSFX: event:/Sound Effects/Enemy SFX/Donut (Melee Enemy)/Donut NEW
@@ -95,3 +96,6 @@ MonoBehaviour:
   MenuOpenSFX: event:/Sound Effects/UI SFX/Menu Open
   ButtonClickSFX: event:/Sound Effects/UI SFX/Button Click
   CreatureSwapSFX: event:/Sound Effects/UI SFX/Creature Swap
+  CreatureBefriendSFX: event:/Sound Effects/UI SFX/Creature Befriend
+  LevelTransitionSFX: event:/Sound Effects/UI SFX/Level Transition
+  RelicPickupSFX: event:/Sound Effects/UI SFX/Relic Pickup

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{632d4a81-d179-4229-91a7-491737521f28}">
+		<property name="name">
+			<value>Creature Tag</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b37d0d2b-31fe-4f4c-b324-34a35e8ccadc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{645f6d40-d92e-4185-9a0a-e3b05596a691}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{645f6d40-d92e-4185-9a0a-e3b05596a691}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

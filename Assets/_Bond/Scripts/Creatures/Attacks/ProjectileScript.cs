@@ -65,7 +65,7 @@ public class ProjectileScript : MonoBehaviour
         {
             target.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
             Instantiate(squibPrefab, target.transform.position, Quaternion.identity);
-            SFXPlayer.PlayOneShot(SFX.LeafProjectileHitSFX, transform.position);
+            SFXPlayer.PlayOneShot(SFX.EnemyLeafProjectileHitSFX, transform.position);
             End();
         }
     }

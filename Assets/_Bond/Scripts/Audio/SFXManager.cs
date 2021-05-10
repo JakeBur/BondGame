@@ -59,7 +59,8 @@ public class SFXManager : MonoBehaviour
     [Header("General Enemy")]
     [FMODUnity.EventRef] public string ArenaSpawnSFX;
     [FMODUnity.EventRef] public string EnemyDeathSFX;
-    [FMODUnity.EventRef] public string LeafProjectileHitSFX;
+    [FMODUnity.EventRef] public string EnemyLeafProjectileHitSFX;
+    [FMODUnity.EventRef] public string EnemyPunchHitSFX;
 
     //----------------------
     // Donut (Melee Enemy)
@@ -85,10 +86,13 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string MenuOpenSFX;
     [FMODUnity.EventRef] public string ButtonClickSFX;
     [FMODUnity.EventRef] public string CreatureSwapSFX;
+    [FMODUnity.EventRef] public string CreatureBefriendSFX;
+    [FMODUnity.EventRef] public string LevelTransitionSFX;
+    [FMODUnity.EventRef] public string RelicPickupSFX;
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
     }
 
     public void Play2DWalkSFX(Transform playerTransform)
@@ -105,7 +109,7 @@ public class SFXManager : MonoBehaviour
                     SFXPlayer.PlayOneShot(PlayerWalkGrassSFX, transform.position);
                     break;
                 case "Water":
-                    //SFXPlayer.PlayOneShot(PlayerWalkWaterSFX, transform.position);
+                    SFXPlayer.PlayOneShot(PlayerWalkWaterSFX, transform.position);
                     break;
                 default:
                     Debug.Log("2D Invalid ground");
@@ -133,7 +137,7 @@ public class SFXManager : MonoBehaviour
                     Play3DWalkOneShot(Misc3DWalkGrassSFX, tag, charTransform.position);
                     break;
                 case "Water":
-                    //Play3DWalkOneShot(Misc3DWalkWaterSFX, tag, charTransform.position);
+                    Play3DWalkOneShot(Misc3DWalkWaterSFX, tag, charTransform.position);
                     break;
                 default:
                     Debug.Log("3D Invalid ground");
@@ -184,5 +188,39 @@ public class SFXManager : MonoBehaviour
         instance.setParameterByName("Count", tag);
         instance.start();
         instance.release();
+    }
+
+    public void PlayCreatureBefriendSFX(string creatureType, Vector3 position = new Vector3())
+    {
+        int creatureTag;
+        switch(creatureType)
+        {
+            case "Fragaria":
+                creatureTag = 0;
+                break;
+            case "Aquaphim":
+                creatureTag = 1;
+                break;
+            case "Lilibun":
+                creatureTag = 2;
+                break;
+            case "Slugger":
+                creatureTag = 3;
+                break;
+            default:
+                Debug.Log("Invalid creature type! " + creatureType);
+                return;
+        }
+
+        var instance = SFXPlayer.CreateInstance(CreatureBefriendSFX);
+        instance.set3DAttributes(SFXUtils.To3DAttributes(position));
+        instance.setParameterByName("Creature Tag", creatureTag);
+        instance.start();
+        instance.release();
+    }
+
+    public void PlayLevelTransitionSFX()
+    {
+        SFXPlayer.PlayOneShot(LevelTransitionSFX, transform.position);
     }
 }

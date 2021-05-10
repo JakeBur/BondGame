@@ -48,5 +48,10 @@ public class FragariaAnimator : CreatureAnimator
         GameObject slash = Instantiate(petalSawVFXPrefab, transform.position, Quaternion.identity);
         slash.transform.LookAt(transform.position + transform.forward);
         Debug.Log("playing from animation event");
+	}
+	
+    public void EventPlayBasicAttackImpactSFX()
+    {
+        SFXPlayer.PlayOneShot(SFX.EnemyPunchHitSFX);
     }
 }

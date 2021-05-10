@@ -466,7 +466,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Debug.Log("WHISTLED");
+        // Debug.Log("WHISTLED");
         SFXPlayer.PlayOneShot(SFX.PlayerWhistleSFX, transform.position);
 
         if(currCreature == null) return;
@@ -588,17 +588,18 @@ public class PlayerController : MonoBehaviour
     {
         if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
         {
+            if(SceneManager.GetActiveScene().name == "Tutorial" )
+            {
+                //deathscreen prompt
+                //warpPlayer(tutorialManager.currspawnpoint);
+                //reset last encounter fight
+            }
+            //display death screen
+            //prob ask for a prompt
             // Hardcoded value: Teleports to Farm
             PersistentData.Instance.LoadScene(1);
 
-            //Reset creature if knocked out
-            if( currCreatureContext != null )
-            {
-                currCreatureContext.enthusiasmInteracted = false;
-                currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
-            }
-            //Update the creature's Enthusiasm Bar
-            // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+            //healing is done in persistent data using HealMaxHealth()
         }
        
     }
