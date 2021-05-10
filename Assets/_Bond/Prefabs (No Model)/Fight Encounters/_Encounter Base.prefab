@@ -924,7 +924,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b52bb3bcae46da74997ec68e316a7652, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1026,12 +1026,7 @@ MonoBehaviour:
     waitUntilEnemiesLeft: 0
     index: 0
     spawners:
-    - {fileID: 1823558736675524420}
     - {fileID: 1823558736329723829}
-    - {fileID: 2689973366931324267}
-    - {fileID: 2689973366936057927}
-    - {fileID: 5263325069144361495}
-    - {fileID: 3594050469930730129}
   - spawnWholeWave: 1
     waitUntilEnemiesLeft: 0
     index: 0
@@ -1039,13 +1034,6 @@ MonoBehaviour:
     - {fileID: 6363204736057319057}
     - {fileID: 6511716326348270092}
     - {fileID: 3201304443971535752}
-    - {fileID: 1322084495873131413}
-    - {fileID: 595660531387492398}
-    - {fileID: 3724731893401155635}
-    - {fileID: 7817798020669755550}
-    - {fileID: 7817798020669755550}
-    - {fileID: 7817798020669755550}
-    - {fileID: 7817798020669755550}
   barrier: {fileID: 6602103991835768890}
   vfx: {fileID: 228601453632412501}
   blobSpawnRadius: 15
@@ -1294,7 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 878230852319099018, guid: 64129f13b4a350142a08e06d1b36e1e3, type: 3}
+  - {fileID: 878230852319099018, guid: 6b6a408c04e8a23448f91299e1e8ea51, type: 3}
 --- !u!1 &1823558736714116909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,7 +2558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2482319853614760200
 Transform:
   m_ObjectHideFlags: 0
@@ -2611,7 +2599,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2f29b66e068470c48b3ad360cc93412d, type: 2}
+  - {fileID: 2100000, guid: 2da877a06620f614c92f35c3cabfc76b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
