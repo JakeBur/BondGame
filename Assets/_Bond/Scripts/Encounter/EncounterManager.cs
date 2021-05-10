@@ -39,11 +39,14 @@ public class EncounterManager : MonoBehaviour
     public int numberOfCurrMeleeAttackers;
     [HideInInspector]
     public int numberOfCurrRangedAttackers;
+    [HideInInspector]
+    public bool encounterFinished;
 
     // private bool playerInside;
     // private bool creature1Inside;
     // private bool creature2Inside;
     private PlayerController pc;
+    public RewardManager rewardManager;
     // [HideInInspector]
     // public int numberOfCurrSwarmAttackers;
     [HideInInspector]
@@ -62,6 +65,7 @@ public class EncounterManager : MonoBehaviour
     private void Start() 
     {
         pc = PersistentData.Instance.Player.GetComponent<PlayerController>();
+        encounterFinished = false;
     }
 
     private void Awake() 
@@ -74,15 +78,7 @@ public class EncounterManager : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
-            //Warp creatures to player
-            if(pc.currCreature)
-            {
-                pc.currCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
-            }
-            if(pc.swapCreature)
-            {
-                pc.swapCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
-            }
+
             
             startEncounter();
         //    playerInside = true;
@@ -146,9 +142,19 @@ public class EncounterManager : MonoBehaviour
     //     }
     // }
 
-    private void startEncounter()
+    public void startEncounter()
     {
         //SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
+        //Warp creatures to player
+        if(pc.currCreature)
+        {
+            pc.currCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
+        }
+        if(pc.swapCreature)
+        {
+            pc.swapCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
+        }
+
         for(int i = 0; i < blobAmount; i++)
         {
             Vector2 randomPos = Random.insideUnitCircle;
@@ -252,7 +258,8 @@ public class EncounterManager : MonoBehaviour
         //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
-
+        encounterFinished = true;
+        rewardManager.spawnReward();
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
     }
 }

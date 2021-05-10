@@ -75,18 +75,18 @@ public class EnemyAIContext : MonoBehaviour
     private void Start() {
         player = PersistentData.Instance.Player;
         //player = GameObject.FindGameObjectWithTag("Player");
-        lastCheckedHealth = statManager.stats[ModiferType.CURR_HEALTH].modifiedValue;
+        lastCheckedHealth = statManager.getStat(ModiferType.CURR_HEALTH);
     }
 
     private void FixedUpdate() 
     {
         //Check for damage and update health UI accordingly
-        if(statManager.stats[ModiferType.CURR_HEALTH].modifiedValue < lastCheckedHealth)
+        if(statManager.getStat(ModiferType.CURR_HEALTH) < lastCheckedHealth)
         {
             tookDamage = true;
-            lastDamageTaken = lastCheckedHealth - statManager.stats[ModiferType.CURR_HEALTH].modifiedValue;
+            lastDamageTaken = lastCheckedHealth - statManager.getStat(ModiferType.CURR_HEALTH);
             healthUIUpdate();
-            lastCheckedHealth = statManager.stats[ModiferType.CURR_HEALTH].modifiedValue;
+            lastCheckedHealth = statManager.getStat(ModiferType.CURR_HEALTH);
 
             hitVFX.Play();
         }
@@ -97,7 +97,7 @@ public class EnemyAIContext : MonoBehaviour
         {
             attackCD -= Time.deltaTime;
         }
-
+        //Debug.Log("Fixed Update Health Slider Value: " + healthSlider.value);
     }
 
     // public void doMovement(float moveSpeed)
@@ -125,7 +125,11 @@ public class EnemyAIContext : MonoBehaviour
 
     void healthUIUpdate()
     {
-        healthSlider.value = (statManager.stats[ModiferType.CURR_HEALTH].modifiedValue / statManager.stats[ModiferType.MAX_HEALTH].modifiedValue) * 100;
+        // healthSlider.value = (statManager.stats[ModiferType.CURR_HEALTH].modifiedValue / statManager.stats[ModiferType.MAX_HEALTH].modifiedValue) * 100;
+        healthSlider.value = (statManager.getStat(ModiferType.CURR_HEALTH) / statManager.getStat(ModiferType.MAX_HEALTH)) * 100;
+        //Debug.Log("UI Update Health Slider Value: " + healthSlider.value);
+        //Debug.Log("Curr enemy health: " + statManager.getStat(ModiferType.CURR_HEALTH) + " from " + lastCheckedHealth);
+        // Debug.Log("Max enemy health: " + statManager.stats[ModiferType.MAX_HEALTH].modifiedValue);
     }
 
     public void dropGold()

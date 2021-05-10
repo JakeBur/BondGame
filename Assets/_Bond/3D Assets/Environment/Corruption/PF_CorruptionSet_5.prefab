@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 7985191694315210790}
   - component: {fileID: 256867598526601467}
   - component: {fileID: 5850616440641125809}
+  - component: {fileID: 123218243441597329}
   m_Layer: 0
   m_Name: rocks.001
   m_TagString: Untagged
@@ -435,6 +436,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &123218243441597329
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4501186569197167016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6329468206563499160, guid: 2f38a84ff5aa3e24985c55880652b6d0, type: 3}
 --- !u!1 &4752391193132270771
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +461,7 @@ GameObject:
   - component: {fileID: 917334196793471776}
   - component: {fileID: 3466834821534090885}
   - component: {fileID: 9193931839183573610}
+  - component: {fileID: 8323168989575235011}
   m_Layer: 0
   m_Name: CorruptedTree1
   m_TagString: Untagged
@@ -514,6 +530,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8323168989575235011
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752391193132270771}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5519812569053469196, guid: 2f38a84ff5aa3e24985c55880652b6d0, type: 3}
 --- !u!1 &6534491845629017763
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string PlayerWalkGrassSFX;
     [FMODUnity.EventRef] public string PlayerRollGrassInitialSFX;
     [FMODUnity.EventRef] public string PlayerRollGrassSecondarySFX;
+    [FMODUnity.EventRef] public string PlayerWalkWaterSFX;
 
     //-----------------------
     // Player Attacks Sword
@@ -40,6 +41,7 @@ public class SFXManager : MonoBehaviour
     //----------------------------
     [Header("Creature + Enemy Movement")]
     [FMODUnity.EventRef] public string Misc3DWalkGrassSFX;
+    [FMODUnity.EventRef] public string Misc3DWalkWaterSFX;
 
     //-----------
     // Fragaria
@@ -86,7 +88,78 @@ public class SFXManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void Play2DWalkSFX(Transform playerTransform)
+    {
+        int waterLayerMask = 1 << 4;
+        int groundLayerMask = 1 << 15;
+        RaycastHit hit;
+
+        if (Physics.Raycast(playerTransform.position, playerTransform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, waterLayerMask | groundLayerMask))
+        {
+            switch(hit.collider.tag)
+            {
+                case "Terrain":
+                    SFXPlayer.PlayOneShot(PlayerWalkGrassSFX, transform.position);
+                    break;
+                case "Water":
+                    //SFXPlayer.PlayOneShot(PlayerWalkWaterSFX, transform.position);
+                    break;
+                default:
+                    Debug.Log("2D Invalid ground");
+                    return;
+            }
+        }
+        else
+        {
+            Debug.Log("2D Invalid ground");
+            return;
+        }
+    }
+
+    public void Play3DWalkSFX(int tag, Transform charTransform)
+    {
+        int waterLayerMask = 1 << 4;
+        int groundLayerMask = 1 << 15;
+        RaycastHit hit;
+
+        if (Physics.Raycast(charTransform.position, charTransform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, waterLayerMask | groundLayerMask))
+        {
+            switch(hit.collider.tag)
+            {
+                case "Terrain":
+                    Play3DWalkOneShot(Misc3DWalkGrassSFX, tag, charTransform.position);
+                    break;
+                case "Water":
+                    //Play3DWalkOneShot(Misc3DWalkWaterSFX, tag, charTransform.position);
+                    break;
+                default:
+                    Debug.Log("3D Invalid ground");
+                    return;
+            }
+        }
+        else
+        {
+            Debug.Log("3D Invalid ground");
+            return;
+        }
+    }
+
+    private void Play3DWalkOneShot(string eventPath, int tag, Vector3 position = new Vector3())
+    {
+        //--------------------------------
+        // List of creature + enemy tags
+        // 0 - Fragaria
+        // 1 - Rabbit
+        // 2 - Donut (Melee Enemy)
+        //--------------------------------
+        var instance = SFXPlayer.CreateInstance(eventPath);
+        instance.set3DAttributes(SFXUtils.To3DAttributes(position));
+        instance.setParameterByName("MoverTag", tag);
+        instance.start();
+        instance.release();
     }
 
     public void Play3DWalkGrassSFX(int tag, Vector3 position = new Vector3())
