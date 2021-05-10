@@ -56,3 +56,9 @@ MonoBehaviour:
     - {fileID: 5794877788283587796, guid: 68fad678f193c5f45a44b5c74f04d2c9, type: 3}
     - {fileID: 8467623601909985430, guid: a08d573f5017da9439ab3acb60622adc, type: 3}
     - {fileID: 5563957634705942178, guid: 2b44f04c2ff0f8b4381498066986377e, type: 3}
+  - percentage: 0.01
+    objects:
+    - {fileID: 4801281756750998927, guid: 91f2a70c08e4cf5429044211b969a9e2, type: 3}
+    - {fileID: 7201079461714350030, guid: 1f24e3843173f4c4dae3011a65b4fc56, type: 3}
+    - {fileID: 4801281756750998927, guid: aa8b26be4c466b04e8ac325f0648de67, type: 3}
+    - {fileID: 570400069474881886, guid: 35b82a5bb9dfc3a40b4e7316525ecacc, type: 3}

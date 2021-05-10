@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Monster Globe
-  m_Shader: {fileID: 4800000, guid: 498f857b3631268478c084e1e0f0f798, type: 3}
+  m_Shader: {fileID: 4800000, guid: f64e240ab0ba25f48ae657154510b04c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -67,6 +67,7 @@ Material:
     - _Metallic: 0
     - _NoiseScrollSpeed: 1
     - _OcclusionStrength: 1
+    - _Opacity: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -79,10 +80,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.33962262, g: 0, b: 0.29543486, a: 1}
+    - _Color: {r: 0.33962253, g: 0, b: 0.29543477, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Highlight: {r: 1, g: 1, b: 1, a: 1}
-    - _InteriorColor: {r: 0.8962264, g: 0.16936214, b: 0.114142045, a: 1}
+    - _InteriorColor: {r: 0.8962264, g: 0.16936189, b: 0.114141785, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
 --- !u!114 &7213264586001831277
 MonoBehaviour:

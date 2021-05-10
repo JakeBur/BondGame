@@ -3377,9 +3377,9 @@ GameObject:
   - component: {fileID: 562641124}
   - component: {fileID: 562641123}
   - component: {fileID: 562641122}
-  m_Layer: 9
+  m_Layer: 4
   m_Name: water plane
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3393,7 +3393,7 @@ MeshCollider:
   m_GameObject: {fileID: 562641121}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -7352,9 +7352,9 @@ GameObject:
   - component: {fileID: 1390990456}
   - component: {fileID: 1390990455}
   - component: {fileID: 1390990454}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Terrain_(-145.3, 0.5, 106.9)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7956,6 +7956,41 @@ RectTransform:
   m_AnchoredPosition: {x: 13.915192, y: 38.936596}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!84 &1535067603
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1284
+  m_Height: 752
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!4 &1549152954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 295765139028181361, guid: 9b40db46dc0de524caa86d3cad49dc60,

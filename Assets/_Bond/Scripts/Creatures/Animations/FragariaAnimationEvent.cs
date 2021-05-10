@@ -20,4 +20,9 @@ public class FragariaAnimationEvent : CreatureAnimationEvent
     {
         fragariaAnimator.EventPlayPetalThrowEndingSFX();
     }
+
+    public void PlayBasicAttackImpactSFX()
+    {
+        fragariaAnimator.EventPlayBasicAttackImpactSFX();
+    }
 }
