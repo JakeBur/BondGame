@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94078240c5894694691768432ef8ffd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dfc6b70d66560c47822f0d55e514350, type: 3}
   m_Name: PunchySnailPowerAttack
   m_EditorClassIdentifier: 

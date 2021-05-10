@@ -38,6 +38,8 @@ public class EnemyWeaponTrigger : MonoBehaviour
             // other.GetComponent<PlayerController>().isHit = true;
 
             SFXPlayer.PlayOneShot(SFX.PlayerDamagedDonutSFX, transform.position);
+
+            DisableHitbox();
         }
         // else if(other.gameObject.tag == "CaptCreature")
         // {
@@ -57,5 +59,9 @@ public class EnemyWeaponTrigger : MonoBehaviour
     //     hitbox.enabled = !hitbox.enabled;
     // }
 
+    private void DisableHitbox()
+    {
+        GetComponent<BoxCollider>().enabled = false;
+    }
     
 }

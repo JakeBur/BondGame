@@ -15,12 +15,18 @@ using SFXPlayer = FMODUnity.RuntimeManager;
 public class PlayerAnimator : MonoBehaviour
 {
     [Serializable]
-    struct VFXData
+    public struct VFXData
     {
         public List<GameObject> slashes;
+        public GameObject enemySquib;
     }
 
     public GameObject model;
+
+    //----------------------------------------------
+    // Raycast origin for determining footstep SFX
+    //----------------------------------------------
+    public GameObject raycastOrigin;
     private Animator animator => model.GetComponent<Animator>();
     private PlayerController playerController => GetComponent<PlayerController>();
 
@@ -28,8 +34,9 @@ public class PlayerAnimator : MonoBehaviour
     public ParticleSystem heavyChargeVfx;
     public ParticleSystem heavyHitVfx;
     public ParticleSystem slashVfx;
+
     [SerializeField]
-    private VFXData vfxData;
+    public VFXData vfxData;
 
     /*
     *   Constants
@@ -267,7 +274,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void PlayWalkSFX()
     {
-        SFXPlayer.PlayOneShot(SFX.PlayerWalkGrassSFX, transform.position);
+        SFX.Play2DWalkSFX(raycastOrigin.transform);
     }
 
     public void PlayRollInitialSFX()

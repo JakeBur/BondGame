@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5712639525128758340}
   - component: {fileID: 7540055092833489038}
   m_Layer: 0
-  m_Name: big_fragaria_flower3
+  m_Name: PF_big_fragaria_flower3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2315072d335da43439ee6ab5ffe4bf0a, type: 2}
+  - {fileID: 2100000, guid: 5b7b04e11c7f5ec4bb3dbae555651079, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

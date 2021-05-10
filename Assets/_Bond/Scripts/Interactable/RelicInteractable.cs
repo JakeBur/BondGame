@@ -2,11 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class RelicInteractable : InteractableBase
 {
     public RelicStats relicStats;
     public SpriteRenderer spriteRenderer;
     public int cost = 1;
+
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     private void Awake() 
     {
@@ -27,7 +40,7 @@ public class RelicInteractable : InteractableBase
             pc.interactableObjects.Remove(gameObject);
             if(pc.interactableObjects.Count == 0)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
+                PersistentData.Instance.hudManager.HideIntereactPrompt();
                 PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
             }
             else
@@ -44,7 +57,7 @@ public class RelicInteractable : InteractableBase
                 }
             }
 
-
+            SFXPlayer.PlayOneShot(SFX.RelicPickupSFX);
             Destroy(gameObject);
         }
         

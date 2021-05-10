@@ -14,24 +14,24 @@ public class PersistentData : MonoBehaviour
     [Header("PlayerReference")]
     public GameObject PlayerPrefab;
     public GameObject Player { get; private set; }
-    private GameObject player;
 
     [Header("CameraReference")]
     public GameObject CameraPrefab;
     public GameObject Camera { get; private set; }
     public CameraManager CameraManager { get; private set; }
 
-    [Header("UIReference")]
-    public GameObject UIPrefab;
-    public GameObject UI { get; private set; }
-    private GameObject ui;
+    [Header("HUDReference")]
+    public GameObject HUDPrefab;
+    public GameObject HUDObject;
+    public hudUI hudManager { get; private set; }
     [SerializeField]
-    private bool displayUI = true;
+    private bool displayHUD = true;
 
     [Header("PauseReference")]
     public GameObject PauseMenuPrefab;
     public GameObject PauseMenu { get; private set; }
     private GameObject pauseMenu;
+    public PauseUI pauseUI { get; private set; }
 
     [Header("StatUIReference")]
     public GameObject StatUIPrefab;
@@ -58,6 +58,7 @@ public class PersistentData : MonoBehaviour
     public CanvasGroup loadScreen;
 
     public bool isGeneratorDone;
+    public int currRunLevel;
 
     public List<RelicStats> availableRelics;
 
@@ -97,7 +98,7 @@ public class PersistentData : MonoBehaviour
 
         SetShopRelicUIReference();
 
-        SetUIReference();
+        SetHUDReference();
 
         SetPauseMenuReference();
 
@@ -108,7 +109,7 @@ public class PersistentData : MonoBehaviour
         SetSFXManagerReference();
 
         // Set Camera to follow player
-        CameraManager.SetCameraTarget(Player, true );
+        CameraManager.ResetCameraTargetToPlayer( true );
 
         var settings = PauseMenu.transform.Find("Settings");
         var backdrop = settings.Find("backdrop");
@@ -183,26 +184,27 @@ public class PersistentData : MonoBehaviour
         }
     }
 
-    private void SetUIReference()
+    private void SetHUDReference()
     {
-        if(UI == null)
+        if(HUDObject == null)
         {
             try
             {
-                UI = GameObject.FindGameObjectWithTag("UI");
-                if(UI == null)
+                HUDObject = GameObject.FindGameObjectWithTag("UI");
+                if(HUDObject == null)
                 {
-                    UI = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
-                    UI.SetActive( displayUI );
+                    HUDObject = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
                 }
             }
             catch
             {
-                UI = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
-                UI.SetActive( displayUI );
+                HUDObject = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
             }
-            
         }
+
+        HUDObject.SetActive( displayHUD );
+
+        hudManager = HUDObject.GetComponent<hudUI>();
     }
 
     private void SetPauseMenuReference()
@@ -223,6 +225,8 @@ public class PersistentData : MonoBehaviour
             }
             
         }
+
+        pauseUI = PauseMenu.GetComponent<PauseUI>();
     }
 
     private void SetStatUIReference()
@@ -294,6 +298,10 @@ public class PersistentData : MonoBehaviour
 
     IEnumerator Transition(int _scene) 
     {
+        if(_scene == 1)
+        {
+            currRunLevel = 0;
+        }
         PlayerController playerController = Player.GetComponent<PlayerController>();
 
         AsyncOperation loadNewScene;
@@ -310,14 +318,14 @@ public class PersistentData : MonoBehaviour
         //probably want to make the game "pause" so you cant move or die
 
         //Hide UI while loading
-        UI.SetActive(false);
+        HUDObject.SetActive(false);
        
         //make child everything we want to keep
         MakeChild(Player);
         MakeChild(playerController.currCreature);
         MakeChild(playerController.swapCreature);
         MakeChild(Camera);
-        MakeChild(UI);
+        MakeChild(HUDObject);
         MakeChild(PauseMenu);
         MakeChild(StatUI);
         MakeChild(ShopRelicUI);
@@ -340,12 +348,13 @@ public class PersistentData : MonoBehaviour
         UnmakeChild(playerController.currCreature);
         UnmakeChild(playerController.swapCreature);
         UnmakeChild(Camera);
-        UnmakeChild(UI);
+        UnmakeChild(HUDObject);
         UnmakeChild(PauseMenu);
         UnmakeChild(StatUI);
         UnmakeChild(ShopRelicUI);
 
         CameraManager.SetCameraDistanceForScene();
+        CameraManager.ResetCameraTargetToPlayer( true );
 
         //set players position in new scene
         //CALL BUILD LEVEL, WHICH SHOULD GENERATE EVERYTHING, INCLUDING A SPAWNPOINT;
@@ -402,14 +411,17 @@ public class PersistentData : MonoBehaviour
              playerController.swapCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
         }
 
+        playerController.HealMaxHealth();
+
         //Turn UI back on
-        UI.SetActive(true);
+        HUDObject.SetActive(true);
         //Set hurt feedback alpha to 0
-        UI.GetComponent<UIUpdates>().HurtFeedback(0, 0.0f);
+        hudManager.HurtFeedback(0, 0.0f);
         /*
             //transition IN
             yield return StartCoroutine(FadeLoadingScreen(0, 1));
         */
+
         yield return StartCoroutine(FadeOutScreen(1));
 
 
@@ -474,6 +486,7 @@ public class PersistentData : MonoBehaviour
             yield return null;
         }
         loadScreen.alpha = 0;
+        
     }
 
     public void SaveControls()

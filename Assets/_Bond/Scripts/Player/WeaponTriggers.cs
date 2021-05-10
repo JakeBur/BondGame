@@ -18,13 +18,16 @@ public class WeaponTriggers : MonoBehaviour
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
 
-    private StatManager ps;
-    private PlayerStateMachine fsm;
+    private StatManager statManager;
+    private PlayerStateMachine playerStateMachine;
+    private PlayerAnimator playerAnimator;
     // Start is called before the first frame update
     private void Start() 
     {
-        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<StatManager>();
-        fsm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+        statManager = GameObject.FindGameObjectWithTag("Player").GetComponent<StatManager>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+        playerStateMachine = PersistentData.Instance.Player.GetComponent<PlayerStateMachine>();
+        playerAnimator = PersistentData.Instance.Player.GetComponent<PlayerAnimator>();
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -33,78 +36,59 @@ public class WeaponTriggers : MonoBehaviour
         {
             EnemyAIContext enemyAIContext = other.gameObject.GetComponent<EnemyAIContext>();
 
-            float damage = ps.getStat(ModiferType.DAMAGE);
+            float damage = statManager.getStat(ModiferType.DAMAGE);
 
             //Check for crits
-            int range = (int) Mathf.Round(100/ps.getStat(ModiferType.CRIT_CHANCE));
+            int range = (int) Mathf.Round(100/statManager.getStat(ModiferType.CRIT_CHANCE));
             if(Random.Range(1, range) == 1)
             {
-                damage *= ps.getStat(ModiferType.CRIT_DAMAGE);
-                // Debug.Log("crit hit");
+                damage *= statManager.getStat(ModiferType.CRIT_DAMAGE);
+                SFXPlayer.PlayOneShot(SFX.PlayerSwordCritSFX, transform.position);
             }
 
+            float damageModifier = 1.0f;
+
             // Check which attack state we're in to determine damage
-            if(fsm.currentState == fsm.Slash0)
+            if (playerStateMachine.currentState == playerStateMachine.Slash0)
             {
-                enemyAIContext.statManager.TakeDamage( damage * 1.2f, ModiferType.MELEE_RESISTANCE);
-                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
-
-                checkForCrit(damage);
+                damageModifier = 1.2f;
             } 
-            else if(fsm.currentState == fsm.Slash1)
+            else if(playerStateMachine.currentState == playerStateMachine.Slash1)
             {
-                enemyAIContext.statManager.TakeDamage( damage * 1f, ModiferType.MELEE_RESISTANCE);
-                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
-
-                checkForCrit(damage);
+                damageModifier = 1f;
             } 
-            else if(fsm.currentState == fsm.Slash2)
+            else if(playerStateMachine.currentState == playerStateMachine.Slash2)
             {
-                enemyAIContext.statManager.TakeDamage( damage * 1f, ModiferType.MELEE_RESISTANCE);
-                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
-
-                checkForCrit(damage);
+                damageModifier = 1f;
             } 
-            else if(fsm.currentState == fsm.Slash3)
+            else if(playerStateMachine.currentState == playerStateMachine.Slash3)
             {
-                enemyAIContext.statManager.TakeDamage( damage * 1f, ModiferType.MELEE_RESISTANCE);
-                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
-
-                checkForCrit(damage);
+                damageModifier = 1f;
             } 
-            else if(fsm.currentState == fsm.Slash4)
+            else if(playerStateMachine.currentState == playerStateMachine.Slash4)
             {
-                enemyAIContext.statManager.TakeDamage( damage * 1.5f, ModiferType.MELEE_RESISTANCE);
-                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
-
-                checkForCrit(damage);
+                damageModifier = 1.5f;
             } 
-            else if(fsm.currentState == fsm.HeavySlash)
+            else if(playerStateMachine.currentState == playerStateMachine.HeavySlash)
             {
-                enemyAIContext.statManager.TakeDamage( damage * 2f, ModiferType.MELEE_RESISTANCE);
-                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
+                damageModifier = 2f;
+            }
 
-                checkForCrit(damage);
-            } 
-            // else
-            // {
-            //     Debug.Log("Default Damage");
-            //     other.gameObject.GetComponent<EnemyAIContext>().takeDamage(ps.attack1Damage);
-            // }
-            
-        } 
+            enemyAIContext.statManager.TakeDamage(damage * damageModifier, ModiferType.MELEE_RESISTANCE);
+
+            GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, enemyAIContext.transform);
+            squib.transform.localPosition = Vector3.up * 0.7f;
+            //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, enemyAIContext.transform.position, Quaternion.identity);
+            //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, transform.position, Quaternion.identity);
+            //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, Vector3.zero, Quaternion.identity);
+            squib.transform.LookAt(squib.transform.position + new Vector3(transform.forward.x, 0, transform.forward.z));
+
+            SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
+        }
         else if(other.gameObject.tag == "FruitTree")
         {
             print("Hit tree with sword");
             other.gameObject.GetComponent<FruitTree>().dropFruit();
-        }
-    }
-    
-    private void checkForCrit( float damage )
-    {
-        if (damage != ps.getStat(ModiferType.DAMAGE))
-        {
-            SFXPlayer.PlayOneShot(SFX.PlayerSwordCritSFX, transform.position);
         }
     }
 }

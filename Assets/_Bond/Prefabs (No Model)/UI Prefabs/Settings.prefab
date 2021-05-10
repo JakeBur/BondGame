@@ -3705,7 +3705,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -6563,7 +6563,6 @@ GameObject:
   - component: {fileID: 8452791767616606680}
   - component: {fileID: 8452791767616606681}
   - component: {fileID: 8452791767616606682}
-  - component: {fileID: 8452791767616606683}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -6651,18 +6650,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8452791767616606683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8452791767616606684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8c5a735a77b914e9d1c58f65134e81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8452791767648460027
 GameObject:
   m_ObjectHideFlags: 0

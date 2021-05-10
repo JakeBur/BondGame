@@ -105,10 +105,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 200
+  far clip plane: 136.71
   field of view: 10
   orthographic: 0
-  orthographic size: 6
+  orthographic size: 10.4
   m_Depth: -3
   m_CullingMask:
     serializedVersion: 2
@@ -228,11 +228,11 @@ Camera:
   far clip plane: 60
   field of view: 10
   orthographic: 0
-  orthographic size: 6
+  orthographic size: 10.4
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32535
+    m_Bits: 65303
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -350,14 +350,14 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 200
+  far clip plane: 250
   field of view: 10
   orthographic: 0
   orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32535
+    m_Bits: 65303
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresOpaqueTextureOption: 1
   m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: -1
@@ -391,7 +391,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -494,9 +494,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  toFollow: {fileID: 0}
+  cameraTarget: {fileID: 0}
   cameraObject: {fileID: 2852933630149488235}
   smoothSpeed: 7
+  roundY: 1
   cameraHeightOffset: 0
   farmCameraDistance: -70
   exploreCameraDistance: -100

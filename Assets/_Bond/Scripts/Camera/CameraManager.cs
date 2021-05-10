@@ -10,7 +10,8 @@ public class CameraManager : MonoBehaviour
     public Transform cameraTarget;
     public GameObject cameraObject;
 
-    public float smoothSpeed = 0.125f; 
+    public float smoothSpeed = 0.125f;
+    public bool roundY = true;
 
     public float cameraHeightOffset = 0f;
 
@@ -59,7 +60,10 @@ public class CameraManager : MonoBehaviour
 	{
 		Vector3 desiredPosition = cameraTarget.position + offset;
 		Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
-        smoothedPosition.y = Mathf.Round(smoothedPosition.y);
+        if( roundY )
+        {
+            smoothedPosition.y = Mathf.Round(smoothedPosition.y);
+        }
 		transform.position = smoothedPosition;
 
         if( inZoom )
@@ -196,6 +200,27 @@ public class CameraManager : MonoBehaviour
         {
             cameraDistance = combatCameraDistance;
             zoomSpeed = combatZoomSpeed;
+
+            SetCameraDistance();
+        }
+    }
+
+    // Manually set the camera distance and zoom if you don't want to use any presets
+    // if instant is false, then it lerps to it
+    // if instant is true, then it instantly sets to it
+    public void SetManualCameraDistance( float distance, float zoom, bool instant = false )
+    {
+        if( !instant )
+        {
+            desiredCameraDistance = distance;
+            zoomSpeed = zoom;
+
+            AdjustZoom();
+        }
+        else
+        {
+            cameraDistance = distance;
+            zoomSpeed = zoom;
 
             SetCameraDistance();
         }

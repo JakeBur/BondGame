@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PotionInteractable : InteractableBase
 {
-    // public RelicStats relicStats;
+    public RelicStats relicStats;
     public SpriteRenderer spriteRenderer;
     public int cost = 1;
     public float healingAmount;
@@ -30,7 +30,7 @@ public class PotionInteractable : InteractableBase
             pc.interactableObjects.Remove(gameObject);
             if(pc.interactableObjects.Count == 0)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
+                PersistentData.Instance.hudManager.HideIntereactPrompt();
                 PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
             }
             else

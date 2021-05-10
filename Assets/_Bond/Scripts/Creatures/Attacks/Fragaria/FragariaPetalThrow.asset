@@ -19,12 +19,8 @@ MonoBehaviour:
   abilityBuff: {fileID: 0}
   abilityDescription: Shoots petals at enemies for damage
   maxDistanceToEnemy: 10
-  projectileSpeed: 10
+  flyTime: 0
   projectile: {fileID: 573035498810555202, guid: bb83add4b79bde14f9153a00f2c847af,
     type: 3}
-  anims: {fileID: 0}
-  baseDmg: 50
-  isHoming: 1
-  speed: 0.2
-  damage: 100
-  target: {fileID: 0}
+  projectileSpeed: 10
+  baseDamage: 50

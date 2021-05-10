@@ -289,7 +289,7 @@ public class PlayerController : MonoBehaviour
             // Hide the prompt if no interactables are near
             if(interactableObjects.Count == 0)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().hideIntereactPrompt();
+                PersistentData.Instance.hudManager.HideIntereactPrompt();
             }
         }
     }
@@ -346,16 +346,16 @@ public class PlayerController : MonoBehaviour
             hasSwapped = !hasSwapped;
             if(hasSwapped)
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().abilityId1 = 100;
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().abilityId2 = 101;
+                PersistentData.Instance.hudManager.abilityId1 = 100;
+                PersistentData.Instance.hudManager.abilityId2 = 101;
             }
             else 
             {
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().abilityId1 = 0;
-                PersistentData.Instance.UI.GetComponent<UIUpdates>().abilityId2 = 1;
+                PersistentData.Instance.hudManager.abilityId1 = 0;
+                PersistentData.Instance.hudManager.abilityId2 = 1;
             }
             
-            PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();                // UI Update
+            PersistentData.Instance.hudManager.UpdateCreatureUI();                // UI Update
 
             SFXPlayer.PlayOneShot(SFX.CreatureSwapSFX, transform.position);                      // Sound
         }
@@ -420,28 +420,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnPause()
-    {
-        var canvas = PersistentData.Instance.PauseMenu.GetComponent<Canvas>();
-        // Unpause
-        if( canvas.enabled )
-        {
-            canvas.enabled = false;
-            Time.timeScale = 1;
-            playerInputs.SwitchCurrentActionMap("Player");
-        }
-        // Pause
-        else 
-        {   
-            canvas.enabled = true;
-            Time.timeScale = 0f;
-            playerInputs.SwitchCurrentActionMap("Menu");
-        }
-
-        SFXPlayer.PlayOneShot(SFX.MenuOpenSFX, transform.position);
-        
-    }
-
     private void OnOpenStats()
     {
         if ( inStandby )
@@ -488,7 +466,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Debug.Log("WHISTLED");
+        // Debug.Log("WHISTLED");
         SFXPlayer.PlayOneShot(SFX.PlayerWhistleSFX, transform.position);
 
         if(currCreature == null) return;
@@ -510,6 +488,11 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+    }
+
+    private void OnPause()
+    {
+        PersistentData.Instance.pauseUI.ProcessKeyPress();
     }
 
     private void OnFruitSpawn()
@@ -548,7 +531,8 @@ public class PlayerController : MonoBehaviour
 
             // HERMAN TODO: Place this in playerAnimator
             wildCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
-            PersistentData.Instance.UI.GetComponent<UIUpdates>().UpdateCreatureUI();
+            
+            PersistentData.Instance.hudManager.UpdateCreatureUI();
 
             SetCombatState(inCombat);                                                   // Tells creature if it's in combat
         }
@@ -604,18 +588,25 @@ public class PlayerController : MonoBehaviour
     {
         if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
         {
+            if(SceneManager.GetActiveScene().name == "Tutorial" )
+            {
+                //deathscreen prompt
+                //warpPlayer(tutorialManager.currspawnpoint);
+                //reset last encounter fight
+            }
+            //display death screen
+            //prob ask for a prompt
             // Hardcoded value: Teleports to Farm
             PersistentData.Instance.LoadScene(1);
-            // Resets health to max
-            stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
 
-            //Reset creature if knocked out
-            currCreatureContext.enthusiasmInteracted = false;
-            currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
-            //Update the creature's Enthusiasm Bar
-            // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+            //healing is done in persistent data using HealMaxHealth()
         }
        
+    }
+
+    public void HealMaxHealth()
+    {
+        stats.setStat(ModiferType.CURR_HEALTH, stats.getStat(ModiferType.MAX_HEALTH));
     }
 
     public void SetCombatState(bool _inCombat)
@@ -651,7 +642,8 @@ public class PlayerController : MonoBehaviour
 
                
                 Vector3 direction = hit.point - transform.position;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, float.MaxValue, float.MaxValue);
+                //Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
 
                 //Creates a movement vector for DoMovement to use on attacks. Moves player in direction of click
                 Vector2 tempVec = new Vector2(newDirection.x,newDirection.z);
@@ -675,5 +667,15 @@ public class PlayerController : MonoBehaviour
     public void SetStandbyState(bool state)
     {
        inStandby = state;
+    }
+
+    public void Pause()
+    {
+        playerInputs.SwitchCurrentActionMap("Menu");
+    }
+
+    public void Unpause()
+    {
+        playerInputs.SwitchCurrentActionMap("Player");
     }
 }

@@ -34,14 +34,14 @@ public class CreatureSpawner : MonoBehaviour
         //get access to its active data, and assign its values.
         ActiveCreatureData _ActiveCreatureData =  Creature.GetComponent<ActiveCreatureData>();
         _ActiveCreatureData.Id = Creature.GetInstanceID();
-        _ActiveCreatureData.statManager.stats[ModiferType.MAX_HEALTH].baseValue = 
-                Random.Range(creatureTypes[_randomCreatureNumber].lifeRange.x, creatureTypes[_randomCreatureNumber].lifeRange.y);
-        _ActiveCreatureData.statManager.stats[ModiferType.CREATURE_POWER].baseValue =  
-                (int) Random.Range(creatureTypes[_randomCreatureNumber].powerRange.x, creatureTypes[_randomCreatureNumber].powerRange.y);
-        _ActiveCreatureData.statManager.stats[ModiferType.CREATURE_UTILITY].baseValue = 
-                (int) Random.Range(creatureTypes[_randomCreatureNumber].utilityRange.x, creatureTypes[_randomCreatureNumber].utilityRange.y);
-        _ActiveCreatureData.statManager.stats[ModiferType.CREATURE_DEXTERITY].baseValue = 
-                (int) Random.Range(creatureTypes[_randomCreatureNumber].dexterityRange.x, creatureTypes[_randomCreatureNumber].dexterityRange.y);
+        // _ActiveCreatureData.statManager.stats[ModiferType.MAX_HEALTH].baseValue = 
+        //         Random.Range(creatureTypes[_randomCreatureNumber].lifeRange.x, creatureTypes[_randomCreatureNumber].lifeRange.y);
+        // _ActiveCreatureData.statManager.stats[ModiferType.CREATURE_POWER].baseValue =  
+        //         (int) Random.Range(creatureTypes[_randomCreatureNumber].powerRange.x, creatureTypes[_randomCreatureNumber].powerRange.y);
+        // _ActiveCreatureData.statManager.stats[ModiferType.CREATURE_UTILITY].baseValue = 
+        //         (int) Random.Range(creatureTypes[_randomCreatureNumber].utilityRange.x, creatureTypes[_randomCreatureNumber].utilityRange.y);
+        // _ActiveCreatureData.statManager.stats[ModiferType.CREATURE_DEXTERITY].baseValue = 
+        //         (int) Random.Range(creatureTypes[_randomCreatureNumber].dexterityRange.x, creatureTypes[_randomCreatureNumber].dexterityRange.y);
         
         //select random abilities;
         List<CreatureAttackBase> _copyOfAttacks = new List<CreatureAttackBase>(creatureTypes[_randomCreatureNumber].creatureAttacks); //make a copy of the list of abilities so we can edit it without losing data
@@ -55,15 +55,9 @@ public class CreatureSpawner : MonoBehaviour
         _copyOfAttacks.RemoveAt(_secondAttackNumber);
 
 
-        //select personalities
-        _ActiveCreatureData.personalities = choosePersonalities(_ActiveCreatureData, creatureTypes[_randomCreatureNumber]);
-        if(_ActiveCreatureData.personalities.Count > 0) 
-        {
-            Creature.name = _ActiveCreatureData.personalities[0].name + "Fragaria";
-        } else
-        {
-            Creature.name = "Default Fragaria";
-        }
+        
+        Creature.name = Creature.GetComponent<StatManager>().baseStats.statName;
+        
         
         //sets the creature icons
         Creature.GetComponent<CreatureAIContext>().icon = creatureTypes[_randomCreatureNumber].creatureIcon;
@@ -73,6 +67,7 @@ public class CreatureSpawner : MonoBehaviour
         //build BT
         Creature.GetComponent<CreatureAIContext>().GetActiveCreatureData();
         Creature.GetComponent<CreatureAIRework>().BuildBT();
+
     }
 
     List<Personality> choosePersonalities(ActiveCreatureData _ActiveCreatureData, CreatureData _CreatureData){

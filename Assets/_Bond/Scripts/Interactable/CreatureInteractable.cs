@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
 public class CreatureInteractable : InteractableBase
 {
     public GameObject Creature;
+    public string creatureType;
+
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     private void Awake() 
     {
@@ -29,6 +39,7 @@ public class CreatureInteractable : InteractableBase
         pc.wildCreature = Creature;
         pc.befriendCreature();
         pc.wildCreature = null;
+        SFX.PlayCreatureBefriendSFX(creatureType, transform.position);
         //showUI = false;
 
         gameObject.SetActive(false); //THIS IS TEMPORARY
