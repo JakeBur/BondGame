@@ -5226,6 +5226,7 @@ MonoBehaviour:
   showUI: 0
   removeOnInteract: 0
   Creature: {fileID: 8167450192529632886}
+  creatureType: Lilibun
 --- !u!54 &7767326736520381568
 Rigidbody:
   m_ObjectHideFlags: 0

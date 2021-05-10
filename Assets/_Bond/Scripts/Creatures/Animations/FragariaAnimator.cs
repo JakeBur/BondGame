@@ -40,4 +40,9 @@ public class FragariaAnimator : CreatureAnimator
     {
         animator.SetTrigger("SunBeam");
     }
+
+    public void EventPlayBasicAttackImpactSFX()
+    {
+        SFXPlayer.PlayOneShot(SFX.EnemyPunchHitSFX);
+    }
 }
