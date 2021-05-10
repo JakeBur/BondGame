@@ -87,7 +87,7 @@ public class RewardManager : MonoBehaviour
     private void SetUpRelic()
     {
         var tempGameObj = Instantiate(relicBase, spawnLocation.position, Quaternion.Euler(new Vector3(25,-45,0)));
-        Debug.Log("Setting up relic: " + randomRelic);
+        // Debug.Log("Setting up relic: " + randomRelic);
         tempGameObj.GetComponent<RelicInteractable>().relicStats = PersistentData.Instance.availableRelics[randomRelic]; 
         // PersistentData.Instance.availableRelics.Remove(PersistentData.Instance.availableRelics[randomRelic]);
         tempGameObj.GetComponent<RelicInteractable>().cost = Random.Range((int)costRange.x, (int)costRange.y);

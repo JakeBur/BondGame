@@ -605,6 +605,8 @@ public class VoronoiPCG : MonoBehaviour
 			float lastPercent = 0;
 			foreach(BiomeSpecificAssetList b in currentBiomeObj.Assets)
 			{
+				int itemNum = Random.Range(0, b.objects.Count);
+
 				if(lastPercent == 0)
 				{
 					if(randomNum < b.percentage + lastPercent)
@@ -615,10 +617,20 @@ public class VoronoiPCG : MonoBehaviour
 							yoffset = -0.6f;
 						}
 
-						Instantiate(b.objects[Random.Range(0, b.objects.Count)],
-							new Vector3(randomPos.x, yoffset, randomPos.y),
-							Quaternion.Euler(0,Random.Range(0,360), 0), 
-							Parent.transform);
+						if(noRotationItems.Contains(b.objects[itemNum])) //Spawn without rotating
+						{
+							Instantiate(b.objects[itemNum],
+								new Vector3(randomPos.x, yoffset, randomPos.y),
+								b.objects[itemNum].transform.rotation, 
+								Parent.transform);
+						} else //Spawn with random rotation
+						{
+							Instantiate(b.objects[itemNum],
+								new Vector3(randomPos.x, yoffset, randomPos.y),
+								Quaternion.Euler(0,Random.Range(0,360), 0), 
+								Parent.transform);
+						}
+
 						break;
 					}
 					
@@ -629,10 +641,21 @@ public class VoronoiPCG : MonoBehaviour
 					{
 						yoffset = -0.6f;
 					}
-					Instantiate(b.objects[Random.Range(0, b.objects.Count)],
-						new Vector3(randomPos.x, yoffset, randomPos.y),
-						Quaternion.Euler(0,Random.Range(0,360), 0), 
-						Parent.transform);
+
+					if(noRotationItems.Contains(b.objects[itemNum])) //Spawn without rotating
+					{
+						Instantiate(b.objects[itemNum],
+							new Vector3(randomPos.x, yoffset, randomPos.y),
+							b.objects[itemNum].transform.rotation, 
+							Parent.transform);
+					} else 
+					{
+						Instantiate(b.objects[itemNum],
+							new Vector3(randomPos.x, yoffset, randomPos.y),
+							Quaternion.Euler(0,Random.Range(0,360), 0), 
+							Parent.transform);
+					}
+
 					break;
 				}
 				lastPercent += b.percentage;
