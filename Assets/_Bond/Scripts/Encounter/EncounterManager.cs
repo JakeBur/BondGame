@@ -46,6 +46,7 @@ public class EncounterManager : MonoBehaviour
     // private bool creature1Inside;
     // private bool creature2Inside;
     private PlayerController pc;
+    public RewardManager rewardManager;
     // [HideInInspector]
     // public int numberOfCurrSwarmAttackers;
     [HideInInspector]
@@ -258,6 +259,7 @@ public class EncounterManager : MonoBehaviour
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
         encounterFinished = true;
+        rewardManager.spawnReward();
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
     }
 }
