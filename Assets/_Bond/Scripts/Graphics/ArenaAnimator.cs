@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class ArenaAnimator : MonoBehaviour
 {
     public float latticeFadeBreakpoint;
@@ -29,10 +28,10 @@ public class ArenaAnimator : MonoBehaviour
     public void Start()
     {
         _latticeMaterial = new Material(_lattice.GetComponent<MeshRenderer>().sharedMaterial);
-        _lattice.GetComponent<MeshRenderer>().sharedMaterial = _latticeMaterial;
+        _lattice.GetComponent<MeshRenderer>().material = _latticeMaterial;
 
         _smokeMaterial = new Material(_smoke.GetComponent<MeshRenderer>().sharedMaterial);
-        _smoke.GetComponent<MeshRenderer>().sharedMaterial = _smokeMaterial;
+        _smoke.GetComponent<MeshRenderer>().material = _smokeMaterial;
 
         latticeFade = new ShaderFloatAnimator("_FadeinBreakpoint", _latticeMaterial);
         smokeFlare = new ShaderFloatAnimator("_TransparencyNoiseStrength", _smokeMaterial);

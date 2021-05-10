@@ -47,12 +47,13 @@ public class VoronoiPCG : MonoBehaviour
 	public int numberOfCombat;
 	public int numberOfCombatIndicators;
 	public List<Encounter> combatEncounters = new List<Encounter>();
+	public List<GameObject> noRotationItems = new List<GameObject>();
 
 	public int numberOfCreature;
 	public GameObject FragariaEncounter;
 	public GameObject AquaphimEncounter;
-	//public GameObject SherifEncounter;
-	//public GameObject PunchySnailEncounter;
+	public GameObject SheriffEncounter;
+	public GameObject PunchySnailEncounter;
 
 	public BiomeObjects meadowsObjects;
 	public BiomeObjects forestObjects;
@@ -306,7 +307,7 @@ public class VoronoiPCG : MonoBehaviour
 		progressBar.value = 100;
 		//Debug.Log("Finished : " + (Time.realtimeSinceStartup - timerStart));
 		LoadingUI.SetActive(false);
-		terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
+		//terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
 
 		PersistentData.Instance.isGeneratorDone = true;
 		yield return null;
@@ -392,7 +393,7 @@ public class VoronoiPCG : MonoBehaviour
 			overlap = false;
 			foreach(GameObject e in placedEncounters){
 				//If chosen cell is too close to another encounter, remove it from the possible encounter cells
-				if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 70)
+				if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 55)
 				{
 					possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
 					overlap = true;
@@ -407,9 +408,9 @@ public class VoronoiPCG : MonoBehaviour
 			}
 
 
-			int tempPos = Random.Range(0,possibleEncounterPositions.Count-1);
-			var shop = Instantiate(Shopkeeper, new Vector3(possibleEncounterPositions[tempPos].x, 0, possibleEncounterPositions[tempPos].y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
-			possibleEncounterPositions.RemoveAt(tempPos);
+
+			var shop = Instantiate(Shopkeeper, new Vector3(randomPos.x, 0,randomPos.y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
+			possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
 			placedEncounters.Add(Shopkeeper);
 		}
 		//place random encounters on centerpoints of coarse cells
@@ -436,7 +437,7 @@ public class VoronoiPCG : MonoBehaviour
 				overlap = false;
 				foreach(GameObject e in placedEncounters){
 					//If chosen cell is too close to another encounter, remove it from the possible encounter cells
-					if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 70)
+					if(Vector3.Distance(e.transform.position, new Vector3(randomPos.x, 0, randomPos.y)) < 65)
 					{
 						possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
 						overlap = true;
@@ -508,30 +509,44 @@ public class VoronoiPCG : MonoBehaviour
 				Biome b = cells[GetClosestCellIndex((int)randomPos.x,(int)randomPos.y, cells)].biome;
 
 				GameObject toPlace; 
+
+				float chance = Random.Range(0f, 1f);
+				float angle;
+
 				switch(b)
-				{//some of these are commented out until we have the creatures implemented, so for now we just have the one.
-					// case Biome.FOREST:
-					// 	//toPlace = punchy
-					// 	break;
+				{
+					case Biome.FOREST:
+						toPlace = PunchySnailEncounter;
+						angle = Random.Range(0,360);
+						break;
 					case Biome.MEADOWS:
 						toPlace = FragariaEncounter;
+						angle = 125;
 						break;
-					// case Biome.MARSH:
-					// 	toPlace = AquaphimEncounter;
-					// 	break;
+					case Biome.MARSH:
+						toPlace = AquaphimEncounter;
+						angle = 0;
+						break;
 					// case Biome.CORRUPTION:
 						
 					// 	break;
 					default:
 						toPlace = FragariaEncounter;
+						angle = 125;
 						break;
+				}
+
+				if(chance <= .3)
+				{
+					toPlace = SheriffEncounter;
+					angle = 0;
 				}
 
 				//Spawn creature encounter
 				GameObject creatureEncounter = Instantiate(
 					toPlace, 
 					new Vector3(randomPos.x, 0, randomPos.y), 
-					Quaternion.identity, Parent.transform
+					Quaternion.Euler(0,angle,0) , Parent.transform
 				);
 				placedEncounters.Add(creatureEncounter);
 
@@ -590,6 +605,8 @@ public class VoronoiPCG : MonoBehaviour
 			float lastPercent = 0;
 			foreach(BiomeSpecificAssetList b in currentBiomeObj.Assets)
 			{
+				int itemNum = Random.Range(0, b.objects.Count);
+
 				if(lastPercent == 0)
 				{
 					if(randomNum < b.percentage + lastPercent)
@@ -599,10 +616,21 @@ public class VoronoiPCG : MonoBehaviour
 						{
 							yoffset = -0.6f;
 						}
-						Instantiate(b.objects[Random.Range(0, b.objects.Count)],
-							new Vector3(randomPos.x, yoffset, randomPos.y),
-							Quaternion.Euler(0,Random.Range(0,360), 0), 
-							Parent.transform);
+
+						if(noRotationItems.Contains(b.objects[itemNum])) //Spawn without rotating
+						{
+							Instantiate(b.objects[itemNum],
+								new Vector3(randomPos.x, yoffset, randomPos.y),
+								b.objects[itemNum].transform.rotation, 
+								Parent.transform);
+						} else //Spawn with random rotation
+						{
+							Instantiate(b.objects[itemNum],
+								new Vector3(randomPos.x, yoffset, randomPos.y),
+								Quaternion.Euler(0,Random.Range(0,360), 0), 
+								Parent.transform);
+						}
+
 						break;
 					}
 					
@@ -613,10 +641,21 @@ public class VoronoiPCG : MonoBehaviour
 					{
 						yoffset = -0.6f;
 					}
-					Instantiate(b.objects[Random.Range(0, b.objects.Count)],
-						new Vector3(randomPos.x, yoffset, randomPos.y),
-						Quaternion.Euler(0,Random.Range(0,360), 0), 
-						Parent.transform);
+
+					if(noRotationItems.Contains(b.objects[itemNum])) //Spawn without rotating
+					{
+						Instantiate(b.objects[itemNum],
+							new Vector3(randomPos.x, yoffset, randomPos.y),
+							b.objects[itemNum].transform.rotation, 
+							Parent.transform);
+					} else 
+					{
+						Instantiate(b.objects[itemNum],
+							new Vector3(randomPos.x, yoffset, randomPos.y),
+							Quaternion.Euler(0,Random.Range(0,360), 0), 
+							Parent.transform);
+					}
+
 					break;
 				}
 				lastPercent += b.percentage;

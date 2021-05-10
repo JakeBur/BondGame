@@ -21,6 +21,11 @@ public class PlayerAnimator : MonoBehaviour
     }
 
     public GameObject model;
+
+    //----------------------------------------------
+    // Raycast origin for determining footstep SFX
+    //----------------------------------------------
+    public GameObject raycastOrigin;
     private Animator animator => model.GetComponent<Animator>();
     private PlayerController playerController => GetComponent<PlayerController>();
 
@@ -267,7 +272,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void PlayWalkSFX()
     {
-        SFXPlayer.PlayOneShot(SFX.PlayerWalkGrassSFX, transform.position);
+        SFX.Play2DWalkSFX(raycastOrigin.transform);
     }
 
     public void PlayRollInitialSFX()

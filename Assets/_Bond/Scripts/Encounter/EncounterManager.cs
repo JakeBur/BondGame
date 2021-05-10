@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 //-----------
 // for FMOD
@@ -38,11 +39,14 @@ public class EncounterManager : MonoBehaviour
     public int numberOfCurrMeleeAttackers;
     [HideInInspector]
     public int numberOfCurrRangedAttackers;
+    [HideInInspector]
+    public bool encounterFinished;
 
-    private bool playerInside;
-    private bool creature1Inside;
-    private bool creature2Inside;
+    // private bool playerInside;
+    // private bool creature1Inside;
+    // private bool creature2Inside;
     private PlayerController pc;
+    public RewardManager rewardManager;
     // [HideInInspector]
     // public int numberOfCurrSwarmAttackers;
     [HideInInspector]
@@ -58,80 +62,99 @@ public class EncounterManager : MonoBehaviour
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
 
-    private void Awake() {
+    private void Start() 
+    {
         pc = PersistentData.Instance.Player.GetComponent<PlayerController>();
+        encounterFinished = false;
+    }
+
+    private void Awake() 
+    {
+
     }
 
     // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
     private void OnTriggerEnter(Collider other) 
     {
-        
         if(other.transform.tag == "Player")
         {
-           playerInside = true;
-           if(pc.currCreature == null)
-           {
-               creature1Inside = true;
-           }
-           if(pc.swapCreature == null)
-           {
-               creature2Inside = true;
-           }
-        }
-        else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.currCreature)
-        {
-            creature1Inside = true;
-        }
-        else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.swapCreature)
-        {
-            creature2Inside = true;
-        }
-        if(checkIfEveryoneInside())
-        {
+
+            
             startEncounter();
+        //    playerInside = true;
+        //    if(pc.currCreature == null)
+        //    {
+        //        creature1Inside = true;
+        //    }
+        //    if(pc.swapCreature == null)
+        //    {
+        //        creature2Inside = true;
+        //    }
         }
+        // else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.currCreature)
+        // {
+        //     creature1Inside = true;
+        // }
+        // else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.swapCreature)
+        // {
+        //     creature2Inside = true;
+        // }
+        // if(checkIfEveryoneInside())
+        // {
+        //     startEncounter();
+        // }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        if(other.transform.tag == "Player")
-        {
-           playerInside = false;
-            if(pc.currCreature == null)
-           {
-               creature1Inside = false;
-           }
-           if(pc.swapCreature == null)
-           {
-               creature2Inside = false;
-           }
-        }
-        else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().currCreature)
-        {
-            creature1Inside = false;
-        }
-        else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().swapCreature)
-        {
-            creature2Inside = false;
-        }
+        // if(other.transform.tag == "Player")
+        // {
+        //    playerInside = false;
+        //     if(pc.currCreature == null)
+        //    {
+        //        creature1Inside = false;
+        //    }
+        //    if(pc.swapCreature == null)
+        //    {
+        //        creature2Inside = false;
+        //    }
+        // }
+        // else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().currCreature)
+        // {
+        //     creature1Inside = false;
+        // }
+        // else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().swapCreature)
+        // {
+        //     creature2Inside = false;
+        // }
     }
 
     // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
-    private bool checkIfEveryoneInside()
-    {
-        if(playerInside && creature1Inside && creature2Inside)
-        {
-            return true;
-        } 
-        else 
-        {
-            return false;
-        }
-    }
+    // private bool checkIfEveryoneInside()
+    // {
+    //     if(playerInside && creature1Inside && creature2Inside)
+    //     {
+    //         return true;
+    //     } 
+    //     else 
+    //     {
+    //         return false;
+    //     }
+    // }
 
-    private void startEncounter()
+    public void startEncounter()
     {
         //SFXPlayer.PlayOneShot(SFX.ArenaSpawnSFX, transform.position);
+        //Warp creatures to player
+        if(pc.currCreature)
+        {
+            pc.currCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
+        }
+        if(pc.swapCreature)
+        {
+            pc.swapCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
+        }
+
         for(int i = 0; i < blobAmount; i++)
         {
             Vector2 randomPos = Random.insideUnitCircle;
@@ -235,7 +258,8 @@ public class EncounterManager : MonoBehaviour
         //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
-
+        encounterFinished = true;
+        rewardManager.spawnReward();
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
     }
 }

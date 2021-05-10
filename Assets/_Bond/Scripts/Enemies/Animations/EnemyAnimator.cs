@@ -229,6 +229,9 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetTrigger( "Death" );
         SFXPlayer.PlayOneShot(SFX.EnemyDeathSFX, transform.position);
         inDeath = true;
+        inAttack = false;
+        inHitstun = false;
+        inSpawn = false;
 
         InternalDeath();
     }
