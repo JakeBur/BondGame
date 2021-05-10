@@ -5508,6 +5508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 337987009181354822}
   raycastOrigin: {fileID: 5340998297132871942}
+  petalSawVFXPrefab: {fileID: 4254348646603466417, guid: 0de2a6307a8ae024d853c46bd6c4feeb,
+    type: 3}
 --- !u!1001 &608457318077478423
 PrefabInstance:
   m_ObjectHideFlags: 0
