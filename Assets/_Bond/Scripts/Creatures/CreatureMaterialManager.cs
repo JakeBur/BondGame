@@ -8,6 +8,10 @@ public class CreatureMaterialManager : MonoBehaviour
     public CreaturePaletteLibrary paletteLibrary;
     public List<GameObject> subModels;
 
+    private void Start() {
+        RandomizeMaterial();
+    }
+
     public void RandomizeMaterial()
     {
         ApplyMaterial(paletteLibrary.GetRandomPalette().material);
