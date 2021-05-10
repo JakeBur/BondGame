@@ -26,8 +26,9 @@ public class KnockbackWingSource : MonoBehaviour
         {
             foreach (Collider hit in colliders)
             {
-                if(hit.transform.tag == "Enemy")
+                if(hit.tag == "Enemy")
                 {
+                    // Enemy = hit.GetComponent<Enemy>();
                     Rigidbody rb =  hit.GetComponent<EnemyAIContext>().rb;
                     // rb.velocity = Vector3.zero;
                     // rb.angularVelocity = Vector3.zero;
