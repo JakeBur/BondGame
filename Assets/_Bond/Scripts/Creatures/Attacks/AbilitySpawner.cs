@@ -64,6 +64,12 @@ public class AbilitySpawner : MonoBehaviour
     public void SpawnKnockbackSource(GameObject projectile)
     {
         var proj = Instantiate(projectile, transform.position, Quaternion.identity);
+    }    
+    public void SpawnSlimeShot(GameObject projectile, GameObject target, float speed, float damage, Buff debuff)
+    {
+        var proj = Instantiate(projectile, transform.position, Quaternion.identity);
+        proj.GetComponent<QuickdrawBullet>().setDamage(damage, debuff);
+        proj.GetComponent<QuickdrawBullet>().setTarget(target, speed, damage);
     }
 
 }

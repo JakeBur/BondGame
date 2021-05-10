@@ -92,9 +92,6 @@
 		<property name="length">
 			<value>12.566961451247165</value>
 		</property>
-		<property name="volume">
-			<value>-3.5</value>
-		</property>
 		<relationship name="fadeInCurve">
 			<destination>{3162a1f8-0bdd-4196-8d82-e7fa16f40c8c}</destination>
 		</relationship>

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Bond/Textures/VFX/Enemy Squibs/Squib 1.meta
+guid: cd794c40a910fc44886b9d947338feef
+=======
 guid: 82b2af5f568adf44cbab772d139880df
+>>>>>>> main:Assets/_Bond/3D Assets/Environment/Corruption/Models/Textures/CircleCutoutStatues.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

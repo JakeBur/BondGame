@@ -588,17 +588,18 @@ public class PlayerController : MonoBehaviour
     {
         if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
         {
+            if(SceneManager.GetActiveScene().name == "Tutorial" )
+            {
+                //deathscreen prompt
+                //warpPlayer(tutorialManager.currspawnpoint);
+                //reset last encounter fight
+            }
+            //display death screen
+            //prob ask for a prompt
             // Hardcoded value: Teleports to Farm
             PersistentData.Instance.LoadScene(1);
 
-            //Reset creature if knocked out
-            if( currCreatureContext != null )
-            {
-                currCreatureContext.enthusiasmInteracted = false;
-                currCreatureContext.creatureStats.statManager.setStat(ModiferType.CURR_ENTHUSIASM, currCreatureContext.creatureStats.statManager.getStat(ModiferType.MAX_ENTHUSIASM));
-            }
-            //Update the creature's Enthusiasm Bar
-            // currCreatureContext.creatureTransform.gameObject.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
+            //healing is done in persistent data using HealMaxHealth()
         }
        
     }
@@ -641,7 +642,8 @@ public class PlayerController : MonoBehaviour
 
                
                 Vector3 direction = hit.point - transform.position;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, float.MaxValue, float.MaxValue);
+                //Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
 
                 //Creates a movement vector for DoMovement to use on attacks. Moves player in direction of click
                 Vector2 tempVec = new Vector2(newDirection.x,newDirection.z);
