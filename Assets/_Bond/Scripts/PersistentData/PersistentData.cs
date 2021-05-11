@@ -363,7 +363,7 @@ public class PersistentData : MonoBehaviour
             isGeneratorDone = false;
             loadScreen.alpha = 0;
             GameObject levelGen = GameObject.FindGameObjectWithTag("LevelGenerator");
-            levelGen.GetComponent<VoronoiPCG>().InitializeGenerator();
+            levelGen.GetComponent<VoronoiPCG>().InitializeGenerator(currRunLevel);
 
              // Debug.Log(GetSpawnpoint());
             while(!isGeneratorDone)
