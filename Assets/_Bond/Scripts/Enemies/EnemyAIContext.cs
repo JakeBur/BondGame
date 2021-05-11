@@ -108,7 +108,6 @@ public class EnemyAIContext : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        animator.Death();
         player.GetComponent<LevelUpSystem>().GainXp(5); //probably add something to determine enemy type or difficulty to adjust reward
         Destroy(gameObject);
     }

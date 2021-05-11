@@ -830,6 +830,7 @@ MonoBehaviour:
     type: 3}
   blobParent: {fileID: 7455600316609384494}
   corruptionDebuff: {fileID: 11400000, guid: 74f965dcc629edf49b47ee00d4b3d40d, type: 2}
+  CurrEnemies: []
   maxCurrMeleeAttackers: 3
   maxCurrRangedAttackers: 2
   encounterTriggered: 0
