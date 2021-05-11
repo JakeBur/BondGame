@@ -9,7 +9,7 @@ public class SlimeShotBullet : MonoBehaviour
     GameObject target;
     Rigidbody rigidBody;
     float speed = 10;
-    private bool isHoming = false;
+    public bool isHoming = false;
 
     private void Awake() 
     {
@@ -48,12 +48,12 @@ public class SlimeShotBullet : MonoBehaviour
 
         if(other.transform.tag == "Enemy")
         {
-            StartCoroutine(DoRainDamage(1f, 4, damage, other));
+            StartCoroutine(DoSlimeDamage(1f, 4, damage, other));
             Destroy(gameObject);
         }    
         
     }    
-    IEnumerator DoRainDamage(float damageDuration, int damageCount, float damageAmount, Collider other)
+    IEnumerator DoSlimeDamage(float damageDuration, int damageCount, float damageAmount, Collider other)
     {
         int currentCount = 0;
         while(currentCount < damageCount)

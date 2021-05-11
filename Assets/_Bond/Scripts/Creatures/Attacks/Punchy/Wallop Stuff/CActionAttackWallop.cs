@@ -15,6 +15,7 @@ public class CActionAttackWallop : BTLeaf
     protected override void OnEnter()
     {
         attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
+        CreatureCoroutineController.Start( knockback() );
         //Play amim
     }
 
@@ -25,7 +26,6 @@ public class CActionAttackWallop : BTLeaf
 
     public override NodeState Evaluate() 
     {
-        CreatureCoroutineController.Start( knockback() );
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if( !context.animator.inAbility )
