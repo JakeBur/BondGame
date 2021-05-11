@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using DataStructures.ViliWonka.KDTree;
 
 public class VoronoiPCG : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class VoronoiPCG : MonoBehaviour
 	public int adjacencyCount;
 	public bool drawByDistance = false;
 	public int increment;
+	public int KDtreeLeafPoints;
 	
 	public List<ConnectionPoints> BigLevelsCP;
 	public List<ConnectionPoints> SmallLevelsCP;
@@ -29,6 +31,11 @@ public class VoronoiPCG : MonoBehaviour
 	List<Cell> coarseVisitedCells = new List<Cell>(); 
 	List<Cell> fineVisitedCells = new List<Cell>();
 	List<Cell> borderCells = new List<Cell>();
+
+	KDTree fineKDTree;
+	KDTree coarseKDTree;
+
+	KDQuery kDQuery;
 	
 	[Header("Terrain Debugging Colors")]
 	public Color32 forestColor;
@@ -86,7 +93,7 @@ public class VoronoiPCG : MonoBehaviour
 		//Get random seed and set it
 		//gameSeed = connection.seeds[Random.Range(0, connections.seeds.count)];
 		gameSeed = Random.Range(0,999999);
-		if(level < 2)
+		if(level == 1)
 		{
 			connection = SmallLevelsCP[Random.Range(0, SmallLevelsCP.Count)];
 			numberOfCombat = 2;
@@ -113,7 +120,7 @@ public class VoronoiPCG : MonoBehaviour
 	//Generate the Voronoi Diagram, then the map based on it
 	IEnumerator GenerateLevel()
 	{
-		
+
 		yield return null;
 		timerStart = Time.realtimeSinceStartup;
 		
@@ -135,8 +142,28 @@ public class VoronoiPCG : MonoBehaviour
 		}
 		progressBar.value = 5;
 		yield return null;
+
+		//Generate fine point cloud for KDTree
+		Debug.Log("building tree start : " + (Time.realtimeSinceStartup - timerStart));
+		Vector3[] finePointCloud = new Vector3[fineCells.Length];
+		for(int i = 0; i < fineCells.Length; i++)
+		{
+			finePointCloud[i] = new Vector3(fineCells[i].center.x, 0 ,fineCells[i].center.y);
+		}
+		fineKDTree = new KDTree(finePointCloud, KDtreeLeafPoints);
+		Debug.Log("building fine tree Finished : " + (Time.realtimeSinceStartup - timerStart));
+		//Generate coarse point cloud for KDTree
+		Vector3[] coarsePointCloud = new Vector3[coarseCells.Length];
+		for(int i = 0; i < coarseCells.Length; i++)
+		{
+			coarsePointCloud[i] = new Vector3(coarseCells[i].center.x, 0 ,coarseCells[i].center.y);
+		}
+		coarseKDTree = new KDTree(coarsePointCloud, KDtreeLeafPoints);
+		Debug.Log("building coarse tree Finished : " + (Time.realtimeSinceStartup - timerStart));
+		kDQuery = new KDQuery();
+
 		//relax points to normalize center points, allowing for generally better borders
-		relax(coarseCells);
+		relax(coarseCells, false);
 		// relax(fineCells);
 
 		//connect cells using set pattern
@@ -147,7 +174,7 @@ public class VoronoiPCG : MonoBehaviour
 		for(int i = 0; i < fineCells.Length; i++)
 		{
 			//every fine cell gets the biome of its closest coarse cell
-			Biome b = coarseCells[GetClosestCellIndex((int)fineCells[i].center.x, (int)fineCells[i].center.y, coarseCells)].biome;
+			Biome b = coarseCells[GetClosestCellIndex((int)fineCells[i].center.x, (int)fineCells[i].center.y, coarseCells, false)].biome;
 			fineCells[i].biome = b; 
 			if(b != Biome.EMPTY)
 			{
@@ -159,7 +186,7 @@ public class VoronoiPCG : MonoBehaviour
 		// Generate the borders for the fine cells
 		foreach(Cell c in fineVisitedCells)
 		{
-			List<Cell> borderCells = GetClosestKCells(c.index, adjacencyCount, fineCells);
+			List<Cell> borderCells = GetClosestKCells(c.index, adjacencyCount, fineCells, true);
 			//Debug.Log("Border Cells" + borderCells[0]);
 			foreach(Cell b in borderCells)
 			{
@@ -211,12 +238,9 @@ public class VoronoiPCG : MonoBehaviour
 				int ySwap = x;
 
 				int index = y * imageDim.y + x;
-				int fineIndex = GetClosestCellIndex(x, y, fineCells);
+				int fineIndex = GetClosestCellIndex(x, y, fineCells, true);
 				Biome b = fineCells[fineIndex].biome;
-				fineCells[fineIndex].size++;
-				fineCells[fineIndex].pixels.Add(new Vector2(xSwap,ySwap));
 
-				coarseCells[GetClosestCellIndex(x, y, coarseCells)].size++;
 				pixelColors[index] = GetBiomeColor(b);
 
 				heights[xSwap,ySwap] = 0f;
@@ -330,7 +354,7 @@ public class VoronoiPCG : MonoBehaviour
 		// }
 
 		progressBar.value = 100;
-		//Debug.Log("Finished : " + (Time.realtimeSinceStartup - timerStart));
+		Debug.Log("Finished : " + (Time.realtimeSinceStartup - timerStart));
 		LoadingUI.SetActive(false);
 		//terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
 
@@ -346,11 +370,11 @@ public class VoronoiPCG : MonoBehaviour
 		Vector2 startPos = startingCell.center;
 		startPos = Vector2.MoveTowards(startPos, endingCell.center, _increment);
 		
-		Cell newCell = cells[GetClosestCellIndex((int)startPos.x, (int) startPos.y, cells)];
+		Cell newCell = cells[GetClosestCellIndex((int)startPos.x, (int) startPos.y, cells, false)];
 		while(newCell == startingCell)
 		{
 			startPos = Vector2.MoveTowards(startPos, endingCell.center, _increment);
-			newCell = cells[GetClosestCellIndex((int)startPos.x, (int) startPos.y, cells)];
+			newCell = cells[GetClosestCellIndex((int)startPos.x, (int) startPos.y, cells, false)];
 		}
 		return newCell;
 	}
@@ -365,11 +389,11 @@ public class VoronoiPCG : MonoBehaviour
 		foreach(Vector2Pair v in connection.points)
 		{
 			v.biome = getRandomBiome();
-			Cell newCell = cells[GetClosestCellIndex((int) v.start.x, (int)v.start.y, cells)];
+			Cell newCell = cells[GetClosestCellIndex((int) v.start.x, (int)v.start.y, cells, false)];
 			newCell.biome = v.biome;
 			coarseVisitedCells.Add(newCell);
 
-			Cell endCell = cells[GetClosestCellIndex((int) v.end.x, (int)v.end.y, cells)];
+			Cell endCell = cells[GetClosestCellIndex((int) v.end.x, (int)v.end.y, cells, false)];
 			endCell.biome = v.biome;
 			coarseVisitedCells.Add(newCell);
 
@@ -439,9 +463,6 @@ public class VoronoiPCG : MonoBehaviour
 			possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
 			placedEncounters.Add(shop);
 		}
-		//place random encounters on centerpoints of coarse cells
-		coarseVisitedCells.Sort((x,y)=> x.size.CompareTo(y.size));
-		List<Cell> encounterCells = new List<Cell>(coarseVisitedCells);
 
 		
 
@@ -532,7 +553,7 @@ public class VoronoiPCG : MonoBehaviour
 					continue;
 				}
 
-				Biome b = cells[GetClosestCellIndex((int)randomPos.x,(int)randomPos.y, cells)].biome;
+				Biome b = cells[GetClosestCellIndex((int)randomPos.x,(int)randomPos.y, cells, true)].biome;
 
 				GameObject toPlace; 
 
@@ -604,7 +625,7 @@ public class VoronoiPCG : MonoBehaviour
 
 			float randomNum = Random.Range(0f,100f);
 
-			currBiome = cells[GetClosestCellIndex((int)randomPos.x, (int)randomPos.y, cells)].biome; 
+			currBiome = cells[GetClosestCellIndex((int)randomPos.x, (int)randomPos.y, cells, true)].biome; 
 			// Debug.Log("Curr Biome: " + currBiome);
 			switch (currBiome)
 			{
@@ -717,53 +738,54 @@ public class VoronoiPCG : MonoBehaviour
 	}
 
 	//iterates through all cells and finds the closest cell to a given x,y coordinate
-	int GetClosestCellIndex(int x, int y, Cell[] cells)
+	int GetClosestCellIndex(int x, int y, Cell[] cells, bool useFine)
 	{
-		float smallestDst = float.MaxValue;
-		int index = 0;
-		Vector2 coords = new Vector2(x, y);
-		for(int i = 0; i < cells.Length; i++)
+		List<int> results = new List<int>();
+		if(useFine)
 		{
-			if (Vector2.Distance(coords, cells[i].center) < smallestDst)
-			{
-				smallestDst = Vector2.Distance(coords, cells[i].center);
-				index = i;
-			}
+			kDQuery.ClosestPoint(fineKDTree, new Vector3(x,0,y), results);
+		} 
+		else 
+		{
+			kDQuery.ClosestPoint(coarseKDTree, new Vector3(x,0,y), results);
 		}
-		return index;
+		
+		return results[0];
 	}
 
 	//finds the closest k cells to a given cell. Used for filling in borders and adjacencies
-	List<Cell> GetClosestKCells(int myIndex, int k, Cell[] cells)
+	List<Cell> GetClosestKCells(int myIndex, int k, Cell[] cells, bool useFine)
 	{
-		List<Cell> kClosestCells = new List<Cell>(k);
+		List<int> kClosestCellsIndex =  KDTreeFindKCells((int) cells[myIndex].center.x, (int) cells[myIndex].center.y, k + 1, cells, useFine);
+		List<Cell> KClosestCells = new List<Cell>();
 
-		Vector2 coords = new Vector2(cells[myIndex].center.x, cells[myIndex].center.y);
-		for(int i = 0; i < cells.Length; i++)
+		kClosestCellsIndex.RemoveAt(0);
+		foreach(int i in kClosestCellsIndex)
 		{
-			if(myIndex != i)
-			{
-				float iDistance = Vector2.Distance(coords, cells[i].center);
-				if(kClosestCells.Count < k)
-				{	
-					kClosestCells.Add(cells[i]);
-					kClosestCells[kClosestCells.Count - 1].distance = iDistance;
-					kClosestCells.Sort((x,y)=> x.distance.CompareTo(y.distance));
-				}
-				else 
-				{
-					if (iDistance < Vector2.Distance(coords, kClosestCells[kClosestCells.Count - 1].center))
-					{
-						
-						kClosestCells[kClosestCells.Count - 1] = cells[i];
-						kClosestCells[kClosestCells.Count - 1].distance = iDistance;
-						kClosestCells.Sort((x,y)=> x.distance.CompareTo(y.distance));
-					}
-				}
-			}
+			KClosestCells.Add(cells[i]);
 		}
 
-		return kClosestCells;
+		return KClosestCells;
+	}
+
+	List<int> KDTreeFindKCells(int x1, int y1, int k, Cell[] cells, bool useFine)
+	{
+		List<Cell> kClosestCells = new List<Cell>(k);
+		Vector2 coords = new Vector2(x1, y1);
+		List<int> results = new List<int>();
+
+		if(useFine)
+		{
+			kDQuery.KNearest(fineKDTree, new Vector3(x1,0,y1), k, results);
+		} 
+		else 
+		{
+			kDQuery.KNearest(coarseKDTree, new Vector3(x1,0,y1), k, results);
+		}
+
+
+	
+		return results;
 	}
 	
 	//generates a texture2d that was used for debug processes from the array of pixels generated
@@ -783,7 +805,7 @@ public class VoronoiPCG : MonoBehaviour
     }
 
 	//basically k-means clustering, counts the amount of pixels ("hits") nearby to help recenter itself
-	public void relax(Cell[] cells)
+	public void relax(Cell[] cells, bool useFine)
 	{
 		Vector2Int[] contributions = new Vector2Int[cells.Length];
 		int[] hits = new int[cells.Length];
@@ -795,7 +817,7 @@ public class VoronoiPCG : MonoBehaviour
 				V2here.x = x;
 				V2here.y = y;
 
-				int index = GetClosestCellIndex(V2here.x, V2here.y, cells);
+				int index = GetClosestCellIndex(V2here.x, V2here.y, cells, useFine);
 				contributions[index] += V2here;
 				hits[index]++;
 			}
@@ -830,12 +852,10 @@ public class VoronoiPCG : MonoBehaviour
 //class used to help store voronoi "cells"
 public class Cell 
 {
-	public int size = 0;
 	public int index;
 	public Vector2 center;
 	public Biome biome = Biome.EMPTY;
 	public float distance;
-	public List<Vector2> pixels = new List<Vector2>();
 }
 
 public enum Biome 
