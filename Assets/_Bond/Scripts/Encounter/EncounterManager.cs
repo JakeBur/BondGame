@@ -273,7 +273,12 @@ public class EncounterManager : MonoBehaviour
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
         encounterFinished = true;
-        rewardManager.spawnReward();
+        if(rewardManager)
+        {
+            rewardManager.spawnReward();
+        }
+        
+
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
     }
 }
