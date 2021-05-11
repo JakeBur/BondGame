@@ -81,16 +81,6 @@ public class EnemyAIContext : MonoBehaviour
     private void FixedUpdate() 
     {
         //Check for damage and update health UI accordingly
-        if(statManager.getStat(ModiferType.CURR_HEALTH) < lastCheckedHealth)
-        {
-            tookDamage = true;
-            lastDamageTaken = lastCheckedHealth - statManager.getStat(ModiferType.CURR_HEALTH);
-            healthUIUpdate();
-            lastCheckedHealth = statManager.getStat(ModiferType.CURR_HEALTH);
-
-            hitVFX.Play();
-        }
-
         enemyUI.transform.rotation = Camera.main.transform.rotation; //makes ui always face camera
 
         if(attackCD > 0)
@@ -123,8 +113,14 @@ public class EnemyAIContext : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void healthUIUpdate()
+    public void healthUIUpdate()
     {
+        tookDamage = true;
+        lastDamageTaken = lastCheckedHealth - statManager.getStat(ModiferType.CURR_HEALTH);
+        lastCheckedHealth = statManager.getStat(ModiferType.CURR_HEALTH);
+
+        hitVFX.Play();
+
         // healthSlider.value = (statManager.stats[ModiferType.CURR_HEALTH].modifiedValue / statManager.stats[ModiferType.MAX_HEALTH].modifiedValue) * 100;
         healthSlider.value = (statManager.getStat(ModiferType.CURR_HEALTH) / statManager.getStat(ModiferType.MAX_HEALTH)) * 100;
         //Debug.Log("UI Update Health Slider Value: " + healthSlider.value);
