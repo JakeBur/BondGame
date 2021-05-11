@@ -15,9 +15,10 @@ using SFXPlayer = FMODUnity.RuntimeManager;
 public class PlayerAnimator : MonoBehaviour
 {
     [Serializable]
-    struct VFXData
+    public struct VFXData
     {
         public List<GameObject> slashes;
+        public GameObject enemySquib;
     }
 
     public GameObject model;
@@ -33,8 +34,9 @@ public class PlayerAnimator : MonoBehaviour
     public ParticleSystem heavyChargeVfx;
     public ParticleSystem heavyHitVfx;
     public ParticleSystem slashVfx;
+
     [SerializeField]
-    private VFXData vfxData;
+    public VFXData vfxData;
 
     /*
     *   Constants

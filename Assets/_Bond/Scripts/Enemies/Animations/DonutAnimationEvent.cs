@@ -10,6 +10,11 @@ public class DonutAnimationEvent : EnemyAnimationEvent
     {
         donutAnimator.ArmOff();
     }
+
+    public void PlaySlashVFX()
+    {
+        donutAnimator.EventPlaySlashVFX();
+    }
     
     public void PlayDonutSpawnExtendSFX()
     {

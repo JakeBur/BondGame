@@ -15,7 +15,8 @@ public class VoronoiPCG : MonoBehaviour
 	public bool drawByDistance = false;
 	public int increment;
 	
-	public List<ConnectionPoints> connectionPoints;
+	public List<ConnectionPoints> BigLevelsCP;
+	public List<ConnectionPoints> SmallLevelsCP;
 
 	public Terrain terrain;
 	public GameObject EncounterPosFinderObj;
@@ -44,12 +45,12 @@ public class VoronoiPCG : MonoBehaviour
 	public GameObject levelExit;
 	public GameObject Shopkeeper;
 	
-	public int numberOfCombat;
+	int numberOfCombat;
 	public int numberOfCombatIndicators;
 	public List<Encounter> combatEncounters = new List<Encounter>();
 	public List<GameObject> noRotationItems = new List<GameObject>();
 
-	public int numberOfCreature;
+	int numberOfCreature;
 	public GameObject FragariaEncounter;
 	public GameObject AquaphimEncounter;
 	public GameObject SheriffEncounter;
@@ -65,14 +66,44 @@ public class VoronoiPCG : MonoBehaviour
 	private float timerStart;
 	private float timerEnd;	
 
+
+	ConnectionPoints connection ;
+
 	[ContextMenu("Run Code")]
-	public bool InitializeGenerator()
+	public bool InitializeGenerator(int level)
 	{
 		//Show Loading Screen
 		LoadingUI.SetActive(true);
 		fineVisitedCells = new List<Cell>();
 		borderCells = new List<Cell>();
 		encounterPositionFinder = EncounterPosFinderObj.GetComponent<EncounterPositionFinder>();
+
+		//set progress bar to 0
+		progressBar.value = 0;
+		//enable collider so we can detect when we collide with it later
+		terrain.gameObject.GetComponent<TerrainCollider>().enabled = true;
+		
+		//Get random seed and set it
+		//gameSeed = connection.seeds[Random.Range(0, connections.seeds.count)];
+		gameSeed = Random.Range(0,999999);
+		if(level < 2)
+		{
+			connection = SmallLevelsCP[Random.Range(0, SmallLevelsCP.Count)];
+			numberOfCombat = 2;
+			numberOfCreature = 2;
+
+		}
+		else 
+		{
+			connection = BigLevelsCP[Random.Range(0, BigLevelsCP.Count)];
+			numberOfCombat = 5;
+			numberOfCreature = 5;
+				
+		}
+		
+		
+		Random.InitState(gameSeed);
+		Debug.Log("SEED INFO : " + connection.patternName + " " + gameSeed);
 		// GetComponent<SpriteRenderer>().sprite = Sprite.Create((drawByDistance ? GetDiagramByDistance() : GetDiagram()), new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
 		StartCoroutine(GenerateLevel());
 		
@@ -82,15 +113,7 @@ public class VoronoiPCG : MonoBehaviour
 	//Generate the Voronoi Diagram, then the map based on it
 	IEnumerator GenerateLevel()
 	{
-		progressBar.value = 0;
-		terrain.gameObject.GetComponent<TerrainCollider>().enabled = true;
 		
-		//Get random seed and set it
-		gameSeed = Random.Range(0,999999);
-		ConnectionPoints connection = connectionPoints[Random.Range(0, connectionPoints.Count)];
-		//gameSeed = connection.seeds[Random.Range(0, connections.seeds.count)];
-		Random.InitState(gameSeed);
-		Debug.Log("SEED INFO : " + connection.patternName + " " + gameSeed);
 		yield return null;
 		timerStart = Time.realtimeSinceStartup;
 		
@@ -170,8 +193,8 @@ public class VoronoiPCG : MonoBehaviour
 		Color[] pixelColors = new Color[imageDim.x * imageDim.y];
 		
 		TerrainData terrainData = terrain.terrainData;
+		terrainData.treeInstances = new TreeInstance[0];
 
-		terrainData.treeInstances = new TreeInstance[terrainData.detailWidth * terrainData.detailHeight];
 		float[,] heights = terrainData.GetHeights(0, 0, terrainData.heightmapResolution, terrainData.heightmapResolution);
         
 		terrain.Flush();
@@ -179,7 +202,7 @@ public class VoronoiPCG : MonoBehaviour
 		var detailMapData = terrainData.GetDetailLayer(0, 0, terrainData.detailWidth, terrainData.detailHeight, 0);
 		
 		float tempDistance;
-
+		int treeCounter = 0;
 		for(int y = 0; y < imageDim.y; y++)
 		{
 			for(int x = 0; x < imageDim.x; x++)
@@ -223,6 +246,8 @@ public class VoronoiPCG : MonoBehaviour
                         treeTemp.lightmapColor = Color.white;
                         terrain.AddTreeInstance(treeTemp);
                         terrain.Flush();
+
+						treeCounter++;
                     }
 				} 
 				else if(pixelColor.Equals(forestColor))
@@ -310,6 +335,7 @@ public class VoronoiPCG : MonoBehaviour
 		//terrain.gameObject.GetComponent<TerrainCollider>().enabled = false;
 
 		PersistentData.Instance.isGeneratorDone = true;
+	
 		yield return null;
 	}
 
@@ -338,7 +364,7 @@ public class VoronoiPCG : MonoBehaviour
 		//iterate through a set of points adding cells to a list and setting their biomes
 		foreach(Vector2Pair v in connection.points)
 		{
-			
+			v.biome = getRandomBiome();
 			Cell newCell = cells[GetClosestCellIndex((int) v.start.x, (int)v.start.y, cells)];
 			newCell.biome = v.biome;
 			coarseVisitedCells.Add(newCell);
@@ -411,7 +437,7 @@ public class VoronoiPCG : MonoBehaviour
 
 			var shop = Instantiate(Shopkeeper, new Vector3(randomPos.x, 0,randomPos.y), Quaternion.Euler(new Vector3(0,45,0)), Parent.transform);
 			possibleEncounterPositions.RemoveAt(encounterPositionsIndex);
-			placedEncounters.Add(Shopkeeper);
+			placedEncounters.Add(shop);
 		}
 		//place random encounters on centerpoints of coarse cells
 		coarseVisitedCells.Sort((x,y)=> x.size.CompareTo(y.size));
@@ -779,6 +805,24 @@ public class VoronoiPCG : MonoBehaviour
 		{
 			if(hits[i] > 0)
 				cells[i].center = contributions[i] / hits[i];
+		}
+	}
+
+	//function to get a random biome, just wanted to separate the code a bit
+	Biome getRandomBiome()
+	{
+		float randomNum = Random.Range(0f,1f);
+		if(randomNum < .33f)
+		{
+			return Biome.FOREST;
+		} 
+		else if(randomNum < .66f)
+		{
+			return Biome.MARSH;
+		} 
+		else
+		{
+			return Biome.MEADOWS;
 		}
 	}
 }

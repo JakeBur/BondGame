@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Bond/Textures/VFX/Enemy Squibs.meta
+guid: 1080c25fb9046b4419bbdf3b2a06e1ed
+=======
 guid: 4eeb0c4656b4bf040b271ae29d847697
+>>>>>>> main:Assets/_Bond/3D Assets/Environment/Corruption/Models/Textures.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

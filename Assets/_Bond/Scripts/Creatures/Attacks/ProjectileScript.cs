@@ -17,6 +17,7 @@ public class ProjectileScript : MonoBehaviour
     public AnimationCurve momentumCurve;
     public float arcDistance;
     public float flyTime;
+    public GameObject squibPrefab;
     
     private Vector3 toTarget;
     private Vector3 toOffset;
@@ -63,6 +64,7 @@ public class ProjectileScript : MonoBehaviour
         if (Time.time > impactTime)
         {
             target.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
+            Instantiate(squibPrefab, target.transform.position, Quaternion.identity);
             SFXPlayer.PlayOneShot(SFX.EnemyLeafProjectileHitSFX, transform.position);
             End();
         }

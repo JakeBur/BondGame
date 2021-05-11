@@ -6,6 +6,8 @@ using SFXPlayer = FMODUnity.RuntimeManager;
 
 public class FragariaAnimator : CreatureAnimator
 {
+    public GameObject petalSawVFXPrefab;
+
     public void PetalSaw()
     {
         animator.SetTrigger("PetalSaw");
@@ -41,6 +43,13 @@ public class FragariaAnimator : CreatureAnimator
         animator.SetTrigger("SunBeam");
     }
 
+    public void EventPlayPetalSawVFX()
+    {
+        GameObject slash = Instantiate(petalSawVFXPrefab, transform.position, Quaternion.identity);
+        slash.transform.LookAt(transform.position + transform.forward);
+        Debug.Log("playing from animation event");
+	}
+	
     public void EventPlayBasicAttackImpactSFX()
     {
         SFXPlayer.PlayOneShot(SFX.EnemyPunchHitSFX);

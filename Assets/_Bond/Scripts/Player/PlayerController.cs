@@ -642,7 +642,8 @@ public class PlayerController : MonoBehaviour
 
                
                 Vector3 direction = hit.point - transform.position;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, float.MaxValue, float.MaxValue);
+                //Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
 
                 //Creates a movement vector for DoMovement to use on attacks. Moves player in direction of click
                 Vector2 tempVec = new Vector2(newDirection.x,newDirection.z);
