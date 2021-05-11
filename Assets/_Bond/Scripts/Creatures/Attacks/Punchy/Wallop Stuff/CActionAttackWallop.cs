@@ -43,6 +43,7 @@ public class CActionAttackWallop : BTLeaf
     IEnumerator knockback()
     {
         context.targetEnemy.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+        context.targetEnemy.GetComponent<EnemyAIContext>().healthUIUpdate();
         Vector3 moveDirection = context.targetEnemy.transform.position - context.creatureTransform.transform.position;
         context.targetEnemy.GetComponent<EnemyAIContext>().rb.isKinematic = false;
         context.targetEnemy.GetComponent<EnemyAIContext>().agent.isStopped = true;

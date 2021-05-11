@@ -16,6 +16,7 @@ public class CActionAttackMelee : BTLeaf
     {
         attack = (CreatureAttackMelee) context.basicCreatureAttack;
         context.targetEnemy.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+        context.targetEnemy.GetComponent<EnemyAIContext>().healthUIUpdate();
         //Play amim
         // Debug.Log("Attacking");
         context.animator.DefaultAttack();
