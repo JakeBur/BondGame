@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9158036bf0b987458a4687848dd80fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnLocation: {fileID: 0}
+  spawnLocation: {fileID: 1013823472589798076}
   relicBase: {fileID: 3018569099592749775, guid: 8a52dcb8dc1af38458c8e58baaee23f6,
     type: 3}
   acornBagPrefab: {fileID: 1562028770156074076, guid: 613e02d716f4cc64f92649fa59d0eb64,
@@ -616,6 +616,7 @@ MonoBehaviour:
     type: 3}
   blobParent: {fileID: 7455600316609384494}
   corruptionDebuff: {fileID: 11400000, guid: 74f965dcc629edf49b47ee00d4b3d40d, type: 2}
+  CurrEnemies: []
   maxCurrMeleeAttackers: 3
   maxCurrRangedAttackers: 2
   encounterTriggered: 0
@@ -2097,6 +2098,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c221fad5f846b5049b72030e2e9ad8b5, type: 3}
+--- !u!4 &1013823472589798076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3697416881313363043, guid: c221fad5f846b5049b72030e2e9ad8b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4421987294359965407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3408956763780980961 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1301824097412017726, guid: c221fad5f846b5049b72030e2e9ad8b5,

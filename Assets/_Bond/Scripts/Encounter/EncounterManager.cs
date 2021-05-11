@@ -208,9 +208,10 @@ public class EncounterManager : MonoBehaviour
     public void enemyKilled(GameObject _enemy)
     {
         currEnemyCount--;
-        CurrEnemies.Remove(_enemy);
+        
         try
         {   
+            CurrEnemies.Remove(_enemy);
             if(currWave < waves.Count)
             {
                 if(waves[currWave].index < waves[currWave].spawners.Count)
