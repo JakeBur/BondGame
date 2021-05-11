@@ -95,6 +95,9 @@ public class PauseUI : MonoBehaviour
     public void RetireRun()
     {
         PlayClickSFX();
+        //Temp Code - TODO (just want a way to skip tutorial / get back to farm if something breaks)
+        PersistentData.Instance.LoadScene(1);
+        ClosePauseMenu();
     }
 
     public void Exit()

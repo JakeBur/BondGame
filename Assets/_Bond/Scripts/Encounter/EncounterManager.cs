@@ -24,6 +24,7 @@ public class EncounterManager : MonoBehaviour
     public Buff corruptionDebuff;
 
     [Header("Enemies")]
+    public List<GameObject> CurrEnemies;
     public int maxCurrMeleeAttackers;
     public int maxCurrRangedAttackers;
 
@@ -204,46 +205,55 @@ public class EncounterManager : MonoBehaviour
         }
     }
 
-    public void enemyKilled()
+    public void enemyKilled(GameObject _enemy)
     {
         currEnemyCount--;
-        if(currWave < waves.Count)
-        {
-            if(waves[currWave].index < waves[currWave].spawners.Count)
+        
+        try
+        {   
+            CurrEnemies.Remove(_enemy);
+            if(currWave < waves.Count)
             {
-                SpawnNextEnemy();
-            } 
-            else 
-            {
-                currWave++;
-                if(currWave < waves.Count)
+                if(waves[currWave].index < waves[currWave].spawners.Count)
                 {
-                    if(waves[currWave].spawnWholeWave)
+                    SpawnNextEnemy();
+                } 
+                else 
+                {
+                    currWave++;
+                    if(currWave < waves.Count)
                     {
-                        foreach(GameObject spawner in waves[currWave].spawners)
+                        if(waves[currWave].spawnWholeWave)
+                        {
+                            foreach(GameObject spawner in waves[currWave].spawners)
+                            {
+                                SpawnNextEnemy();
+                            }
+                        }
+                        else
                         {
                             SpawnNextEnemy();
                         }
                     }
-                    else
-                    {
-                        SpawnNextEnemy();
-                    }
                 }
             }
-        }
-        else
-        {
-            if(currEnemyCount < 1)
+            else
             {
-                ClearEncounter();
+                if(currEnemyCount < 1)
+                {
+                    ClearEncounter();
+                }
             }
+        } catch {
+            ClearEncounter();
         }
+
+       
     }
 
     public void SpawnNextEnemy()
     {
-        waves[currWave].spawners[waves[currWave].index].GetComponent<EnemySpawner>().SpawnEnemy(this);
+        CurrEnemies.Add(waves[currWave].spawners[waves[currWave].index].GetComponent<EnemySpawner>().SpawnEnemy(this));
         currEnemyCount++;
         waves[currWave].index++;
     }
@@ -251,6 +261,10 @@ public class EncounterManager : MonoBehaviour
 
     private void ClearEncounter()
     {
+        foreach(GameObject g in CurrEnemies)
+        {
+            Destroy(g);
+        }
         barrier.SetActive(false);
         vfx.PlayDeathAnimation();
         blobParent.SetActive(false);
@@ -259,7 +273,12 @@ public class EncounterManager : MonoBehaviour
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
         PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
         encounterFinished = true;
-        rewardManager.spawnReward();
+        if(rewardManager)
+        {
+            rewardManager.spawnReward();
+        }
+        
+
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
     }
 }

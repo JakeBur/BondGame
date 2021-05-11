@@ -32,7 +32,7 @@ public class EActionPlayDeathAnim : BTLeaf
         enemyContext.dropGold();
 
         //tell encounter that i died
-        enemyContext.EncounterManager.enemyKilled();
+        enemyContext.EncounterManager.enemyKilled(enemyContext.gameObject);
         if(enemyContext.attacking)
         {
             switch(enemyContext.enemyType)

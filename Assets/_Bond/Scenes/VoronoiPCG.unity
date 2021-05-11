@@ -1252,8 +1252,10 @@ MonoBehaviour:
   adjacencyCount: 22
   drawByDistance: 0
   increment: 2
-  connectionPoints:
+  BigLevelsCP:
   - {fileID: 11400000, guid: cd565bc5aa34e394a9be572d7437b121, type: 2}
+  SmallLevelsCP:
+  - {fileID: 11400000, guid: 4ed689c6157a0354fa3967783d72cf7f, type: 2}
   terrain: {fileID: 28663201}
   EncounterPosFinderObj: {fileID: 1902069447}
   navMesh: {fileID: 1980506074}
@@ -1289,7 +1291,6 @@ MonoBehaviour:
     type: 3}
   Shopkeeper: {fileID: 4236895899276519868, guid: 8665e2c2602835f479cc802f8641cf74,
     type: 3}
-  numberOfCombat: 5
   numberOfCombatIndicators: 3
   combatEncounters:
   - {fileID: 11400000, guid: f3bd0267accadf142940a85bdc9bfe55, type: 2}
@@ -1308,7 +1309,6 @@ MonoBehaviour:
   - {fileID: 8266150860376316575, guid: 564faac6688b4f64981dab1bd8927420, type: 3}
   - {fileID: 570400069474881886, guid: 35b82a5bb9dfc3a40b4e7316525ecacc, type: 3}
   - {fileID: 7201079461714350030, guid: 1f24e3843173f4c4dae3011a65b4fc56, type: 3}
-  numberOfCreature: 5
   FragariaEncounter: {fileID: 8000037864163684778, guid: e3275dc6a76dae24c96986a35de69a21,
     type: 3}
   AquaphimEncounter: {fileID: 8000037864163684778, guid: a4d6a4e8f923d1b45b8ece48e9b2d27f,
@@ -2046,7 +2046,7 @@ PrefabInstance:
     - target: {fileID: 1303084404, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1962621909}
+      objectReference: {fileID: 1244541159}
     - target: {fileID: 1303084404, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: near clip plane
       value: 0.01
@@ -2062,6 +2062,10 @@ PrefabInstance:
     - target: {fileID: 1303084404, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: orthographic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303084404, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
+      propertyPath: orthographic size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1882045989, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2090,7 +2094,7 @@ PrefabInstance:
     - target: {fileID: 1882045992, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1813883889}
+      objectReference: {fileID: 1876051135}
     - target: {fileID: 1882045992, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: near clip plane
       value: 0.01
@@ -2106,6 +2110,10 @@ PrefabInstance:
     - target: {fileID: 1882045992, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 65303
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882045992, guid: 956d718805b5b4344b54a225f3a66551, type: 3}
+      propertyPath: orthographic size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4178489857079956520, guid: 956d718805b5b4344b54a225f3a66551,
         type: 3}
@@ -2170,6 +2178,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!84 &1244541159
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 916
+  m_Height: 515
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1320034704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2517,7 +2560,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698466435}
   m_CullTransparentMesh: 0
---- !u!84 &1813883889
+--- !u!84 &1876051135
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2530,8 +2573,8 @@ RenderTexture:
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
   serializedVersion: 3
-  m_Width: 1115
-  m_Height: 627
+  m_Width: 789
+  m_Height: 444
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthFormat: 1
@@ -2658,41 +2701,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1962621909
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1115
-  m_Height: 627
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1980506073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,7 +2761,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &2075095498
+--- !u!84 &2065402780
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2766,8 +2774,8 @@ RenderTexture:
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
   serializedVersion: 3
-  m_Width: 1115
-  m_Height: 627
+  m_Width: 916
+  m_Height: 515
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthFormat: 1
