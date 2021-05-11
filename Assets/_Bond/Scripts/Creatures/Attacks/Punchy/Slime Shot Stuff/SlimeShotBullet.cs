@@ -58,10 +58,11 @@ public class SlimeShotBullet : MonoBehaviour
     IEnumerator DoSlimeDamage(float damageDuration, int damageCount, float damageAmount, Collider other)
     {
         int currentCount = 0;
+        EnemyAIContext enemyAIContext = other.transform.GetComponent<EnemyAIContext>();
         while(currentCount < damageCount)
         {
-            other.transform.GetComponent<EnemyAIContext>().statManager.TakeDamage(damageAmount, ModiferType.RANGED_RESISTANCE);
-            other.transform.GetComponent<EnemyAIContext>().healthUIUpdate();
+            enemyAIContext.statManager.TakeDamage(damageAmount, ModiferType.RANGED_RESISTANCE);
+            enemyAIContext.healthUIUpdate();
             yield return new WaitForSeconds(damageDuration);
             currentCount++;
         }

@@ -63,7 +63,9 @@ public class ProjectileScript : MonoBehaviour
 
         if (Time.time > impactTime)
         {
-            target.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
+            EnemyAIContext enemyAIContext = target.GetComponent<EnemyAIContext>();
+            enemyAIContext.statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
+            enemyAIContext.healthUIUpdate();
             Instantiate(squibPrefab, target.transform.position, Quaternion.identity);
             SFXPlayer.PlayOneShot(SFX.EnemyLeafProjectileHitSFX, transform.position);
             End();
