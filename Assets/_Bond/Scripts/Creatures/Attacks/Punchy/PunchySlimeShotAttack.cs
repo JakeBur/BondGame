@@ -22,7 +22,7 @@ public class PunchySlimeShotAttack : BTSubtree
 
         #region Approach and attack sequence
             List<BTNode> RangedApproachSelectorList = new List<BTNode>();
-            CActionApproachForBasicRanged approachForAttack = new CActionApproachForBasicRanged("Approach for attack", context);
+            CActionApproachForAttack approachForAttack = new CActionApproachForAttack("Approach for attack", context);
             BTInverter invertApproachForAttack = new BTInverter("Invert Approach for Attack", approachForAttack);
             CActionAttackSlimeShot slimeshot = new CActionAttackSlimeShot("Slime Shot Attack", context);
             RangedApproachSelectorList.Add(invertApproachForAttack);
