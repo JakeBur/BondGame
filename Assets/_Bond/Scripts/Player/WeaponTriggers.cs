@@ -75,6 +75,7 @@ public class WeaponTriggers : MonoBehaviour
             }
 
             enemyAIContext.statManager.TakeDamage(damage * damageModifier, ModiferType.MELEE_RESISTANCE);
+            enemyAIContext.healthUIUpdate();
 
             GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, enemyAIContext.transform);
             squib.transform.localPosition = Vector3.up * 0.7f;
