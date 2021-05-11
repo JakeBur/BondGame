@@ -41,7 +41,9 @@ public class CActionAttackNothingPersonal : BTLeaf
         //Damage target enemy + all enemies caught between
         foreach (var hitCollider in enemiesDamaged)
         { 
-            hitCollider.gameObject.transform.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+            EnemyAIContext enemyAIContext = hitCollider.gameObject.transform.GetComponent<EnemyAIContext>();
+            enemyAIContext.statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+            enemyAIContext.healthUIUpdate();
         }
 
         context.targetEnemy = null;
