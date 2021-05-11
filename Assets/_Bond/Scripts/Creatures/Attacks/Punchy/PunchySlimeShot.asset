@@ -20,7 +20,7 @@ MonoBehaviour:
   abilityDescription: Shoots a sticky ball of slime dealing damage and slowing
   maxDistanceToEnemy: 10
   flyTime: 0
-  projectile: {fileID: 573035498810555202, guid: 882b04121eb97074193a69a53633b7cb,
+  projectile: {fileID: 1232755435502466787, guid: 3cef0ef9f4f6eda4ebd8883de245cde3,
     type: 3}
   projectileSpeed: 10
   baseDamage: 0

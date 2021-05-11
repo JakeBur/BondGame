@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 0
   cooldownDuration: 2
   abilityIcon: {fileID: 21300000, guid: b36e5d7d94414954496af073691ecc28, type: 3}
-  abilityBehavior: {fileID: 0}
+  abilityBehavior: {fileID: 11400000, guid: 4b831983b86e18a43b88487c3b95aaf2, type: 2}
   abilityBuff: {fileID: 11400000, guid: 09d4e64a505a5c54995012e9f24cba8b, type: 2}
   abilityDescription: Greatly increases your attack damage for the next 10 seconds
     but costs 10% current health. Raises crit chance and damage for 10 seconds but
