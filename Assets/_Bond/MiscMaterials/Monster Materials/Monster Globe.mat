@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Monster Globe
-  m_Shader: {fileID: 4800000, guid: f64e240ab0ba25f48ae657154510b04c, type: 3}
+  m_Shader: {fileID: 4800000, guid: 498f857b3631268478c084e1e0f0f798, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
