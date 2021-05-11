@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PunchyBeegPunch", menuName = "ScriptableObjects/BTSubtrees/Attacks/Punchy/Beeg punch")]
-public class PunchyBeegPunchAttack : BTSubtree
+[CreateAssetMenu(fileName = "PunchyWallopAttack", menuName = "ScriptableObjects/BTSubtrees/Attacks/Punchy/Wallop")]
+public class PunchyWallopAttack : BTSubtree
 {
     public override BTSequence BuildSequenceSubtree(CreatureAIContext context) 
     {
@@ -25,10 +25,10 @@ public class PunchyBeegPunchAttack : BTSubtree
             //BTCheckDistanceToTarget checkIfDistanceToTarget = new BTCheckDistanceToTarget("Check if in range for attack", context);
             CActionApproachForBasicMelee approachForAttack = new CActionApproachForBasicMelee("Approach for attack", context);
             BTInverter invertApproachForAttack = new BTInverter("Invert Approach for Attack", approachForAttack);
-            CActionAttackBeegPunch beegPunch = new CActionAttackBeegPunch("Beeg Punch", context);
+            CActionAttackWallop wallop = new CActionAttackWallop("Wallop", context);
             //MeleeApproachSequenceList.Add(checkIfDistanceToTarget);
             MeleeApproachSelectorList.Add(invertApproachForAttack);
-            MeleeApproachSelectorList.Add(beegPunch);
+            MeleeApproachSelectorList.Add(wallop);
             
             BTSelector MeleeApproachAttackSelector = new BTSelector("Melee Approach / Attack Sequence", MeleeApproachSelectorList);
         #endregion

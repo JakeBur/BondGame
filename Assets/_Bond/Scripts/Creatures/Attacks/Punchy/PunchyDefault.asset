@@ -15,12 +15,12 @@ MonoBehaviour:
   id: 0
   cooldownDuration: 2
   abilityIcon: {fileID: 0}
-  abilityBehavior: {fileID: 0}
+  abilityBehavior: {fileID: 11400000, guid: 1692bd6224e4f174d81a98b7372d9aed, type: 2}
   abilityBuff: {fileID: 0}
   abilityDescription: 
   maxDistanceToEnemy: 0
   moveSpeed: 0
   anims: {fileID: 0}
   animTrigger: 
-  baseDmg: 0
-  hitRadius: 0
+  baseDmg: 15
+  hitRadius: 10

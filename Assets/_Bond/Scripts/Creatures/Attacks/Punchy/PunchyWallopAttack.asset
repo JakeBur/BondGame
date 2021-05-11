@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ac1c2213faa9840a512d121d74c35c, type: 3}
-  m_Name: PunchyBeegPunchAttack
+  m_Script: {fileID: 11500000, guid: 542fd97427a2e2341851ad032c1e0caf, type: 3}
+  m_Name: PunchyWallopAttack
   m_EditorClassIdentifier: 

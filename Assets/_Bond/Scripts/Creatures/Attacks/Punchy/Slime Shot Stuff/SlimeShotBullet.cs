@@ -36,6 +36,23 @@ public class SlimeShotBullet : MonoBehaviour
             rigidBody.velocity = (transform.rotation*Vector3.forward*speed);
         }
     }
+
+    public void setTarget(GameObject _target, float _speed, float _damage)
+    {
+        target = _target;
+        transform.LookAt(target.transform.position);
+        speed = _speed;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+
+        if(other.transform.tag == "Enemy")
+        {
+            StartCoroutine(DoRainDamage(1f, 4, damage, other));
+            Destroy(gameObject);
+        }    
+        
+    }    
     IEnumerator DoRainDamage(float damageDuration, int damageCount, float damageAmount, Collider other)
     {
         int currentCount = 0;
@@ -47,21 +64,4 @@ public class SlimeShotBullet : MonoBehaviour
         }
     }
 
-    public void setTarget(GameObject _target, float _speed, float _damage, bool _isHoming)
-    {
-        target = _target;
-        transform.LookAt(target.transform.position);
-        speed = _speed;
-        isHoming = _isHoming;
-    }
-
-    private void OnTriggerEnter(Collider other) {
-
-        if(other.transform.tag == "Enemy")
-        {
-            StartCoroutine(DoRainDamage(1f, 4, damage, other));
-            Destroy(gameObject);
-        }    
-        
-    }
 }
