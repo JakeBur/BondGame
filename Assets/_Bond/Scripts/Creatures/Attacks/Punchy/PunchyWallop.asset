@@ -18,9 +18,9 @@ MonoBehaviour:
   abilityBehavior: {fileID: 11400000, guid: cd6ff108d81488843ab9615a178c7286, type: 2}
   abilityBuff: {fileID: 0}
   abilityDescription: 
-  maxDistanceToEnemy: 0
+  maxDistanceToEnemy: 3
   moveSpeed: 0
   anims: {fileID: 0}
   animTrigger: 
-  baseDmg: 50
+  baseDmg: 25
   hitRadius: 10

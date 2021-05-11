@@ -15,6 +15,7 @@ public class CActionAttackWallop : BTLeaf
     protected override void OnEnter()
     {
         attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
+        CreatureCoroutineController.Start( knockback() );
         //Play amim
     }
 
@@ -25,7 +26,6 @@ public class CActionAttackWallop : BTLeaf
 
     public override NodeState Evaluate() 
     {
-        CreatureCoroutineController.Start( knockback() );
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if( !context.animator.inAbility )
@@ -43,6 +43,7 @@ public class CActionAttackWallop : BTLeaf
     IEnumerator knockback()
     {
         context.targetEnemy.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+        context.targetEnemy.GetComponent<EnemyAIContext>().healthUIUpdate();
         Vector3 moveDirection = context.targetEnemy.transform.position - context.creatureTransform.transform.position;
         context.targetEnemy.GetComponent<EnemyAIContext>().rb.isKinematic = false;
         context.targetEnemy.GetComponent<EnemyAIContext>().agent.isStopped = true;

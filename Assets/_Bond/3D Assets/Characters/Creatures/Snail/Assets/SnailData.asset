@@ -27,5 +27,5 @@ MonoBehaviour:
   utilityRange: {x: 25, y: 50}
   dexterityRange: {x: 20, y: 40}
   creatureAttacks:
-  - {fileID: 11400000, guid: 8a835c2934c5a954b8980b3398d9254e, type: 2}
+  - {fileID: 11400000, guid: cf0b7a3d4cb109941b6b95f58e3e6c11, type: 2}
   - {fileID: 11400000, guid: 973b4f39cad480645b1ec986ba70e31f, type: 2}
