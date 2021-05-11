@@ -14,6 +14,7 @@ public class CActionAttackSlimeShot : BTLeaf
     protected override void OnEnter()
     {
         attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
+        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnSlimeShot(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDamage, attack.abilityBuff);
 
         //Play correct anim once its made
         context.animator.DefaultAttack();
@@ -27,9 +28,6 @@ public class CActionAttackSlimeShot : BTLeaf
     public override NodeState Evaluate() 
     {
         //Spawn the sun beam
-        context.gameObject.transform.LookAt(context.targetEnemy.transform);
-        context.gameObject.transform.rotation = new Quaternion(0, context.gameObject.transform.rotation.y, 0, context.gameObject.transform.rotation.w);
-        context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnSlimeShot(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDamage, attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if( !context.animator.inAttack ) 

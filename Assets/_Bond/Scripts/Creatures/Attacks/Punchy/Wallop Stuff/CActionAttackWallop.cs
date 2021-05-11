@@ -14,8 +14,10 @@ public class CActionAttackWallop : BTLeaf
 
     protected override void OnEnter()
     {
+        EnemyAIContext enemyAIContext = context.targetEnemy.GetComponent<EnemyAIContext>();
         attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
-        CreatureCoroutineController.Start( knockback() );
+        enemyAIContext.statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+        enemyAIContext.healthUIUpdate();
         //Play amim
     }
 
@@ -26,6 +28,12 @@ public class CActionAttackWallop : BTLeaf
 
     public override NodeState Evaluate() 
     {
+        EnemyAIContext enemyAIContext = context.targetEnemy.GetComponent<EnemyAIContext>();
+        Vector3 moveDirection = context.targetEnemy.transform.position - context.creatureTransform.transform.position;
+        enemyAIContext.rb.isKinematic = false;
+        enemyAIContext.agent.isStopped = true;
+        enemyAIContext.rb.AddForce(moveDirection.normalized * 450f);
+        CreatureCoroutineController.Start( knockback(enemyAIContext) );
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if( !context.animator.inAbility )
@@ -40,19 +48,13 @@ public class CActionAttackWallop : BTLeaf
         
         return NodeState.RUNNING;
     }
-    IEnumerator knockback()
+    IEnumerator knockback(EnemyAIContext enemyAIContext)
     {
-        context.targetEnemy.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
-        context.targetEnemy.GetComponent<EnemyAIContext>().healthUIUpdate();
-        Vector3 moveDirection = context.targetEnemy.transform.position - context.creatureTransform.transform.position;
-        context.targetEnemy.GetComponent<EnemyAIContext>().rb.isKinematic = false;
-        context.targetEnemy.GetComponent<EnemyAIContext>().agent.isStopped = true;
-        context.targetEnemy.GetComponent<EnemyAIContext>().rb.AddForce(moveDirection.normalized * 50f);
         yield return new WaitForSeconds(1);
-        context.targetEnemy.GetComponent<EnemyAIContext>().rb.velocity = Vector3.zero;
-        context.targetEnemy.GetComponent<EnemyAIContext>().rb.angularVelocity = Vector3.zero;
-        context.targetEnemy.GetComponent<EnemyAIContext>().rb.isKinematic = true;
-        context.targetEnemy.GetComponent<EnemyAIContext>().agent.isStopped = false;   
+        enemyAIContext.rb.velocity = Vector3.zero;
+        enemyAIContext.rb.angularVelocity = Vector3.zero;
+        enemyAIContext.rb.isKinematic = true;
+        enemyAIContext.agent.isStopped = false;   
     }
 
 }

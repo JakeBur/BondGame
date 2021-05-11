@@ -10,11 +10,12 @@ public class SlimeShotBullet : MonoBehaviour
     Rigidbody rigidBody;
     float speed = 10;
     public bool isHoming = false;
+    public Renderer rend;
 
     private void Awake() 
     {
         rigidBody = GetComponent<Rigidbody>();
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 8f);
     }
 
     public void setDamage(float _damage, Buff _debuff)
@@ -49,7 +50,8 @@ public class SlimeShotBullet : MonoBehaviour
         if(other.transform.tag == "Enemy")
         {
             StartCoroutine(DoSlimeDamage(1f, 4, damage, other));
-            Destroy(gameObject);
+            rend = GetComponent<Renderer>();
+            rend.enabled = false;
         }    
         
     }    
@@ -59,6 +61,7 @@ public class SlimeShotBullet : MonoBehaviour
         while(currentCount < damageCount)
         {
             other.transform.GetComponent<EnemyAIContext>().statManager.TakeDamage(damageAmount, ModiferType.RANGED_RESISTANCE);
+            other.transform.GetComponent<EnemyAIContext>().healthUIUpdate();
             yield return new WaitForSeconds(damageDuration);
             currentCount++;
         }
