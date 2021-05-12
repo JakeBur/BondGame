@@ -17,7 +17,12 @@ public class CActionAttackNothingPersonal : BTLeaf
         attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
-        context.animator.DefaultAttack();
+        EmptyCreatureAnimator animator = context.animator as EmptyCreatureAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not Lilibun animator");
+        }
+        animator.Ability();
     }
 
     protected override void OnExit()
@@ -48,7 +53,7 @@ public class CActionAttackNothingPersonal : BTLeaf
 
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if( !context.animator.inAttack ) 
+        if( !context.animator.inAbility ) 
         {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
