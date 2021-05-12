@@ -32,7 +32,10 @@ public class Stat
 
     public void UpdateValue()
     {
-        modifiedValue = baseValue;
+        if(modiferType != ModiferType.CURR_HEALTH)
+        {
+            modifiedValue = baseValue;
+        }
         foreach(Modifier mod in modifiers){
             modifiedValue += mod.Additive;
             modifiedValue *= mod.Multiplicitive;
