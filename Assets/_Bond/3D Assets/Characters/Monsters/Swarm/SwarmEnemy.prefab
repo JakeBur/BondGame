@@ -107,6 +107,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 878230852319099018}
+--- !u!114 &4606247198665921734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529932509213650958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7357eb0d11fe4334699b95741b3d49af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &878230852251512458
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +224,7 @@ GameObject:
   - component: {fileID: 1498083046}
   - component: {fileID: 1498083051}
   - component: {fileID: 3724473988699940788}
-  - component: {fileID: 6475226184155837207}
+  - component: {fileID: 3142491713220422609}
   m_Layer: 8
   m_Name: SwarmEnemy
   m_TagString: Enemy
@@ -365,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: f78d5276b71011241b768dd456679b87, type: 2}
---- !u!114 &6475226184155837207
+--- !u!114 &3142491713220422609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,7 +386,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 878230852319099018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f0dbb8c127308247b9c3c5f33162088, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ff657c0aeb4af9458ed36c0c2ced522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 529932509213650958}
@@ -1041,10 +1053,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2126178043645438897, guid: 303d6e3c102490e4c916920fd2845bc5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 65a7c32d5b70fa449ac18b74a2cbdbae, type: 2}
     m_RemovedComponents:
     - {fileID: 2126178043460102708, guid: 303d6e3c102490e4c916920fd2845bc5, type: 3}
     - {fileID: 2126178043460102711, guid: 303d6e3c102490e4c916920fd2845bc5, type: 3}
     - {fileID: 2126178043460102710, guid: 303d6e3c102490e4c916920fd2845bc5, type: 3}
+    - {fileID: 3227637043323436901, guid: 303d6e3c102490e4c916920fd2845bc5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 303d6e3c102490e4c916920fd2845bc5, type: 3}
 --- !u!4 &529932509213650954 stripped
 Transform:
