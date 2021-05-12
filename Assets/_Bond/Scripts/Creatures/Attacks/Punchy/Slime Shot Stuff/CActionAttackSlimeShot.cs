@@ -17,7 +17,12 @@ public class CActionAttackSlimeShot : BTLeaf
         context.abilitySpawner.GetComponent<AbilitySpawner>().SpawnSlimeShot(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDamage, attack.abilityBuff);
 
         //Play correct anim once its made
-        context.animator.DefaultAttack();
+        SnailAnimator animator = context.animator as SnailAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not Slugger animator");
+        }
+        animator.SlimeShot();
     }
 
     protected override void OnExit()
@@ -30,7 +35,7 @@ public class CActionAttackSlimeShot : BTLeaf
         //Spawn the sun beam
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if( !context.animator.inAttack ) 
+        if( !context.animator.inAbility ) 
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();

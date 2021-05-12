@@ -4846,7 +4846,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5056212569875560115
+--- !u!114 &3519195165388295731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4855,7 +4855,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6680995472548142317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0339c87fea27ea147960b1fc232d41a2, type: 3}
+  m_Script: {fileID: 11500000, guid: b97e90129946c204f8ac5720b463fe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7652944173022466313
@@ -5061,12 +5061,12 @@ GameObject:
   - component: {fileID: 7652944173586669289}
   - component: {fileID: 8167450192529632883}
   - component: {fileID: 8167450192529632881}
-  - component: {fileID: 6899150225298738526}
   - component: {fileID: 3045770925772636374}
   - component: {fileID: 4353762693751710805}
   - component: {fileID: 3520200349132130404}
   - component: {fileID: 6930789815379080476}
   - component: {fileID: 3707596622458792927}
+  - component: {fileID: 3837249010758461284}
   m_Layer: 9
   m_Name: SnailPrefab
   m_TagString: CaptCreature
@@ -5339,20 +5339,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   ability1Icon: {fileID: 0}
   ability2Icon: {fileID: 0}
---- !u!114 &6899150225298738526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167450192529632886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f77c9130777d174da4c8e5da55b7da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 6680995472548142317}
-  raycastOrigin: {fileID: 3636586177311874214}
 --- !u!114 &3045770925772636374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5426,6 +5412,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a268d511016f1844ac7761fb3321bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3837249010758461284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167450192529632886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591b014cd7c87c4449c2bc3fd1c0cddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 6680995472548142317}
+  raycastOrigin: {fileID: 3636586177311874214}
 --- !u!1001 &926935731944446665
 PrefabInstance:
   m_ObjectHideFlags: 0

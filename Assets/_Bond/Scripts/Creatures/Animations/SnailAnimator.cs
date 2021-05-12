@@ -6,52 +6,24 @@ using SFXPlayer = FMODUnity.RuntimeManager;
 
 public class SnailAnimator : CreatureAnimator
 {
-    public GameObject petalSawVFXPrefab;
 
-    public void PetalSaw()
+    public void EarthShaker()
     {
-        animator.SetTrigger("PetalSaw");
+        animator.SetTrigger("EarthShaker");
     }
 
-    public void EventPlayPetalSawSFX()
+    public void SlimeShot()
     {
-        SFXPlayer.PlayOneShot(SFX.FragariaPetalSawSFX, transform.position);
+        animator.SetTrigger("SlimeShot");
     }
 
-    public void PetalThrow()
+    public void SnailStand()
     {
-        animator.SetTrigger("PetalThrow");
+        animator.SetTrigger("SnailStand");
     }
 
-    public void EventPlayPetalThrowWhooshSFX(int count)
+    public void Wallop()
     {
-        SFX.PlayFragariaPetalThrowWhooshSFX(count, transform.position);
-    }
-
-    public void EventPlayPetalThrowEndingSFX()
-    {
-        SFXPlayer.PlayOneShot(SFX.FragariaPetalThrowEndingSFX, transform.position);
-    }
-
-    public void SporeToss()
-    {
-        animator.SetTrigger("SporeToss");
-    }
-
-    public void SunBeam()
-    {
-        animator.SetTrigger("SunBeam");
-    }
-
-    public void EventPlayPetalSawVFX()
-    {
-        GameObject slash = Instantiate(petalSawVFXPrefab, transform.position, Quaternion.identity);
-        slash.transform.LookAt(transform.position + transform.forward);
-        Debug.Log("playing from animation event");
-	}
-	
-    public void EventPlayBasicAttackImpactSFX()
-    {
-        SFXPlayer.PlayOneShot(SFX.EnemyPunchHitSFX);
+        animator.SetTrigger("Wallop");
     }
 }
