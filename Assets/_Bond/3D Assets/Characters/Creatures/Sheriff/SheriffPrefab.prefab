@@ -4837,7 +4837,7 @@ Animator:
   m_GameObject: {fileID: 6895005132424906512}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d532079c8f44b9e41bcb19765f934dcd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 082fc7bc5cc7db64da285fb776c55013, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4846,7 +4846,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7047709562489793511
+--- !u!114 &7050257040949518246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4855,7 +4855,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6895005132424906512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0339c87fea27ea147960b1fc232d41a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eeceda34e62b0342abff25cda1c8eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7652944173022466313
@@ -5061,11 +5061,11 @@ GameObject:
   - component: {fileID: 7652944173586669289}
   - component: {fileID: 8167450192529632883}
   - component: {fileID: 8167450192529632881}
-  - component: {fileID: 6899150225298738526}
   - component: {fileID: 3045770925772636374}
   - component: {fileID: 4353762693751710805}
   - component: {fileID: 3520200349132130404}
   - component: {fileID: 6930789815379080476}
+  - component: {fileID: 3942903376802082632}
   m_Layer: 9
   m_Name: SheriffPrefab
   m_TagString: CaptCreature
@@ -5338,20 +5338,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   ability1Icon: {fileID: 0}
   ability2Icon: {fileID: 0}
---- !u!114 &6899150225298738526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167450192529632886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f77c9130777d174da4c8e5da55b7da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 6895005132424906512}
-  raycastOrigin: {fileID: 1303921472986590980}
 --- !u!114 &3045770925772636374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5416,6 +5402,20 @@ MonoBehaviour:
   personalities: []
   DefaultPersonality: {fileID: 11400000, guid: 57ec74726c94f2e41bbc8565a9e58457, type: 2}
   Evaluate: 0
+--- !u!114 &3942903376802082632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167450192529632886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fee9225d216704d9f8869d6534f03f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 6895005132424906512}
+  raycastOrigin: {fileID: 1303921472986590980}
 --- !u!1001 &926935731944446665
 PrefabInstance:
   m_ObjectHideFlags: 0
