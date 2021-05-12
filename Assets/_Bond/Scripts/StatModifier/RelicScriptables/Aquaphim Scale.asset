@@ -20,9 +20,9 @@ MonoBehaviour:
     modiferType: 0
     Additive: 20
     Multiplicitive: 1
-  - modifierIdentifier: 
+  - modifierIdentifier: Add some health
     modiferType: 1
-    Additive: 50
+    Additive: 20
     Multiplicitive: 1
   - modifierIdentifier: Increases Player Damage
     modiferType: 2

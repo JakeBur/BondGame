@@ -114,12 +114,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daeeef7cfb6f08844aad3db55eb48485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barkList:
-  - Welcome kid.
-  - Come, See my wares.
-  - '*squirel noise*'
-  - You'll go nuts for my prices
-  - Dont go nuts out here alone.
+  enterBarkList:
+  - What'll it be this time?
+  - Buy One Get One Twice the Price!
+  - You can never have too many relics.
+  - No pine no gain.
+  - My wares are berry cheap!
+  - No pecan at my wares if u ain't gonna buy.
+  - I'm very grape-ful for your buisness.
+  - I got a nice orange-ment of wares.
+  - I'm rootin for ya bud, don't feel Ostritch-sized.
+  - If it's a relic, you know I sell it.
+  - Wish I had a way to make more acorns. *Sigh*
+  - How's the forest ventures goin kid?
+  - Careful out there kid, don't know what spirits are about.
+  - You could say I know my way around these relics.
+  - You meet any new creatures yet?
+  - You remind me of me when I was young, ya know?
+  - Just got some new wares, care to take a look?
+  - Feel free to look around kid, see what ya like.
+  - Almost ran into those spirits yesterday, jeez are they scary!
+  - These are the best deals you can get around these parts.
+  - Take a break from all that fighting.
+  - Relics, I got them, you need them.
+  purchaseBarkList:
+  - That'll give ya an edge out there.
+  - Good Luck!
+  - Good selection! Probably.
+  - With great purchase comes great responsibility.
+  - Now go show those spirits whose boss!
+  - You might just get me back in business kid.
+  - My wares will never fail ya kid.
+  exitBarkList:
+  - Thanks for buyin!
+  - Appreciate doin business with ya kid.
+  - Be safe out there in those woods now.
+  - Safe travels.
+  - See ya!
+  - Come back anytime!
+  - You know where to find me!
+  - Thanks for shoppin, if ya see a spirit, don't panic!
+  - I always got some new trinkets, check back later
+  - Remember, I'm always open
   barkBox: {fileID: 3408236207534695481}
 --- !u!136 &524966823489210073
 CapsuleCollider:
@@ -157,6 +193,7 @@ MonoBehaviour:
   potionPrefab: {fileID: 1562028770156074076, guid: dc525406f4358024886203b88bb59f40,
     type: 3}
   costRange: {x: 5, y: 15}
+  relicsForSale: []
 --- !u!1 &4236895899396860512
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +206,7 @@ GameObject:
   - component: {fileID: 4236895899396860524}
   - component: {fileID: 4236895899396860527}
   - component: {fileID: 4236895899396860526}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +361,7 @@ GameObject:
   - component: {fileID: 687085044924170429}
   - component: {fileID: 6354760263566456200}
   - component: {fileID: 3408236207534695481}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: barks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,8 +375,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4590528822195687741}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.55}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4236895899396860513}
@@ -347,7 +384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.47, y: -4.78}
+  m_AnchoredPosition: {x: 3.66, y: -4.1}
   m_SizeDelta: {x: 13.026878, y: 1.4625707}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6354760263566456200
@@ -404,10 +441,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.39
-  m_fontSizeBase: 1.39
+  m_fontSize: 0.87
+  m_fontSizeBase: 0.87
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0.5
   m_fontSizeMax: 2
   m_fontStyle: 0
