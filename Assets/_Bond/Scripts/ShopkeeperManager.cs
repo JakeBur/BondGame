@@ -14,6 +14,9 @@ public class ShopkeeperManager : MonoBehaviour
 
     public Vector2 costRange;
 
+    [HideInInspector]
+    public List<GameObject> relicsForSale;
+
     private void Start() {
         foreach(Transform _transform in relicSpawnLocations)
         {
@@ -24,6 +27,8 @@ public class ShopkeeperManager : MonoBehaviour
             tempGameObj.GetComponent<RelicInteractable>().cost = Random.Range((int)costRange.x, (int)costRange.y);
 
             tempGameObj.GetComponent<RelicInteractable>().updateSprite();
+            
+            relicsForSale.Add(tempGameObj);
         }
 
         //Spawn potion
@@ -33,6 +38,17 @@ public class ShopkeeperManager : MonoBehaviour
             // potion.GetComponent<PotionInteractable>().relicStats = potionPrefab;
             potion.GetComponent<PotionInteractable>().cost = Random.Range((int)costRange.x, (int)costRange.y);
             // potion.GetComponent<PotionInteractable>().updateSprite();
+            relicsForSale.Add(potion);
+        }
+    }
+
+    private void Update() {
+        for(int i = 0; i < relicsForSale.Count; i++)
+        {
+            if(relicsForSale[i] == null)
+            {
+                relicsForSale.RemoveAt(i);
+            }
         }
     }
 }

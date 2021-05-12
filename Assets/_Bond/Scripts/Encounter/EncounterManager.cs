@@ -156,13 +156,13 @@ public class EncounterManager : MonoBehaviour
             pc.swapCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
         }
 
-        for(int i = 0; i < blobAmount; i++)
-        {
-            Vector2 randomPos = Random.insideUnitCircle;
-            randomPos *= (Random.Range(10,blobSpawnRadius));
-            Instantiate(blobPrefab, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
-        }
-        blobParent.SetActive(true);
+        // for(int i = 0; i < blobAmount; i++)
+        // {
+        //     Vector2 randomPos = Random.insideUnitCircle;
+        //     randomPos *= (Random.Range(10,blobSpawnRadius));
+        //     Instantiate(blobPrefab, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
+        // }
+        // blobParent.SetActive(true);
         barrier.SetActive(true);
         vfx.PlayEncounterBegin();
         SpawnEncounter();

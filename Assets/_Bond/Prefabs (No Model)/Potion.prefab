@@ -101,7 +101,7 @@ MonoBehaviour:
   relicStats: {fileID: 11400000, guid: cb89053fa52ce9947b7f93b6492e0b32, type: 2}
   spriteRenderer: {fileID: 1562028770156074079}
   cost: 0
-  healingAmount: 10
+  healingAmount: 150
 --- !u!54 &1562028770156074073
 Rigidbody:
   m_ObjectHideFlags: 0
