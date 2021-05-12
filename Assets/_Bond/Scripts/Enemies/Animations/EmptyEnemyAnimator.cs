@@ -4,12 +4,12 @@ using UnityEngine;
 
 using SFXPlayer = FMODUnity.RuntimeManager;
 
-// NEED TO FIGURE OUT WHAT TO DO WITH HITBOXES
 public class EmptyEnemyAnimator : EnemyAnimator
 {
+    public float attackLength = 1.0f;
     private IEnumerator StartAttack()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(attackLength);
         inAttack = false;
         boxCollider.enabled = false;
     }
