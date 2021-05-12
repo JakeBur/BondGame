@@ -187,8 +187,8 @@ ModelImporter:
       name: SnailArmature|Idle
       takeName: SnailArmature|Idle
       internalID: 0
-      firstFrame: 4
-      lastFrame: 53
+      firstFrame: 17
+      lastFrame: 52
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -246,7 +246,7 @@ ModelImporter:
       takeName: SnailArmature|Move
       internalID: 0
       firstFrame: 17
-      lastFrame: 53
+      lastFrame: 52
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
