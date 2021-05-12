@@ -11,9 +11,6 @@ public class EnemyWeaponTrigger : MonoBehaviour
 {
     [SerializeField]
     public EnemyAIContext context;
-    private bool hasHit;
-
-    //public BoxCollider hitbox => gameObject.GetComponent<BoxCollider>();
 
     //-----------
     // for FMOD
@@ -23,41 +20,23 @@ public class EnemyWeaponTrigger : MonoBehaviour
         get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "Player" && !hasHit)
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<StatManager>().TakeDamage(context.statManager.stats[ModiferType.DAMAGE].modifiedValue, ModiferType.MELEE_RESISTANCE);
             other.gameObject.GetComponent<PlayerController>().DeathCheck();
-            hasHit = true;
 
-
-            if(!(context.enemyType == "SwarmEnemy"))
+            if(context.enemyType != "SwarmEnemy")
             {
                 other.GetComponent<PlayerController>().isHit = true;
             }
-            // other.GetComponent<PlayerController>().isHit = true;
 
             SFXPlayer.PlayOneShot(SFX.PlayerDamagedDonutSFX, transform.position);
 
             DisableHitbox();
         }
-        // else if(other.gameObject.tag == "CaptCreature")
-        // {
-        //     other.gameObject.GetComponent<StatManager>().TakeDamageCreature(context.statManager.stats[ModiferType.DAMAGE].modifiedValue, ModiferType.MELEE_RESISTANCE);
-        //     other.GetComponent<CreatureAIContext>().isHit = true;
-        //     // other.GetComponentInChildren<EnthusiasmUI>().UpdateEnthusiasm();
-        // }
     }
-    void OnTriggerExit(Collider other) {
-    if(other.gameObject.tag == "Player" && hasHit) {
-        hasHit = false;
-    }
-}
-
-    // public void ColliderOnOff()
-    // {
-    //     hitbox.enabled = !hitbox.enabled;
-    // }
 
     private void DisableHitbox()
     {
