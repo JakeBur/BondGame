@@ -15,7 +15,9 @@ public class CActionAttackPetalSaw : BTLeaf
     protected override void OnEnter()
     {
         attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
-        context.targetEnemy.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+        EnemyAIContext enemyAIContext = context.targetEnemy.GetComponent<EnemyAIContext>();
+        enemyAIContext.statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+        enemyAIContext.healthUIUpdate();
         //Play amim
         // Debug.Log("Attacking");
         FragariaAnimator animator = context.animator as FragariaAnimator;
