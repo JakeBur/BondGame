@@ -19,6 +19,12 @@ public class CActionAttackWallop : BTLeaf
         enemyAIContext.statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
         enemyAIContext.healthUIUpdate();
         //Play amim
+        SnailAnimator animator = context.animator as SnailAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not Slugger animator");
+        }
+        animator.Wallop();
     }
 
     protected override void OnExit()
@@ -40,6 +46,7 @@ public class CActionAttackWallop : BTLeaf
         { //if animation done, have to add that 
       
             context.player.GetComponent<PlayerController>().PutOnCD();
+            context.wentToPlayerForAbility = false;
             // Debug.Log("Ability Id: ");
             // Debug.Log(context.creatureStats.abilities[context.lastTriggeredAbility].id);
             OnParentExit();

@@ -1,0 +1,287 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snail_Helicopter
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Antennas.001
+    m_Weight: 0
+  - m_Path: Eyes.001
+    m_Weight: 0
+  - m_Path: New Arms.001
+    m_Weight: 0
+  - m_Path: Shell.002
+    m_Weight: 0
+  - m_Path: SnailArmature
+    m_Weight: 0
+  - m_Path: SnailArmature/Base
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_0.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_0.L/D.Arm_0.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_1.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_1.L/D.Arm_1.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_2.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_2.L/D.Arm_2.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_3.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_3.L/D.Arm_3.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_4.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_4.L/D.Arm_4.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_5.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_5.L/D.Arm_5.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_6.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_6.L/D.Arm_6.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_7.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_7.L/D.Arm_7.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_8.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_8.L/D.Arm_8.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_9.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_9.L/D.Arm_9.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_10.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_10.L/D.Arm_10.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_11.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_11.L/D.Arm_11.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_12.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_12.L/D.Arm_12.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_13.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_13.L/D.Arm_13.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_14.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Arm_14.L/D.Arm_14.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_0_0.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_0_0.L/D.Finger_0_1.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_0_0.L/D.Finger_0_1.L/D.Finger_0_2.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_0_0.L/D.Finger_0_1.L/D.Finger_0_2.L/D.Finger_0_2.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_1_0.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_1_0.L/D.Finger_1_1.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_1_0.L/D.Finger_1_1.L/D.Finger_1_2.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_1_0.L/D.Finger_1_1.L/D.Finger_1_2.L/D.Finger_1_2.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_2_0.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_2_0.L/D.Finger_2_1.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_2_0.L/D.Finger_2_1.L/D.Finger_2_2.L
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.L/D.Hand.L/D.Finger_2_0.L/D.Finger_2_1.L/D.Finger_2_2.L/D.Finger_2_2.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_0.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_0.R/D.Arm_0.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_1.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_1.R/D.Arm_1.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_2.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_2.R/D.Arm_2.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_3.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_3.R/D.Arm_3.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_4.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_4.R/D.Arm_4.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_5.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_5.R/D.Arm_5.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_6.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_6.R/D.Arm_6.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_7.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_7.R/D.Arm_7.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_8.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_8.R/D.Arm_8.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_9.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_9.R/D.Arm_9.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_10.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_10.R/D.Arm_10.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_11.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_11.R/D.Arm_11.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_12.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_12.R/D.Arm_12.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_13.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_13.R/D.Arm_13.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_14.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Arm_14.R/D.Arm_14.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_0_0.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_0_0.R/D.Finger_0_1.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_0_0.R/D.Finger_0_1.R/D.Finger_0_2.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_0_0.R/D.Finger_0_1.R/D.Finger_0_2.R/D.Finger_0_2.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_1_0.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_1_0.R/D.Finger_1_1.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_1_0.R/D.Finger_1_1.R/D.Finger_1_2.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_1_0.R/D.Finger_1_1.R/D.Finger_1_2.R/D.Finger_1_2.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_2_0.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_2_0.R/D.Finger_2_1.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_2_0.R/D.Finger_2_1.R/D.Finger_2_2.R
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Shoulder.R/D.Hand.R/D.Finger_2_0.R/D.Finger_2_1.R/D.Finger_2_2.R/D.Finger_2_2.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Spine_2
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Spine_2/D.Spine_3
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Spine_2/D.Spine_3/D.Neck
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Spine_2/D.Spine_3/D.Neck/D.Neck_2
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Spine_2/D.Spine_3/D.Neck/D.Neck_2/D.Head
+    m_Weight: 0
+  - m_Path: SnailArmature/Base/Dynamic Base/D.Shell/D.Spine_0/D.Spine_1/D.Spine_2/D.Spine_3/D.Neck/D.Neck_2/D.Head/D.Head_end
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.L
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.L/D.Antenna_1.L
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.L/D.Antenna_1.L/D.Antenna_2.L
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.L/D.Antenna_1.L/D.Antenna_2.L/D.Antenna_3.L
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.L/D.Antenna_1.L/D.Antenna_2.L/D.Antenna_3.L/D.Antenna_3.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.R
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.R/D.Antenna_1.R
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.R/D.Antenna_1.R/D.Antenna_2.R
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.R/D.Antenna_1.R/D.Antenna_2.R/D.Antenna_3.R
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Antenna_0.R/D.Antenna_1.R/D.Antenna_2.R/D.Antenna_3.R/D.Antenna_3.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Eye.L
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Eye.L/D.Eye.L_end
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Eye.R
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Eye.R/D.Eye.R_end
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Gimbal_0
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3
+    m_Weight: 0
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_0_0
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_0_0/D.Leaf_0_1
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_0_0/D.Leaf_0_1/D.Leaf_0_2
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_0_0/D.Leaf_0_1/D.Leaf_0_2/D.Leaf_0_3
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_0_0/D.Leaf_0_1/D.Leaf_0_2/D.Leaf_0_3/D.Leaf_0_4
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_0_0/D.Leaf_0_1/D.Leaf_0_2/D.Leaf_0_3/D.Leaf_0_4/D.Leaf_0_4_end
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_1_0
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_1_0/D.Leaf_1_1
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_1_0/D.Leaf_1_1/D.Leaf_1_2
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_1_0/D.Leaf_1_1/D.Leaf_1_2/D.Leaf_1_3
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_1_0/D.Leaf_1_1/D.Leaf_1_2/D.Leaf_1_3/D.Leaf_1_4
+    m_Weight: 1
+  - m_Path: SnailArmature/D.Gimbal_0/D.Gimbal_1/D.Gimbal_2/D.Gimbal_3/D.Leaf_1_0/D.Leaf_1_1/D.Leaf_1_2/D.Leaf_1_3/D.Leaf_1_4/D.Leaf_1_4_end
+    m_Weight: 1
+  - m_Path: SnailBody
+    m_Weight: 0
+  - m_Path: Tree Leaves.001
+    m_Weight: 0
+  - m_Path: Tree.001
+    m_Weight: 0

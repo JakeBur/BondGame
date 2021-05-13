@@ -21,6 +21,13 @@ public class CActionAttackSnailPower : BTLeaf
         context.creatureTransform.LookAt(context.player.transform.position);
 
         attack = (CreatureAttackUtility) context.creatureStats.abilities[context.lastTriggeredAbility];
+
+        SnailAnimator animator = context.animator as SnailAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not Slugger animator");
+        }
+        animator.SnailStand();
     }
 
     protected override void OnExit()
@@ -38,6 +45,7 @@ public class CActionAttackSnailPower : BTLeaf
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
+            context.wentToPlayerForAbility = false;
             return NodeState.SUCCESS;
         }
 
