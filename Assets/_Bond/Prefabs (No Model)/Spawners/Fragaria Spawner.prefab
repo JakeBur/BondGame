@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &309057069506353741
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007681472802905992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.06
+  m_Height: 5.28
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.87, z: -0.19}
 --- !u!1 &8000037864163684778
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,7 +42,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3257292156300551214}
-  - {fileID: 6027728047387798734}
   - {fileID: 5635423050498868530}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,86 +96,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 41fdbc17e7748244d888642ae12b9e4c, type: 2}
   test: 0
   spawnPoint: {fileID: 3257292156300551214}
---- !u!1001 &18219865648148467
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8000037864163684776}
-    m_Modifications:
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6389940238341708167, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_Name
-      value: FragariaSpawnFlower
-      objectReference: {fileID: 0}
-    - target: {fileID: 6389940238341708167, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 115c5a5518ac8584a8bc8f2275b8fbed, type: 3}
---- !u!4 &6027728047387798734 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6045643133195469629, guid: 115c5a5518ac8584a8bc8f2275b8fbed,
-    type: 3}
-  m_PrefabInstance: {fileID: 18219865648148467}
-  m_PrefabAsset: {fileID: 0}
+  frozen: 0
 --- !u!1001 &7335588682895437779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 3168339935553071841, guid: 47bfe37c8a8475946a26a85d6e09a205,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3168339935553071841, guid: 47bfe37c8a8475946a26a85d6e09a205,
         type: 3}
@@ -232,6 +166,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47bfe37c8a8475946a26a85d6e09a205, type: 3}
+--- !u!1 &5007681472802905992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2356478603876855899, guid: 47bfe37c8a8475946a26a85d6e09a205,
+    type: 3}
+  m_PrefabInstance: {fileID: 7335588682895437779}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5635423050498868530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3168339935553071841, guid: 47bfe37c8a8475946a26a85d6e09a205,

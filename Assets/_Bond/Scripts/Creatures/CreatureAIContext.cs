@@ -51,6 +51,7 @@ public class CreatureAIContext : MonoBehaviour
     public bool hasReacted;
     public bool isReacting;
     public bool playerMoving;
+    public bool creatureFrozen = false;
 
     [Header("Misc.Numbers")]
     public float playerSpeedToScare;
@@ -126,6 +127,13 @@ public class CreatureAIContext : MonoBehaviour
         if(boredom < 100)
         {
             boredom += Time.deltaTime * meterRate;
+        }
+        if(creatureFrozen)
+        {
+            this.GetComponent<NavMeshAgent>().enabled = false;
+        } else 
+        {
+            this.GetComponent<NavMeshAgent>().enabled = true;
         }
 
 
