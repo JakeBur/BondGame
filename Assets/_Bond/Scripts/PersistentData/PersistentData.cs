@@ -14,6 +14,7 @@ public class PersistentData : MonoBehaviour
     [Header("PlayerReference")]
     public GameObject PlayerPrefab;
     public GameObject Player { get; private set; }
+    public PlayerController playerController;
 
     [Header("CameraReference")]
     public GameObject CameraPrefab;
@@ -65,6 +66,10 @@ public class PersistentData : MonoBehaviour
     [Header("InputActionAsset")]
     public PlayerInput playerInputs;
 
+    [Header("Tutorial")]
+    public GameObject tutorialObject;
+    public TutorialManager tutorialManager;
+
 
     private void OnApplicationQuit()
     {
@@ -108,6 +113,8 @@ public class PersistentData : MonoBehaviour
 
         SetSFXManagerReference();
 
+        SetTutorialManagerReference();
+
         // Set Camera to follow player
         CameraManager.ResetCameraTargetToPlayer( true );
 
@@ -136,6 +143,7 @@ public class PersistentData : MonoBehaviour
             
         }
         playerInputs = Player.GetComponent<PlayerInput>();
+        playerController = Player.GetComponent<PlayerController>();
         //LoadControls();
     }
     
@@ -290,6 +298,13 @@ public class PersistentData : MonoBehaviour
         MakeChild(SFXManager);
     }
 
+    private void SetTutorialManagerReference()
+    {
+        if(tutorialObject != null)
+        {
+            tutorialManager = tutorialObject.GetComponent<TutorialManager>();
+        }
+    }
     public void LoadScene(int _scene)
     {
         StartCoroutine(Transition(_scene));
@@ -302,7 +317,7 @@ public class PersistentData : MonoBehaviour
         {
             currRunLevel = 0;
         }
-        PlayerController playerController = Player.GetComponent<PlayerController>();
+        
 
         AsyncOperation loadNewScene;
         try 
@@ -506,4 +521,30 @@ public class PersistentData : MonoBehaviour
     
         playerInputs.actions.LoadFromJson(bindings);
     }
+
+
+    public void PlayerDeath()
+    {
+        if(SceneManager.GetActiveScene().name == "Tutorial" )
+        {
+            //deathscreen prompt
+            //warpPlayer(tutorialManager.currspawnpoint);
+            //reset last encounter fight
+            tutorialManager?.RespawnPlayer();
+            tutorialManager?.ResetEncounter();
+            playerController.HealMaxHealth();
+        }
+        else
+        {
+            //display death screen
+            //prob ask for a prompt
+            LoadScene(1);
+            // Hardcoded value: Teleports to Farm
+
+            //healing is done in persistent data using HealMaxHealth()
+        }
+    }
+
+
+
 }

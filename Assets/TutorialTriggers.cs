@@ -14,15 +14,16 @@ public class TutorialTriggers : MonoBehaviour
     {
        if(other.tag == "Player" && !entered)
        {
-           //PersistentData.Instance.Player.GetComponent<PlayerController>().characterDialogManager = dialogManager;
-           PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = dialogueManager;
-           dialogueManager.StartDialogue();
-           entered = true;
+            //PersistentData.Instance.Player.GetComponent<PlayerController>().characterDialogManager = dialogManager;
+            other.GetComponent<PlayerController>().dialogueManager = dialogueManager;
+            dialogueManager.StartDialogue();
+            entered = true;
 
             //set player in standby
-            PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(true);
+            other.GetComponent<PlayerController>().SetStandbyState(true);
        }
 
       
     }
+
 }
