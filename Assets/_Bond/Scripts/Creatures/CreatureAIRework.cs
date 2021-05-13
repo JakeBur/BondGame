@@ -37,6 +37,15 @@ public class CreatureAIRework : MonoBehaviour
             CCheckIsWild isWildCheck = new CCheckIsWild("", context);
             #region selector
                 List<BTNode> wildActionSelectorList = new List<BTNode>();
+
+                #region Creature Frozen
+                    List<BTNode> wildFrozenSequenceList = new List<BTNode>();
+                    CCheckWildFrozen checkWildFrozen = new CCheckWildFrozen("", context);
+                    CActionFrozen creatureFrozen = new CActionFrozen("", context);
+                    wildFrozenSequenceList.Add(checkWildFrozen);
+                    wildFrozenSequenceList.Add(creatureFrozen);
+                    BTSequence wildFrozenSequence = new BTSequence("", wildFrozenSequenceList);
+                #endregion
                 
                 #region near Enemy
                     List<BTNode> wildEnemyNearSequenceList = new List<BTNode>();
@@ -84,6 +93,7 @@ public class CreatureAIRework : MonoBehaviour
                 
                 CActionWander wander = new CActionWander("", context);
 
+                wildActionSelectorList.Add(wildFrozenSequence);
                 wildActionSelectorList.Add(wildEnemyNearSequence);
                 wildActionSelectorList.Add(wildPlayerNearSequence);
                 wildActionSelectorList.Add(wildTiredSequence);

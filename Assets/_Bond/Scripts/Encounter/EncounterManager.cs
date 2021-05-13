@@ -79,69 +79,14 @@ public class EncounterManager : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
-
-            
             startEncounter();
-        //    playerInside = true;
-        //    if(pc.currCreature == null)
-        //    {
-        //        creature1Inside = true;
-        //    }
-        //    if(pc.swapCreature == null)
-        //    {
-        //        creature2Inside = true;
-        //    }
         }
-        // else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.currCreature)
-        // {
-        //     creature1Inside = true;
-        // }
-        // else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.swapCreature)
-        // {
-        //     creature2Inside = true;
-        // }
-        // if(checkIfEveryoneInside())
-        // {
-        //     startEncounter();
-        // }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        // if(other.transform.tag == "Player")
-        // {
-        //    playerInside = false;
-        //     if(pc.currCreature == null)
-        //    {
-        //        creature1Inside = false;
-        //    }
-        //    if(pc.swapCreature == null)
-        //    {
-        //        creature2Inside = false;
-        //    }
-        // }
-        // else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().currCreature)
-        // {
-        //     creature1Inside = false;
-        // }
-        // else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().swapCreature)
-        // {
-        //     creature2Inside = false;
-        // }
-    }
 
-    // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
-    // private bool checkIfEveryoneInside()
-    // {
-    //     if(playerInside && creature1Inside && creature2Inside)
-    //     {
-    //         return true;
-    //     } 
-    //     else 
-    //     {
-    //         return false;
-    //     }
-    // }
+    }
 
     public void startEncounter()
     {
@@ -275,9 +220,13 @@ public class EncounterManager : MonoBehaviour
         encounterFinished = true;
         if(rewardManager)
         {
-            rewardManager.spawnReward();
+            if(!rewardManager.spawnOnStart)
+            {
+                rewardManager.spawnReward();
+            }
+            //Unfreeze the creature
+            rewardManager.instantiatedCreatureSpawner.GetComponent<CreatureSpawner>().Creature.GetComponent<CreatureAIContext>().creatureFrozen = false;
         }
-        
 
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
     }
