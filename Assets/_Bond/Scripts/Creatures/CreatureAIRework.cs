@@ -129,6 +129,7 @@ public class CreatureAIRework : MonoBehaviour
                         List<BTNode> abilityTriggeredSequenceList = new List<BTNode>();
                         CCheckPlayerTriggeredAbility playerTriggeredAbility = new CCheckPlayerTriggeredAbility("", context);
                         CCheckIfAbilityOnCd abilityOnCd = new CCheckIfAbilityOnCd("", context);
+                        CActionGoToPlayerForAbility goToPlayerForAbility = new CActionGoToPlayerForAbility("", context);
                         #region Ability Choosing Selector
                             List<BTNode> abilityChoosingSelectorList = new List<BTNode>();
                             #region Ability 1 Sequence
@@ -154,6 +155,7 @@ public class CreatureAIRework : MonoBehaviour
 
                         abilityTriggeredSequenceList.Add(playerTriggeredAbility);
                         abilityTriggeredSequenceList.Add(abilityOnCd);
+                        abilityTriggeredSequenceList.Add(goToPlayerForAbility);
                         abilityTriggeredSequenceList.Add(abilityChoosingSelector);
                         BTSequence AbilityTriggeredSequence = new BTSequence("", abilityTriggeredSequenceList);
                     #endregion
@@ -162,6 +164,7 @@ public class CreatureAIRework : MonoBehaviour
                         List<BTNode> attentionHighInCombatSequenceList = new List<BTNode>();
 
                         CCheckAttentionHigh attentionHigh = new CCheckAttentionHigh("", context);
+
                         CActionGetToPlayer getToPlayer = new CActionGetToPlayer("", context);
 
                         attentionHighInCombatSequenceList.Add(attentionHigh);

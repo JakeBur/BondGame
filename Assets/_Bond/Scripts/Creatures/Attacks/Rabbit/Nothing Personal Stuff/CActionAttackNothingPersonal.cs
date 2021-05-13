@@ -57,6 +57,7 @@ public class CActionAttackNothingPersonal : BTLeaf
         {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
+            context.wentToPlayerForAbility = false;
             return NodeState.SUCCESS;
         }
 

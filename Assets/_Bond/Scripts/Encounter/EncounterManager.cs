@@ -225,7 +225,10 @@ public class EncounterManager : MonoBehaviour
                 rewardManager.spawnReward();
             }
             //Unfreeze the creature
-            rewardManager.instantiatedCreatureSpawner.GetComponent<CreatureSpawner>().Creature.GetComponent<CreatureAIContext>().creatureFrozen = false;
+            if(rewardManager.instantiatedCreatureSpawner)
+            {
+                rewardManager.instantiatedCreatureSpawner.GetComponent<CreatureSpawner>().Creature.GetComponent<CreatureAIContext>().creatureFrozen = false;
+            }
         }
 
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
