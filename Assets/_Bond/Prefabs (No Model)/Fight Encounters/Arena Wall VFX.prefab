@@ -137,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440137526639054269}
   m_LocalRotation: {x: -0, y: -0.17238171, z: -0, w: -0.98503023}
-  m_LocalPosition: {x: 0, y: 0.12, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.59102, y: 3.5910199, z: 3.59102}
   m_Children:
   - {fileID: 3814675638592135860}
@@ -508,7 +508,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5957690060980314736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19, z: 0}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0}
   m_LocalScale: {x: 6.56336, y: 6.56336, z: 6.56336}
   m_Children:
   - {fileID: 5529271052185901269}
@@ -712,7 +712,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9138129247683935223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.23, z: 0}
   m_LocalScale: {x: 2.1143327, y: 2.1143327, z: 2.1143327}
   m_Children:
   - {fileID: 3697416881313363043}
@@ -896,12 +896,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 16fb50221e49cde4d93c510a35ae83d7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16fb50221e49cde4d93c510a35ae83d7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16fb50221e49cde4d93c510a35ae83d7,
         type: 3}
@@ -966,7 +966,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 16fb50221e49cde4d93c510a35ae83d7,
         type: 3}
       propertyPath: m_Name
-      value: Fragaria Spore Toss Floor Circle
+      value: Floor Circle
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 16fb50221e49cde4d93c510a35ae83d7,
         type: 3}
