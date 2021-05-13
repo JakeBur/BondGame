@@ -52,6 +52,7 @@ public class CreatureAIContext : MonoBehaviour
     public bool isReacting;
     public bool playerMoving;
     public bool creatureFrozen = false;
+    public bool wentToPlayerForAbility = false;
 
     [Header("Misc.Numbers")]
     public float playerSpeedToScare;

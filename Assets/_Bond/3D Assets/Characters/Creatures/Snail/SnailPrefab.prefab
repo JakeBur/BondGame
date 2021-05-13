@@ -4752,8 +4752,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9ce4e6e2c29ea334091c209007a468c7, type: 2}
-  - {fileID: 2100000, guid: 9ce4e6e2c29ea334091c209007a468c7, type: 2}
+  - {fileID: 2100000, guid: 0eab1c6e2e852624abab6debd543cb3a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5257,6 +5257,7 @@ MonoBehaviour:
   isReacting: 0
   playerMoving: 0
   creatureFrozen: 0
+  wentToPlayerForAbility: 0
   playerSpeedToScare: 0.9
   lastTriggeredAbility: 0
   enemyDetectRange: 20

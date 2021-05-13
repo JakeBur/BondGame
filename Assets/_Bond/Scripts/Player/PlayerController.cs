@@ -405,6 +405,7 @@ public class PlayerController : MonoBehaviour
         {
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 0;
+            currCreatureContext.wentToPlayerForAbility = false;
         }
 
     }  
@@ -417,6 +418,7 @@ public class PlayerController : MonoBehaviour
         {
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 1;
+            currCreatureContext.wentToPlayerForAbility = false;
         }
     }
 

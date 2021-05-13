@@ -46,6 +46,7 @@ public class CActionAttackWallop : BTLeaf
         { //if animation done, have to add that 
       
             context.player.GetComponent<PlayerController>().PutOnCD();
+            context.wentToPlayerForAbility = false;
             // Debug.Log("Ability Id: ");
             // Debug.Log(context.creatureStats.abilities[context.lastTriggeredAbility].id);
             OnParentExit();
