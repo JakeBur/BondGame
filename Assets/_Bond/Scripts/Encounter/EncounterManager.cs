@@ -28,6 +28,9 @@ public class EncounterManager : MonoBehaviour
     public int maxCurrMeleeAttackers;
     public int maxCurrRangedAttackers;
 
+    //For triggering post battle dialogue
+    DialogueManager dialogueManager;
+
     [HideInInspector]
     public bool encounterTriggered;
     [HideInInspector]
@@ -277,9 +280,34 @@ public class EncounterManager : MonoBehaviour
         {
             rewardManager.spawnReward();
         }
+        EndofFightDialogue();
         
 
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
+    }
+
+
+    //Triggers dialogue 
+    void EndofFightDialogue()
+    {
+        try
+        {
+            dialogueManager = gameObject.GetComponent<DialogueManager>();
+
+            if(dialogueManager.dialogue != null)
+            {
+                PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = dialogueManager;
+                dialogueManager.StartDialogue();
+                
+
+                //set player in standby
+                PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(true);
+            }
+        }
+        catch
+        {
+            return;
+        }     
     }
 }
 
