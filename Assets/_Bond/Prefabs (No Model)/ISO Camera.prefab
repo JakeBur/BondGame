@@ -105,10 +105,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 136.71
+  far clip plane: 250
   field of view: 10
   orthographic: 0
-  orthographic size: 10.4
+  orthographic size: 6
   m_Depth: -3
   m_CullingMask:
     serializedVersion: 2
@@ -228,7 +228,7 @@ Camera:
   far clip plane: 60
   field of view: 10
   orthographic: 0
-  orthographic size: 10.4
+  orthographic size: 6
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
@@ -392,7 +392,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
