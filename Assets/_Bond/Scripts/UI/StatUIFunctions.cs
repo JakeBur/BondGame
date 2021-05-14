@@ -54,7 +54,7 @@ public class StatUIFunctions : MonoBehaviour
         playerTextLists[1].SetText(stats.getStat(ModiferType.DAMAGE).ToString());
         playerTextLists[2].SetText("0"); //bond aka creature damage
         playerTextLists[3].SetText(stats.getStat(ModiferType.CRIT_CHANCE).ToString() + "%");
-        playerTextLists[4].SetText(stats.getStat(ModiferType.MOVESPEED).ToString());
+//        playerTextLists[4].SetText(stats.getStat(ModiferType.MOVESPEED).ToString());
 
         playerTextLists[5].SetText(levelSys.level.ToString());//Get Level
         playerTextLists[6].SetText(levelSys.GetNextXpForLevel().ToString() + " left");//Get remaining xp
