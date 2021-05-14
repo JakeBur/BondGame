@@ -787,6 +787,9 @@ MonoBehaviour:
     type: 3}
   acornBagPrefab: {fileID: 1562028770156074076, guid: 613e02d716f4cc64f92649fa59d0eb64,
     type: 3}
+  creatureSpawnerPrefab: {fileID: 8384676913061734153, guid: 35c5a81b4db015444b98f15a86214e25,
+    type: 3}
+  instantiatedCreatureSpawner: {fileID: 0}
   costRange: {x: 0, y: 0}
   spawnOnStart: 0
   relicSprite: {fileID: 7469941039214613456, guid: 039ebc7e6bc494745a6628551df07bba,
@@ -829,6 +832,7 @@ MonoBehaviour:
     type: 3}
   blobParent: {fileID: 7455600316609384494}
   corruptionDebuff: {fileID: 11400000, guid: 74f965dcc629edf49b47ee00d4b3d40d, type: 2}
+  CurrEnemies: []
   maxCurrMeleeAttackers: 3
   maxCurrRangedAttackers: 2
   encounterTriggered: 0

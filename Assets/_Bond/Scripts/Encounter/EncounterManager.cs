@@ -28,6 +28,9 @@ public class EncounterManager : MonoBehaviour
     public int maxCurrMeleeAttackers;
     public int maxCurrRangedAttackers;
 
+    //For triggering post battle dialogue
+    DialogueManager dialogueManager;
+
     [HideInInspector]
     public bool encounterTriggered;
     [HideInInspector]
@@ -79,69 +82,14 @@ public class EncounterManager : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
-
-            
             startEncounter();
-        //    playerInside = true;
-        //    if(pc.currCreature == null)
-        //    {
-        //        creature1Inside = true;
-        //    }
-        //    if(pc.swapCreature == null)
-        //    {
-        //        creature2Inside = true;
-        //    }
         }
-        // else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.currCreature)
-        // {
-        //     creature1Inside = true;
-        // }
-        // else if(other.transform.tag == "CaptCreature" && other.gameObject == pc.swapCreature)
-        // {
-        //     creature2Inside = true;
-        // }
-        // if(checkIfEveryoneInside())
-        // {
-        //     startEncounter();
-        // }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        // if(other.transform.tag == "Player")
-        // {
-        //    playerInside = false;
-        //     if(pc.currCreature == null)
-        //    {
-        //        creature1Inside = false;
-        //    }
-        //    if(pc.swapCreature == null)
-        //    {
-        //        creature2Inside = false;
-        //    }
-        // }
-        // else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().currCreature)
-        // {
-        //     creature1Inside = false;
-        // }
-        // else if(other.transform.tag == "CaptCreature" && other.gameObject == PersistentData.Instance.Player.GetComponent<PlayerController>().swapCreature)
-        // {
-        //     creature2Inside = false;
-        // }
-    }
 
-    // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
-    // private bool checkIfEveryoneInside()
-    // {
-    //     if(playerInside && creature1Inside && creature2Inside)
-    //     {
-    //         return true;
-    //     } 
-    //     else 
-    //     {
-    //         return false;
-    //     }
-    // }
+    }
 
     public void startEncounter()
     {
@@ -156,13 +104,13 @@ public class EncounterManager : MonoBehaviour
             pc.swapCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
         }
 
-        for(int i = 0; i < blobAmount; i++)
-        {
-            Vector2 randomPos = Random.insideUnitCircle;
-            randomPos *= (Random.Range(10,blobSpawnRadius));
-            Instantiate(blobPrefab, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
-        }
-        blobParent.SetActive(true);
+        // for(int i = 0; i < blobAmount; i++)
+        // {
+        //     Vector2 randomPos = Random.insideUnitCircle;
+        //     randomPos *= (Random.Range(10,blobSpawnRadius));
+        //     Instantiate(blobPrefab, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
+        // }
+        // blobParent.SetActive(true);
         barrier.SetActive(true);
         vfx.PlayEncounterBegin();
         SpawnEncounter();
@@ -275,11 +223,44 @@ public class EncounterManager : MonoBehaviour
         encounterFinished = true;
         if(rewardManager)
         {
-            rewardManager.spawnReward();
+            if(!rewardManager.spawnOnStart)
+            {
+                rewardManager.spawnReward();
+            }
+            //Unfreeze the creature
+            if(rewardManager.instantiatedCreatureSpawner)
+            {
+                rewardManager.instantiatedCreatureSpawner.GetComponent<CreatureSpawner>().Creature.GetComponent<CreatureAIContext>().creatureFrozen = false;
+            }
         }
+        EndofFightDialogue();
         
 
         PersistentData.Instance.CameraManager.SetExploreCameraDistance();
+    }
+
+
+    //Triggers dialogue 
+    void EndofFightDialogue()
+    {
+        try
+        {
+            dialogueManager = gameObject.GetComponent<DialogueManager>();
+
+            if(dialogueManager.dialogue != null)
+            {
+                PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = dialogueManager;
+                dialogueManager.StartDialogue();
+                
+
+                //set player in standby
+                PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(true);
+            }
+        }
+        catch
+        {
+            return;
+        }     
     }
 }
 

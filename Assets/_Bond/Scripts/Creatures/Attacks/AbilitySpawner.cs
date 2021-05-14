@@ -68,8 +68,8 @@ public class AbilitySpawner : MonoBehaviour
     public void SpawnSlimeShot(GameObject projectile, GameObject target, float speed, float damage, Buff debuff)
     {
         var proj = Instantiate(projectile, transform.position, Quaternion.identity);
-        proj.GetComponent<QuickdrawBullet>().setDamage(damage, debuff);
-        proj.GetComponent<QuickdrawBullet>().setTarget(target, speed, damage);
+        proj.GetComponent<SlimeShotBullet>().setDamage(damage, debuff);
+        proj.GetComponent<SlimeShotBullet>().setTarget(target, speed, damage);
     }
 
 }

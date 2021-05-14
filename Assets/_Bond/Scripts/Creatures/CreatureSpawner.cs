@@ -14,8 +14,9 @@ public class CreatureSpawner : MonoBehaviour
     [ContextMenuItem("SpawnCreature", "SpawnCreature")]
     [SerializeField]
     private float test;
-    
+    public GameObject Creature;
     public Transform spawnPoint;
+    public bool frozen = false;
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class CreatureSpawner : MonoBehaviour
     {
         //pick random creature and spawn it in the world.
         int _randomCreatureNumber = Random.Range(0, creatureTypes.Count);
-        GameObject Creature = Instantiate(creatureTypes[_randomCreatureNumber].creaturePrefab, spawnPoint.position, Quaternion.identity);
+        Creature = Instantiate(creatureTypes[_randomCreatureNumber].creaturePrefab, spawnPoint.position, Quaternion.identity);
 
         //randomize color
         // Creature.GetComponent<CreatureMaterialManager>().RandomizeMaterial();//This currently only works on fragaria, bricks others
@@ -63,6 +64,12 @@ public class CreatureSpawner : MonoBehaviour
         Creature.GetComponent<CreatureAIContext>().icon = creatureTypes[_randomCreatureNumber].creatureIcon;
         Creature.GetComponent<CreatureAIContext>().ability1Icon = _ActiveCreatureData.abilities[0].abilityIcon;
         Creature.GetComponent<CreatureAIContext>().ability2Icon =  _ActiveCreatureData.abilities[1].abilityIcon;
+
+        //Set frozen if wanted
+        if(frozen)
+        {
+            Creature.GetComponent<CreatureAIContext>().creatureFrozen = true;
+        }
         
         //build BT
         Creature.GetComponent<CreatureAIContext>().GetActiveCreatureData();

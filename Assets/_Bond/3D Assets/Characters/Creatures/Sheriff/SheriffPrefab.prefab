@@ -4837,7 +4837,7 @@ Animator:
   m_GameObject: {fileID: 6895005132424906512}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d532079c8f44b9e41bcb19765f934dcd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 082fc7bc5cc7db64da285fb776c55013, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4846,7 +4846,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7047709562489793511
+--- !u!114 &7050257040949518246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4855,7 +4855,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6895005132424906512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0339c87fea27ea147960b1fc232d41a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eeceda34e62b0342abff25cda1c8eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7652944173022466313
@@ -5058,14 +5058,13 @@ GameObject:
   - component: {fileID: 8167450192529632884}
   - component: {fileID: 8167450192529632887}
   - component: {fileID: 8167450192529632878}
-  - component: {fileID: 7652944173586669289}
   - component: {fileID: 8167450192529632883}
   - component: {fileID: 8167450192529632881}
-  - component: {fileID: 6899150225298738526}
   - component: {fileID: 3045770925772636374}
   - component: {fileID: 4353762693751710805}
   - component: {fileID: 3520200349132130404}
   - component: {fileID: 6930789815379080476}
+  - component: {fileID: 3942903376802082632}
   m_Layer: 9
   m_Name: SheriffPrefab
   m_TagString: CaptCreature
@@ -5192,37 +5191,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 3
---- !u!114 &7652944173586669289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167450192529632886}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4f481f4d5c1fa064683bc179d470de21,
-    type: 3}
-  m_NotificationBehavior: 1
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &8167450192529632883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5287,6 +5255,7 @@ MonoBehaviour:
   hasReacted: 0
   isReacting: 0
   playerMoving: 0
+  creatureFrozen: 0
   playerSpeedToScare: 0.9
   lastTriggeredAbility: 0
   enemyDetectRange: 20
@@ -5338,20 +5307,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   ability1Icon: {fileID: 0}
   ability2Icon: {fileID: 0}
---- !u!114 &6899150225298738526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167450192529632886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f77c9130777d174da4c8e5da55b7da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 6895005132424906512}
-  raycastOrigin: {fileID: 1303921472986590980}
 --- !u!114 &3045770925772636374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5416,6 +5371,20 @@ MonoBehaviour:
   personalities: []
   DefaultPersonality: {fileID: 11400000, guid: 57ec74726c94f2e41bbc8565a9e58457, type: 2}
   Evaluate: 0
+--- !u!114 &3942903376802082632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167450192529632886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fee9225d216704d9f8869d6534f03f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 6895005132424906512}
+  raycastOrigin: {fileID: 1303921472986590980}
 --- !u!1001 &926935731944446665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5618,6 +5587,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 41e246b84b9c82945a37ef94d3c49b2f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 41e246b84b9c82945a37ef94d3c49b2f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 41e246b84b9c82945a37ef94d3c49b2f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: -8011918277651261646, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Layer
@@ -5675,12 +5659,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e246b84b9c82945a37ef94d3c49b2f, type: 3}
---- !u!1 &3158655998212418879 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8699652204047898494, guid: 41e246b84b9c82945a37ef94d3c49b2f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6011904675230759489}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2596413037904259495 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8603806674150118374, guid: 41e246b84b9c82945a37ef94d3c49b2f,
@@ -5744,6 +5722,12 @@ GameObject:
 --- !u!1 &2814613684784943806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8386009582420158719, guid: 41e246b84b9c82945a37ef94d3c49b2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6011904675230759489}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3158655998212418879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8699652204047898494, guid: 41e246b84b9c82945a37ef94d3c49b2f,
     type: 3}
   m_PrefabInstance: {fileID: 6011904675230759489}
   m_PrefabAsset: {fileID: 0}

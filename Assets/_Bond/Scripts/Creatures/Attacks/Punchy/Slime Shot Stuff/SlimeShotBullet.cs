@@ -9,12 +9,13 @@ public class SlimeShotBullet : MonoBehaviour
     GameObject target;
     Rigidbody rigidBody;
     float speed = 10;
-    private bool isHoming = false;
+    public bool isHoming = false;
+    public Renderer rend;
 
     private void Awake() 
     {
         rigidBody = GetComponent<Rigidbody>();
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 8f);
     }
 
     public void setDamage(float _damage, Buff _debuff)
@@ -36,32 +37,35 @@ public class SlimeShotBullet : MonoBehaviour
             rigidBody.velocity = (transform.rotation*Vector3.forward*speed);
         }
     }
-    IEnumerator DoRainDamage(float damageDuration, int damageCount, float damageAmount, Collider other)
-    {
-        int currentCount = 0;
-        while(currentCount < damageCount)
-        {
-            other.transform.GetComponent<EnemyAIContext>().statManager.TakeDamage(damageAmount, ModiferType.RANGED_RESISTANCE);
-            yield return new WaitForSeconds(damageDuration);
-            currentCount++;
-        }
-    }
 
-    public void setTarget(GameObject _target, float _speed, float _damage, bool _isHoming)
+    public void setTarget(GameObject _target, float _speed, float _damage)
     {
         target = _target;
         transform.LookAt(target.transform.position);
         speed = _speed;
-        isHoming = _isHoming;
     }
 
     private void OnTriggerEnter(Collider other) {
 
         if(other.transform.tag == "Enemy")
         {
-            StartCoroutine(DoRainDamage(1f, 4, damage, other));
-            Destroy(gameObject);
+            StartCoroutine(DoSlimeDamage(1f, 4, damage, other));
+            rend = GetComponent<Renderer>();
+            rend.enabled = false;
         }    
         
+    }    
+    IEnumerator DoSlimeDamage(float damageDuration, int damageCount, float damageAmount, Collider other)
+    {
+        int currentCount = 0;
+        EnemyAIContext enemyAIContext = other.transform.GetComponent<EnemyAIContext>();
+        while(currentCount < damageCount)
+        {
+            enemyAIContext.statManager.TakeDamage(damageAmount, ModiferType.RANGED_RESISTANCE);
+            enemyAIContext.healthUIUpdate();
+            yield return new WaitForSeconds(damageDuration);
+            currentCount++;
+        }
     }
+
 }

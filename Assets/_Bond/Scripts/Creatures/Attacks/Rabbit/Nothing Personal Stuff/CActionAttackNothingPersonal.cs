@@ -17,7 +17,12 @@ public class CActionAttackNothingPersonal : BTLeaf
         attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
-        context.animator.DefaultAttack();
+        EmptyCreatureAnimator animator = context.animator as EmptyCreatureAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not Lilibun animator");
+        }
+        animator.Ability();
     }
 
     protected override void OnExit()
@@ -41,15 +46,18 @@ public class CActionAttackNothingPersonal : BTLeaf
         //Damage target enemy + all enemies caught between
         foreach (var hitCollider in enemiesDamaged)
         { 
-            hitCollider.gameObject.transform.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+            EnemyAIContext enemyAIContext = hitCollider.gameObject.transform.GetComponent<EnemyAIContext>();
+            enemyAIContext.statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+            enemyAIContext.healthUIUpdate();
         }
 
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if( !context.animator.inAttack ) 
+        if( !context.animator.inAbility ) 
         {
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
+            context.wentToPlayerForAbility = false;
             return NodeState.SUCCESS;
         }
 

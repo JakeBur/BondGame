@@ -17,7 +17,12 @@ public class CActionAttackQuickdraw : BTLeaf
         attack = (CreatureAttackRanged) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
-        context.animator.DefaultAttack();
+        EmptyCreatureAnimator animator = context.animator as EmptyCreatureAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not Lilibun animator");
+        }
+        animator.Ability();
     }
 
     protected override void OnExit()
@@ -31,10 +36,11 @@ public class CActionAttackQuickdraw : BTLeaf
         context.abilitySpawner.GetComponent<RabbitAbilitySpawner>().SpawnQuickdrawBullet(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDamage, attack.abilityBuff);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if( !context.animator.inAttack ) 
+        if( !context.animator.inAbility ) 
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
+            context.wentToPlayerForAbility = false;
             return NodeState.SUCCESS;
         }
 
