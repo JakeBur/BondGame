@@ -15,8 +15,5 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - Shopkeeper/Surprised AHOY ME BOY
-  - Shopkeeper/Surprised bring those acorns to me and buy some relics
-  - Shopkeeper/Surprised YOU'LL BE STRONGER
-  - MC/Sad .........whaaaa?
+  - MC/Angry Ok friend, let's give these weirdos a taste of their own medicine!
   step: 3

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 562d8734cccad2e46a0f40908ee12503, type: 3}
-  m_Name: Tutorial_opening_3
+  m_Name: Tutorial_opening_7
   m_EditorClassIdentifier: 
   trigger: 0
   triggerAmount: 0
   dialog:
-  - MC/Surprised Wh-what the heck were those things?!
-  - MC/Surprised I'm glad I had something to defend myself.
-  step: 0
+  - "MC/Happy We\u2019re almost back at the farm, ready for one more go buddy?"
+  - MC/Happy We can use these to get to other parts of the forest!
+  step: 3

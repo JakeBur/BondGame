@@ -18,6 +18,7 @@ public class hudUI : MonoBehaviour
     public Image goldIcon;
 
     public Image xpbar;
+    public TextMeshProUGUI level;
 
 
     [Header("Creature Icons")]
@@ -148,10 +149,10 @@ public class hudUI : MonoBehaviour
         var creatureStats = player.currCreatureContext.creatureStats;
 
         ability1Icon.sprite = creatureStats.abilities[0].abilityIcon;
-        ability1BG.sprite =  creatureStats.abilities[0].abilityIcon;
+        //ability1BG.sprite =  creatureStats.abilities[0].abilityIcon;
 
         ability2Icon.sprite = creatureStats.abilities[1].abilityIcon;
-        ability2BG.sprite = creatureStats.abilities[1].abilityIcon;
+       // ability2BG.sprite = creatureStats.abilities[1].abilityIcon;
         
         
 
@@ -245,6 +246,11 @@ public class hudUI : MonoBehaviour
     public void XpGain()
     {
         xpbar.fillAmount = player.GetComponent<LevelUpSystem>().PercentToNextLevel();
+    }
+
+    public void UpdateLevel(int i)
+    {
+        level.SetText("Lv. " + i);
     }
 
     
