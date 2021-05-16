@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------
+// for FMOD
+//-----------
+using SFXPlayer = FMODUnity.RuntimeManager;
+
 public class AcornBagInteractable : InteractableBase
 {
     public RelicStats relicStats;
@@ -9,6 +14,14 @@ public class AcornBagInteractable : InteractableBase
     public int cost = 0;
     public int acornAmount;
     PlayerController pc;
+
+    //-----------
+    // for FMOD
+    //-----------
+    private SFXManager SFX
+    {
+        get => PersistentData.Instance.SFXManager.GetComponent<SFXManager>();
+    }
 
     private void Awake() 
     {
@@ -45,6 +58,7 @@ public class AcornBagInteractable : InteractableBase
                     }                
                 }
             }
+            SFXPlayer.PlayOneShot(SFX.CollectMoneySFX, transform.position);
             Destroy(gameObject);
         }
         

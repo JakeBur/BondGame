@@ -11,6 +11,7 @@ public class ControlRebind : MonoBehaviour
     private PlayerInput playerInput;
     public List<TextMeshProUGUI> KeyText = new List<TextMeshProUGUI>();
     public List<Button> KeyButton = new List<Button>();
+    public List<string> actionNames = new List<string>();
 
     private InputActionRebindingExtensions.RebindingOperation RebindOperation;
     [SerializeField] private List<string> ActionsList = new List<string>();
@@ -28,23 +29,25 @@ public class ControlRebind : MonoBehaviour
         //-----------------------------------------
         for (int i = 0; i < 10; ++i)
         {
+            string toAdd;
+
             if (i < 4)
             {
                 InputAction actionBind = playerInput.actions.FindAction("movement");
 
                 var binding = actionBind.bindings[i + 1];
-                string displayString = binding.ToDisplayString();
-                KeyText[i].text = StripQuotes(displayString);           
+                toAdd = StripQuotes(binding.ToDisplayString()); 
             }
             else
             {
                 InputAction actionBind = playerInput.actions.FindAction(ActionsList[i]);
-                KeyText[i].text = StripQuotes(actionBind.GetBindingDisplayString());
+                toAdd = StripQuotes(actionBind.GetBindingDisplayString());
             }
 
             //--------------------------------------------------------------
             // form a list of already bound keys to prevent multiple binds
             //--------------------------------------------------------------
+            KeyText[i].text = MouseButton(toAdd);
             currentlyBound.Add(KeyText[i].text);
         }
     }
@@ -63,6 +66,12 @@ public class ControlRebind : MonoBehaviour
         }
 
         currentlyBound.Clear();
+
+        if(PersistentData.Instance != null)
+        {
+            PersistentData.Instance.currBinds = BuildDictionary();
+        }
+
         SaveControls();
     }
 
@@ -163,8 +172,8 @@ public class ControlRebind : MonoBehaviour
             //------------------------------------
             // otherwise update text accordingly
             //------------------------------------
-            KeyText[index].text = StripQuotes(keyToUpdate.GetBindingDisplayString());
-            currentlyBound[index] = KeyText[index].text;
+            currentlyBound[index] = StripQuotes(keyToUpdate.GetBindingDisplayString());
+            KeyText[index].text = MouseButton(currentlyBound[index]);
         }
 
         //------------------------------------------------
@@ -199,8 +208,8 @@ public class ControlRebind : MonoBehaviour
             //------------------------------------
             // otherwise update text accordingly
             //------------------------------------
-            KeyText[index].text = newKey;
-            currentlyBound[index] = KeyText[index].text;
+            currentlyBound[index] = newKey;
+            KeyText[index].text = MouseButton(currentlyBound[index]);
         }
 
         //------------------------------------------------
@@ -243,5 +252,81 @@ public class ControlRebind : MonoBehaviour
         }
 
         return toStrip;
+    }
+
+    private string MouseButton(string bind)
+    {
+        switch(bind)
+            {
+                case "LMB":
+                    return "Left Mouse";
+                case "RMB":
+                    return "Right Mouse";
+                default:
+                    return bind;
+            }
+    }
+
+    public Dictionary<string, string> BuildDictionary()
+    {
+        //-----------------------------------------------
+        // Names for actions to refer to in dictionary:
+        // Move Up
+        // Move Left
+        // Move Down
+        // Move Right
+        // Roll
+        // Attack
+        // Interact
+        // Creature Ability 1
+        // Creature Ability 2
+        // Swap Creature
+        //------------------------------------------------
+        Dictionary<string, string> toReturn = new Dictionary<string, string>();
+        string currBind;
+
+        if (PersistentData.Instance != null)
+        {
+            playerInput = PersistentData.Instance.playerInputs;
+        }
+
+        for (int i = 0; i < 10; ++i)
+        {
+            if (i < 4)
+            {
+                InputAction actionBind = playerInput.actions.FindAction("movement");
+
+                var binding = actionBind.bindings[i + 1];
+                string displayString = binding.ToDisplayString();
+                currBind = StripQuotes(displayString);           
+            }
+            else
+            {
+                InputAction actionBind = playerInput.actions.FindAction(ActionsList[i]);
+                currBind = StripQuotes(actionBind.GetBindingDisplayString());
+            }
+
+            //-----------------------------------------------
+            // change mouse buttons into more readable text
+            //-----------------------------------------------
+            switch(currBind)
+            {
+                case "LMB":
+                    currBind = "Left Mouse Button";
+                    break;
+                case "RMB":
+                    currBind = "Right Mouse Button";
+                    break;
+                default:
+                    break;
+            }
+
+            //--------------------------------
+            // add the key to the dictionary
+            //--------------------------------
+            toReturn.Add(actionNames[i], currBind);
+        }
+
+        return toReturn;
     }
 }

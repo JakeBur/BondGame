@@ -113,7 +113,7 @@
 			<value>1.8985977601252848</value>
 		</property>
 		<property name="volume">
-			<value>6</value>
+			<value>6.5</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{c0764e7c-92fc-436d-8793-434cca6627fa}</destination>
@@ -138,7 +138,7 @@
 			<value>1.21875</value>
 		</property>
 		<property name="volume">
-			<value>3</value>
+			<value>6</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{2e12bdab-b32d-473b-b23f-41b87f345324}</destination>
@@ -190,7 +190,7 @@
 			<value>volume</value>
 		</property>
 		<property name="amount">
-			<value>1.5</value>
+			<value>0.5</value>
 		</property>
 	</object>
 	<object class="SingleSound" id="{ce294a48-aff6-4919-b799-8e32c8f83515}">
