@@ -15,7 +15,9 @@ public class CActionAttackMelee : BTLeaf
     protected override void OnEnter()
     {
         attack = (CreatureAttackMelee) context.basicCreatureAttack;
-        context.targetEnemy.GetComponent<EnemyAIContext>().statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+        EnemyAIContext enemyAIContext = context.targetEnemy.GetComponent<EnemyAIContext>();
+        enemyAIContext.statManager.TakeDamage(attack.baseDmg, ModiferType.MELEE_RESISTANCE);
+        enemyAIContext.healthUIUpdate();
         //Play amim
         // Debug.Log("Attacking");
         context.animator.DefaultAttack();

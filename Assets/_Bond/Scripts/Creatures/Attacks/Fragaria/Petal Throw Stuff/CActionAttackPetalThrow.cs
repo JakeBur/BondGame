@@ -52,6 +52,7 @@ public class CActionAttackPetalThrow : BTLeaf
         { //if animation done, have to add that 
             OnParentExit();
             context.player.GetComponent<PlayerController>().PutOnCD();
+            context.wentToPlayerForAbility = false;
             return NodeState.SUCCESS;
         }
         

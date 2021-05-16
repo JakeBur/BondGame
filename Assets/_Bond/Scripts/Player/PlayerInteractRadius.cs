@@ -13,9 +13,21 @@ public class PlayerInteractRadius : MonoBehaviour
         if(other.transform.tag == "Interactable")
         {
             pc.interactableObjects.Add(other.gameObject, other.gameObject.GetComponent<InteractableBase>());
-            if( other.gameObject.GetComponent<InteractableBase>().showUI)
+            if(other.transform.GetComponentInParent<CreatureAIContext>())
             {
-                PersistentData.Instance.hudManager.ShowInteractPrompt();
+                if(!other.transform.GetComponentInParent<CreatureAIContext>().creatureFrozen)
+                {
+                    if( other.gameObject.GetComponent<InteractableBase>().showUI)
+                    {
+                        PersistentData.Instance.hudManager.ShowInteractPrompt();
+                    }
+                }
+            } else
+            {
+                if( other.gameObject.GetComponent<InteractableBase>().showUI)
+                {
+                    PersistentData.Instance.hudManager.ShowInteractPrompt();
+                }
             }
         }
         if(other.transform.tag == "Potion")
@@ -28,6 +40,10 @@ public class PlayerInteractRadius : MonoBehaviour
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<PotionInteractable>().relicStats,
                                                                                             interactObj.Key.GetComponent<PotionInteractable>().cost);
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                    if( other.gameObject.GetComponent<InteractableBase>().showUI)
+                    {
+                        PersistentData.Instance.hudManager.ShowInteractPrompt();
+                    }
                     break;
                 }                
             }
@@ -42,6 +58,10 @@ public class PlayerInteractRadius : MonoBehaviour
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<AcornBagInteractable>().relicStats,
                                                                                             interactObj.Key.GetComponent<AcornBagInteractable>().cost);
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                    if( other.gameObject.GetComponent<InteractableBase>().showUI)
+                    {
+                        PersistentData.Instance.hudManager.ShowInteractPrompt();
+                    }
                     break;
                 }                
             }
@@ -56,6 +76,10 @@ public class PlayerInteractRadius : MonoBehaviour
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<RelicInteractable>().relicStats,
                                                                                             interactObj.Key.GetComponent<RelicInteractable>().cost);
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                    if( other.gameObject.GetComponent<InteractableBase>().showUI)
+                    {
+                        PersistentData.Instance.hudManager.ShowInteractPrompt();
+                    }
                     break;
                 }                
             }

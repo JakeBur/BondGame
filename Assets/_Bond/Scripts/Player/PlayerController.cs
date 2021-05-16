@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking = false;
     public bool isHit;
     public Vector3 attackMoveVec;
+    public Canvas reticle;
+    private Vector3 directionTowardsMouse;
 
     [Header("PlayerInputs")]
     public PlayerInput playerInputs;
@@ -150,6 +152,25 @@ public class PlayerController : MonoBehaviour
         dashStart = Time.time;
         animator.ResetAllAttackAnims();
         inputs.usingMouse = true;
+    }
+
+    
+    
+    private void Update() 
+    { 
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(inputs.mousePos);
+        int layerMask = 1 << 10;
+
+        // If the raycast hits the ground
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
+            Vector3 direction = hit.point - reticle.transform.position;
+            directionTowardsMouse = Vector3.RotateTowards(reticle.transform.forward, direction, float.MaxValue, float.MaxValue);
+
+            // Rotates reticle in direction of mouse pos
+            reticle.transform.rotation = Quaternion.LookRotation(new Vector3(directionTowardsMouse.x, 0, directionTowardsMouse.z));
+        }
     }
 
     // MOVEMENT FUNCTIONS ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -405,6 +426,7 @@ public class PlayerController : MonoBehaviour
         {
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 0;
+            currCreatureContext.wentToPlayerForAbility = false;
         }
 
     }  
@@ -417,6 +439,7 @@ public class PlayerController : MonoBehaviour
         {
             currCreatureContext.isAbilityTriggered = true;
             currCreatureContext.lastTriggeredAbility = 1;
+            currCreatureContext.wentToPlayerForAbility = false;
         }
     }
 
@@ -588,18 +611,7 @@ public class PlayerController : MonoBehaviour
     {
         if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
         {
-            if(SceneManager.GetActiveScene().name == "Tutorial" )
-            {
-                //deathscreen prompt
-                //warpPlayer(tutorialManager.currspawnpoint);
-                //reset last encounter fight
-            }
-            //display death screen
-            //prob ask for a prompt
-            // Hardcoded value: Teleports to Farm
-            PersistentData.Instance.LoadScene(1);
-
-            //healing is done in persistent data using HealMaxHealth()
+            PersistentData.Instance.PlayerDeath();
         }
        
     }
@@ -627,33 +639,16 @@ public class PlayerController : MonoBehaviour
 
     public void Slash()
     {
-         if(inputs.usingMouse)
+        if(inputs.usingMouse)
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(inputs.mousePos);
-            int layerMask = 1 << 10;
-
-            // If the raycast hits the ground
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-            {
-                // Debug.Log("RAYCAST : " + hit.transform.gameObject);
-                // Debug.Log(hit.point);
-                //gameObject.transform.LookAt(hit.point);
-
-               
-                Vector3 direction = hit.point - transform.position;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, float.MaxValue, float.MaxValue);
-                //Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 9999f, 9999f);
-
-                //Creates a movement vector for DoMovement to use on attacks. Moves player in direction of click
-                Vector2 tempVec = new Vector2(newDirection.x,newDirection.z);
-                tempVec.Normalize();
-                attackMoveVec = new Vector3(tempVec.x, 0, tempVec.y);
-                
-                // Rotates player in direction of attack
-                transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
-                facingDirection = attackMoveVec;
-            } 
+            //Creates a movement vector for DoMovement to use on attacks. Moves player in direction of click
+            Vector2 tempVec = new Vector2(directionTowardsMouse.x,directionTowardsMouse.z);
+            tempVec.Normalize();
+            attackMoveVec = new Vector3(tempVec.x, 0, tempVec.y);
+            
+            // Rotates player in direction of attack
+            transform.rotation = Quaternion.LookRotation(new Vector3(directionTowardsMouse.x, 0, directionTowardsMouse.z));
+            facingDirection = attackMoveVec; 
         }
     }
     

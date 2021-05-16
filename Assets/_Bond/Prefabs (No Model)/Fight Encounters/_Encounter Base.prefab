@@ -791,6 +791,9 @@ MonoBehaviour:
     type: 3}
   acornBagPrefab: {fileID: 1562028770156074076, guid: 613e02d716f4cc64f92649fa59d0eb64,
     type: 3}
+  creatureSpawnerPrefab: {fileID: 8384676913061734153, guid: 35c5a81b4db015444b98f15a86214e25,
+    type: 3}
+  instantiatedCreatureSpawner: {fileID: 0}
   costRange: {x: 0, y: 0}
   spawnOnStart: 0
   relicSprite: {fileID: 7469941039214613456, guid: 039ebc7e6bc494745a6628551df07bba,
@@ -823,13 +826,8 @@ MonoBehaviour:
     - {fileID: 6511716326348270092}
     - {fileID: 3201304443971535752}
   barrier: {fileID: 6602103991835768890}
+  coreLattice: {fileID: 75812786868910044}
   vfx: {fileID: 228601453632412501}
-  blobSpawnRadius: 15
-  blobAmount: 3
-  blobPrefab: {fileID: 4130065069876498218, guid: a94ec25af68c1364abb048a5be32ba44,
-    type: 3}
-  blobParent: {fileID: 7455600316609384494}
-  corruptionDebuff: {fileID: 11400000, guid: 74f965dcc629edf49b47ee00d4b3d40d, type: 2}
   CurrEnemies: []
   maxCurrMeleeAttackers: 3
   maxCurrRangedAttackers: 2
@@ -852,7 +850,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 12
+  m_Radius: 5
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -3285,6 +3283,12 @@ MonoBehaviour:
 --- !u!4 &2482319853614760200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3697416881313363043, guid: c221fad5f846b5049b72030e2e9ad8b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1242190652082271595}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &75812786868910044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1166558210026128055, guid: c221fad5f846b5049b72030e2e9ad8b5,
     type: 3}
   m_PrefabInstance: {fileID: 1242190652082271595}
   m_PrefabAsset: {fileID: 0}

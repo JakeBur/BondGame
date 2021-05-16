@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3135478736620015392}
   - component: {fileID: 2030189779857555589}
   - component: {fileID: 4307791521896805455}
+  - component: {fileID: 7232269369811964910}
   m_Layer: 0
   m_Name: PF_rock1
   m_TagString: Untagged
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &7232269369811964910
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362320390135911834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.27
+  m_Height: 2.1579463
+  m_Direction: 1
+  m_Center: {x: 0.022953719, y: 0.89, z: 0.029563636}

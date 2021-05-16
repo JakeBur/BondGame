@@ -48,8 +48,6 @@ public class StatManager : MonoBehaviour
     {
         if(stats.ContainsKey(_modifier.modiferType))
         {
-            // Debug.Log("adding modifier " + _modifier.modiferType + " value " + _modifier.Additive);
-
             //Check if modifying Curr_health and change value to make it not go over max
             if(_modifier.modiferType == ModiferType.CURR_HEALTH)
             {
@@ -57,7 +55,15 @@ public class StatManager : MonoBehaviour
                 if(resultingValue > stats[ModiferType.MAX_HEALTH].modifiedValue)
                 {
                     float difference = resultingValue - stats[ModiferType.MAX_HEALTH].modifiedValue;
-                    _modifier.Additive -= difference;
+                    float finalValue = resultingValue - difference;
+                    stats[ModiferType.CURR_HEALTH].modifiedValue += finalValue;
+                    return;
+                    // _modifier.Additive -= difference;
+                    // Debug.Log("Resulting value was more than max health: ");
+                } else 
+                {
+                    stats[ModiferType.CURR_HEALTH].modifiedValue += _modifier.Additive;
+                    return;
                 }
             }
 

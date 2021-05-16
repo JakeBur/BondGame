@@ -47,7 +47,9 @@ public class ThrowingKnife : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.transform.tag == "Enemy")
         {
-            other.transform.GetComponent<EnemyAIContext>().statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
+            EnemyAIContext enemyAIContext = other.transform.GetComponent<EnemyAIContext>();
+            enemyAIContext.statManager.TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
+            enemyAIContext.healthUIUpdate();
             Destroy(gameObject);
         }
     }

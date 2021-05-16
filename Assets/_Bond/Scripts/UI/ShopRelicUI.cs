@@ -10,6 +10,7 @@ public class ShopRelicUI : MonoBehaviour
     
     public TextMeshProUGUI relicName;
     public Image relicSprite;
+    public Image moneySprite;
     public TextMeshProUGUI flavorText;
     public TextMeshProUGUI statsText;
     public TextMeshProUGUI costText;
@@ -30,7 +31,16 @@ public class ShopRelicUI : MonoBehaviour
         relicName.text = _stats.relicName;
         relicSprite.sprite = _stats.relicSprite;
         flavorText.text  = _stats.relicInfo;
-        costText.text = _cost.ToString();
+        if(_cost <= 0)
+        {
+            costText.enabled = false;
+            moneySprite.enabled = false;
+        } else 
+        {
+            costText.enabled = true;
+            moneySprite.enabled = true;
+            costText.text = _cost.ToString();
+        }
         statsText.text = "";
         foreach(Modifier mod in _stats.playerModifiers)
         {

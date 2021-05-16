@@ -10,13 +10,10 @@ public class CCheckPlayerTriggeredAbility : BTChecker
         context = _context;
     }
 
-
-
     public override NodeState Evaluate()
     {
         if(context.isAbilityTriggered)
         {
-            // Debug.Log("Player Triggered Ability");
             return NodeState.SUCCESS;
         }
         return NodeState.FAILURE;
