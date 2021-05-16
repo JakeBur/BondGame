@@ -246,6 +246,20 @@ public class SFXManager : MonoBehaviour
         instance.release();
     }
 
+    public void PlayEnemyPunchHitSFX(int tag, Vector3 position = new Vector3())
+    {
+        //----------------------------
+        // List of source tags
+        // 0 - Fragaria basic attack
+        // 1 - Slugger basic attack
+        //----------------------------
+        var instance = SFXPlayer.CreateInstance(EnemyPunchHitSFX);
+        instance.set3DAttributes(SFXUtils.To3DAttributes(position));
+        instance.setParameterByName("Source", tag);
+        instance.start();
+        instance.release();
+    }
+
     public void PlayCreatureBefriendSFX(string creatureType, Vector3 position = new Vector3())
     {
         int creatureTag;

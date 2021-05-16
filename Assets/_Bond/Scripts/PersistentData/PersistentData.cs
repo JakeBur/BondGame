@@ -66,7 +66,7 @@ public class PersistentData : MonoBehaviour
     [Header("InputActionAsset")]
     public PlayerInput playerInputs;
     public Dictionary<string, string> currBinds = new Dictionary<string, string>();
-    private ControlRebind controlRebind;
+    public ControlRebind controlRebind;
 
     [Header("Tutorial")]
     public GameObject tutorialObject;
