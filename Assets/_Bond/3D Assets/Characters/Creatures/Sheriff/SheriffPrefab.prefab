@@ -4782,8 +4782,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
-  - {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5617,22 +5617,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: -3745396126951901791, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: -3518304218168505135, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: -3377426332696538689, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: -1959794351502601109, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Layer
@@ -5642,17 +5642,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: -1099782555843034950, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: 139630795585073328, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: 635547659545568360, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Layer
@@ -5672,7 +5672,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: 1943982399035288057, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Layer
@@ -5682,7 +5682,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: 8386009582420158719, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Layer
@@ -5697,7 +5697,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3834071f168045439f60f10a6a76efd, type: 2}
+      objectReference: {fileID: 2100000, guid: bee4d8cacb0879d4e90a1576b83d5b30, type: 2}
     - target: {fileID: 8603806674150118374, guid: 41e246b84b9c82945a37ef94d3c49b2f,
         type: 3}
       propertyPath: m_Layer
