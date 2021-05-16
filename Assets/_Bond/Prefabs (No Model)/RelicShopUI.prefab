@@ -777,6 +777,7 @@ MonoBehaviour:
   ui: {fileID: 6100738463459039170}
   relicName: {fileID: 4470322533146943248}
   relicSprite: {fileID: 5314347896122783821}
+  moneySprite: {fileID: 4816401201812195883}
   flavorText: {fileID: 3192952734849320754}
   statsText: {fileID: 2218402454408962262}
   costText: {fileID: 6057140555969697790}

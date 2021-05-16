@@ -12,16 +12,17 @@ public class EncounterManager : MonoBehaviour
 {
     public List<Wave> waves = new List<Wave>();
     public GameObject barrier;
+    public GameObject coreLattice;
 	
     [Header("VFX")]
     public ArenaAnimator vfx;
 
-    [Header("Blobs")]
-    public float blobSpawnRadius;
-    public int blobAmount;
-    public GameObject blobPrefab;
-    public GameObject blobParent;
-    public Buff corruptionDebuff;
+    // [Header("Blobs")]
+    // public float blobSpawnRadius;
+    // public int blobAmount;
+    // public GameObject blobPrefab;
+    // public GameObject blobParent;
+    // public Buff corruptionDebuff;
 
     [Header("Enemies")]
     public List<GameObject> CurrEnemies;
@@ -214,12 +215,17 @@ public class EncounterManager : MonoBehaviour
             Destroy(g);
         }
         barrier.SetActive(false);
+        //Turn off the lattice around the core to show it has been cleared
+        if(coreLattice)
+        {
+            coreLattice.SetActive(false);
+        }
         vfx.PlayDeathAnimation();
-        blobParent.SetActive(false);
+        // blobParent.SetActive(false);
         PersistentData.Instance.Player.GetComponent<PlayerController>().SetCombatState(false);
         //PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginOverworldMusic();
         PersistentData.Instance.AudioController.GetComponent<AudioController>().BeginCombatMusicOutro();
-        PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
+        // PersistentData.Instance.Player.GetComponent<PlayerController>().stats.RemoveBuff(corruptionDebuff);
         encounterFinished = true;
         if(rewardManager)
         {

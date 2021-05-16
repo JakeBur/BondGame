@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8844872164791445887}
   - component: {fileID: 5553105236201924314}
   - component: {fileID: 7706890980346925584}
-  m_Layer: 0
-  m_Name: fragaria_dummy1
-  m_TagString: Untagged
+  - component: {fileID: 7899778143366463417}
+  m_Layer: 8
+  m_Name: PF_fragaria_dummy1
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8211360591056614341}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7847764, z: 0, w: 0.6197791}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 103.4, z: 0}
 --- !u!33 &5553105236201924314
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -80,3 +81,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &7899778143366463417
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211360591056614341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.0979465
+  m_Height: 4.075669
+  m_Direction: 1
+  m_Center: {x: -0.0012035375, y: 2.0383112, z: 0.032200854}
