@@ -7,6 +7,8 @@ public class CameraForAnimationGym : MonoBehaviour
     private CameraManager cameraManager => gameObject.GetComponent<CameraManager>();
     public GameObject target;
 
+    public float cameraDistance = -50f;
+
     void Start()
     {
         StartCoroutine("StartCamera");
@@ -21,6 +23,6 @@ public class CameraForAnimationGym : MonoBehaviour
     private void SetCameraParameters()
     {
         cameraManager.SetCameraTarget(target);
-        cameraManager.SetManualCameraDistance( -25f, 1f, true );
+        cameraManager.SetManualCameraDistance( cameraDistance, 1f, true );
     }
 }
