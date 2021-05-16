@@ -40,7 +40,7 @@ public class CActionApproachForAttack : BTLeaf
     protected override void OnExit()
     {
         agent.speed = context.creatureStats.statManager.stats[ModiferType.MOVESPEED].modifiedValue;
-        agent.stoppingDistance = 1f;
+        agent.stoppingDistance = 0f;
         agent.ResetPath();
     }
 

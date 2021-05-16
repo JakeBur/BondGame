@@ -24,7 +24,7 @@ public class CreatureInteractable : InteractableBase
 
     public override void DoInteract()
     {
-        if(Creature.GetComponent<CreatureAIContext>().isWild)
+        if(Creature.GetComponent<CreatureAIContext>().isWild && !Creature.GetComponent<CreatureAIContext>().creatureFrozen)
         {
             DoInteractWild();
         } else 
@@ -48,12 +48,12 @@ public class CreatureInteractable : InteractableBase
 
     public void DoInteractTamed()
     {
-        var context = Creature.GetComponent<CreatureAIContext>();
-        if(context.creatureStats.statManager.getStat(ModiferType.CURR_ENTHUSIASM) < 5)
-        {
-            context.enthusiasmInteracted = true;
-            gameObject.SetActive(false); //THIS IS TEMPORARY
-        }
+        // var context = Creature.GetComponent<CreatureAIContext>();
+        // if(context.creatureStats.statManager.getStat(ModiferType.CURR_ENTHUSIASM) < 5)
+        // {
+        //     context.enthusiasmInteracted = true;
+        //     gameObject.SetActive(false); //THIS IS TEMPORARY
+        // }
         
     }
 }
