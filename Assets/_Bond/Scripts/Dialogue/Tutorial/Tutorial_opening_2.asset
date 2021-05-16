@@ -15,7 +15,7 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - "MC/Sad This definitely wasn\u2019t here the last time I passed by."
-  - MC/Sad ...Guess I have no choice but to check it out.
+  - "MC/Surprised This definitely wasn\u2019t here the last time I passed by."
+  - MC/Sad ...I'm gonna go check it out.
   - MC/Sad I should probably be careful.
   step: 0

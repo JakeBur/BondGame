@@ -98,6 +98,8 @@ public class LevelUpSystem : MonoBehaviour
 
         if(xpGainedThisLevel >= xpNeededForNext) LevelUp(); //cases where you may level up multiple times from one source, prob never
         statUI.ButtonsAvailable();
+
+        PersistentData.Instance.hudManager.UpdateLevel(level);
     }
 
 

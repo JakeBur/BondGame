@@ -15,7 +15,6 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - MC/Surprised EEEEEEEEEEEK!
-  - MC/Surprised What was that thing???
-  - MC/Sad Thank goodness I had my trusty sword on me.
+  - MC/Surprised Wh-what the heck were those things?!
+  - MC/Surprised I'm glad I had something to defend myself.
   step: 0
