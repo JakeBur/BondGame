@@ -26,4 +26,9 @@ public class SnailAnimator : CreatureAnimator
     {
         animator.SetTrigger("Wallop");
     }
+
+    public void EventPlayBasicAttackImpactSFX()
+    {
+        SFX.PlayEnemyPunchHitSFX(1, transform.position);
+    }
 }

@@ -13,7 +13,7 @@ public class AudioController : MonoBehaviour
         //wait for one bar before resetting Game State
         waitTime = 4f/ 118f * 60f;
 
-        // DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
