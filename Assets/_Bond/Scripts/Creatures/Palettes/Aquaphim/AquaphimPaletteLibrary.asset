@@ -15,3 +15,6 @@ MonoBehaviour:
   creaturePalettes:
   - {fileID: 11400000, guid: fa7570bc12230194c8154236d14804a2, type: 2}
   - {fileID: 11400000, guid: af409055334474a4192c1f48087032d2, type: 2}
+  - {fileID: 11400000, guid: c10a29354ce2c314787f43fa13de2f97, type: 2}
+  - {fileID: 11400000, guid: 86732daa64aabc84daf000f6a508a8df, type: 2}
+  - {fileID: 11400000, guid: 4c552686d4b1214429482a4fb0e94b9b, type: 2}

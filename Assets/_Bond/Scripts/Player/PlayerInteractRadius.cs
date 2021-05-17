@@ -40,6 +40,10 @@ public class PlayerInteractRadius : MonoBehaviour
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<PotionInteractable>().relicStats,
                                                                                             interactObj.Key.GetComponent<PotionInteractable>().cost);
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                    if( other.gameObject.GetComponent<InteractableBase>().showUI)
+                    {
+                        PersistentData.Instance.hudManager.ShowInteractPrompt();
+                    }
                     break;
                 }                
             }
@@ -54,6 +58,10 @@ public class PlayerInteractRadius : MonoBehaviour
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<AcornBagInteractable>().relicStats,
                                                                                             interactObj.Key.GetComponent<AcornBagInteractable>().cost);
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                    if( other.gameObject.GetComponent<InteractableBase>().showUI)
+                    {
+                        PersistentData.Instance.hudManager.ShowInteractPrompt();
+                    }
                     break;
                 }                
             }
@@ -68,6 +76,10 @@ public class PlayerInteractRadius : MonoBehaviour
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<RelicInteractable>().relicStats,
                                                                                             interactObj.Key.GetComponent<RelicInteractable>().cost);
                     PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                    if( other.gameObject.GetComponent<InteractableBase>().showUI)
+                    {
+                        PersistentData.Instance.hudManager.ShowInteractPrompt();
+                    }
                     break;
                 }                
             }

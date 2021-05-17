@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TempSnail_Palette1
+  m_Name: Aquaphim_Palette3
   m_Shader: {fileID: -6465566751694194690, guid: c1cbda290fa11f34692d4f4af8f6fcb7,
     type: 3}
   m_ShaderKeywords: 
@@ -21,15 +21,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_438C4CAA:
-        m_Texture: {fileID: 2800000, guid: da713d18756d7d84cbbefedd1c43542f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43e95f2e1d3062743883730b46276a15, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_5E30ED0F:
-        m_Texture: {fileID: 2800000, guid: f37fc9c4cfe819549bf5b8ad9f50b4fa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3c3a77524b61dfa4e8ccf3b3953e8c53, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_8DCA0337:
-        m_Texture: {fileID: 2800000, guid: e2ec990be986c9148af83b84562ef196, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3c8fc89300059c848bd897385a74af83, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_BDF90D43: 0.003
+    - Vector1_BDF90D43: 0.001
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -85,7 +85,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_9839A174: {r: 0.3679245, g: 0.18007751, b: 0.029503385, a: 0}
-    - Color_EFDE5512: {r: 1, g: 1, b: 0.9103774, a: 0}
+    - Color_EFDE5512: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
