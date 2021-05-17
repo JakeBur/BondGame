@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 8159507250799840814}
   - component: {fileID: 5399668889373337504}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: crit stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2994,7 +2994,7 @@ GameObject:
   - component: {fileID: 2431643705685696400}
   - component: {fileID: 9006492564026690654}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: power stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5575,10 +5575,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTextLists:
-  - {fileID: 8805446987423395702}
-  - {fileID: 2155480634061340230}
-  - {fileID: 3158939772281627548}
-  - {fileID: 3394609763779659457}
+  - {fileID: 1127742903221161051}
+  - {fileID: 9006492564026690654}
+  - {fileID: 5399668889373337504}
+  - {fileID: 3999390469333554042}
   - {fileID: 3722774553555259265}
   - {fileID: 8679633933744906356}
   creature1TextLists:
@@ -5628,7 +5628,7 @@ GameObject:
   - component: {fileID: 2459880808186183783}
   - component: {fileID: 3999390469333554042}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: bond stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6578,7 +6578,7 @@ GameObject:
   - component: {fileID: 2986753074325293816}
   - component: {fileID: 1127742903221161051}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: life stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
