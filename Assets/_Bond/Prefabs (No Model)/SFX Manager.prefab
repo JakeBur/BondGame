@@ -49,6 +49,8 @@ MonoBehaviour:
     Roll Grass Initial
   PlayerRollGrassSecondarySFX: event:/Sound Effects/Player SFX/Player Movement SFX/Player
     Roll Grass Secondary
+  PlayerRollWaterSFX: event:/Sound Effects/Player SFX/Player Movement SFX/Player
+    Roll Water
   PlayerWalkWaterSFX: event:/Sound Effects/Player SFX/Player Movement SFX/Player
     Walk Water
   PlayerSwordSwingSFX: event:/Sound Effects/Player SFX/Player Attacks Sword/Player

@@ -43,6 +43,20 @@ public class DialogueTextManager : MonoBehaviour
         //----------------------------------------------------
         newSentence = newSentence.Replace("\\n\\", "\n");
 
+        //---------------------------------------------
+        // Replace all key bind tags with actual keys
+        //---------------------------------------------
+        foreach (string action in PersistentData.Instance.controlRebind.actionNames)
+        {
+            string toReplace = "\\k=" + action + "\\";
+            if (newSentence.IndexOf(toReplace) != -1)
+            {
+                string key = PersistentData.Instance.currBinds[action];
+                string newText = "<color=green>" + key + "</color>";
+                newSentence = newSentence.Replace(toReplace, newText);
+            }
+        }
+
         //--------------------------------------------
         // Get last portrait change call information
         //--------------------------------------------
@@ -161,6 +175,30 @@ public class DialogueTextManager : MonoBehaviour
 
                             currLetter = sentence.Substring(index + 1, 1);
                             sentence = sentence.Substring(index + 2);
+                            break;
+
+                        //----------------------------------------------
+                        // "\k=x\" -    grabs the binding for action x
+                        //----------------------------------------------
+                        case "k":
+                            index = sentence.IndexOf("\\");
+                            string bind;
+                            try
+                            {
+                                bind = PersistentData.Instance.currBinds[sentence.Substring(0, index)];
+                            }
+                            catch
+                            {
+                                Debug.Log("No such action name exists! Double check with the list in BuildDictionary()");
+                                bind = "";
+                            }
+                            
+
+                            string bindText = bind + "</color>";
+                            string remainingSentence = sentence.Substring(index + 2);
+
+                            currLetter = "<color=green>";
+                            sentence = bindText + remainingSentence;
                             break;
 
                         default:

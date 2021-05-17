@@ -279,12 +279,14 @@ public class PlayerAnimator : MonoBehaviour
 
     public void PlayRollInitialSFX()
     {
-        SFXPlayer.PlayOneShot(SFX.PlayerRollGrassInitialSFX, transform.position);
+        //SFXPlayer.PlayOneShot(SFX.PlayerRollGrassInitialSFX, transform.position);
+        SFX.PlayRollInitialSFX(raycastOrigin.transform);
     }
 
     public void PlayRollSecondarySFX()
     {
-        SFXPlayer.PlayOneShot(SFX.PlayerRollGrassSecondarySFX, transform.position);
+        //SFXPlayer.PlayOneShot(SFX.PlayerRollGrassSecondarySFX, transform.position);
+        SFX.PlayRollSecondarySFX(raycastOrigin.transform);
     }
 
 

@@ -60,10 +60,9 @@ public class MainMenuUI : MonoBehaviour
     public void Play()
     {
         PlayClickSFX();
-
-        LoadSceneNoPersist("Tutorial");
-
         audioController.BeginOverworldMusic();
+        
+        LoadSceneNoPersist("Tutorial");
     }
 
     public void OpenSettings()

@@ -51,6 +51,6 @@ public class FragariaAnimator : CreatureAnimator
 	
     public void EventPlayBasicAttackImpactSFX()
     {
-        SFXPlayer.PlayOneShot(SFX.EnemyPunchHitSFX);
+        SFX.PlayEnemyPunchHitSFX(0, transform.position);
     }
 }
