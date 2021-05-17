@@ -48,8 +48,6 @@ public class hudUI : MonoBehaviour
     public GameObject EnviornmentDialogCanvas;
     public TextMeshProUGUI EnviornmentDialogText;
 
-    public Slider enthusiasmSlider;
-
     public CooldownSystem cd;
 
     private StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
@@ -108,8 +106,6 @@ public class hudUI : MonoBehaviour
     {
         if(player.currCreatureContext != null)
         {
-            enthusiasmSlider.enabled = true;
-            //updateEnthusiasm();
             currCreatureIcon.sprite = player.currCreatureContext.icon;
             
 
@@ -128,7 +124,6 @@ public class hudUI : MonoBehaviour
         }
         else //Player has no creatures equipped
         {
-            enthusiasmSlider.enabled = false;
             currCreatureIcon.sprite = noCreatureIcon;
             swapCreatureIcon.sprite = noCreatureIcon;
 
@@ -240,7 +235,8 @@ public class hudUI : MonoBehaviour
     {
         //Debug.Log("hurt");
         //hurtFeedback.color = opaque;
-        hurtFeedback.CrossFadeAlpha(amount, time, false);       
+        hurtFeedback.CrossFadeAlpha(amount, time, false);
+             
     }
 
     public void XpGain()
@@ -251,6 +247,11 @@ public class hudUI : MonoBehaviour
     public void UpdateLevel(int i)
     {
         level.SetText("Lv. " + i);
+    }
+
+    public void ShowDeathScreen()
+    {
+        
     }
 
     
