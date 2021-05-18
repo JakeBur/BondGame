@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1930b507d021a2e45a9274e8fc7c5fbb, type: 3}
-  m_Name: HourglassPattern
+  m_Name: smallBox
   m_EditorClassIdentifier: 
-  patternName: hourglass
+  patternName: smallbox
   points:
-  - start: {x: 100, y: 100}
-    end: {x: 400, y: 400}
-    biome: 5
-  - start: {x: 100, y: 400}
-    end: {x: 400, y: 100}
-    biome: 5
-  - start: {x: 100, y: 100}
-    end: {x: 400, y: 100}
+  - start: {x: 200, y: 200}
+    end: {x: 200, y: 400}
     biome: 1
-  - start: {x: 100, y: 400}
+  - start: {x: 200, y: 400}
     end: {x: 400, y: 400}
-    biome: 3
-  seeds: bfd50000806e0400bb320300e40a070093320d0072b10a0088020d00daf6080093170900443801004bc20500
+    biome: 1
+  - start: {x: 400, y: 400}
+    end: {x: 400, y: 200}
+    biome: 1
+  - start: {x: 200, y: 200}
+    end: {x: 400, y: 200}
+    biome: 1
+  seeds: 74b5040051e10300f4240c00665f030029750e007fca0500426d0a00b87e0500a46705001f5e0900
