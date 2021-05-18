@@ -24,6 +24,12 @@ public class EnemyWeaponTrigger : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            //makes player not take more damage after death
+            if(other.gameObject.GetComponent<StatManager>().getStat(ModiferType.CURR_HEALTH) <= 0)
+            {
+                return;
+            }
+
             other.gameObject.GetComponent<StatManager>().TakeDamage(context.statManager.stats[ModiferType.DAMAGE].modifiedValue, ModiferType.MELEE_RESISTANCE);
             other.gameObject.GetComponent<PlayerController>().DeathCheck();
 

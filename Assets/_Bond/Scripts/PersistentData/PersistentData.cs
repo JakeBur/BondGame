@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class PersistentData : MonoBehaviour
 {
@@ -529,26 +530,8 @@ public class PersistentData : MonoBehaviour
 
     public void PlayerDeath()
     {
-        if(SceneManager.GetActiveScene().name == "Tutorial" )
-        {
-            //deathscreen prompt
-            //warpPlayer(tutorialManager.currspawnpoint);
-            //reset last encounter fight
-            tutorialManager?.RespawnPlayer();
-            tutorialManager?.ResetEncounter();
-            playerController.HealMaxHealth();
-        }
-        else
-        {
-            //display death screen
-            //prob ask for a prompt
-            LoadScene(1);
-            // Hardcoded value: Teleports to Farm
-
-            //healing is done in persistent data using HealMaxHealth()
-        }
+        //death anim + standby state
+        hudManager.DisplayDeathScreen();
     }
-
-
 
 }
