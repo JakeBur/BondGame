@@ -12,7 +12,7 @@ public class EndLevelInteractable : InteractableBase
     private void Awake() 
     {
         showUI = false;
-        // removeOnInteract = true;
+        removeOnInteract = true;
     }
 
     private void Update() 
