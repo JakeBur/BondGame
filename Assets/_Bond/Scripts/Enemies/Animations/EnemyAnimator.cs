@@ -227,6 +227,7 @@ public class EnemyAnimator : MonoBehaviour
     public void Death()
     {
         animator.SetTrigger( "Death" );
+        animator.SetBool("InDeath", true);
         SFXPlayer.PlayOneShot(SFX.EnemyDeathSFX, transform.position);
         inDeath = true;
         inAttack = false;

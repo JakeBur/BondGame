@@ -86,6 +86,7 @@ public class PersistentData : MonoBehaviour
 
     private void Awake() 
     {
+        
         if(_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -120,7 +121,7 @@ public class PersistentData : MonoBehaviour
 
         // Set Camera to follow player
         CameraManager.ResetCameraTargetToPlayer( true );
-
+        currRunLevel = 1;
         var settings = PauseMenu.transform.Find("Settings");
         var backdrop = settings.Find("backdrop");
         audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
@@ -320,7 +321,7 @@ public class PersistentData : MonoBehaviour
     {
         if(_scene == 1)
         {
-            currRunLevel = 0;
+            currRunLevel = 1;
         }
         
 
