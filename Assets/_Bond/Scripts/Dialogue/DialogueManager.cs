@@ -98,7 +98,7 @@ public class DialogueManager : MonoBehaviour
         //--------------------------
         // Ready to start dialogue
         //--------------------------
-        Debug.Log(sentence + ", " + speaker + ", " + portrait);
+        // Debug.Log(sentence + ", " + speaker + ", " + portrait);
         dialogueTextManager.ResetSpeed();
         dialogueTextManager.ChangeText(speaker, sentence);
         dialoguePortrait.ChangePortrait(speaker, portrait);
