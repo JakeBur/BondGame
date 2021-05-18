@@ -52,6 +52,12 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
+            //makes player not take more damage after death
+            if(other.gameObject.GetComponent<StatManager>().getStat(ModiferType.CURR_HEALTH) <= 0)
+            {
+                return;
+            }
+            
             other.transform.GetComponent<StatManager>().TakeDamage(damage, ModiferType.RANGED_RESISTANCE);
             other.gameObject.GetComponent<PlayerController>().isHit = true;
             other.gameObject.GetComponent<PlayerController>().DeathCheck();
