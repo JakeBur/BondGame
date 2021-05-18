@@ -9,20 +9,29 @@ public class EndLevelInteractable : InteractableBase
     public EncounterManager encounterManager;
 
 
-    private void Awake() {
-        showUI = true;
-        removeOnInteract = false;
+    private void Awake() 
+    {
+        showUI = false;
+        // removeOnInteract = true;
+    }
+
+    private void Update() 
+    {
+        if(encounterManager.encounterFinished)
+        {
+            showUI = true;
+        }
     }
 
     public override void DoInteract()
     {
-        Debug.Log("End Level Interact");
-        if(!encounterManager.encounterFinished && !encounterManager.encounterTriggered)
-        {
-            encounterManager.startEncounter();
-            removeOnInteract = true;
-        } 
-        else if(encounterManager.encounterFinished)
+        // Debug.Log("End Level Interact");
+        // if(!encounterManager.encounterFinished && !encounterManager.encounterTriggered)
+        // {
+        //     encounterManager.startEncounter();
+        //     removeOnInteract = true;
+        // } 
+        if(encounterManager.encounterFinished)
         {
             if(SceneManager.GetActiveScene().name == "Tutorial")
             {
