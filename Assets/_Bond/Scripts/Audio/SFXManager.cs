@@ -14,6 +14,7 @@ public class SFXManager : MonoBehaviour
     [FMODUnity.EventRef] public string PlayerWalkGrassSFX;
     [FMODUnity.EventRef] public string PlayerRollGrassInitialSFX;
     [FMODUnity.EventRef] public string PlayerRollGrassSecondarySFX;
+    [FMODUnity.EventRef] public string PlayerRollWaterSFX;
     [FMODUnity.EventRef] public string PlayerWalkWaterSFX;
 
     //-----------------------
@@ -92,7 +93,7 @@ public class SFXManager : MonoBehaviour
 
     private void Start()
     {
-        // DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void Play2DWalkSFX(Transform playerTransform)
@@ -110,6 +111,61 @@ public class SFXManager : MonoBehaviour
                     break;
                 case "Water":
                     SFXPlayer.PlayOneShot(PlayerWalkWaterSFX, transform.position);
+                    break;
+                default:
+                    Debug.Log("2D Invalid ground");
+                    return;
+            }
+        }
+        else
+        {
+            Debug.Log("2D Invalid ground");
+            return;
+        }
+    }
+
+    public void PlayRollInitialSFX(Transform playerTransform)
+    {
+        int waterLayerMask = 1 << 4;
+        int groundLayerMask = 1 << 15;
+        RaycastHit hit;
+
+        if (Physics.Raycast(playerTransform.position, playerTransform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, waterLayerMask | groundLayerMask))
+        {
+            switch(hit.collider.tag)
+            {
+                case "Terrain":
+                    SFXPlayer.PlayOneShot(PlayerRollGrassInitialSFX, transform.position);
+                    break;
+                case "Water":
+                    SFXPlayer.PlayOneShot(PlayerRollWaterSFX, transform.position);
+                    break;
+                default:
+                    Debug.Log("2D Invalid ground");
+                    return;
+            }
+        }
+        else
+        {
+            Debug.Log("2D Invalid ground");
+            return;
+        }
+    }
+
+    public void PlayRollSecondarySFX(Transform playerTransform)
+    {
+        int waterLayerMask = 1 << 4;
+        int groundLayerMask = 1 << 15;
+        RaycastHit hit;
+
+        if (Physics.Raycast(playerTransform.position, playerTransform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, waterLayerMask | groundLayerMask))
+        {
+            switch(hit.collider.tag)
+            {
+                case "Terrain":
+                    SFXPlayer.PlayOneShot(PlayerRollGrassSecondarySFX, transform.position);
+                    break;
+                case "Water":
                     break;
                 default:
                     Debug.Log("2D Invalid ground");
@@ -186,6 +242,20 @@ public class SFXManager : MonoBehaviour
         var instance = SFXPlayer.CreateInstance(FragariaPetalThrowWhooshSFX);
         instance.set3DAttributes(SFXUtils.To3DAttributes(position));
         instance.setParameterByName("Count", tag);
+        instance.start();
+        instance.release();
+    }
+
+    public void PlayEnemyPunchHitSFX(int tag, Vector3 position = new Vector3())
+    {
+        //----------------------------
+        // List of source tags
+        // 0 - Fragaria basic attack
+        // 1 - Slugger basic attack
+        //----------------------------
+        var instance = SFXPlayer.CreateInstance(EnemyPunchHitSFX);
+        instance.set3DAttributes(SFXUtils.To3DAttributes(position));
+        instance.setParameterByName("Source", tag);
         instance.start();
         instance.release();
     }

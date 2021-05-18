@@ -65,6 +65,8 @@ public class PersistentData : MonoBehaviour
 
     [Header("InputActionAsset")]
     public PlayerInput playerInputs;
+    public Dictionary<string, string> currBinds = new Dictionary<string, string>();
+    public ControlRebind controlRebind;
 
     [Header("Tutorial")]
     public GameObject tutorialObject;
@@ -121,7 +123,9 @@ public class PersistentData : MonoBehaviour
         var settings = PauseMenu.transform.Find("Settings");
         var backdrop = settings.Find("backdrop");
         audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
+        controlRebind = backdrop.Find("Controls").GetComponent<ControlRebind>();
         audioSettings.LoadVolumesOnStart();
+        currBinds = controlRebind.BuildDictionary();
     }
 
     private void SetPlayerReference()

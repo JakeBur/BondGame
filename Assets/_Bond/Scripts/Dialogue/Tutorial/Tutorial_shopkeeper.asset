@@ -15,21 +15,21 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - "MC/Suprised Hmm, I haven\u2019t seen that creature before\u2026"
-  - MC/Suprised Uh, is it waving at me?
-  - 'Shopkeeper/Suprised Ah, hello little friend. Thank you for getting rid of the
+  - "MC/Surprised Hmm, I haven\u2019t seen that creature before\u2026"
+  - MC/Surprised Uh, is it waving at me?
+  - 'Shopkeeper/Surprised Ah, hello little friend. Thank you for getting rid of the
     Mire in the path.
 
 '
-  - "MC/Suprised Woah, it talks! I\u2019ve never seen a creature that could use human
-    speech before"
-  - Shopkeeper/Suprised Well guess you learn something new every day kid, but I do
-    thank you for clearing out those pesky Mire.
-  - "MC/Suprised Hmm, I haven\u2019t seen that creature before\u2026"
-  - "MC/Suprised Hmm, I haven\u2019t seen that creature before\u2026"
-  - "MC/Suprised Hmm, I haven\u2019t seen that creature before\u2026"
-  - "MC/Suprised Hmm, I haven\u2019t seen that creature before\u2026"
-  - "MC/Suprised Hmm, I haven\u2019t seen that creature before\u2026"
-  - "MC/Suprised Hmm, I haven\u2019t seen that creature before\u2026"
-  - "MC/Suprised Hmm, I haven\u2019t seen that creature before\u2026"
+  - "MC/Surprised Woah, it talks! I\u2019ve never seen a creature that could use
+    human speech before"
+  - Shopkeeper/Surprised Well guess you learn something new every day kid, but I
+    do thank you for clearing out those pesky Mire.
+  - "MC/Surprised Hmm, I haven\u2019t seen that creature before\u2026"
+  - "MC/Surprised Hmm, I haven\u2019t seen that creature before\u2026"
+  - "MC/Surprised Hmm, I haven\u2019t seen that creature before\u2026"
+  - "MC/Surprised Hmm, I haven\u2019t seen that creature before\u2026"
+  - "MC/Surprised Hmm, I haven\u2019t seen that creature before\u2026"
+  - "MC/Surprised Hmm, I haven\u2019t seen that creature before\u2026"
+  - "MC/Surprised Hmm, I haven\u2019t seen that creature before\u2026"
   step: 3

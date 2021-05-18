@@ -435,6 +435,17 @@ MonoBehaviour:
   - {fileID: 572949473893497877}
   - {fileID: 7702343793088386201}
   - {fileID: 3582541685480760742}
+  actionNames:
+  - Move Up
+  - Move Left
+  - Move Down
+  - Move Right
+  - Roll
+  - Attack
+  - Interact
+  - Creature Ability 1
+  - Creature Ability 2
+  - Swap Creature
   ActionsList:
   - Up
   - Left
