@@ -189,7 +189,9 @@ public class DialogueTextManager : MonoBehaviour
                             }
                             catch
                             {
-                                Debug.Log("No such action name exists! Double check with the list in BuildDictionary()");
+                                Debug.LogError("No such action name \"" 
+                                    + sentence.Substring(0, index) 
+                                    + "\" exists! Double check with the list in BuildDictionary()", transform);
                                 bind = "";
                             }
                             
