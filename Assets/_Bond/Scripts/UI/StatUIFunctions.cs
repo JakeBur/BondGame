@@ -11,11 +11,16 @@ public class StatUIFunctions : MonoBehaviour
     LevelUpSystem levelSys => PersistentData.Instance.Player.GetComponent<LevelUpSystem>();
 
     StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
-    StatManager creatureStats;// => playerController.currCreatureContext.GetComponent<StatManager>();
 
+    [Header("Creature vars")]
+    StatManager creatureStats;// => playerController.currCreatureContext.GetComponent<StatManager>();
+    public List<TextMeshProUGUI> creatureTextLists; //Order: Name[0], abil1[1], abil2[2]
+
+    public Image ability1;
+    public Image ability2;
+    
+    [Header("Player vars")]
     public List<TextMeshProUGUI> playerTextLists; //ORDER: life[0], power[1], crit[2], bond[3],  level[4], xp to next[5]
-    public List<TextMeshProUGUI> creature1TextLists; //Order: life[0], power[1], Dex[2], utility[4], behavior[5], name[6]
-    public List<TextMeshProUGUI> creature2TextLists; //Order: life[0], power[1], Dex[2], utility[4], behavior[5], name[6]
     public List<Button> levelUpButtons;
 
     public Image xpBar;
@@ -75,19 +80,15 @@ public class StatUIFunctions : MonoBehaviour
     public void UpdateCreatureStats(int i)
     {
         if(playerController.currCreatureContext != null)
-        {
-           
+        {           
             if(i == 1)
             {
                 creatureStats = playerController.currCreature.GetComponent<CreatureAIContext>().creatureStats.statManager;
+                var context = playerController.currCreatureContext.creatureStats;
+                creatureTextLists[0].SetText(creatureStats.name);
+                creatureTextLists[1].SetText(context.abilities[0].abilityDescription);
+                creatureTextLists[2].SetText(context.abilities[1].abilityDescription);
 
-                creature1TextLists[0].SetText(creatureStats.getStat(ModiferType.MAX_ENTHUSIASM).ToString());
-                creature1TextLists[1].SetText(creatureStats.getStat(ModiferType.DAMAGE).ToString());
-                creature1TextLists[2].SetText(creatureStats.getStat(ModiferType.CREATURE_DEXTERITY).ToString());
-                creature1TextLists[3].SetText(creatureStats.getStat(ModiferType.CREATURE_UTILITY).ToString());
-                creature1TextLists[4].SetText("behavior");//behavior
-
-                creature1TextLists[5].SetText(creatureStats.name);//name
             
             }
             else if (i == 2)
@@ -95,23 +96,18 @@ public class StatUIFunctions : MonoBehaviour
                 if(playerController.swapCreature != null) 
                 {
                     creatureStats = playerController.swapCreature.GetComponent<CreatureAIContext>().creatureStats.statManager;
-
-                    creature1TextLists[0].SetText(creatureStats.getStat(ModiferType.MAX_ENTHUSIASM).ToString());
-                    creature1TextLists[1].SetText(creatureStats.getStat(ModiferType.DAMAGE).ToString());
-                    creature1TextLists[2].SetText(creatureStats.getStat(ModiferType.CREATURE_DEXTERITY).ToString());
-                    creature1TextLists[3].SetText(creatureStats.getStat(ModiferType.CREATURE_UTILITY).ToString());
-                    creature1TextLists[4].SetText("behavior");//behavior
-
-                    creature1TextLists[5].SetText(creatureStats.name);//name
+                    var context = playerController.currCreatureContext.creatureStats;
+                    creatureTextLists[0].SetText(creatureStats.name);//name
+                    creatureTextLists[1].SetText(context.abilities[0].abilityDescription);
+                    creatureTextLists[2].SetText(context.abilities[1].abilityDescription);
                 }                   
             }
         }
         else //no creatures
         {
-            foreach(TextMeshProUGUI text in creature1TextLists)
-            {
-                text.SetText("-");
-            }
+            creatureTextLists[0].SetText("No Creature");//name
+            creatureTextLists[1].SetText("No Ability");
+            creatureTextLists[2].SetText("No Ability");
         }        
     }
 
