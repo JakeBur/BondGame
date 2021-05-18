@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndLevelInteractable : InteractableBase
 {
@@ -23,7 +24,10 @@ public class EndLevelInteractable : InteractableBase
         } 
         else if(encounterManager.encounterFinished)
         {
-            if(PersistentData.Instance.currRunLevel < 3)
+            if(SceneManager.GetActiveScene().name == "Tutorial")
+            {
+                PersistentData.Instance.LoadScene(1);
+            } else if(PersistentData.Instance.currRunLevel < 3)
             {
                 Debug.Log("try load");
                 PersistentData.Instance.LoadScene(2);
