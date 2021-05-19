@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1930b507d021a2e45a9274e8fc7c5fbb, type: 3}
-  m_Name: ConnectionPoints
+  m_Script: {fileID: 11500000, guid: 562d8734cccad2e46a0f40908ee12503, type: 3}
+  m_Name: beatGame
   m_EditorClassIdentifier: 
-  patternName: 
-  points: []
-  seeds: 
+  trigger: 0
+  triggerAmount: 0
+  dialog:
+  - MC/Cheerful We did it! We completely cleared out the corruption from the forest!
+  - MC/Happy Now all the creatures can finally live in peace!
+  step: 0

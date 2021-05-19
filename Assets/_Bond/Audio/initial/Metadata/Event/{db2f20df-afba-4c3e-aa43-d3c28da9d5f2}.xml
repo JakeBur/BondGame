@@ -90,10 +90,10 @@
 	<object class="MixerBusPanner" id="{7e0fd1b9-1376-4e82-811b-8a812a6db84c}" />
 	<object class="MultiSound" id="{71ce9e6b-683a-4f37-bd48-7c93ce3894d7}">
 		<property name="length">
-			<value>0.46875</value>
+			<value>1.2929140877287404</value>
 		</property>
-		<property name="volume">
-			<value>3</value>
+		<property name="pitch">
+			<value>5.5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{4b3aa6e3-33e9-406a-b63b-30be4503c537}</destination>
@@ -138,7 +138,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>8.5</value>
+			<value>5</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{d4d8b30b-04a3-42d6-856c-d88654f43650}">
@@ -146,7 +146,7 @@
 			<value>volume</value>
 		</property>
 		<property name="amount">
-			<value>6</value>
+			<value>14</value>
 		</property>
 	</object>
 	<object class="FadeCurve" id="{66cd787c-eff0-43e9-82fa-d8d9f0eb963f}">
@@ -198,7 +198,7 @@
 	<object class="MixerBusFader" id="{ade3966c-8d7d-4390-94b5-b4bef0401aef}" />
 	<object class="AutomationPoint" id="{3693bea6-cfd1-41b3-9694-45da906793b0}">
 		<property name="position">
-			<value>0.171875</value>
+			<value>0.99603908772874039</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -209,7 +209,7 @@
 	</object>
 	<object class="AutomationPoint" id="{1460addd-f283-4ab2-8fd5-1564ec2585dd}">
 		<property name="position">
-			<value>0.46875</value>
+			<value>1.2929140877287404</value>
 		</property>
 		<property name="value">
 			<value>0</value>
