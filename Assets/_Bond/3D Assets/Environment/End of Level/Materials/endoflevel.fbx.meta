@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Corruption
-    second: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 2ee482f997a93f74687717666445fb52, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Corruption2
-    second: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 9b8cb180580d5b64ba7a3df0dcb9efd6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -33,7 +33,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: corruption_mat
-    second: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 3d7cc92da023c8f4990df95e87a2647c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -91,7 +91,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

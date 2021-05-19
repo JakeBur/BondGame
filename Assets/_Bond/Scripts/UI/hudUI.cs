@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class hudUI : MonoBehaviour
 {
@@ -48,9 +50,12 @@ public class hudUI : MonoBehaviour
     public GameObject EnviornmentDialogCanvas;
     public TextMeshProUGUI EnviornmentDialogText;
 
-    public Slider enthusiasmSlider;
-
     public CooldownSystem cd;
+
+    [Header("Misc")]
+    public GameObject MainHud;
+    public GameObject GameOverPanel;
+    public GameObject GameOverText;
 
     private StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
     private PlayerController player => PersistentData.Instance.Player.GetComponent<PlayerController>();
@@ -108,8 +113,6 @@ public class hudUI : MonoBehaviour
     {
         if(player.currCreatureContext != null)
         {
-            enthusiasmSlider.enabled = true;
-            //updateEnthusiasm();
             currCreatureIcon.sprite = player.currCreatureContext.icon;
             
 
@@ -128,7 +131,6 @@ public class hudUI : MonoBehaviour
         }
         else //Player has no creatures equipped
         {
-            enthusiasmSlider.enabled = false;
             currCreatureIcon.sprite = noCreatureIcon;
             swapCreatureIcon.sprite = noCreatureIcon;
 
@@ -240,7 +242,8 @@ public class hudUI : MonoBehaviour
     {
         //Debug.Log("hurt");
         //hurtFeedback.color = opaque;
-        hurtFeedback.CrossFadeAlpha(amount, time, false);       
+        hurtFeedback.CrossFadeAlpha(amount, time, false);
+             
     }
 
     public void XpGain()
@@ -251,6 +254,81 @@ public class hudUI : MonoBehaviour
     public void UpdateLevel(int i)
     {
         level.SetText("Lv. " + i);
+    }
+
+
+    
+
+    public void DisplayDeathScreen()
+    {
+        StartCoroutine(DisplayDeathScreenCo());
+    }
+
+    IEnumerator DisplayDeathScreenCo()
+    {
+        //hudManager.GameOverPanel.SetActive(true);
+        
+        yield return new WaitForSeconds(2);
+            DOTween.To(()=> GameOverPanel.GetComponent<CanvasGroup>().alpha,
+                x=> GameOverPanel.GetComponent<CanvasGroup>().alpha = x, 1, 2);
+
+        yield return new WaitForSeconds(2);
+            GameOverText.SetActive(true);
+            
+            DOTween.To(()=> GameOverText.GetComponent<CanvasGroup>().alpha,
+                x=> GameOverText.GetComponent<CanvasGroup>().alpha = x, 1, 1);
+    }
+
+
+
+
+    //On button press
+    public void DeathScreenContinue()
+    {
+        //fade out and load new scene
+        if(SceneManager.GetActiveScene().name == "Tutorial" )
+        {
+            
+            PersistentData.Instance.tutorialManager?.RespawnPlayer();
+            PersistentData.Instance.tutorialManager?.ResetEncounter();//reset fight
+            player.HealMaxHealth();
+            player.SetStandbyState(false);
+
+            StartCoroutine(DeathScreenDone());
+
+            
+        }
+        else
+        {
+            StartCoroutine(DeathScreenDone());          
+        }
+        
+    }
+
+    IEnumerator DeathScreenDone()
+    {
+        DOTween.To(()=> GameOverText.GetComponent<CanvasGroup>().alpha,
+            x=> GameOverText.GetComponent<CanvasGroup>().alpha = x, 0, 1);
+        
+        yield return new WaitForSeconds(1);
+
+            GameOverText.SetActive(false);
+            DOTween.To(()=> GameOverPanel.GetComponent<CanvasGroup>().alpha,
+                x=> GameOverPanel.GetComponent<CanvasGroup>().alpha = x, 0, 2);
+
+        if(SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            player.SetStandbyState(false);
+            PersistentData.Instance.LoadScene(1);
+
+            yield return new WaitForSeconds(1);
+            player.HealMaxHealth();
+            
+        }
+
+        
+        
+
     }
 
     
