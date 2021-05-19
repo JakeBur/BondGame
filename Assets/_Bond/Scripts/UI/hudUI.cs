@@ -125,7 +125,7 @@ public class hudUI : MonoBehaviour
             if(player.swapCreature != null) // player has the swap creature
             {
                 swapCreatureIcon.sprite = player.swapCreature.GetComponent<CreatureAIContext>().icon;
-                swapCreatureName.SetText(player.currCreatureContext.creatureStats.name);
+                swapCreatureName.SetText(player.swapCreature.GetComponent<CreatureAIContext>().creatureStats.name);
             }
 
         }
