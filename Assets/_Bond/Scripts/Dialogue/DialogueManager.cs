@@ -32,8 +32,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        //Freeze the player
-        PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(true);
         //--------------------------------------------------
         // Tell PlayerController that dialogue is starting
         //--------------------------------------------------
@@ -105,7 +103,7 @@ public class DialogueManager : MonoBehaviour
         //--------------------------
         // Ready to start dialogue
         //--------------------------
-        // Debug.Log(sentence + ", " + speaker + ", " + portrait);
+        Debug.Log(sentence + ", " + speaker + ", " + portrait);
         dialogueTextManager.ResetSpeed();
         dialogueTextManager.ChangeText(speaker, sentence);
         dialoguePortrait.ChangePortrait(speaker, portrait);

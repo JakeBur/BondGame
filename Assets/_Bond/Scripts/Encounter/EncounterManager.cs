@@ -17,6 +17,13 @@ public class EncounterManager : MonoBehaviour
     [Header("VFX")]
     public ArenaAnimator vfx;
 
+    // [Header("Blobs")]
+    // public float blobSpawnRadius;
+    // public int blobAmount;
+    // public GameObject blobPrefab;
+    // public GameObject blobParent;
+    // public Buff corruptionDebuff;
+
     [Header("Enemies")]
     public List<GameObject> CurrEnemies;
     public int maxCurrMeleeAttackers;
@@ -33,13 +40,16 @@ public class EncounterManager : MonoBehaviour
     public float arenaRadius = 23;
     [HideInInspector]
     public Vector3 farthestPointFromPlayer;
-    // [HideInInspector]
+    [HideInInspector]
     public int numberOfCurrMeleeAttackers;
-    // [HideInInspector]
+    [HideInInspector]
     public int numberOfCurrRangedAttackers;
     [HideInInspector]
     public bool encounterFinished;
 
+    // private bool playerInside;
+    // private bool creature1Inside;
+    // private bool creature2Inside;
     private PlayerController pc;
     public RewardManager rewardManager;
     // [HideInInspector]
@@ -68,6 +78,7 @@ public class EncounterManager : MonoBehaviour
 
     }
 
+    // UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY  UGLY 
     private void OnTriggerEnter(Collider other) 
     {
         if(other.transform.tag == "Player")
@@ -94,6 +105,13 @@ public class EncounterManager : MonoBehaviour
             pc.swapCreature.GetComponent<NavMeshAgent>().Warp(pc.backFollowPoint.position);
         }
 
+        // for(int i = 0; i < blobAmount; i++)
+        // {
+        //     Vector2 randomPos = Random.insideUnitCircle;
+        //     randomPos *= (Random.Range(10,blobSpawnRadius));
+        //     Instantiate(blobPrefab, new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), Quaternion.identity, blobParent.transform);
+        // }
+        // blobParent.SetActive(true);
         barrier.SetActive(true);
         vfx.PlayEncounterBegin();
         SpawnEncounter();

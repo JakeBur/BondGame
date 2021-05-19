@@ -26,4 +26,4 @@ MonoBehaviour:
   - start: {x: 100, y: 400}
     end: {x: 400, y: 256}
     biome: 3
-  seeds: 89a006007f840b00e7750a0053100a002f530e00c7cc0e00a1e403004cd30800ca700200017f0500
+  seeds: 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
-using DG.Tweening;
 
 public class PersistentData : MonoBehaviour
 {
@@ -16,7 +15,6 @@ public class PersistentData : MonoBehaviour
     public GameObject PlayerPrefab;
     public GameObject Player { get; private set; }
     public PlayerController playerController;
-    public bool justDied = false;
 
     [Header("CameraReference")]
     public GameObject CameraPrefab;
@@ -62,10 +60,8 @@ public class PersistentData : MonoBehaviour
 
     public bool isGeneratorDone;
     public int currRunLevel;
-    public int completedRuns;
 
     public List<RelicStats> availableRelics;
-    public DialogueSelector dialogueSelector;
 
     [Header("InputActionAsset")]
     public PlayerInput playerInputs;
@@ -123,14 +119,13 @@ public class PersistentData : MonoBehaviour
 
         // Set Camera to follow player
         CameraManager.ResetCameraTargetToPlayer( true );
-        currRunLevel = 1;
+
         var settings = PauseMenu.transform.Find("Settings");
         var backdrop = settings.Find("backdrop");
         audioSettings = backdrop.Find("Volume sliders").GetComponent<AudioSettings>();
         controlRebind = backdrop.Find("Controls").GetComponent<ControlRebind>();
         audioSettings.LoadVolumesOnStart();
         currBinds = controlRebind.BuildDictionary();
-        completedRuns = PlayerPrefs.GetInt("completedRuns");
     }
 
     private void SetPlayerReference()
@@ -324,7 +319,7 @@ public class PersistentData : MonoBehaviour
     {
         if(_scene == 1)
         {
-            currRunLevel = 1;
+            currRunLevel = 0;
         }
         
 
@@ -405,7 +400,6 @@ public class PersistentData : MonoBehaviour
         {
             case 1:
                 AudioController.GetComponent<AudioController>().BeginFarmMusic();
-                playerController.HealMaxHealth();
                 break;
             case 2:
                 AudioController.GetComponent<AudioController>().BeginOverworldMusic();
@@ -436,7 +430,7 @@ public class PersistentData : MonoBehaviour
              playerController.swapCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
         }
 
-        // playerController.HealMaxHealth();
+        playerController.HealMaxHealth();
 
         //Turn UI back on
         HUDObject.SetActive(true);
@@ -446,10 +440,6 @@ public class PersistentData : MonoBehaviour
             //transition IN
             yield return StartCoroutine(FadeLoadingScreen(0, 1));
         */
-
-        
-        dialogueSelector.selectDialogue(_scene, justDied);
-        justDied = false;
 
         yield return StartCoroutine(FadeOutScreen(1));
 
@@ -539,9 +529,26 @@ public class PersistentData : MonoBehaviour
 
     public void PlayerDeath()
     {
-        //death anim + standby state
-        justDied = true;
-        hudManager.DisplayDeathScreen();
+        if(SceneManager.GetActiveScene().name == "Tutorial" )
+        {
+            //deathscreen prompt
+            //warpPlayer(tutorialManager.currspawnpoint);
+            //reset last encounter fight
+            tutorialManager?.RespawnPlayer();
+            tutorialManager?.ResetEncounter();
+            playerController.HealMaxHealth();
+        }
+        else
+        {
+            //display death screen
+            //prob ask for a prompt
+            LoadScene(1);
+            // Hardcoded value: Teleports to Farm
+
+            //healing is done in persistent data using HealMaxHealth()
+        }
     }
+
+
 
 }
