@@ -28,7 +28,7 @@ public class EnemyAIContext : MonoBehaviour
     public EncounterManager EncounterManager; //to tell it when to spawn the next enemy
     public GameObject attackSpawner;
     public Canvas enemyUI;
-    public Slider healthSlider;
+    public Image healthSlider;
     public ParticleSystem hitVFX;
     
     [Header("Bools")]
@@ -74,7 +74,6 @@ public class EnemyAIContext : MonoBehaviour
 
     private void Start() {
         player = PersistentData.Instance.Player;
-        //player = GameObject.FindGameObjectWithTag("Player");
         lastCheckedHealth = statManager.getStat(ModiferType.CURR_HEALTH);
     }
 
@@ -89,22 +88,6 @@ public class EnemyAIContext : MonoBehaviour
         }
         //Debug.Log("Fixed Update Health Slider Value: " + healthSlider.value);
     }
-
-    // public void doMovement(float moveSpeed)
-    // {
-    //     rb.velocity = (enemyTransform.transform.rotation * Vector3.forward * moveSpeed);
-    // }
-
-    // public void doRotation(float rotationSpeed, Quaternion desiredLook) 
-    // {
-    //     enemyTransform.rotation = Quaternion.Slerp(enemyTransform.rotation, desiredLook, Time.deltaTime * rotationSpeed); //10 is rotation speed - might want to change later
-    // }
-
-    // public void doLookAt(Vector3 position)
-    // {
-    //     enemyTransform.transform.LookAt(position, Vector3.up);
-    //     rb.velocity = (enemyTransform.transform.rotation * Vector3.forward * statManager.stats[ModiferType.MOVESPEED].modifiedValue);
-    // }
 
     public void DestroyEnemy()
     {
@@ -121,7 +104,7 @@ public class EnemyAIContext : MonoBehaviour
         hitVFX.Play();
 
         // healthSlider.value = (statManager.stats[ModiferType.CURR_HEALTH].modifiedValue / statManager.stats[ModiferType.MAX_HEALTH].modifiedValue) * 100;
-        healthSlider.value = (statManager.getStat(ModiferType.CURR_HEALTH) / statManager.getStat(ModiferType.MAX_HEALTH)) * 100;
+        healthSlider.fillAmount = (statManager.getStat(ModiferType.CURR_HEALTH) / statManager.getStat(ModiferType.MAX_HEALTH));
         //Debug.Log("UI Update Health Slider Value: " + healthSlider.value);
         //Debug.Log("Curr enemy health: " + statManager.getStat(ModiferType.CURR_HEALTH) + " from " + lastCheckedHealth);
         // Debug.Log("Max enemy health: " + statManager.stats[ModiferType.MAX_HEALTH].modifiedValue);
