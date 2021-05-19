@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    public List<Conversation> dialoguePool = new List<Conversation>();
     public Conversation dialogue;
 
     private Queue<string> sentences = new Queue<string>();
@@ -37,6 +38,10 @@ public class DialogueManager : MonoBehaviour
         PersistentData.Instance.Player.GetComponent<PlayerController>().inCharacterDialog = true;
         PersistentData.Instance.hudManager.ShowCharacterDialogue();
 
+        //------------------------------------------------------
+        // Pick a random dialogue out of the pool of dialogues
+        //------------------------------------------------------
+        dialogue = dialoguePool[Random.Range(0, dialoguePool.Count)];
 
         //----------------------------
         // Clear the sentences queue

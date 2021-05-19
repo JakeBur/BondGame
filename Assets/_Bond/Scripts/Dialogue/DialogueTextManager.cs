@@ -11,15 +11,15 @@ public class DialogueTextManager : MonoBehaviour
     public bool sentenceFinished = true;
 
     private IEnumerator typeText;
-    private float textSpeed = 0.0375f;
+    private float textSpeed = 0.03f;
     private float textSpeedMult = 1f;
-    private float textSpeedBackup = 0.0375f;
+    private float textSpeedBackup = 0.03f;
     private string speaker;
     private string sentence;
 
     public void ResetSpeed()
     {
-        textSpeedBackup = 0.0375f;
+        textSpeedBackup = 0.03f;
         textSpeed = textSpeedBackup;
     }
 
@@ -227,7 +227,7 @@ public class DialogueTextManager : MonoBehaviour
         // Once sentence is over, reset the speed values to default
         //-----------------------------------------------------------
         sentenceFinished = true;
-        textSpeedBackup = 0.0375f;
+        textSpeedBackup = 0.03f;
         textSpeed = textSpeedBackup;
     }
 }
