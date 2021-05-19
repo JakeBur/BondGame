@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     [Header("Dialog Manager")]
     public bool inCharacterDialog;
     public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
-    [HideInInspector]
+    // [HideInInspector]
     public DialogueManager dialogueManager;
 
     [Header("Pause Menu")]

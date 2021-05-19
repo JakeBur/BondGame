@@ -16,6 +16,7 @@ public class PersistentData : MonoBehaviour
     public GameObject PlayerPrefab;
     public GameObject Player { get; private set; }
     public PlayerController playerController;
+    public bool justDied = false;
 
     [Header("CameraReference")]
     public GameObject CameraPrefab;
@@ -61,8 +62,10 @@ public class PersistentData : MonoBehaviour
 
     public bool isGeneratorDone;
     public int currRunLevel;
+    public int completedRuns;
 
     public List<RelicStats> availableRelics;
+    public DialogueSelector dialogueSelector;
 
     [Header("InputActionAsset")]
     public PlayerInput playerInputs;
@@ -86,7 +89,6 @@ public class PersistentData : MonoBehaviour
 
     private void Awake() 
     {
-        
         if(_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -128,6 +130,7 @@ public class PersistentData : MonoBehaviour
         controlRebind = backdrop.Find("Controls").GetComponent<ControlRebind>();
         audioSettings.LoadVolumesOnStart();
         currBinds = controlRebind.BuildDictionary();
+        completedRuns = PlayerPrefs.GetInt("completedRuns");
     }
 
     private void SetPlayerReference()
@@ -402,6 +405,7 @@ public class PersistentData : MonoBehaviour
         {
             case 1:
                 AudioController.GetComponent<AudioController>().BeginFarmMusic();
+                playerController.HealMaxHealth();
                 break;
             case 2:
                 AudioController.GetComponent<AudioController>().BeginOverworldMusic();
@@ -432,7 +436,7 @@ public class PersistentData : MonoBehaviour
              playerController.swapCreature.GetComponent<CreatureAIContext>().agent.Warp(playerController.backFollowPoint.transform.position);
         }
 
-        playerController.HealMaxHealth();
+        // playerController.HealMaxHealth();
 
         //Turn UI back on
         HUDObject.SetActive(true);
@@ -442,6 +446,10 @@ public class PersistentData : MonoBehaviour
             //transition IN
             yield return StartCoroutine(FadeLoadingScreen(0, 1));
         */
+
+        
+        dialogueSelector.selectDialogue(_scene, justDied);
+        justDied = false;
 
         yield return StartCoroutine(FadeOutScreen(1));
 
@@ -532,6 +540,7 @@ public class PersistentData : MonoBehaviour
     public void PlayerDeath()
     {
         //death anim + standby state
+        justDied = true;
         hudManager.DisplayDeathScreen();
     }
 
