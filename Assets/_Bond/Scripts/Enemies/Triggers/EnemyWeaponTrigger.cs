@@ -36,6 +36,10 @@ public class EnemyWeaponTrigger : MonoBehaviour
             if(context.enemyType != "SwarmEnemy")
             {
                 other.GetComponent<PlayerController>().isHit = true;
+            } else 
+            {
+                PersistentData.Instance.hudManager.HurtFeedback(1f, 0f); //makes the red flash on screen
+                PersistentData.Instance.hudManager.HurtFeedback(0f, 0.3f);
             }
 
             SFXPlayer.PlayOneShot(SFX.PlayerDamagedDonutSFX, transform.position);
