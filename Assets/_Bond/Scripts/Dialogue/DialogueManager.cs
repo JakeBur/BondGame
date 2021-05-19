@@ -31,6 +31,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
+        //Freeze the player
+        PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(true);
         //--------------------------------------------------
         // Tell PlayerController that dialogue is starting
         //--------------------------------------------------

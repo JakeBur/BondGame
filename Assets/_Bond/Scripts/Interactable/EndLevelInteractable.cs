@@ -42,6 +42,8 @@ public class EndLevelInteractable : InteractableBase
                 PersistentData.Instance.LoadScene(2);
                 PersistentData.Instance.currRunLevel++;
             } else {
+                PersistentData.Instance.completedRuns++;
+                PlayerPrefs.SetInt("completedRuns", PersistentData.Instance.completedRuns);
                 PersistentData.Instance.LoadScene(1);
             }
         }
