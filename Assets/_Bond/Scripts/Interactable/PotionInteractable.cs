@@ -33,19 +33,7 @@ public class PotionInteractable : InteractableBase
                 PersistentData.Instance.hudManager.HideIntereactPrompt();
                 PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().hideUI();
             }
-            else
-            {
-                foreach(KeyValuePair<GameObject, InteractableBase> interactObj in pc.interactableObjects)
-                {
-                    if(interactObj.Key.transform.tag == "Relic")
-                    {
-                        PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(interactObj.Key.GetComponent<RelicInteractable>().relicStats,
-                                                                                                interactObj.Key.GetComponent<RelicInteractable>().cost);
-                        PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
-                        break;
-                    }                
-                }
-            }
+            
             Destroy(gameObject);
         }
         

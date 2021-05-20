@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4942187282025468993}
   m_Layer: 0
   m_Name: Relic
-  m_TagString: Relic
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showUI: 1
   removeOnInteract: 0
+  distance: 0
   relicStats: {fileID: 0}
   spriteRenderer: {fileID: 3018569099592749772}
   cost: 1

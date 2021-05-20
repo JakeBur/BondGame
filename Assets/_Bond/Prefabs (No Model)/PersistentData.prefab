@@ -46,14 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 3008331729029387198, guid: b533a4d2d18ca984a85f56b2a9810e8c,
     type: 3}
+  playerController: {fileID: 0}
   CameraPrefab: {fileID: 4178489857079956520, guid: 956d718805b5b4344b54a225f3a66551,
     type: 3}
   HUDPrefab: {fileID: 8580111774580001889, guid: ac92d26580688e2468b36dc953f472a1,
     type: 3}
+  HUDObject: {fileID: 0}
   displayHUD: 1
   PauseMenuPrefab: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
     type: 3}
   StatUIPrefab: {fileID: 7511566296718916632, guid: 933624b543ab5024785c5a7a786b965f,
+    type: 3}
+  BefriendUIPrefab: {fileID: 6100738463459039170, guid: e491b0b6cf1372e40b55bbd99f8b53bb,
     type: 3}
   ShopRelicUIPrefab: {fileID: 6100738463459039170, guid: 185bdf6a104bb01469d73def1c8e5abf,
     type: 3}
@@ -63,6 +67,7 @@ MonoBehaviour:
     type: 3}
   loadScreen: {fileID: 2837024482875620880}
   isGeneratorDone: 0
+  currRunLevel: 0
   availableRelics:
   - {fileID: 11400000, guid: fd33f6533df23f2468f37f71d6ba393d, type: 2}
   - {fileID: 11400000, guid: 27e380cdf22e0824e959974d7dfc68fe, type: 2}
@@ -84,6 +89,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d037f5bd56aad9b4a8eaf04f4e8d7815, type: 2}
   - {fileID: 11400000, guid: 86f221ed2007bb14e931f4ece15c90c1, type: 2}
   playerInputs: {fileID: 0}
+  controlRebind: {fileID: 0}
+  tutorialObject: {fileID: 0}
+  tutorialManager: {fileID: 0}
 --- !u!225 &2837024482875620880
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -61,6 +61,9 @@ public class hudUI : MonoBehaviour
     private bool hasCD = false;
 
     public Image hurtFeedback;
+    [Header("Creature Befriend UI")]
+    public BefriendCreatureUI BefriendCreatureUI;
+
 
 //*****************End of variable declarations**********************//
 
@@ -199,7 +202,15 @@ public class hudUI : MonoBehaviour
 
 
 
-
+    public void ShowCreatureBefriendUI(CreatureAIContext _context, string creatureType)
+    {   
+        BefriendCreatureUI.showUI(_context, creatureType);
+    }
+    
+    public void HideCreatureBefriendUI()
+    {
+        BefriendCreatureUI.hideUI();
+    }
     
     public void ShowInteractPrompt()
     {
@@ -210,6 +221,9 @@ public class hudUI : MonoBehaviour
     {
         interactPrompt.enabled = false;
     }
+
+
+    
 
 
 
