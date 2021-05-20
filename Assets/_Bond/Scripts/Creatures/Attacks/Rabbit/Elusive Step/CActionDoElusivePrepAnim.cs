@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CActionDoElusivePrepAnim : BTLeaf
 {
+
+    RabbitAnimator animator;
     
     public CActionDoElusivePrepAnim(string _name, CreatureAIContext _context ) : base(_name, _context)
     {
@@ -13,12 +15,12 @@ public class CActionDoElusivePrepAnim : BTLeaf
 
     protected override void OnEnter()
     {
-        // RabbitAnimator animator = context.animator as RabbitAnimator;
-        // if (animator == null)
-        // {
-        //     Debug.LogError("animator is not rabbit animator");
-        // }
-        // animator.ElusiveStepPose();
+        animator = context.animator as RabbitAnimator;
+        if (animator == null)
+        {
+            Debug.LogError("animator is not rabbit animator");
+        }
+        animator.ElusiveStepPose();
     }
 
     protected override void OnExit()
@@ -27,14 +29,15 @@ public class CActionDoElusivePrepAnim : BTLeaf
     }
 
     public override NodeState Evaluate() {
-        // if(context.animator.inElusiveStepPose)
-        // {
-        //     return NodeState.RUNNING;
-        // } else
-        // {
-        //     OnParentExit();
-        //     return NodeState.SUCCESS;
-        // }
+        if(animator.inElusiveStepPose)
+        {
+            return NodeState.RUNNING;
+        }
+        else
+        {
+            OnParentExit();
+            return NodeState.SUCCESS;
+        }
         return NodeState.SUCCESS;
     }
 }
