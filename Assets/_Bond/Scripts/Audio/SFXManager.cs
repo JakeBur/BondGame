@@ -96,6 +96,7 @@ public class SFXManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    #region Player Movement
     public void Play2DWalkSFX(Transform playerTransform)
     {
         int waterLayerMask = 1 << 4;
@@ -178,7 +179,9 @@ public class SFXManager : MonoBehaviour
             return;
         }
     }
+    #endregion
 
+    #region Creature + Enemy Movement
     public void Play3DWalkSFX(int tag, Transform charTransform)
     {
         int waterLayerMask = 1 << 4;
@@ -221,22 +224,9 @@ public class SFXManager : MonoBehaviour
         instance.start();
         instance.release();
     }
+    #endregion
 
-    public void Play3DWalkGrassSFX(int tag, Vector3 position = new Vector3())
-    {
-        //--------------------------------
-        // List of creature + enemy tags
-        // 0 - Fragaria
-        // 1 - Rabbit
-        // 2 - Donut (Melee Enemy)
-        //--------------------------------
-        var instance = SFXPlayer.CreateInstance(Misc3DWalkGrassSFX);
-        instance.set3DAttributes(SFXUtils.To3DAttributes(position));
-        instance.setParameterByName("MoverTag", tag);
-        instance.start();
-        instance.release();
-    }
-
+    #region Fragaria
     public void PlayFragariaPetalThrowWhooshSFX(int tag, Vector3 position = new Vector3())
     {
         var instance = SFXPlayer.CreateInstance(FragariaPetalThrowWhooshSFX);
@@ -245,7 +235,9 @@ public class SFXManager : MonoBehaviour
         instance.start();
         instance.release();
     }
+    #endregion Fragaria
 
+    #region General Enemy
     public void PlayEnemyPunchHitSFX(int tag, Vector3 position = new Vector3())
     {
         //----------------------------
@@ -259,7 +251,9 @@ public class SFXManager : MonoBehaviour
         instance.start();
         instance.release();
     }
+    #endregion
 
+    #region UI SFX
     public void PlayCreatureBefriendSFX(string creatureType, Vector3 position = new Vector3())
     {
         int creatureTag;
@@ -293,4 +287,5 @@ public class SFXManager : MonoBehaviour
     {
         SFXPlayer.PlayOneShot(LevelTransitionSFX, transform.position);
     }
+    #endregion
 }

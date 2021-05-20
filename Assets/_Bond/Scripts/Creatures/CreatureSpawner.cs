@@ -27,8 +27,7 @@ public class CreatureSpawner : MonoBehaviour
     {
         //pick random creature and spawn it in the world.
         int _randomCreatureNumber = Random.Range(0, creatureTypes.Count);
-        // Creature = Instantiate(creatureTypes[_randomCreatureNumber].creaturePrefab, spawnPoint.position, Quaternion.identity);
-        Creature = Instantiate(creatureTypes[_randomCreatureNumber].creaturePrefab, spawnPoint.position, new Quaternion(0,140,0,0));
+        Creature = Instantiate(creatureTypes[_randomCreatureNumber].creaturePrefab, spawnPoint.position, Quaternion.identity);
 
         //randomize color
         // Creature.GetComponent<CreatureMaterialManager>().RandomizeMaterial();//This currently only works on fragaria, bricks others
