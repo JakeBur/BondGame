@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public CreatureAIContext currCreatureContext;
     public CooldownSystem cooldownSystem => GetComponent<CooldownSystem>();
-    public bool didWhistle;
+    // public bool didWhistle;
 
     [Header("Combat")]
     public bool inCombat;
@@ -494,7 +494,7 @@ public class PlayerController : MonoBehaviour
 
         if(currCreature == null) return;
         
-        didWhistle = true;
+        // didWhistle = true;
 
         currCreatureContext.attention += 100;
         
