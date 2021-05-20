@@ -27,7 +27,7 @@ public class CActionIncreaseAttention : BTLeaf
         {
             context.attention = 150;
         }
-        context.player.GetComponent<PlayerController>().didWhistle = false;
+        // context.player.GetComponent<PlayerController>().didWhistle = false;
         OnParentExit();
         return NodeState.SUCCESS;
     }

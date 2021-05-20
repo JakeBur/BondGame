@@ -109,15 +109,19 @@ public class CreatureAIRework : MonoBehaviour
 
         #region befriended
             List<BTNode> BefriendedSelectorList = new List<BTNode>();
-            
-            #region Whistled
-                List<BTNode> WhistledSequenceList = new List<BTNode>();
-                CCheckPlayerWhistled didWhistle = new CCheckPlayerWhistled("", context);
-                CActionIncreaseAttention increaseAttention = new CActionIncreaseAttention("", context);
-                WhistledSequenceList.Add(didWhistle);
-                WhistledSequenceList.Add(increaseAttention);
-                BTSequence WhistledSequence = new BTSequence("", WhistledSequenceList);
+
+            #region Whistle/Attention Sequence
+                List<BTNode> attentionHighInCombatSequenceList = new List<BTNode>();
+
+                CCheckAttentionHigh attentionHigh = new CCheckAttentionHigh("", context);
+
+                CActionGetToPlayer getToPlayer = new CActionGetToPlayer("", context);
+
+                attentionHighInCombatSequenceList.Add(attentionHigh);
+                attentionHighInCombatSequenceList.Add(getToPlayer);
+                BTSequence attentionHighInCombatSequence = new BTSequence("", attentionHighInCombatSequenceList);
             #endregion
+
 
             #region In Combat
                 List<BTNode> inCombatSequenceList = new List<BTNode>();
@@ -160,17 +164,7 @@ public class CreatureAIRework : MonoBehaviour
                         BTSequence AbilityTriggeredSequence = new BTSequence("", abilityTriggeredSequenceList);
                     #endregion
 
-                    #region Attention Sequence
-                        List<BTNode> attentionHighInCombatSequenceList = new List<BTNode>();
-
-                        CCheckAttentionHigh attentionHigh = new CCheckAttentionHigh("", context);
-
-                        CActionGetToPlayer getToPlayer = new CActionGetToPlayer("", context);
-
-                        attentionHighInCombatSequenceList.Add(attentionHigh);
-                        attentionHighInCombatSequenceList.Add(getToPlayer);
-                        BTSequence attentionHighInCombatSequence = new BTSequence("", attentionHighInCombatSequenceList);
-                    #endregion
+                    
 
                     #region Basic Attack Sequence
                         List<BTNode> basicAttackSequenceList = new List<BTNode>();
@@ -187,7 +181,6 @@ public class CreatureAIRework : MonoBehaviour
                     CActionBefriendedWander befriendedWander = new CActionBefriendedWander("", context);
 
                     inCombatAbilitySelectorList.Add(AbilityTriggeredSequence);
-                    inCombatAbilitySelectorList.Add(attentionHighInCombatSequence);
                     inCombatAbilitySelectorList.Add(basicAttackSequence);
                     inCombatAbilitySelectorList.Add(befriendedWander);
                     
@@ -225,7 +218,7 @@ public class CreatureAIRework : MonoBehaviour
                 BTSelector outOfCombatSelector = new BTSelector("", outOfCombatSelectorList);
             #endregion
 
-            //BefriendedSelectorList.Add(WhistledSequence);
+            BefriendedSelectorList.Add(attentionHighInCombatSequence); //Add whistled to any state
             BefriendedSelectorList.Add(inCombatSequence);
             BefriendedSelectorList.Add(outOfCombatSelector);
             
