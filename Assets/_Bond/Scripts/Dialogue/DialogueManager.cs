@@ -41,7 +41,10 @@ public class DialogueManager : MonoBehaviour
         //------------------------------------------------------
         // Pick a random dialogue out of the pool of dialogues
         //------------------------------------------------------
-        dialogue = dialoguePool[Random.Range(0, dialoguePool.Count)];
+        if (dialoguePool.Count != 0)
+        {
+            dialogue = dialoguePool[Random.Range(0, dialoguePool.Count)];
+        }
 
         //----------------------------
         // Clear the sentences queue
