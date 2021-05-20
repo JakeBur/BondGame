@@ -26,7 +26,6 @@ public class EActionPlayDeathAnim : BTLeaf
     {
         if( enemyContext.animator.inDeath )
         {
-            Debug.Log("In death running");
             return NodeState.RUNNING;
         }
         //Spawn gold

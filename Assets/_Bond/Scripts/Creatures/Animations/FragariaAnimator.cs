@@ -18,6 +18,12 @@ public class FragariaAnimator : CreatureAnimator
         SFXPlayer.PlayOneShot(SFX.FragariaPetalSawSFX, transform.position);
     }
 
+    public void EventPlayPetalSawVFX()
+    {
+        GameObject slash = Instantiate(petalSawVFXPrefab, transform.position, Quaternion.identity);
+        slash.transform.LookAt(transform.position + transform.forward);
+	}
+
     public void PetalThrow()
     {
         animator.SetTrigger("PetalThrow");
@@ -42,12 +48,6 @@ public class FragariaAnimator : CreatureAnimator
     {
         animator.SetTrigger("SunBeam");
     }
-
-    public void EventPlayPetalSawVFX()
-    {
-        GameObject slash = Instantiate(petalSawVFXPrefab, transform.position, Quaternion.identity);
-        slash.transform.LookAt(transform.position + transform.forward);
-	}
 	
     public void EventPlayBasicAttackImpactSFX()
     {

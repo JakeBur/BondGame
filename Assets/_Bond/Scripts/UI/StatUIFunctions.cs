@@ -11,10 +11,7 @@ public class StatUIFunctions : MonoBehaviour
     LevelUpSystem levelSys => PersistentData.Instance.Player.GetComponent<LevelUpSystem>();
 
     StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
-
-    [Header("Creature vars")]
     StatManager creatureStats;// => playerController.currCreatureContext.GetComponent<StatManager>();
-    public List<TextMeshProUGUI> creatureTextLists; //Order: Name[0], abil1[1], abil2[2]
 
     public Image ability1;
     public Image ability2;
@@ -28,6 +25,8 @@ public class StatUIFunctions : MonoBehaviour
     
     [Header("Player vars")]
     public List<TextMeshProUGUI> playerTextLists; //ORDER: life[0], power[1], crit[2], bond[3],  level[4], xp to next[5]
+    public List<TextMeshProUGUI> creature1TextLists; //Order: life[0], power[1], Dex[2], utility[4], behavior[5], name[6]
+    public List<TextMeshProUGUI> creature2TextLists; //Order: life[0], power[1], Dex[2], utility[4], behavior[5], name[6]
     public List<Button> levelUpButtons;
 
     public Image xpBar;

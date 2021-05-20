@@ -24,18 +24,16 @@ public class EnemyWeaponTrigger : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            //makes player not take more damage after death
-            if(other.gameObject.GetComponent<StatManager>().getStat(ModiferType.CURR_HEALTH) <= 0)
-            {
-                return;
-            }
-
             other.gameObject.GetComponent<StatManager>().TakeDamage(context.statManager.stats[ModiferType.DAMAGE].modifiedValue, ModiferType.MELEE_RESISTANCE);
             other.gameObject.GetComponent<PlayerController>().DeathCheck();
 
             if(context.enemyType != "SwarmEnemy")
             {
                 other.GetComponent<PlayerController>().isHit = true;
+            } else 
+            {
+                PersistentData.Instance.hudManager.HurtFeedback(1f, 0f); //makes the red flash on screen
+                PersistentData.Instance.hudManager.HurtFeedback(0f, 0.3f);
             }
 
             SFXPlayer.PlayOneShot(SFX.PlayerDamagedDonutSFX, transform.position);

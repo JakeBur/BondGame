@@ -55,7 +55,7 @@ public class ArenaAnimator : MonoBehaviour
     public void PlayEncounterBegin()
     {
         GetComponent<Animator>().SetBool("Trigger", true);
-        Debug.Log("Playing encounter begin fx");
+        // Debug.Log("Playing encounter begin fx");
     }
 
     public void PlayDeathAnimation()

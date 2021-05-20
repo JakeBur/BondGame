@@ -77,14 +77,18 @@ public class WeaponTriggers : MonoBehaviour
             enemyAIContext.statManager.TakeDamage(damage * damageModifier, ModiferType.MELEE_RESISTANCE);
             enemyAIContext.healthUIUpdate();
 
-            GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, enemyAIContext.transform);
-            squib.transform.localPosition = Vector3.up * 0.7f;
-            //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, enemyAIContext.transform.position, Quaternion.identity);
-            //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, transform.position, Quaternion.identity);
-            //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, Vector3.zero, Quaternion.identity);
-            squib.transform.LookAt(squib.transform.position + new Vector3(transform.forward.x, 0, transform.forward.z));
+            //If enemy is spawning, don't play hit sound or effects
+            if(!enemyAIContext.animator.inSpawn)
+            {
+                GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, enemyAIContext.transform);
+                squib.transform.localPosition = Vector3.up * 0.7f;
+                //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, enemyAIContext.transform.position, Quaternion.identity);
+                //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, transform.position, Quaternion.identity);
+                //GameObject squib = Instantiate(playerAnimator.vfxData.enemySquib, Vector3.zero, Quaternion.identity);
+                squib.transform.LookAt(squib.transform.position + new Vector3(transform.forward.x, 0, transform.forward.z));
 
-            SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
+                SFXPlayer.PlayOneShot(SFX.PlayerSwordImpactSFX, transform.position);
+            }
         }
         else if(other.gameObject.tag == "FruitTree")
         {

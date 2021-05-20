@@ -349,7 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7317b9c03e4cb6348b0a18dc4cdc92e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 52915014eb1631549834f09031f85343, type: 2}
+  dialoguePool:
+  - {fileID: 11400000, guid: b01be641bb363f34588c4d47b7c51560, type: 2}
+  - {fileID: 11400000, guid: b7950d3ef8b09d84aab714e075687f38, type: 2}
+  dialogue: {fileID: 0}
 --- !u!1 &4590528822195687741
 GameObject:
   m_ObjectHideFlags: 0

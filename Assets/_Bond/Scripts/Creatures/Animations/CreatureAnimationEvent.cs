@@ -11,6 +11,11 @@ public class CreatureAnimationEvent : MonoBehaviour
         creatureAnimator.EventPlayWalkSFX(tag);
     }
 
+    public void AbilityBegin()
+    {
+        creatureAnimator.EventAbilityBegin();
+    }
+
     public void AbilityDone()
     {
         creatureAnimator.EventAbilityDone();
@@ -19,5 +24,15 @@ public class CreatureAnimationEvent : MonoBehaviour
     public void AttackDone()
     {
         creatureAnimator.EventAttackDone();
+    }
+
+    public void FreezeMovement()
+    {
+        creatureAnimator.EventFreezeMovement();
+    }
+
+    public void UnfreezeMovement()
+    {
+        creatureAnimator.EventUnfreezeMovement();
     }
 }
