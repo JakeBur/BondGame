@@ -37,9 +37,9 @@ public class CreatureInteractable : InteractableBase
     {
         var pc = PersistentData.Instance.Player.GetComponent<PlayerController>();
         pc.wildCreature = Creature;
-        pc.befriendCreature();
+        pc.befriendCreature(Creature.GetComponent<CreatureAIContext>(), creatureType);
         pc.wildCreature = null;
-        SFX.PlayCreatureBefriendSFX(creatureType, transform.position);
+        
         //showUI = false;
 
         gameObject.SetActive(false); //THIS IS TEMPORARY

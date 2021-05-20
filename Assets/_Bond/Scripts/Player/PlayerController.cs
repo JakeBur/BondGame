@@ -6,6 +6,7 @@ using System;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using System.Linq;
 
 //-----------
 // for FMOD
@@ -43,8 +44,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Dialog Manager")]
     public bool inCharacterDialog;
-    public Dictionary<GameObject, InteractableBase> interactableObjects = new Dictionary<GameObject, InteractableBase>();
-    // [HideInInspector]
+    public List<GameObject> interactableObjects = new List<GameObject>();
+    [HideInInspector]
     public DialogueManager dialogueManager;
 
     [Header("Pause Menu")]
@@ -272,6 +273,73 @@ public class PlayerController : MonoBehaviour
         inputs.mousePos = value.Get<Vector2>();
     }
     
+    public GameObject updateInteractDistances()
+    {
+        if(interactableObjects.Count < 2) return interactableObjects[0];
+        foreach(GameObject interactable in interactableObjects)
+        {
+            interactable.GetComponent<InteractableBase>().distance = 
+                Vector3.Distance(interactable.GetComponent<InteractableBase>().transform.position, gameObject.transform.position);
+        }
+        interactableObjects.Sort((x, y) => (x.GetComponent<InteractableBase>().distance).CompareTo(y.GetComponent<InteractableBase>().distance));
+        return interactableObjects[0];
+    }
+
+    public void displayInteractUI()
+    {
+        if(interactableObjects.Count > 0)
+        {
+            GameObject closestInteractable = interactableObjects[0];
+            if(closestInteractable.transform.GetComponentInParent<CreatureAIContext>())
+            {
+                if(!closestInteractable.transform.GetComponentInParent<CreatureAIContext>().creatureFrozen)
+                {
+                    if( closestInteractable.GetComponent<InteractableBase>().showUI)
+                    {
+                        PersistentData.Instance.hudManager.ShowInteractPrompt();
+                    }
+                }
+            }
+            else if(closestInteractable.GetComponent<PotionInteractable>())
+            {
+                PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(closestInteractable.GetComponent<PotionInteractable>().relicStats,
+                                                                                         closestInteractable.GetComponent<PotionInteractable>().cost);
+                PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                if( closestInteractable.GetComponent<InteractableBase>().showUI)
+                {
+                    PersistentData.Instance.hudManager.ShowInteractPrompt();
+                }
+            }
+            else if(closestInteractable.GetComponent<AcornBagInteractable>())
+            {
+                PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(closestInteractable.GetComponent<AcornBagInteractable>().relicStats,
+                                                                                         closestInteractable.GetComponent<AcornBagInteractable>().cost);
+                PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                if( closestInteractable.GetComponent<InteractableBase>().showUI)
+                {
+                    PersistentData.Instance.hudManager.ShowInteractPrompt();
+                }
+            }
+            else if(closestInteractable.GetComponent<RelicInteractable>())
+            {
+                PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().updateUI(closestInteractable.GetComponent<RelicInteractable>().relicStats,
+                                                                                         closestInteractable.GetComponent<RelicInteractable>().cost);
+                PersistentData.Instance.ShopRelicUI.GetComponent<ShopRelicUI>().showUI();
+                if( closestInteractable.GetComponent<InteractableBase>().showUI)
+                {
+                    PersistentData.Instance.hudManager.ShowInteractPrompt();
+                }
+            }
+            else
+            {
+                if(closestInteractable.GetComponent<InteractableBase>().showUI)
+                {
+                    PersistentData.Instance.hudManager.ShowInteractPrompt();
+                }
+            }
+
+        }
+    }
     
     // F and North face button
     private void OnInteract()
@@ -289,17 +357,8 @@ public class PlayerController : MonoBehaviour
             float closestDist = 20;
 
             // Find object that is the closest
-            foreach(KeyValuePair<GameObject, InteractableBase> interactable in interactableObjects)
-            {
-                float distanceToObject = Vector3.Distance(interactable.Key.transform.position, gameObject.transform.position);
-                if(distanceToObject < closestDist)
-                {
-                    closestDist = distanceToObject;
-                    tempBase = interactable.Value;
-                    tempObj = interactable.Key;
-                }
-            }
-
+            tempObj = interactableObjects[0];
+            tempBase = tempObj.GetComponent<InteractableBase>();
             // Do the action
             tempBase.DoInteract();
             // If object is removed after interact
@@ -350,9 +409,10 @@ public class PlayerController : MonoBehaviour
             // currCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                // Warp to off map
             // swapCreature.GetComponent<CreatureAIContext>().agent.Warp(backFollowPoint.position);    // Move new creature into position
             // swapCreature.transform.position = backFollowPoint.position;
-
+            currCreatureContext.creatureReticle.SetActive(false);
             currCreature = swapCreature;                                                            // Actual Swap
             currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
+            currCreatureContext.creatureReticle.SetActive(true);
             // currCreatureContext.isInPlayerRadius = false;
             // currCreatureContext.isActive = true;
 
@@ -526,40 +586,77 @@ public class PlayerController : MonoBehaviour
 
     // Action Functions /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void befriendCreature()
+    public void befriendCreature(CreatureAIContext _context, string creatureType)
     {
-        // Temp fix when we can toggle this bool dynamically
-        bool requirementMet = true;
-
-        if(requirementMet)
+        if(currCreature == null)
         {
-            // Already have 1 creature
-            if(currCreature != null)
-            {
-                wildCreature.GetComponent<CreatureAIContext>().isWild = false;                                  // Marks wild creature as not wild
-                swapCreature = wildCreature;                                                                    // Stores wild creature as swap creature
-                // swapCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                        // Warps off map
-                // swapCreature.GetComponent<CreatureAIContext>().isActive = false;
-
-                ApplyCreatureRelics(swapCreature.GetComponent<CreatureAIContext>().creatureStats.statManager);  // Apply relics to the creature
-            }
-            else 
-            { // first creature;
-                wildCreature.GetComponent<CreatureAIContext>().isWild = false;
-                currCreature = wildCreature;
-                currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
-                //currCreatureContext.isActive = true;
-                ApplyCreatureRelics(currCreatureContext.creatureStats.statManager);
-            }
-
+            wildCreature.GetComponent<CreatureAIContext>().isWild = false;
+            currCreature = wildCreature;
+            currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
+            //currCreatureContext.isActive = true;
+            ApplyCreatureRelics(currCreatureContext.creatureStats.statManager);
             // HERMAN TODO: Place this in playerAnimator
             wildCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
-            
+            SFX.PlayCreatureBefriendSFX(creatureType, currCreature.transform.position);
+            PersistentData.Instance.hudManager.UpdateCreatureUI();
+            currCreatureContext.creatureReticle.SetActive(true);
+            SetCombatState(inCombat);                                                   // Tells creature if it's in combat
+        }
+        // Already have 1 creature 
+        else if(swapCreature == null)
+        {
+            wildCreature.GetComponent<CreatureAIContext>().isWild = false;                                  // Marks wild creature as not wild
+            swapCreature = wildCreature;                                                                    // Stores wild creature as swap creature
+            // swapCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                        // Warps off map
+            // swapCreature.GetComponent<CreatureAIContext>().isActive = false;
+
+            ApplyCreatureRelics(swapCreature.GetComponent<CreatureAIContext>().creatureStats.statManager);  // Apply relics to the creature
+            // HERMAN TODO: Place this in playerAnimator
+            wildCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
+            SFX.PlayCreatureBefriendSFX(creatureType, currCreature.transform.position);
             PersistentData.Instance.hudManager.UpdateCreatureUI();
 
             SetCombatState(inCombat);                                                   // Tells creature if it's in combat
+        } 
+        else 
+        {
+            PersistentData.Instance.hudManager.ShowCreatureBefriendUI(_context, creatureType);
         }
 
+    }
+
+    public void swapCreatureOne(CreatureAIContext _context, string creatureType)
+    {
+        currCreatureContext.isWild = true;
+        currCreatureContext.creatureReticle.SetActive(false);
+        currCreatureContext = _context;
+        currCreatureContext.isWild = false;
+        currCreature = _context.gameObject;
+        ApplyCreatureRelics(currCreatureContext.creatureStats.statManager);
+        currCreatureContext.creatureReticle.SetActive(true);
+        // HERMAN TODO: Place this in playerAnimator
+        currCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
+        SFX.PlayCreatureBefriendSFX(creatureType, transform.position);
+        PersistentData.Instance.hudManager.UpdateCreatureUI();
+
+        SetCombatState(inCombat);     
+    }
+
+    public void swapCreatureTwo(CreatureAIContext _context, string creatureType)
+    {
+        CreatureAIContext swapContext = swapCreature.GetComponent<CreatureAIContext>();
+        swapContext.isWild = true;
+        swapContext = _context;
+        swapCreature = _context.gameObject;
+        
+        swapContext.isWild = false;
+        ApplyCreatureRelics(swapContext.creatureStats.statManager);
+        // HERMAN TODO: Place this in playerAnimator
+        swapContext.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
+        
+        PersistentData.Instance.hudManager.UpdateCreatureUI();
+
+        SetCombatState(inCombat);  
     }
 
     public void ApplyCreatureRelics(StatManager _statManager)
@@ -611,10 +708,7 @@ public class PlayerController : MonoBehaviour
     {
         if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
         {
-            SetStandbyState(true);
             PersistentData.Instance.PlayerDeath();
-            //set standby mode, dont take damage
-            
         }
        
     }

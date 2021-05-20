@@ -4869,7 +4869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 928c0a67c814d874c8af7aec81dd9724, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5058824}
   m_RaycastTarget: 1
   m_Maskable: 1
@@ -10130,7 +10130,6 @@ GameObject:
   - component: {fileID: 857327365570687137}
   - component: {fileID: 7992156398812263664}
   - component: {fileID: -4675704594116003663}
-  - component: {fileID: 184644872577631621}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -10181,6 +10180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Relics: []
   inCharacterDialog: 0
+  interactableObjects: []
   dialogueManager: {fileID: 184644872577631621}
   pauseMenu: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
     type: 3}
@@ -10202,7 +10202,6 @@ MonoBehaviour:
   swapCreature: {fileID: 0}
   interactableObject: {fileID: 0}
   currCreatureContext: {fileID: 0}
-  didWhistle: 0
   inCombat: 0
   isAttacking: 0
   isHit: 0
@@ -10414,19 +10413,6 @@ MonoBehaviour:
   A: 16
   B: 2
   C: 0.2
---- !u!114 &184644872577631621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3008331729029387198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7317b9c03e4cb6348b0a18dc4cdc92e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: {fileID: 0}
 --- !u!1 &3008331729270975654
 GameObject:
   m_ObjectHideFlags: 0

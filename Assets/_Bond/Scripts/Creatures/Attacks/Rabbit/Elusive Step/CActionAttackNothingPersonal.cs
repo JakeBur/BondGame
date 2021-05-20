@@ -17,12 +17,12 @@ public class CActionAttackNothingPersonal : BTLeaf
         attack = (CreatureAttackMelee) context.creatureStats.abilities[context.lastTriggeredAbility];
 
         //Play correct anim once its made
-        EmptyCreatureAnimator animator = context.animator as EmptyCreatureAnimator;
+        RabbitAnimator animator = context.animator as RabbitAnimator;
         if (animator == null)
         {
             Debug.LogError("animator is not Lilibun animator");
         }
-        animator.Ability();
+        animator.ElusiveStepStrike();
     }
 
     protected override void OnExit()

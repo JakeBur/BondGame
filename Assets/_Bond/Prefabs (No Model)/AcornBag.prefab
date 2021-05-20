@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8709752068953428690}
   m_Layer: 0
   m_Name: AcornBag
-  m_TagString: AcornBag
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showUI: 1
   removeOnInteract: 0
+  distance: 0
   relicStats: {fileID: 11400000, guid: 43b584daba819254785621f935f3fc1d, type: 2}
   spriteRenderer: {fileID: 1562028770156074079}
   cost: 0
