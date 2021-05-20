@@ -708,10 +708,7 @@ public class PlayerController : MonoBehaviour
     {
         if(stats.getStat(ModiferType.CURR_HEALTH) <= 0)
         {
-            SetStandbyState(true);
             PersistentData.Instance.PlayerDeath();
-            //set standby mode, dont take damage
-            
         }
        
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    public List<Conversation> dialoguePool = new List<Conversation>();
     public Conversation dialogue;
 
     private Queue<string> sentences = new Queue<string>();
@@ -31,14 +32,19 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        //Freeze the player
-        PersistentData.Instance.Player.GetComponent<PlayerController>().SetStandbyState(true);
         //--------------------------------------------------
         // Tell PlayerController that dialogue is starting
         //--------------------------------------------------
         PersistentData.Instance.Player.GetComponent<PlayerController>().inCharacterDialog = true;
         PersistentData.Instance.hudManager.ShowCharacterDialogue();
 
+        //------------------------------------------------------
+        // Pick a random dialogue out of the pool of dialogues
+        //------------------------------------------------------
+        if (dialoguePool.Count != 0)
+        {
+            dialogue = dialoguePool[Random.Range(0, dialoguePool.Count)];
+        }
 
         //----------------------------
         // Clear the sentences queue
@@ -100,7 +106,7 @@ public class DialogueManager : MonoBehaviour
         //--------------------------
         // Ready to start dialogue
         //--------------------------
-        // Debug.Log(sentence + ", " + speaker + ", " + portrait);
+        Debug.Log(sentence + ", " + speaker + ", " + portrait);
         dialogueTextManager.ResetSpeed();
         dialogueTextManager.ChangeText(speaker, sentence);
         dialoguePortrait.ChangePortrait(speaker, portrait);
