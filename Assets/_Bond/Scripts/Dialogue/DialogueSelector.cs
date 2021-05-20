@@ -13,7 +13,7 @@ public class DialogueSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueManager = GetComponent<PersistentData>().playerController.dialogueManager;
+        dialogueManager = GetComponent<DialogueManager>();
     }
 
     public void selectDialogue(int scene, bool lostRun)
@@ -26,30 +26,25 @@ public class DialogueSelector : MonoBehaviour
                 {
                     randomChoice = Random.Range(0, farmLostRunDialogues.Count);
                     dialogueManager.dialogue = farmLostRunDialogues[randomChoice];
-                    dialogueManager.StartDialogue();
                 } else 
                 {
                     if(PlayerPrefs.GetInt("completedRuns") >= 3)
                     {
                         randomChoice = Random.Range(0, beatGameDialogues.Count);
                         dialogueManager.dialogue = beatGameDialogues[randomChoice];
-                        dialogueManager.StartDialogue();
                     } else 
                     {
                         randomChoice = Random.Range(0, farmCompletedRunDialogues.Count);
                         dialogueManager.dialogue = farmCompletedRunDialogues[randomChoice];
-                        dialogueManager.StartDialogue();
                     }
                 }
                 break;
             case 2: //Went to proc gen
                     randomChoice = Random.Range(0, transitionDialogues.Count);
                     dialogueManager.dialogue = transitionDialogues[randomChoice];
-                    dialogueManager.StartDialogue();
-                break;
-            default:
                 break;
         }
-        
+        PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager = dialogueManager;
+        PersistentData.Instance.Player.GetComponent<PlayerController>().dialogueManager.StartDialogue();
     }
 }
