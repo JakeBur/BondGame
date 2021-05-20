@@ -4846,6 +4846,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &668782586965138796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4913408807841827381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743a8c6da8091ad4ba160ef4bee90852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7652944173022466313
 GameObject:
   m_ObjectHideFlags: 0
@@ -5052,7 +5064,7 @@ GameObject:
   - component: {fileID: 4353762693751710805}
   - component: {fileID: 3520200349132130404}
   - component: {fileID: 6930789815379080476}
-  - component: {fileID: 3942903376802082632}
+  - component: {fileID: 333295266112598332}
   m_Layer: 9
   m_Name: SheriffPrefab
   m_TagString: CaptCreature
@@ -5360,7 +5372,7 @@ MonoBehaviour:
   personalities: []
   DefaultPersonality: {fileID: 11400000, guid: 57ec74726c94f2e41bbc8565a9e58457, type: 2}
   Evaluate: 0
---- !u!114 &3942903376802082632
+--- !u!114 &333295266112598332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5369,11 +5381,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8167450192529632886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41fee9225d216704d9f8869d6534f03f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e3663bd40332844d83fe6f984c28b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
+  model: {fileID: 4913408807841827381}
   raycastOrigin: {fileID: 1303921472986590980}
+  kunaiModel: {fileID: 4400466787458371651}
 --- !u!1001 &926935731944446665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5574,19 +5587,25 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3ef20a7b88424b045815a4c86b8d756a,
         type: 3}
       propertyPath: m_Name
-      value: Sheriff_Animated
+      value: Rabbit_Animated
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ef20a7b88424b045815a4c86b8d756a, type: 3}
---- !u!1 &4913408807841827381 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ef20a7b88424b045815a4c86b8d756a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5255285796805359460}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5720767708857913487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ef20a7b88424b045815a4c86b8d756a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5255285796805359460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4400466787458371651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8502549445762705191, guid: 3ef20a7b88424b045815a4c86b8d756a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5255285796805359460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4913408807841827381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ef20a7b88424b045815a4c86b8d756a,
     type: 3}
   m_PrefabInstance: {fileID: 5255285796805359460}
   m_PrefabAsset: {fileID: 0}
