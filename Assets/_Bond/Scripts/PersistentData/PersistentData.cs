@@ -40,7 +40,7 @@ public class PersistentData : MonoBehaviour
     public GameObject StatUIPrefab;
     public GameObject StatUI { get; private set;}
     private GameObject statUI;
-
+    
     [Header("ShopRelicUIReference")]
     public GameObject ShopRelicUIPrefab;
     public GameObject ShopRelicUI { get; private set;}
@@ -197,9 +197,12 @@ public class PersistentData : MonoBehaviour
                 ShopRelicUI = Instantiate(ShopRelicUIPrefab, Vector3.zero, Quaternion.identity);
                 ShopRelicUI.SetActive(false);
             }
-            
+
+            shopRelicUI = ShopRelicUI;
         }
     }
+
+
 
     private void SetHUDReference()
     {

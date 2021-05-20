@@ -60,6 +60,8 @@ MonoBehaviour:
     type: 3}
   StatUIPrefab: {fileID: 7511566296718916632, guid: 933624b543ab5024785c5a7a786b965f,
     type: 3}
+  BefriendUIPrefab: {fileID: 6100738463459039170, guid: e491b0b6cf1372e40b55bbd99f8b53bb,
+    type: 3}
   ShopRelicUIPrefab: {fileID: 6100738463459039170, guid: 185bdf6a104bb01469d73def1c8e5abf,
     type: 3}
   AudioControllerPrefab: {fileID: 8012914224973901697, guid: f1bd54d4de3e98a45b4517738e3c8369,
