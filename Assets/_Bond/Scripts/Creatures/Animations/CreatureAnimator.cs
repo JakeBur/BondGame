@@ -21,14 +21,17 @@ public class CreatureAnimator : MonoBehaviour
 
     /*
     *   Virtual Functions
-    *   These functions are overriden in enemy-specific animator classes
+    *   These functions are overriden in creature-specific animator classes
     *   These functions are called in their respective base class function
-    *   All Enemies will perform the code in base class functions
+    *   All Creatures will perform the code in base class functions
     */
 
     protected virtual void InternalEventPlayWalkSFX() {}
+    protected virtual void InternalEventAbilityBegin() {}
     protected virtual void InternalEventAbilityDone() {}
     protected virtual void InternalEventAttackDone() {}
+    protected virtual void InternalEventFreezeMovement() {}
+    protected virtual void InternalEventUnfreezeMovement() {}
 
     protected virtual void InternalSMBAbilityEnter() {}
     protected virtual void InternalSMBAbilityExit() {}
@@ -58,6 +61,8 @@ public class CreatureAnimator : MonoBehaviour
     */
 
     public bool inAbility { get; protected set; }
+    public bool inAbilityLockMovement { get; protected set; }
+    public bool inPreAbility { get; protected set; }
     public bool inAttack { get; protected set; }
     public bool isEating { get; protected set; }
     public bool isInteractPOI { get; protected set; }
@@ -78,7 +83,7 @@ public class CreatureAnimator : MonoBehaviour
 
     /*
     *   Animation Events
-    *   Triggered in PlayerAnimationEvent.CS
+    *   Triggered in CreatureAnimationEvent.CS
     *
     *   Functions should be prepended by Event
     */
@@ -93,6 +98,13 @@ public class CreatureAnimator : MonoBehaviour
         InternalEventPlayWalkSFX();
     }
 
+    public void EventAbilityBegin()
+    {
+        inPreAbility = false;
+
+        InternalEventAbilityBegin();
+    }
+
     public void EventAbilityDone()
     {
         inAbility = false;
@@ -105,6 +117,20 @@ public class CreatureAnimator : MonoBehaviour
         inAttack = false;
 
         InternalEventAttackDone();
+    }
+
+    public void EventFreezeMovement()
+    {
+        inAbilityLockMovement = true;
+
+        InternalEventFreezeMovement();
+    }
+
+    public void EventUnfreezeMovement()
+    {
+        inAbilityLockMovement = false;
+        
+        InternalEventUnfreezeMovement();
     }
 
     /*

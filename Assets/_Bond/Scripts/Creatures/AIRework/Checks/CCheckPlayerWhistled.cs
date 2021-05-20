@@ -13,13 +13,14 @@ public class CCheckPlayerWhistled : BTChecker
     public override NodeState Evaluate()
     {
         
-        if(context.player.GetComponent<PlayerController>().didWhistle)
-        {
-            Debug.Log("process whistle");
-            return NodeState.SUCCESS;
-        } else 
-        {
-            return NodeState.FAILURE;
-        }
+        // if(context.player.GetComponent<PlayerController>().didWhistle)
+        // {
+        //     Debug.Log("process whistle");
+        //     return NodeState.SUCCESS;
+        // } else 
+        // {
+        //     return NodeState.FAILURE;
+        // }
+        return NodeState.FAILURE;
     }
 }

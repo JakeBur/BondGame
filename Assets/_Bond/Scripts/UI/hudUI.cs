@@ -238,7 +238,6 @@ public class hudUI : MonoBehaviour
 
     public void HurtFeedback(float amount, float time)
     {
-        //Debug.Log("hurt");
         //hurtFeedback.color = opaque;
         hurtFeedback.CrossFadeAlpha(amount, time, false);       
     }
