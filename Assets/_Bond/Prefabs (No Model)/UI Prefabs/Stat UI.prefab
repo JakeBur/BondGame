@@ -5574,6 +5574,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d16645d46a8b9348b1ad7d15bf4aa54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creatureTextLists:
+  - {fileID: 7647029247248459877}
+  - {fileID: 6094355954979911762}
+  - {fileID: 1224431746675598925}
+  ability1: {fileID: 6774296741275375842}
+  ability2: {fileID: 5594089325401851653}
+  button1: {fileID: 5601639832293920853}
+  button2: {fileID: 2589006694971437146}
+  noAbility: {fileID: 21300000, guid: 2694845afdece054d8add53b3ebcec88, type: 3}
+  noCreature: {fileID: 21300000, guid: 21986649891d63a4194dddf3cb946d33, type: 3}
   playerTextLists:
   - {fileID: 8805446987423395702}
   - {fileID: 2155480634061340230}

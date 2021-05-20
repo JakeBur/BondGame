@@ -122,7 +122,7 @@ public class hudUI : MonoBehaviour
             if(player.swapCreature != null) // player has the swap creature
             {
                 swapCreatureIcon.sprite = player.swapCreature.GetComponent<CreatureAIContext>().icon;
-                swapCreatureName.SetText(player.currCreatureContext.creatureStats.name);
+                swapCreatureName.SetText(player.swapCreature.GetComponent<CreatureAIContext>().creatureStats.name);
             }
 
         }
@@ -250,6 +250,77 @@ public class hudUI : MonoBehaviour
     public void UpdateLevel(int i)
     {
         level.SetText("Lv. " + i);
+    }
+
+    
+
+
+
+
+
+
+
+    //On button press
+    public void DeathScreenContinue()
+    {
+        //fade out and load new scene
+        if(SceneManager.GetActiveScene().name == "Tutorial" )
+        {
+            Debug.Log("continue");
+           // PersistentData.Instance.tutorialManager?.RespawnPlayer();
+            //PersistentData.Instance.tutorialManager?.ResetEncounter();//reset fight?
+            player.HealMaxHealth();
+            player.SetStandbyState(false);
+
+            StartCoroutine(DeathScreenDone());
+            Debug.Log("continue done");
+
+            
+        }
+        else
+        {
+            StartCoroutine(DeathScreenDone());          
+        }
+        
+    }
+
+    IEnumerator DeathScreenDone()
+    {
+        DOTween.To(()=> GameOverText.GetComponent<CanvasGroup>().alpha,
+            x=> GameOverText.GetComponent<CanvasGroup>().alpha = x, 0, 1);
+        
+        yield return new WaitForSeconds(1);
+
+            GameOverText.SetActive(false);
+            DOTween.To(()=> GameOverPanel.GetComponent<CanvasGroup>().alpha,
+                x=> GameOverPanel.GetComponent<CanvasGroup>().alpha = x, 0, 2);
+
+        if(SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            player.SetStandbyState(false);
+            PersistentData.Instance.LoadScene(1);
+
+            yield return new WaitForSeconds(1);
+            player.HealMaxHealth();
+            
+        }
+        else
+        {
+            Debug.Log("load tutorial");
+            player.SetStandbyState(false);
+
+            PersistentData.Instance.SetTutorialManagerReference();
+            PersistentData.Instance.tutorialManager.RespawnPlayer();
+            PersistentData.Instance.LoadScene(3);
+            
+
+            yield return new WaitForSeconds(1);
+            player.HealMaxHealth();
+        }
+
+        
+        
+
     }
 
     

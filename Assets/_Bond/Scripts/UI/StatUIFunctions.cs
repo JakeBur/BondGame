@@ -13,6 +13,17 @@ public class StatUIFunctions : MonoBehaviour
     StatManager stats => PersistentData.Instance.Player.GetComponent<StatManager>();
     StatManager creatureStats;// => playerController.currCreatureContext.GetComponent<StatManager>();
 
+    public Image ability1;
+    public Image ability2;
+
+    public Image button1;
+    public Image button2;
+
+    public Sprite noAbility;
+    public Sprite noCreature;
+
+    
+    [Header("Player vars")]
     public List<TextMeshProUGUI> playerTextLists; //ORDER: life[0], power[1], crit[2], bond[3],  level[4], xp to next[5]
     public List<TextMeshProUGUI> creature1TextLists; //Order: life[0], power[1], Dex[2], utility[4], behavior[5], name[6]
     public List<TextMeshProUGUI> creature2TextLists; //Order: life[0], power[1], Dex[2], utility[4], behavior[5], name[6]
@@ -74,44 +85,53 @@ public class StatUIFunctions : MonoBehaviour
 
     public void UpdateCreatureStats(int i)
     {
+        ActiveCreatureData context = null;
         if(playerController.currCreatureContext != null)
-        {
-           
-            if(i == 1)
+        {         
+            if(playerController.swapCreature != null) //Do this first so 2nd creature buttons shows without click
+            {
+                button2.sprite = playerController.swapCreature.GetComponent<CreatureAIContext>().icon;
+            }   
+
+            if(i == 1) //first creature / button
             {
                 creatureStats = playerController.currCreature.GetComponent<CreatureAIContext>().creatureStats.statManager;
+                context = playerController.currCreatureContext.creatureStats;  
 
-                creature1TextLists[0].SetText(creatureStats.getStat(ModiferType.MAX_ENTHUSIASM).ToString());
-                creature1TextLists[1].SetText(creatureStats.getStat(ModiferType.DAMAGE).ToString());
-                creature1TextLists[2].SetText(creatureStats.getStat(ModiferType.CREATURE_DEXTERITY).ToString());
-                creature1TextLists[3].SetText(creatureStats.getStat(ModiferType.CREATURE_UTILITY).ToString());
-                creature1TextLists[4].SetText("behavior");//behavior
-
-                creature1TextLists[5].SetText(creatureStats.name);//name
-            
+                button1.sprite = playerController.currCreatureContext.icon;
             }
-            else if (i == 2)
+            else //second creature
             {   
                 if(playerController.swapCreature != null) 
                 {
                     creatureStats = playerController.swapCreature.GetComponent<CreatureAIContext>().creatureStats.statManager;
+                    context = playerController.swapCreature.GetComponent<CreatureAIContext>().creatureStats;
 
-                    creature1TextLists[0].SetText(creatureStats.getStat(ModiferType.MAX_ENTHUSIASM).ToString());
-                    creature1TextLists[1].SetText(creatureStats.getStat(ModiferType.DAMAGE).ToString());
-                    creature1TextLists[2].SetText(creatureStats.getStat(ModiferType.CREATURE_DEXTERITY).ToString());
-                    creature1TextLists[3].SetText(creatureStats.getStat(ModiferType.CREATURE_UTILITY).ToString());
-                    creature1TextLists[4].SetText("behavior");//behavior
-
-                    creature1TextLists[5].SetText(creatureStats.name);//name
+                    //button2.sprite = playerController.swapCreature.GetComponent<CreatureAIContext>().icon;
                 }                   
             }
+
+            creatureTextLists[0].SetText(creatureStats.name);
+            creatureTextLists[1].SetText(context.abilities[0].abilityDescription);
+            creatureTextLists[2].SetText(context.abilities[1].abilityDescription);
+
+            ability1.sprite = context.abilities[0].abilityIcon;
+            ability2.sprite = context.abilities[1].abilityIcon;
+
+            
+
+            
         }
         else //no creatures
         {
-            foreach(TextMeshProUGUI text in creature1TextLists)
-            {
-                text.SetText("-");
-            }
+            creatureTextLists[0].SetText("No Creature");//name
+            creatureTextLists[1].SetText("No Ability");
+            creatureTextLists[2].SetText("No Ability");
+
+            ability1.sprite = noAbility;
+            ability2.sprite = noAbility;
+            button1.sprite = noCreature;
+            button2.sprite = noCreature;
         }        
     }
 
