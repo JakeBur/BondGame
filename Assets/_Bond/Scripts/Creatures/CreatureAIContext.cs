@@ -179,8 +179,9 @@ public class CreatureAIContext : MonoBehaviour
     public void reticleScale()
     {
         Sequence scaleSequence = DOTween.Sequence();
-        scaleSequence.Append(creatureReticle.transform.DOScale(new Vector3(2,2,2), 1));
-        scaleSequence.Append(creatureReticle.transform.DOScale(new Vector3(1,1,1), 1));
+        scaleSequence.Append(creatureReticle.transform.DOScale(new Vector3(3,3,3), 0.2f));
+        scaleSequence.Append(creatureReticle.transform.DOScale(new Vector3(0.7f, 0.7f, 0.7f), 0.2f));
+        scaleSequence.Append(creatureReticle.transform.DOScale(new Vector3(1,1,1), 0.1f));
         scaleSequence.Play();
     }
 
