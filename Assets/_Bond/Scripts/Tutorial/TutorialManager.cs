@@ -12,26 +12,17 @@ public class TutorialManager : MonoBehaviour
     int checkpointIndex = 0;
 
 
-    public void setSpawnpoint()
+    public void MoveToSpawnpoint()
     {
-        // foreach(GameObject spawn in spawnpoints)
-        // {
-        //     if(spawn == currSpawnpoint)
-        //     {
-        //         spawn.SetActive(true);
-        //     }
-        //     else
-        //     {
-        //         spawn.SetActive(false);
-        //     }
-        // }
+        PersistentData.Instance.playerController.warpPlayer(PersistentData.Instance.currSpawnpoint.position);
     }
 
     public void UpdateSpawnpoint(int i)
     {
         checkpointIndex = i;
         currSpawnpoint = spawnpoints[checkpointIndex];
-        setSpawnpoint();
+        //setSpawnpoint();
+        PersistentData.Instance.currSpawnpoint = currSpawnpoint.transform;
     }
 
 
