@@ -21,10 +21,12 @@ public class RabbitNothingPersonalAttack : BTSubtree
 
 
         #region Approach and attack sequence
+            CActionDoElusivePrepAnim doElusivePrepAnim = new CActionDoElusivePrepAnim("Prep anim", context);
             CActionAttackNothingPersonal nothingPersonal = new CActionAttackNothingPersonal("Nothing Personal", context);
         #endregion
 
         AbilitySequenceList.Add(TargetExistsSelector);
+        AbilitySequenceList.Add(doElusivePrepAnim);
         AbilitySequenceList.Add(nothingPersonal);
         BTSequence AbilitySequence = new BTSequence("Ability Sequence", AbilitySequenceList);
 
