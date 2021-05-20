@@ -4446,6 +4446,10 @@ MonoBehaviour:
   - {fileID: 1224431746675598925}
   ability1: {fileID: 6774296741275375842}
   ability2: {fileID: 5594089325401851653}
+  button1: {fileID: 5601639832293920853}
+  button2: {fileID: 2589006694971437146}
+  noAbility: {fileID: 21300000, guid: 2694845afdece054d8add53b3ebcec88, type: 3}
+  noCreature: {fileID: 21300000, guid: 21986649891d63a4194dddf3cb946d33, type: 3}
   playerTextLists:
   - {fileID: 1127742903221161051}
   - {fileID: 9006492564026690654}

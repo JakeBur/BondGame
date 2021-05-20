@@ -75,6 +75,7 @@ public class PersistentData : MonoBehaviour
     [Header("Tutorial")]
     public GameObject tutorialObject;
     public TutorialManager tutorialManager;
+    public Transform currSpawnpoint;
 
 
     private void OnApplicationQuit()
@@ -310,8 +311,10 @@ public class PersistentData : MonoBehaviour
         MakeChild(SFXManager);
     }
 
-    private void SetTutorialManagerReference()
+    public void SetTutorialManagerReference()
     {
+        tutorialObject = GameObject.FindGameObjectWithTag("TutorialManager");
+        
         if(tutorialObject != null)
         {
             tutorialManager = tutorialObject.GetComponent<TutorialManager>();
@@ -400,9 +403,13 @@ public class PersistentData : MonoBehaviour
         
         }
 
+       if(SceneManager.GetActiveScene().name != "Tutorial")
+       {
+            Player.transform.position = GetSpawnpoint();
+            playerController.warpPlayer(GetSpawnpoint());
+       }
        
-        Player.transform.position = GetSpawnpoint();
-        playerController.warpPlayer(GetSpawnpoint());
+
         //update Game State for FMOD if necessary
         switch(_scene)
         {

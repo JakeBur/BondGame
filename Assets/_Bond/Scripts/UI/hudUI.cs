@@ -128,7 +128,7 @@ public class hudUI : MonoBehaviour
             if(player.swapCreature != null) // player has the swap creature
             {
                 swapCreatureIcon.sprite = player.swapCreature.GetComponent<CreatureAIContext>().icon;
-                swapCreatureName.SetText(player.currCreatureContext.creatureStats.name);
+                swapCreatureName.SetText(player.swapCreature.GetComponent<CreatureAIContext>().creatureStats.name);
             }
 
         }
@@ -301,13 +301,14 @@ public class hudUI : MonoBehaviour
         //fade out and load new scene
         if(SceneManager.GetActiveScene().name == "Tutorial" )
         {
-            
-            PersistentData.Instance.tutorialManager?.RespawnPlayer();
-            PersistentData.Instance.tutorialManager?.ResetEncounter();//reset fight
+            Debug.Log("continue");
+           // PersistentData.Instance.tutorialManager?.RespawnPlayer();
+            //PersistentData.Instance.tutorialManager?.ResetEncounter();//reset fight?
             player.HealMaxHealth();
             player.SetStandbyState(false);
 
             StartCoroutine(DeathScreenDone());
+            Debug.Log("continue done");
 
             
         }
@@ -337,6 +338,19 @@ public class hudUI : MonoBehaviour
             yield return new WaitForSeconds(1);
             player.HealMaxHealth();
             
+        }
+        else
+        {
+            Debug.Log("load tutorial");
+            player.SetStandbyState(false);
+
+            PersistentData.Instance.SetTutorialManagerReference();
+            PersistentData.Instance.tutorialManager.RespawnPlayer();
+            PersistentData.Instance.LoadScene(3);
+            
+
+            yield return new WaitForSeconds(1);
+            player.HealMaxHealth();
         }
 
         
