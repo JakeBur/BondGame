@@ -455,15 +455,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9007093
+      - time: 0.22695035
+        functionName: HideKunai
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8632561
         functionName: AbilityDone
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.22695035
-        functionName: HideKunai
+      - time: 0.22458628
+        functionName: AbilityBegin
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

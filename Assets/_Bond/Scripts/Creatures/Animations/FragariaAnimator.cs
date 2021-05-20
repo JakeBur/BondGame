@@ -8,6 +8,11 @@ public class FragariaAnimator : CreatureAnimator
 {
     public GameObject petalSawVFXPrefab;
 
+    protected override void InternalDefaultAttack()
+    {
+        inAbilityLockMovement = true;
+    }
+
     public void PetalSaw()
     {
         animator.SetTrigger("PetalSaw");
@@ -27,6 +32,8 @@ public class FragariaAnimator : CreatureAnimator
     public void PetalThrow()
     {
         animator.SetTrigger("PetalThrow");
+
+        inAbilityLockMovement = true;
     }
 
     public void EventPlayPetalThrowWhooshSFX(int count)
@@ -42,11 +49,15 @@ public class FragariaAnimator : CreatureAnimator
     public void SporeToss()
     {
         animator.SetTrigger("SporeToss");
+
+        inAbilityLockMovement = true;
     }
 
     public void SunBeam()
     {
         animator.SetTrigger("SunBeam");
+
+        inAbilityLockMovement = true;
     }
 	
     public void EventPlayBasicAttackImpactSFX()

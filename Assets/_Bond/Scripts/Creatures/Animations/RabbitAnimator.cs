@@ -9,6 +9,12 @@ public class RabbitAnimator : CreatureAnimator
 
     public bool inElusiveStepPose { get; protected set; }
 
+    protected override void InternalDefaultAttack()
+    {
+        inAbilityLockMovement = true;
+        inPreAbility = true;
+    }
+
     public void EventHideKunai()
     {
         kunaiMesh.enabled = false;
@@ -29,16 +35,19 @@ public class RabbitAnimator : CreatureAnimator
         animator.SetTrigger("BicycleKick");
 
         EventHideKunai();
+
+        inAbilityLockMovement = true;
     }
 
     public void ElusiveStepPose()
     {
-        inElusiveStepPose = true;
-
         animator.SetTrigger("ElusiveStepPose");
         animator.ResetTrigger("ElusiveStepStrike");
 
         EventShowKunai();
+
+        inAbilityLockMovement = true;
+        inElusiveStepPose = true;
     }
 
     public void ElusiveStepStrike()
@@ -47,6 +56,8 @@ public class RabbitAnimator : CreatureAnimator
         animator.ResetTrigger("ElusiveStepPose");
 
         EventShowKunai();
+
+        inAbilityLockMovement = true;
     }
 
     public void Quickdraw()
@@ -54,6 +65,9 @@ public class RabbitAnimator : CreatureAnimator
         animator.SetTrigger("Quickdraw");
 
         EventShowKunai();
+
+        inAbilityLockMovement = true;
+        inPreAbility = true;
     }
 
     public void Shotgun()
@@ -61,5 +75,7 @@ public class RabbitAnimator : CreatureAnimator
         animator.SetTrigger("Shotgun");
 
         EventShowKunai();
+
+        inAbilityLockMovement = true;
     }
 }

@@ -109,6 +109,9 @@ public class CreatureAnimator : MonoBehaviour
     {
         inAbility = false;
 
+        inAbilityLockMovement = false;
+        inPreAbility = false;
+
         InternalEventAbilityDone();
     }
 
@@ -153,6 +156,9 @@ public class CreatureAnimator : MonoBehaviour
         if( abilityStatesActive < 1 )
         {
             inAbility = false;
+
+            inAbilityLockMovement = false;
+            inPreAbility = false;
 
             InternalSMBAbilityExit();
         }
