@@ -36,6 +36,7 @@ public class RabbitAnimator : CreatureAnimator
         inElusiveStepPose = true;
 
         animator.SetTrigger("ElusiveStepPose");
+        animator.ResetTrigger("ElusiveStepStrike");
 
         EventShowKunai();
     }
@@ -43,6 +44,7 @@ public class RabbitAnimator : CreatureAnimator
     public void ElusiveStepStrike()
     {
         animator.SetTrigger("ElusiveStepStrike");
+        animator.ResetTrigger("ElusiveStepPose");
 
         EventShowKunai();
     }

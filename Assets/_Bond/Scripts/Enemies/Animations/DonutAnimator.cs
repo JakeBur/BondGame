@@ -16,8 +16,6 @@ public class DonutAnimator : EnemyAnimator
     public GameObject raycastOrigin;
     private SkinnedMeshRenderer armMesh => armModel.GetComponent<SkinnedMeshRenderer>();
 
-    private bool alreadySpawning = false;
-
     private void Awake()
     {
         ArmOff();
