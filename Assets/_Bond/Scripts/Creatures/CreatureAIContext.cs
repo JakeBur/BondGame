@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
+using DG.Tweening;
 
 [System.Serializable]
 public class CreatureAIContext : MonoBehaviour
@@ -28,6 +29,7 @@ public class CreatureAIContext : MonoBehaviour
     public CooldownSystem cooldownSystem => GetComponent<CooldownSystem>();
     public CreatureAttackBase basicCreatureAttack;
     public GameObject PetalCone;
+    public GameObject creatureReticle;
     
     public List<GameObject> possiblePOIs = new List<GameObject>();
     
@@ -94,7 +96,7 @@ public class CreatureAIContext : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         enemyList = new List<GameObject>();
-       
+        creatureReticle.SetActive(false);
         // GameObject temp = GameObject.FindGameObjectWithTag("CreatureDebugText");
         // debugText = temp.GetComponent<CreatureDebugText>();
         // debugText.creaturesDebug.Add("");
@@ -172,6 +174,14 @@ public class CreatureAIContext : MonoBehaviour
     public void react(Reaction _reaction)
     {
 
+    }
+
+    public void reticleScale()
+    {
+        Sequence scaleSequence = DOTween.Sequence();
+        scaleSequence.Append(creatureReticle.transform.DOScale(new Vector3(2,2,2), 1));
+        scaleSequence.Append(creatureReticle.transform.DOScale(new Vector3(1,1,1), 1));
+        scaleSequence.Play();
     }
 
 

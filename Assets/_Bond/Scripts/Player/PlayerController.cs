@@ -409,9 +409,10 @@ public class PlayerController : MonoBehaviour
             // currCreature.GetComponent<CreatureAIContext>().agent.Warp(Vector3.zero);                // Warp to off map
             // swapCreature.GetComponent<CreatureAIContext>().agent.Warp(backFollowPoint.position);    // Move new creature into position
             // swapCreature.transform.position = backFollowPoint.position;
-
+            currCreatureContext.creatureReticle.SetActive(false);
             currCreature = swapCreature;                                                            // Actual Swap
             currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
+            currCreatureContext.creatureReticle.SetActive(true);
             // currCreatureContext.isInPlayerRadius = false;
             // currCreatureContext.isActive = true;
 
@@ -598,7 +599,7 @@ public class PlayerController : MonoBehaviour
             wildCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
             SFX.PlayCreatureBefriendSFX(creatureType, currCreature.transform.position);
             PersistentData.Instance.hudManager.UpdateCreatureUI();
-
+            currCreatureContext.creatureReticle.SetActive(true);
             SetCombatState(inCombat);                                                   // Tells creature if it's in combat
         }
         // Already have 1 creature 
@@ -627,10 +628,12 @@ public class PlayerController : MonoBehaviour
     public void swapCreatureOne(CreatureAIContext _context, string creatureType)
     {
         currCreatureContext.isWild = true;
+        currCreatureContext.creatureReticle.SetActive(false);
         currCreatureContext = _context;
         currCreatureContext.isWild = false;
         currCreature = _context.gameObject;
         ApplyCreatureRelics(currCreatureContext.creatureStats.statManager);
+        currCreatureContext.creatureReticle.SetActive(true);
         // HERMAN TODO: Place this in playerAnimator
         currCreature.GetComponentInChildren<ParticleSystem>().Play();               //PLAYS HEARTS, NEED TO CHANGE SO IT WORKS WITH MULTIPLE P-SYSTEMS
         SFX.PlayCreatureBefriendSFX(creatureType, transform.position);

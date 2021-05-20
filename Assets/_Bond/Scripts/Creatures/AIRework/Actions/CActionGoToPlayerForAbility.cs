@@ -19,6 +19,7 @@ public class CActionGoToPlayerForAbility : BTLeaf
     protected override void OnExit()
     {
         context.agent.ResetPath();
+        context.reticleScale();
     }
 
     public override NodeState Evaluate() 
