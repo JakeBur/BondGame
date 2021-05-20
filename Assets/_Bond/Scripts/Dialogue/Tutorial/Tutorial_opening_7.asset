@@ -15,6 +15,6 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - "MC/Cheerful We\u2019re almost back at the farm, ready for one more go buddy?"
-  - MC/Cheerful We can use these to get to other parts of the forest!
+  - "MC/Happy We\u2019re almost back at the farm, ready for one more go buddy?"
+  - MC/Happy We can use these to get to other parts of the forest!
   step: 3

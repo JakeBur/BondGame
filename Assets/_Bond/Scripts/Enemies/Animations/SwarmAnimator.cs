@@ -39,7 +39,7 @@ public class SwarmAnimator : EnemyAnimator
 
     public void EventPlayDonutWalkSFX(int tag)
     {
-        SFX.Play3DWalkSFX(tag, transform);
+        SFX.Play3DWalkGrassSFX(tag, transform.position);
     }
 
     protected override void InternalSMBAttackEnter()

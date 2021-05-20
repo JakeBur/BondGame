@@ -28,7 +28,6 @@ TagManager:
   - Potion
   - Water
   - AcornBag
-  - TutorialManager
   layers:
   - Default
   - TransparentFX

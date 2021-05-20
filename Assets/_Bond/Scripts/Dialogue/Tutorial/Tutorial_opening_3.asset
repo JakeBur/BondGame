@@ -16,5 +16,5 @@ MonoBehaviour:
   triggerAmount: 0
   dialog:
   - MC/Surprised Wh-what the heck were those things?!
-  - MC/Sad I'm glad I had something to defend myself.
+  - MC/Surprised I'm glad I had something to defend myself.
   step: 0

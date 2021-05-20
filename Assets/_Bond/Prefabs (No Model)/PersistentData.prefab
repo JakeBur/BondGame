@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 461179531038856074}
   - component: {fileID: 461179531038856075}
+  - component: {fileID: 189683794508338497}
+  - component: {fileID: 334769085439992422}
   m_Layer: 0
   m_Name: PersistentData
   m_TagString: Untagged
@@ -46,10 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 3008331729029387198, guid: b533a4d2d18ca984a85f56b2a9810e8c,
     type: 3}
+  playerController: {fileID: 0}
+  justDied: 0
   CameraPrefab: {fileID: 4178489857079956520, guid: 956d718805b5b4344b54a225f3a66551,
     type: 3}
   HUDPrefab: {fileID: 8580111774580001889, guid: ac92d26580688e2468b36dc953f472a1,
     type: 3}
+  HUDObject: {fileID: 0}
   displayHUD: 1
   PauseMenuPrefab: {fileID: 7388749792863832312, guid: 24c0e2ff030508646b4c9c368272a756,
     type: 3}
@@ -65,6 +70,8 @@ MonoBehaviour:
     type: 3}
   loadScreen: {fileID: 2837024482875620880}
   isGeneratorDone: 0
+  currRunLevel: 0
+  completedRuns: 0
   availableRelics:
   - {fileID: 11400000, guid: fd33f6533df23f2468f37f71d6ba393d, type: 2}
   - {fileID: 11400000, guid: 27e380cdf22e0824e959974d7dfc68fe, type: 2}
@@ -85,7 +92,50 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a950f3d773b6d94faac53a59e4550ee, type: 2}
   - {fileID: 11400000, guid: d037f5bd56aad9b4a8eaf04f4e8d7815, type: 2}
   - {fileID: 11400000, guid: 86f221ed2007bb14e931f4ece15c90c1, type: 2}
+  dialogueSelector: {fileID: 189683794508338497}
   playerInputs: {fileID: 0}
+  controlRebind: {fileID: 0}
+  tutorialObject: {fileID: 0}
+  tutorialManager: {fileID: 0}
+--- !u!114 &189683794508338497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461179531038856076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b453a9856950fd4bbdbe6817e26331a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  farmCompletedRunDialogues:
+  - {fileID: 11400000, guid: 2f179e6ee2007ec4597b5aceef7b8ecd, type: 2}
+  - {fileID: 11400000, guid: 06cdbe6e47172b245a29d654560df239, type: 2}
+  - {fileID: 11400000, guid: 1c22db9c472dd5145ab98d35f11b3f19, type: 2}
+  farmLostRunDialogues:
+  - {fileID: 11400000, guid: d681f24738d437e48a4abe4603c96ea5, type: 2}
+  - {fileID: 11400000, guid: 333924389f1dc084c8c20d918f8e00a5, type: 2}
+  - {fileID: 11400000, guid: 53b45fc9c57a19b4ab04d34b6a50598e, type: 2}
+  transitionDialogues:
+  - {fileID: 11400000, guid: 7d3f4c474eb5d0549b476910c94080ef, type: 2}
+  - {fileID: 11400000, guid: be101589aecd13b43bdc98c8605f6837, type: 2}
+  - {fileID: 11400000, guid: 47dae3a90a0fb3146bca4a3f7fb1e91e, type: 2}
+  beatGameDialogues:
+  - {fileID: 11400000, guid: 66f2b25b3196d53499e092d026294cd2, type: 2}
+--- !u!114 &334769085439992422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461179531038856076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7317b9c03e4cb6348b0a18dc4cdc92e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 0}
 --- !u!225 &2837024482875620880
 CanvasGroup:
   m_ObjectHideFlags: 0

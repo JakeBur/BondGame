@@ -8,17 +8,26 @@ public class CreaturePaletteLibrary : ScriptableObject
 {
     public List<CreaturePalette> creaturePalettes;
 
-    private Queue<CreaturePalette> _randomOrder;
+    private List<CreaturePalette> _randomOrder;
+
+    private void Awake() 
+    {
+        _randomOrder = new List<CreaturePalette>();
+    }
 
     public CreaturePalette GetRandomPalette()
     {
-        if (_randomOrder == null) _randomOrder = new Queue<CreaturePalette>();
         if(_randomOrder.Count == 0)
         {
-            creaturePalettes.ForEach(palette => _randomOrder.Enqueue(palette));
-            _randomOrder.OrderBy(x => Random.value);
+            foreach(CreaturePalette palette in creaturePalettes)
+            {
+                _randomOrder.Add(palette);
+            }
+            _randomOrder = _randomOrder.OrderBy(x => Random.value).ToList();
         }
 
-        return _randomOrder.Dequeue();
+        CreaturePalette returnedPalette = _randomOrder[0];
+        _randomOrder.RemoveAt(0);
+        return returnedPalette;
     }
 }

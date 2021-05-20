@@ -91,11 +91,11 @@ public class VoronoiPCG : MonoBehaviour
 		terrain.gameObject.GetComponent<TerrainCollider>().enabled = true;
 		
 		//Get random seed and set it
-		//gameSeed = connection.seeds[Random.Range(0, connections.seeds.count)];
-		gameSeed = Random.Range(0,999999);
+		// gameSeed = Random.Range(0,999999);
 		if(level == 1)
 		{
 			connection = SmallLevelsCP[Random.Range(0, SmallLevelsCP.Count)];
+			gameSeed = connection.seeds[Random.Range(0, connection.seeds.Count)];
 			numberOfCombat = 2;
 			numberOfCreature = 2;
 
@@ -103,6 +103,7 @@ public class VoronoiPCG : MonoBehaviour
 		else 
 		{
 			connection = BigLevelsCP[Random.Range(0, BigLevelsCP.Count)];
+			gameSeed = connection.seeds[Random.Range(0, connection.seeds.Count)];
 			numberOfCombat = 5;
 			numberOfCreature = 5;
 				

@@ -11,15 +11,15 @@ public class DialogueTextManager : MonoBehaviour
     public bool sentenceFinished = true;
 
     private IEnumerator typeText;
-    private float textSpeed = 0.03f;
+    private float textSpeed = 0.0375f;
     private float textSpeedMult = 1f;
-    private float textSpeedBackup = 0.03f;
+    private float textSpeedBackup = 0.0375f;
     private string speaker;
     private string sentence;
 
     public void ResetSpeed()
     {
-        textSpeedBackup = 0.03f;
+        textSpeedBackup = 0.0375f;
         textSpeed = textSpeedBackup;
     }
 
@@ -189,9 +189,7 @@ public class DialogueTextManager : MonoBehaviour
                             }
                             catch
                             {
-                                Debug.LogError("No such action name \"" 
-                                    + sentence.Substring(0, index) 
-                                    + "\" exists! Double check with the list in BuildDictionary()", transform);
+                                Debug.Log("No such action name exists! Double check with the list in BuildDictionary()");
                                 bind = "";
                             }
                             
@@ -227,7 +225,7 @@ public class DialogueTextManager : MonoBehaviour
         // Once sentence is over, reset the speed values to default
         //-----------------------------------------------------------
         sentenceFinished = true;
-        textSpeedBackup = 0.03f;
+        textSpeedBackup = 0.0375f;
         textSpeed = textSpeedBackup;
     }
 }

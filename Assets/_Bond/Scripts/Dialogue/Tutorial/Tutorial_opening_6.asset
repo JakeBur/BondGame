@@ -15,5 +15,5 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - MC/Cheerful Ok friend, let's give these weirdos a taste of their own medicine!
+  - MC/Angry Ok friend, let's give these weirdos a taste of their own medicine!
   step: 3

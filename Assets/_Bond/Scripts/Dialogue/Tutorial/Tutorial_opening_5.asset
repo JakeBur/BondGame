@@ -15,7 +15,7 @@ MonoBehaviour:
   trigger: 0
   triggerAmount: 0
   dialog:
-  - "MC/Happy It\u2019s OK, you\u2019re safe now little buddy! They won\u2019t hurt
+  - "MC/Happy It\u2019s ok you\u2019re safe now little buddy, they won\u2019t hurt
     you anymore."
   - MC/Happy Come with me and we can fight these baddies together! We'd make a great
     team!
